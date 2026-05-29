@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ocean Drift Lodge - Facture</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #faf9f7;
+            --bg-card: var(--bg-sand);
+            --bg-doc: #faf9f7;
+            --bg-sand: #f2ede6;
+            --ink: #1c1c1a;
+            --ink-mid: #3d3d38;
+            --ink-light: #6b6b63;
+            --teal: #2e8b8b;
+            --teal-dk:   #236868;
+            --gold:      #b8975a;
+            --bg-ocean:  #1a3d4a;
+            --bg-dark:   #1c1c1a;
+            --trans:     0.3s ease;
+            --peach: #c8603a;
+            --radius: 4px;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            line-height: 1.6;
+            color: var(--ink-mid);
+            background-color: var(--bg);
+            margin: 0;
+            padding: 4rem 2rem;
+        }
+
+        /* ── FORMULAIRE ── */
+        .form-panel {
+            max-width: 850px;
+            margin: 0 auto 3rem auto;
+            background: var(--bg-sand);
+            padding: 2.5rem 3rem;
+            border-radius: 8px;
+            border: 1px solid rgba(201,169,110,.15);
+        }
+        .form-panel-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 300;
+            margin: 0 0 .3rem 0;
+            color: var(--gold);
+        }
+        .form-panel-sub {
+            font-size: .72rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: var(--ink-light);
+            margin-bottom: 2rem;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+        .form-group { display: flex; flex-direction: column; gap: .4rem; }
+        .form-group label {
+            font-size: .68rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--ink-light);
+        }
+        .form-group input,
+        .form-group select {
+            background: #fff;
+            border: 1px solid rgba(28,28,26,0.15);
+            color: var(--ink);
+            padding: .65rem .9rem;
+            border-radius: var(--radius);
+            font-family: 'Jost', sans-serif;
+            font-size: .9rem;
+            outline: none;
+            transition: border .2s, background .2s;
+        }
+        .form-group input::placeholder { color: rgba(28,28,26,0.35); }
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--teal);
+            background: #fff;
+        }
+        .form-group select option { color: var(--ink); background: white; }
+        .form-span2 { grid-column: span 2; }
+
+        .form-actions { margin-top: 1.8rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn-generate {
+            background: var(--gold);
+            color: var(--bg);
+            border: none;
+            padding: .85rem 2rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-family: 'Jost', sans-serif;
+            font-weight: 500;
+            font-size: .8rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            transition: opacity .2s;
+        }
+        .btn-generate:hover { opacity: .85; }
+        .btn-reset {
+            background: transparent;
+            color: var(--ink-light);
+            border: 1px solid rgba(28,28,26,0.15);
+            padding: .85rem 1.5rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-family: 'Jost', sans-serif;
+            font-size: .8rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            transition: all .2s;
+        }
+        .btn-reset:hover { color: var(--ink); border-color: var(--teal); }
+
+        /* ── DOCUMENT ── */
+        .doc-box {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 3.5rem;
+            background: var(--bg-doc);
+            border-radius: 6px;
+            box-shadow: 0 8px 40px rgba(0,0,0,.3);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px solid var(--bg-sand);
+            padding-bottom: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .logo-area img { max-width: 180px; height: auto; display: block; }
+        .header-right { text-align: right; font-size: 0.8rem; color: var(--ink-light); }
+        .ch-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--teal);
+            margin: 0 0 .4rem 0;
+            font-weight: 300;
+        }
+        .client-info { margin-bottom: 3rem; font-size: 0.95rem; color: var(--ink); }
+        .client-info .sejour-tag {
+            color: var(--peach);
+            font-size: 0.85rem;
+            margin-top: .3rem;
+        }
+
+        table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        th {
+            text-align: left;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            padding: 1rem;
+            border-bottom: 2px solid var(--teal);
+            color: var(--teal);
+        }
+        td { padding: 1.2rem 1rem; border-bottom: 1px solid var(--bg-sand); color: var(--ink-mid); }
+
+        .summary-table { margin-left: auto; width: 320px; margin-top: 2rem; }
+        .summary-table td { border: none; padding: 0.5rem 1rem; text-align: right; font-size: .95rem; }
+        .summary-table tr:first-child td { border-top: 1px solid var(--bg-sand); }
+        .acompte-row td { color: var(--peach); }
+        .total-row td {
+            background: var(--teal);
+            color: white;
+            font-weight: 500;
+            font-size: 1.15rem;
+            border-radius: 0;
+        }
+        .total-row td:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+        .total-row td:last-child { border-radius: 0 var(--radius) var(--radius) 0; }
+
+        /* Tampon ACQUITTÉE */
+        .stamp-wrap { text-align: center; margin: 2rem 0 1rem; }
+        .status-stamp {
+            display: inline-block;
+            border: 2.5px solid #4caf50;
+            color: #4caf50;
+            padding: .5rem 1.4rem;
+            transform: rotate(-12deg);
+            font-weight: 600;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            letter-spacing: .12em;
+            opacity: .85;
+        }
+        .status-stamp.solde {
+            border-color: var(--peach);
+            color: var(--peach);
+        }
+
+        .doc-footer {
+            margin-top: 3.5rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #aaa;
+            border-top: 1px solid var(--bg-sand);
+            padding-top: 1.5rem;
+        }
+        .doc-footer em { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--teal-light); }
+
+        .btn-print {
+            background: var(--gold);
+            color: var(--bg);
+            border: none;
+            padding: 1rem 2.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Jost';
+            font-weight: 500;
+            font-size: .85rem;
+            letter-spacing: .08em;
+        }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { padding: 0; background: white; }
+            .doc-box { box-shadow: none; }
+        }
+        @media (max-width: 600px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .form-span2 { grid-column: span 1; }
+            .doc-box { padding: 2rem 1.5rem; }
+            .form-panel { padding: 1.8rem; }
+            .summary-table { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ══ FORMULAIRE ══ -->
+    <div class="form-panel no-print">
+        <p class="form-panel-title">Générer une facture</p>
+        <p class="form-panel-sub">Remplissez les champs — le document se met à jour instantanément</p>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Civilité</label>
+                <select id="f-civilite">
+                    <option value="M.">M.</option>
+                    <option value="Mme">Mme</option>
+                    <option value="M. et Mme">M. et Mme</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Prénom</label>
+                <input type="text" id="f-prenom" placeholder="Jean">
+            </div>
+            <div class="form-group">
+                <label>Nom</label>
+                <input type="text" id="f-nom" placeholder="Dupont">
+            </div>
+            <div class="form-group">
+                <label>Hébergement</label>
+                <select id="f-logement">
+                    <option value="Appartement Rez de Jardin — Résidence West Point">Appartement Rez de Jardin — Résidence West Point</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Date d'arrivée</label>
+                <input type="date" id="f-arrivee">
+            </div>
+            <div class="form-group">
+                <label>Date de départ</label>
+                <input type="date" id="f-depart">
+            </div>
+            <div class="form-group">
+                <label>Loyer HT (€)</label>
+                <input type="number" id="f-loyer" placeholder="850" min="0" step="10">
+            </div>
+            <div class="form-group">
+                <label>Taxe de séjour (€)</label>
+                <input type="number" id="f-taxe" placeholder="15" min="0" step="1">
+            </div>
+            <div class="form-group">
+                <label>Acompte déjà versé (€)</label>
+                <input type="number" id="f-acompte" placeholder="250" min="0" step="10">
+            </div>
+            <div class="form-group">
+                <label>Statut</label>
+                <select id="f-statut">
+                    <option value="solde">Solde restant dû</option>
+                    <option value="acquitte">Facture acquittée</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn-generate" onclick="genererDoc()">✦ Générer la facture</button>
+            <button class="btn-reset" onclick="reinitialiser()">Réinitialiser</button>
+        </div>
+    </div>
+
+    <!-- ══ DOCUMENT ══ -->
+    <div class="doc-box" id="doc-output" style="display:none;">
+        <div class="header">
+            <div class="logo-area">
+                <img src="logo.png" alt="Ocean Drift Lodge"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                <span style="display:none;font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--teal)">Ocean Drift <em>Lodge</em></span>
+            </div>
+            <div class="header-right">
+                <h1 class="ch-title">Facture</h1>
+                <strong>N° <span id="var-num">---</span></strong><br>
+                Date : <span id="var-date">---</span>
+            </div>
+        </div>
+
+        <div class="client-info">
+            <strong>Facturé à :</strong><br>
+            <span id="var-client">---</span><br>
+            <div class="sejour-tag" id="var-sejour">---</div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Désignation</th>
+                    <th style="text-align:right;">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="var-designation">Hébergement Ocean Drift Lodge</td>
+                    <td style="text-align:right;" id="var-ht">---</td>
+                </tr>
+                <tr>
+                    <td>Taxe de séjour (Promotion du tourisme)</td>
+                    <td style="text-align:right;" id="var-taxe">---</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="summary-table">
+            <tr>
+                <td>Total TTC</td>
+                <td id="var-total" style="font-weight:600;">---</td>
+            </tr>
+            <tr class="acompte-row">
+                <td>Acompte déjà réglé</td>
+                <td id="var-acompte">---</td>
+            </tr>
+            <tr class="total-row">
+                <td id="var-solde-label">Net à payer</td>
+                <td id="var-solde">---</td>
+            </tr>
+        </table>
+
+        <div class="stamp-wrap">
+            <div class="status-stamp" id="var-stamp">FACTURE ACQUITTÉE</div>
+        </div>
+
+        <div class="doc-footer">
+            <strong>Ocean Drift Lodge</strong><br>
+            West Point, Dakhla, Maroc · IF : 12345678 · RC : 98765<br>
+            <em>Merci pour votre séjour. Nous espérons vous revoir très bientôt face à l'océan.</em>
+        </div>
+    </div>
+
+    <div style="text-align:center;margin-top:2rem;" class="no-print" id="btn-print-wrap">
+        <button class="btn-print" onclick="window.print()">⬇ Télécharger / Imprimer PDF</button>
+    </div>
+
+    <script>
+        function genNumero() {
+            const yr = new Date().getFullYear();
+            const seq = String(Math.floor(Math.random() * 900) + 100);
+            return `FAC-${yr}-${seq}`;
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return '—';
+            const [y, m, d] = dateStr.split('-');
+            const mois = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+            return `${parseInt(d)} ${mois[parseInt(m)-1]} ${y}`;
+        }
+
+        function nbNuits(arrivee, depart) {
+            const a = new Date(arrivee), b = new Date(depart);
+            const diff = Math.round((b - a) / 86400000);
+            return diff > 0 ? `${diff} nuit${diff > 1 ? 's' : ''}` : '';
+        }
+
+        function fmt(n) {
+            return n.toFixed(2).replace('.', ',') + ' €';
+        }
+
+        function genererDoc() {
+            const civilite = document.getElementById('f-civilite').value;
+            const prenom   = document.getElementById('f-prenom').value.trim();
+            const nom      = document.getElementById('f-nom').value.trim();
+            const logement = document.getElementById('f-logement').value;
+            const arrivee  = document.getElementById('f-arrivee').value;
+            const depart   = document.getElementById('f-depart').value;
+            const loyer    = parseFloat(document.getElementById('f-loyer').value) || 850;
+            const taxe     = parseFloat(document.getElementById('f-taxe').value) || 15;
+            const acompte  = parseFloat(document.getElementById('f-acompte').value) || 0;
+            const statut   = document.getElementById('f-statut').value;
+
+            if (!prenom || !nom) { alert('Merci de saisir le prénom et le nom.'); return; }
+            if (!arrivee || !depart) { alert('Merci de saisir les dates.'); return; }
+
+            const totalTTC = loyer + taxe;
+            const solde    = totalTTC - acompte;
+            const nuits    = nbNuits(arrivee, depart);
+            const periode  = `Du ${formatDate(arrivee)} au ${formatDate(depart)}${nuits ? ' (' + nuits + ')' : ''}`;
+
+            document.getElementById('var-num').textContent         = genNumero();
+            document.getElementById('var-date').textContent        = new Date().toLocaleDateString('fr-FR');
+            document.getElementById('var-client').textContent      = `${civilite} ${prenom} ${nom}`;
+            document.getElementById('var-sejour').textContent      = periode;
+            document.getElementById('var-designation').textContent = logement;
+            document.getElementById('var-ht').textContent          = fmt(loyer);
+            document.getElementById('var-taxe').textContent        = fmt(taxe);
+            document.getElementById('var-total').textContent       = fmt(totalTTC);
+            document.getElementById('var-acompte').textContent     = `- ${fmt(acompte)}`;
+            document.getElementById('var-solde').textContent       = fmt(Math.max(0, solde));
+
+            const stamp = document.getElementById('var-stamp');
+            if (statut === 'acquitte') {
+                stamp.textContent = 'FACTURE ACQUITTÉE';
+                stamp.className   = 'status-stamp';
+                document.getElementById('var-solde-label').textContent = 'Net à payer';
+            } else {
+                stamp.textContent = 'SOLDE À RÉGLER';
+                stamp.className   = 'status-stamp solde';
+                document.getElementById('var-solde-label').textContent = 'Solde dû';
+            }
+
+            document.getElementById('doc-output').style.display    = 'block';
+            document.getElementById('btn-print-wrap').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('doc-output').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        function reinitialiser() {
+            ['f-prenom','f-nom','f-arrivee','f-depart','f-loyer','f-taxe','f-acompte'].forEach(id => {
+                document.getElementById(id).value = '';
+            });
+            document.getElementById('f-civilite').value = 'M.';
+            document.getElementById('f-statut').value   = 'solde';
+            document.getElementById('doc-output').style.display    = 'none';
+            document.getElementById('btn-print-wrap').style.display = 'none';
+        }
+
+        document.getElementById('btn-print-wrap').style.display = 'none';
+    </script>
+
+</body>
+</html>
