@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ocean Drift Lodge - Attestation de Caution</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #faf9f7;
+            --bg-sand: #f2ede6;
+            --ink: #1c1c1a;
+            --ink-mid: #3d3d38;
+            --ink-light: #6b6b63;
+            --teal: #2e8b8b;
+            --teal-dk:   #236868;
+            --gold:      #b8975a;
+            --bg-ocean:  #1a3d4a;
+            --bg-dark:   #1c1c1a;
+            --trans:     0.3s ease;
+            --peach: #c8603a;
+            --radius: 4px;
+        }
+
+        /* ── FORMULAIRE DE SAISIE ── */
+        .form-panel {
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+            background: var(--teal);
+            color: white;
+            padding: 2.5rem 3rem;
+            border-radius: 8px;
+        }
+        .form-panel-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 300;
+            margin: 0 0 .3rem 0;
+            color: #fff;
+        }
+        .form-panel-sub {
+            font-size: .72rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.55);
+            margin-bottom: 2rem;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+        .form-grid.full { grid-template-columns: 1fr; }
+        .form-group { display: flex; flex-direction: column; gap: .4rem; }
+        .form-group label {
+            font-size: .68rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.65);
+        }
+        .form-group input,
+        .form-group select {
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.2);
+            color: white;
+            padding: .65rem .9rem;
+            border-radius: var(--radius);
+            font-family: 'Jost', sans-serif;
+            font-size: .9rem;
+            outline: none;
+            transition: border .2s, background .2s;
+        }
+        .form-group input::placeholder { color: rgba(255,255,255,.35); }
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: rgba(255,255,255,.6);
+            background: rgba(255,255,255,.15);
+        }
+        .form-group select option { color: var(--ink); background: white; }
+        .form-actions {
+            margin-top: 1.8rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn-generate {
+            background: var(--peach);
+            color: white;
+            border: none;
+            padding: .85rem 2rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-family: 'Jost', sans-serif;
+            font-weight: 500;
+            font-size: .8rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            transition: opacity .2s;
+        }
+        .btn-generate:hover { opacity: .85; }
+        .btn-reset {
+            background: transparent;
+            color: rgba(255,255,255,.6);
+            border: 1px solid rgba(255,255,255,.2);
+            padding: .85rem 1.5rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-family: 'Jost', sans-serif;
+            font-size: .8rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            transition: all .2s;
+        }
+        .btn-reset:hover { color: white; border-color: rgba(255,255,255,.5); }
+
+        /* ── DOCUMENT ── */
+        body { font-family: 'Jost', sans-serif; line-height: 1.6; color: var(--ink-mid); background-color: var(--bg); margin: 0; padding: 4rem 2rem; }
+        .doc-box { max-width: 800px; margin: 0 auto; padding: 3.5rem; background: #ffffff; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+        .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--bg-sand); padding-bottom: 2rem; margin-bottom: 2.5rem; }
+        .logo-area img { max-width: 180px; height: auto; display: block; margin-bottom: 10px; }
+        .meta { text-align: right; font-size: 0.8rem; color: var(--ink-light); }
+        .ch-tag { font-size: .65rem; font-weight: 500; letter-spacing: .25em; text-transform: uppercase; color: var(--peach); margin-bottom: .5rem; }
+        .ch-title { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: var(--teal); margin: 0 0 2rem 0; }
+        .info-card { background: var(--bg-sand); padding: 1.5rem; border-radius: var(--radius); margin-bottom: 2.5rem; font-size: 0.95rem; }
+        table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        th { text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; padding: 1rem; border-bottom: 2px solid var(--teal); color: var(--teal); }
+        td { padding: 1.2rem 1rem; border-bottom: 1px solid var(--bg-sand); font-size: 0.95rem; }
+        .total-row { background: var(--bg-sand); font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 500; }
+        .alert-card { border-left: 3px solid var(--peach); background: var(--bg-sand); padding: 1.2rem; border-radius: var(--radius); font-size: 0.85rem; color: var(--ink-mid); margin: 2rem 0; line-height: 1.5; }
+        .footer-note { text-align: center; color: var(--teal); font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; margin-top: 3rem; }
+        .btn-print { background: var(--teal); color: white; border: none; padding: 1rem 2rem; border-radius: 4px; cursor: pointer; font-family: 'Jost'; font-weight: 500; }
+
+        /* ── NUMÉRO AUTO ── */
+        .num-badge {
+            display: inline-block;
+            background: rgba(43,76,89,.08);
+            color: var(--teal);
+            font-size: .7rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            padding: .25rem .7rem;
+            border-radius: 20px;
+            margin-left: .5rem;
+            vertical-align: middle;
+        }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { padding: 0; background: white; }
+            .doc-box { box-shadow: none; border: none; }
+        }
+        @media (max-width: 600px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .doc-box { padding: 2rem 1.5rem; }
+            .form-panel { padding: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ══ FORMULAIRE DE SAISIE ══ -->
+    <div class="form-panel no-print">
+        <p class="form-panel-title">Générer une attestation</p>
+        <p class="form-panel-sub">Remplissez les champs — le document se met à jour instantanément</p>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Civilité</label>
+                <select id="f-civilite">
+                    <option value="M.">M.</option>
+                    <option value="Mme">Mme</option>
+                    <option value="M. et Mme">M. et Mme</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Prénom</label>
+                <input type="text" id="f-prenom" placeholder="Jean">
+            </div>
+            <div class="form-group">
+                <label>Nom</label>
+                <input type="text" id="f-nom" placeholder="Dupont">
+            </div>
+            <div class="form-group">
+                <label>Montant caution (€)</label>
+                <input type="number" id="f-montant" placeholder="500" min="0" step="50">
+            </div>
+            <div class="form-group">
+                <label>Date d'arrivée</label>
+                <input type="date" id="f-arrivee">
+            </div>
+            <div class="form-group">
+                <label>Date de départ</label>
+                <input type="date" id="f-depart">
+            </div>
+            <div class="form-group">
+                <label>Méthode de garantie</label>
+                <select id="f-methode">
+                    <option value="Empreinte bancaire (PLBS)">Empreinte bancaire (PLBS)</option>
+                    <option value="Virement bancaire">Virement bancaire</option>
+                    <option value="Chèque de caution">Chèque de caution</option>
+                    <option value="Espèces">Espèces</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Hébergement</label>
+                <select id="f-logement">
+                    <option value="Appartement Rez de Jardin — Résidence West Point">Appartement Rez de Jardin — Résidence West Point</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn-generate" onclick="genererDoc()">✦ Générer le document</button>
+            <button class="btn-reset" onclick="reinitialiser()">Réinitialiser</button>
+        </div>
+    </div>
+
+    <!-- ══ DOCUMENT ══ -->
+    <div class="doc-box" id="doc-output" style="display:none;">
+        <div class="header">
+            <div class="logo-side">
+                <div class="logo-area"><img src="logo.png" alt="Ocean Drift Lodge" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--teal)">Ocean Drift <em>Lodge</em></span></div>
+            </div>
+            <div class="meta">
+                <strong>Attestation N° <span id="var-num">---</span></strong><br>
+                Date : <span id="var-date">---</span><br>
+                Dakhla, Maroc
+            </div>
+        </div>
+
+        <div class="ch-tag">Garantie de Séjour</div>
+        <h1 class="ch-title">Dépôt de <em>Caution</em></h1>
+
+        <div class="info-card">
+            <strong>Client :</strong> <span id="var-client">---</span><br>
+            <strong>Hébergement :</strong> <span id="var-details">---</span><br>
+            <strong>Période :</strong> <span id="var-periode">---</span>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Désignation</th>
+                    <th>Méthode</th>
+                    <th style="text-align: right;">Montant</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Garantie pour dommages &amp; dégradations</td>
+                    <td id="var-methode">---</td>
+                    <td style="text-align: right; font-weight: 500;" id="var-montant">---</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="alert-card">
+            <strong>Note importante :</strong> Ce dépôt n'est pas un débit immédiat mais une pré-autorisation bancaire. La mainlevée (libération des fonds) sera effectuée sous un délai de 7 jours après votre départ, sous réserve de la validation de l'état des lieux de sortie et de l'absence de frais impayés.
+        </div>
+
+        <p class="footer-note">Nous vous souhaitons un séjour mémorable face à l'océan.</p>
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem; display:none;" class="no-print" id="btn-print-wrap">
+        <button class="btn-print" onclick="window.print()">⬇ Télécharger / Imprimer PDF</button>
+    </div>
+
+    <script>
+        // Génération du numéro automatique
+        function genNumero() {
+            const now = new Date();
+            const yr = now.getFullYear();
+            const seq = String(Math.floor(Math.random() * 900) + 100);
+            return `CAU-${yr}-${seq}`;
+        }
+
+        // Formatage date fr
+        function formatDate(dateStr) {
+            if (!dateStr) return '—';
+            const [y, m, d] = dateStr.split('-');
+            const mois = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+            return `${parseInt(d)} ${mois[parseInt(m)-1]} ${y}`;
+        }
+
+        function genererDoc() {
+            const civilite = document.getElementById('f-civilite').value;
+            const prenom   = document.getElementById('f-prenom').value.trim();
+            const nom      = document.getElementById('f-nom').value.trim();
+            const montant  = parseFloat(document.getElementById('f-montant').value) || 500;
+            const arrivee  = document.getElementById('f-arrivee').value;
+            const depart   = document.getElementById('f-depart').value;
+            const methode  = document.getElementById('f-methode').value;
+            const logement = document.getElementById('f-logement').value;
+
+            if (!prenom || !nom) {
+                alert('Merci de saisir le prénom et le nom du client.');
+                return;
+            }
+            if (!arrivee || !depart) {
+                alert('Merci de saisir les dates d\'arrivée et de départ.');
+                return;
+            }
+
+            const nomComplet = `${civilite} ${prenom} ${nom}`;
+            const periode = `Du ${formatDate(arrivee)} au ${formatDate(depart)}`;
+
+            document.getElementById('var-num').textContent     = genNumero();
+            document.getElementById('var-date').textContent    = new Date().toLocaleDateString('fr-FR');
+            document.getElementById('var-client').textContent  = nomComplet;
+            document.getElementById('var-details').textContent = logement;
+            document.getElementById('var-periode').textContent = periode;
+            document.getElementById('var-montant').textContent = `${montant.toFixed(2).replace('.', ',')} €`;
+            document.getElementById('var-methode').textContent = methode;
+
+            document.getElementById('doc-output').style.display = 'block';
+            document.getElementById('btn-print-wrap').style.display = 'block';
+
+            // Scroll vers le document
+            setTimeout(() => {
+                document.getElementById('doc-output').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        function reinitialiser() {
+            document.getElementById('f-prenom').value  = '';
+            document.getElementById('f-nom').value     = '';
+            document.getElementById('f-montant').value = '';
+            document.getElementById('f-arrivee').value = '';
+            document.getElementById('f-depart').value  = '';
+            document.getElementById('f-civilite').value = 'M.';
+            document.getElementById('f-methode').value  = 'Empreinte bancaire (PLBS)';
+            document.getElementById('doc-output').style.display = 'none';
+            document.getElementById('btn-print-wrap').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
