@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard · Ocean Drift Lodge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #faf9f7;
+  --bg-sand:   #f2ede6;
+  --bg-dark:   #1c1c1a;
+  --ink:       #1c1c1a;
+  --ink-mid:   #3d3d38;
+  --ink-light: #6b6b63;
+  --teal:      #2e8b8b;
+  --teal-dk:   #236868;
+  --peach:     #c8603a;
+  --gold:      #b8975a;
+  --radius:    4px;
+  --trans:     0.3s ease;
+  --white:     #fff;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--bg);
+  color: var(--ink-mid);
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════
+   ÉCRAN DE CONNEXION
+══════════════════════════════ */
+#login-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 2rem;
+}
+#login-screen.hidden { display: none; }
+
+.login-box {
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+}
+.login-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--white);
+  letter-spacing: .04em;
+  margin-bottom: .5rem;
+}
+.login-logo em { font-style: italic; color: var(--gold); }
+.login-tag {
+  font-size: .6rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--teal);
+  font-weight: 500;
+  margin-bottom: 2.5rem;
+  display: block;
+}
+.login-field {
+  position: relative;
+  margin-bottom: 1.2rem;
+}
+.login-field input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--teal);
+  color: var(--white);
+  font-family: 'Jost', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  padding: .75rem .5rem;
+  outline: none;
+  text-align: center;
+  letter-spacing: .1em;
+  transition: border-color var(--trans);
+}
+.login-field input::placeholder { color: rgba(255,255,255,.35); }
+.login-field input:focus { border-bottom-color: var(--white); }
+.login-field input.shake {
+  animation: shake .4s ease;
+}
+.login-btn {
+  width: 100%;
+  background: var(--teal);
+  color: var(--white);
+  border: none;
+  padding: .9rem 2rem;
+  border-radius: var(--radius);
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  font-size: .78rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--trans);
+  margin-bottom: 1rem;
+}
+.login-btn:hover { background: var(--teal-dk); }
+.login-error {
+  font-size: .78rem;
+  color: var(--peach);
+  min-height: 1.2rem;
+  letter-spacing: .05em;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-8px); }
+  40%       { transform: translateX(8px); }
+  60%       { transform: translateX(-5px); }
+  80%       { transform: translateX(5px); }
+}
+
+/* ══════════════════════════════
+   DASHBOARD
+══════════════════════════════ */
+#dashboard { display: none; }
+#dashboard.visible { display: block; }
+
+/* ── HEADER ── */
+.site-header {
+  background: var(--bg-dark);
+  padding: 3rem 2rem 2.5rem;
+  text-align: center;
+}
+.site-header .logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--white);
+  letter-spacing: .04em;
+  margin-bottom: .6rem;
+}
+.site-header .logo em { font-style: italic; color: var(--gold); }
+.site-header .tag {
+  font-size: .62rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--teal);
+  font-weight: 500;
+}
+
+/* ── BLOCS ── */
+.bloc { padding: 3rem 2rem; }
+.bloc--sand  { background: var(--bg-sand); }
+.bloc--white { background: var(--bg); }
+
+.bloc-inner { max-width: 900px; margin: 0 auto; }
+.bloc-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+  padding-bottom: .6rem;
+  border-bottom: 1px solid rgba(28,28,26,.1);
+}
+
+/* ── CARDS LIENS ── */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.card-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--white);
+  border: 1px solid rgba(28,28,26,.07);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.2rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color var(--trans), transform var(--trans), box-shadow var(--trans);
+}
+.card-link:hover {
+  border-color: var(--teal);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(46,139,139,.1);
+}
+.card-icon { font-size: 1.2rem; flex-shrink: 0; width: 2rem; text-align: center; }
+.card-body { flex: 1; min-width: 0; }
+.card-name {
+  display: block;
+  font-weight: 500;
+  font-size: .9rem;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card-desc { display: block; font-size: .75rem; font-weight: 300; color: var(--ink-light); }
+.card-arrow {
+  font-size: .9rem;
+  color: var(--ink-light);
+  flex-shrink: 0;
+  transition: color var(--trans), transform var(--trans);
+}
+.card-link:hover .card-arrow { color: var(--teal); transform: translateX(3px); }
+
+/* ── CHECKLIST ── */
+.checklist { display: flex; flex-direction: column; gap: .7rem; }
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--white);
+  border: 1px solid rgba(28,28,26,.07);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background var(--trans), border-color var(--trans);
+}
+.check-item:hover { border-color: var(--teal); }
+.check-item.done {
+  background: rgba(46,139,139,.08);
+  border-color: rgba(46,139,139,.2);
+}
+.check-box {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid rgba(28,28,26,.2);
+  border-radius: 3px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .75rem;
+  color: transparent;
+  transition: background var(--trans), border-color var(--trans), color var(--trans);
+}
+.check-item.done .check-box {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: var(--white);
+}
+.check-label { font-size: .88rem; color: var(--ink-mid); transition: color var(--trans); }
+.check-item.done .check-label { text-decoration: line-through; color: var(--ink-light); }
+
+/* ── FOOTER ── */
+.site-footer {
+  background: var(--bg-dark);
+  text-align: center;
+  padding: 1.8rem 2rem;
+  font-size: .65rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.25);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .cards { grid-template-columns: 1fr; }
+  .site-header .logo { font-size: 1.75rem; }
+  .bloc { padding: 2rem 1.2rem; }
+  .login-logo { font-size: 1.7rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ ÉCRAN DE CONNEXION ══ -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">Ocean Drift <em>Lodge</em></div>
+    <span class="login-tag">Accès privé</span>
+    <div class="login-field">
+      <input type="password" id="pwd-input" placeholder="Mot de passe" autocomplete="current-password">
+    </div>
+    <button class="login-btn" id="login-btn">Accéder →</button>
+    <div class="login-error" id="login-error"></div>
+  </div>
+</div>
+
+<!-- ══ DASHBOARD ══ -->
+<div id="dashboard">
+
+  <header class="site-header">
+    <div class="logo">Ocean Drift <em>Lodge</em></div>
+    <div class="tag">Dashboard · Gestion</div>
+  </header>
+
+  <!-- BLOC 1 — Site -->
+  <section class="bloc bloc--sand">
+    <div class="bloc-inner">
+      <h2 class="bloc-title">Site principal</h2>
+      <div class="cards">
+        <a class="card-link" href="https://oceandriftlodge.com" target="_blank" rel="noopener">
+          <span class="card-icon">🌐</span>
+          <span class="card-body">
+            <span class="card-name">Landing page</span>
+            <span class="card-desc">oceandriftlodge.com</span>
+          </span>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOC 2 — Documents clients -->
+  <section class="bloc bloc--white">
+    <div class="bloc-inner">
+      <h2 class="bloc-title">Documents clients</h2>
+      <div class="cards">
+        <a class="card-link" href="https://oceandriftlodge.com/livret-accueil.html" target="_blank" rel="noopener">
+          <span class="card-icon">📋</span>
+          <span class="card-body">
+            <span class="card-name">Livret d'accueil</span>
+            <span class="card-desc">livret-accueil.html</span>
+          </span>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card-link" href="https://oceandriftlodge.com/guide-du-voyageur.html" target="_blank" rel="noopener">
+          <span class="card-icon">🗺️</span>
+          <span class="card-body">
+            <span class="card-name">Guide du Voyageur</span>
+            <span class="card-desc">guide-du-voyageur.html</span>
+          </span>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOC 3 — Documents commerciaux -->
+  <section class="bloc bloc--sand">
+    <div class="bloc-inner">
+      <h2 class="bloc-title">Documents commerciaux</h2>
+      <div class="cards">
+        <a class="card-link" href="https://oceandriftlodge.com/contrat.html" target="_blank" rel="noopener">
+          <span class="card-icon">📝</span>
+          <span class="card-body">
+            <span class="card-name">Contrat de location</span>
+            <span class="card-desc">contrat.html</span>
+          </span>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card-link" href="https://oceandriftlodge.com/facture.html" target="_blank" rel="noopener">
+          <span class="card-icon">🧾</span>
+          <span class="card-body">
+            <span class="card-name">Facture</span>
+            <span class="card-desc">facture.html</span>
+          </span>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card-link" href="https://oceandriftlodge.com/devis.html" target="_blank" rel="noopener">
+          <span class="card-icon">📊</span>
+          <span class="card-body">
+            <span class="card-name">Devis</span>
+            <span class="card-desc">devis.html</span>
+          </span>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card-link" href="https://oceandriftlodge.com/caution.html" target="_blank" rel="noopener">
+          <span class="card-icon">🔐</span>
+          <span class="card-body">
+            <span class="card-name">Caution</span>
+            <span class="card-desc">caution.html</span>
+          </span>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOC 4 — Outils -->
+  <section class="bloc bloc--white">
+    <div class="bloc-inner">
+      <h2 class="bloc-title">Outils</h2>
+      <div class="cards">
+        <a class="card-link" href="https://app.netlify.com" target="_blank" rel="noopener">
+          <span class="card-icon">🚀</span>
+          <span class="card-body">
+            <span class="card-name">Netlify — Hébergement</span>
+            <span class="card-desc">app.netlify.com</span>
+          </span>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card-link" href="https://www.namecheap.com" target="_blank" rel="noopener">
+          <span class="card-icon">🌍</span>
+          <span class="card-body">
+            <span class="card-name">Namecheap — Domaine</span>
+            <span class="card-desc">namecheap.com</span>
+          </span>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card-link" href="https://www.emailjs.com" target="_blank" rel="noopener">
+          <span class="card-icon">✉️</span>
+          <span class="card-body">
+            <span class="card-name">EmailJS — Formulaire</span>
+            <span class="card-desc">emailjs.com</span>
+          </span>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card-link" href="https://plausible.io" target="_blank" rel="noopener">
+          <span class="card-icon">📈</span>
+          <span class="card-body">
+            <span class="card-name">Plausible — Analytics</span>
+            <span class="card-desc">plausible.io</span>
+          </span>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOC 5 — Checklist ouverture -->
+  <section class="bloc bloc--sand">
+    <div class="bloc-inner">
+      <h2 class="bloc-title">Avant ouverture décembre 2026</h2>
+      <div class="checklist" id="checklist">
+        <div class="check-item" data-key="favicon">
+          <span class="check-box">✓</span>
+          <span class="check-label">Favicon ODL — icône onglet navigateur</span>
+        </div>
+        <div class="check-item" data-key="whatsapp">
+          <span class="check-box">✓</span>
+          <span class="check-label">Numéro WhatsApp — renseigner dans tous les fichiers</span>
+        </div>
+        <div class="check-item" data-key="wifi">
+          <span class="check-box">✓</span>
+          <span class="check-label">Mot de passe Wi-Fi — renseigner dans livret-accueil.html</span>
+        </div>
+        <div class="check-item" data-key="emailjs">
+          <span class="check-box">✓</span>
+          <span class="check-label">EmailJS — connecter le formulaire de réservation</span>
+        </div>
+        <div class="check-item" data-key="photos">
+          <span class="check-box">✓</span>
+          <span class="check-label">Photos ODL réelles — remplacer les Unsplash</span>
+        </div>
+        <div class="check-item" data-key="qrcode">
+          <span class="check-box">✓</span>
+          <span class="check-label">QR Code — imprimer avec URL finale pour l'appartement</span>
+        </div>
+        <div class="check-item" data-key="signature">
+          <span class="check-box">✓</span>
+          <span class="check-label">Signature email — corriger placeholder "Prénom NOM"</span>
+        </div>
+        <div class="check-item" data-key="plausible">
+          <span class="check-box">✓</span>
+          <span class="check-label">Plausible Analytics — après ouverture décembre</span>
+        </div>
+        <div class="check-item done" data-key="dns">
+          <span class="check-box">✓</span>
+          <span class="check-label">oceandriftlodge.com connecté</span>
+        </div>
+        <div class="check-item done" data-key="lagon">
+          <span class="check-box">✓</span>
+          <span class="check-label">Mentions "lagon" → "Atlantique" corrigées</span>
+        </div>
+        <div class="check-item done" data-key="surf">
+          <span class="check-box">✓</span>
+          <span class="check-label">Surf Foum El Bouir ajouté</span>
+        </div>
+        <div class="check-item done" data-key="accroche">
+          <span class="check-box">✓</span>
+          <span class="check-label">Accroche appartement mise à jour</span>
+        </div>
+        <div class="check-item done" data-key="docs">
+          <span class="check-box">✓</span>
+          <span class="check-label">Documents commerciaux déployés</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    Ocean Drift Lodge · Dashboard privé · 2026
+  </footer>
+
+</div><!-- /#dashboard -->
+
+<script>
+const MOT_DE_PASSE   = 'odl2026';
+const SESSION_KEY    = 'odl-auth';
+const CHECKLIST_KEY  = 'odl-checklist';
+
+// ── Authentification ──────────────────────────────────
+const loginScreen = document.getElementById('login-screen');
+const dashboard   = document.getElementById('dashboard');
+const pwdInput    = document.getElementById('pwd-input');
+const loginBtn    = document.getElementById('login-btn');
+const loginError  = document.getElementById('login-error');
+
+function unlock() {
+  loginScreen.classList.add('hidden');
+  dashboard.classList.add('visible');
+}
+
+function tryLogin() {
+  if (pwdInput.value === MOT_DE_PASSE) {
+    sessionStorage.setItem(SESSION_KEY, '1');
+    unlock();
+  } else {
+    loginError.textContent = 'Accès refusé';
+    pwdInput.classList.remove('shake');
+    void pwdInput.offsetWidth; // reset animation
+    pwdInput.classList.add('shake');
+    pwdInput.value = '';
+    setTimeout(() => { loginError.textContent = ''; }, 3000);
+  }
+}
+
+loginBtn.addEventListener('click', tryLogin);
+pwdInput.addEventListener('keydown', e => { if (e.key === 'Enter') tryLogin(); });
+
+// Session mémorisée
+if (sessionStorage.getItem(SESSION_KEY) === '1') {
+  unlock();
+} else {
+  pwdInput.focus();
+}
+
+// ── Checklist ─────────────────────────────────────────
+function loadChecklist() {
+  const saved = JSON.parse(localStorage.getItem(CHECKLIST_KEY) || '{}');
+  document.querySelectorAll('.check-item').forEach(item => {
+    if (saved[item.dataset.key]) item.classList.add('done');
+  });
+}
+
+function saveChecklist() {
+  const state = {};
+  document.querySelectorAll('.check-item').forEach(item => {
+    state[item.dataset.key] = item.classList.contains('done');
+  });
+  localStorage.setItem(CHECKLIST_KEY, JSON.stringify(state));
+}
+
+document.getElementById('checklist').addEventListener('click', e => {
+  const item = e.target.closest('.check-item');
+  if (!item) return;
+  item.classList.toggle('done');
+  saveChecklist();
+});
+
+loadChecklist();
+</script>
+
+</body>
+</html>
