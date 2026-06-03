@@ -729,14 +729,11 @@ document.querySelectorAll('a[href^="#"]').forEach(link=>{
 
 /* ── PROFILS ── */
 function setProfile(btn,profile){
-  console.log('Profile cliqué:',profile);
   document.querySelectorAll('.profile-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   document.querySelectorAll('.profile-reco').forEach(r=>r.classList.remove('visible'));
   const reco=document.getElementById('reco-'+profile);
-  console.log('Element trouvé:',reco);
   if(reco)reco.classList.add('visible');
-  console.log('Classes après:',reco?reco.classList.toString():'null');
 }
 
 /* ── FILTRES ACTIVITÉS ── */
