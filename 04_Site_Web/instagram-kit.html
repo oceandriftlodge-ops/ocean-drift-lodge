@@ -59,22 +59,24 @@
 
 /* ── POST FRAME ── */
 .post-frame{width:100%;aspect-ratio:1/1;border-radius:4px;overflow:hidden;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 6px 28px rgba(28,28,26,0.14)}
-.post-frame .pf-logo{position:absolute;top:1.2rem;left:50%;transform:translateX(-50%);width:32px;height:32px;object-fit:contain}
-.post-frame .pf-logo-corner{position:absolute;bottom:1.2rem;right:1.2rem;width:24px;height:24px;object-fit:contain}
 
-/* T1 — Lodge Hero */
-.t1{background:var(--navy)}
-.t1-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:2rem;text-align:center;gap:.4rem}
-.t1 .t-eyebrow{font-size:.55rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:3.5rem}
-.t1 .t-main{font-family:var(--font-serif);font-size:clamp(2.2rem,7vw,3rem);font-weight:300;color:#fff;line-height:1}
-.t1 .t-em{font-style:italic;color:rgba(46,139,139,0.9);display:block}
-.t1 .t-line{width:40px;height:1px;background:rgba(46,139,139,0.6);margin:.8rem auto}
-.t1 .t-sub{font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,0.6)}
-.t1 .t-gold{margin-top:auto;font-family:var(--font-serif);font-size:.7rem;font-style:italic;color:rgba(184,151,90,0.8)}
+/* Logo obligatoire — bas gauche de chaque template */
+.template-logo{display:flex;align-items:center;gap:.5rem;position:absolute;bottom:1.5rem;left:1.5rem;z-index:5}
+.template-logo img{width:60px;height:auto;display:block;mix-blend-mode:multiply}
+
+/* T1 — Lodge Hero · fond sable, texte navy */
+.t1{background:var(--bg-sand)}
+.t1-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:2rem 2rem 4.5rem;text-align:center;gap:.4rem}
+.t1 .t-eyebrow{font-size:.6rem;letter-spacing:.38em;text-transform:uppercase;color:var(--ink-light)}
+.t1 .t-main{font-family:var(--font-serif);font-size:clamp(2.2rem,7vw,3rem);font-weight:300;color:var(--navy);line-height:1}
+.t1 .t-em{font-style:italic;color:var(--teal);display:block}
+.t1 .t-line{width:40px;height:1px;background:rgba(46,139,139,0.35);margin:.8rem auto}
+.t1 .t-sub{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-light)}
+.t1 .t-tagline{font-family:var(--font-serif);font-size:.82rem;font-style:italic;color:var(--ink-mid);margin-top:.4rem}
 
 /* T2 — L'Appartement */
 .t2{background:linear-gradient(145deg,#faf9f7 0%,#f2ede6 60%,#ece4d8 100%)}
-.t2-inner{padding:1.8rem;height:100%;display:flex;flex-direction:column;gap:.5rem}
+.t2-inner{padding:1.8rem 1.8rem 4.5rem;height:100%;display:flex;flex-direction:column;gap:.5rem}
 .t2 .t-tag{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--teal);margin-top:1rem}
 .t2 .t-headline{font-family:var(--font-serif);font-size:clamp(1.4rem,4.5vw,1.9rem);font-weight:300;color:var(--ink);line-height:1.15;margin-top:.3rem}
 .t2 .t-headline em{font-style:italic;color:var(--teal)}
@@ -82,85 +84,84 @@
 .t2 .t-feat{display:flex;align-items:center;gap:.5rem;font-size:.65rem;color:var(--ink-mid);letter-spacing:.05em}
 .t2 .t-feat::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0}
 
-/* T3 — Vue Atlantique */
-.t3{background:linear-gradient(165deg,#1a3d4a 0%,#0d2530 100%)}
-.t3-wave{position:absolute;bottom:0;left:0;right:0}
-.t3-inner{position:relative;z-index:1;padding:2rem;height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:.4rem}
-.t3 .t-loc{font-size:.52rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(46,139,139,0.8);margin-bottom:.4rem}
-.t3 .t-main{font-family:var(--font-serif);font-size:clamp(1.6rem,5vw,2.2rem);font-weight:300;color:#fff;line-height:1.15}
-.t3 .t-main em{font-style:italic;color:rgba(46,139,139,0.9)}
-.t3 .t-sub{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:.3rem}
-.t3-logo{position:absolute;top:1.2rem;right:1.2rem;width:28px;height:28px;object-fit:contain;mix-blend-mode:screen;opacity:.7}
+/* T3 — Vue Atlantique · fond sable, texte navy */
+.t3{background:var(--bg-sand)}
+.t3-wave{position:absolute;bottom:0;left:0;right:0;opacity:.5}
+.t3-inner{position:relative;z-index:1;padding:2rem 2rem 4.5rem;height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:.4rem}
+.t3 .t-loc{font-size:.52rem;letter-spacing:.32em;text-transform:uppercase;color:var(--teal);margin-bottom:.4rem}
+.t3 .t-main{font-family:var(--font-serif);font-size:clamp(1.6rem,5vw,2.2rem);font-weight:300;color:var(--navy);line-height:1.15}
+.t3 .t-main em{font-style:italic;color:var(--teal)}
+.t3 .t-sub{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-light);margin-top:.3rem}
 
-/* T4 — Saison Kite */
-.t4{background:#132237}
-.t4-inner{padding:2rem;height:100%;display:flex;flex-direction:column;justify-content:center;gap:.5rem}
-.t4 .t-tag{font-size:.52rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(46,139,139,0.7)}
-.t4 .t-dates{font-family:var(--font-serif);font-size:clamp(1.6rem,5.5vw,2.4rem);font-weight:300;color:#fff;line-height:1.1}
-.t4 .t-arrow{color:rgba(46,139,139,0.8);display:block;font-style:normal;font-size:1.4rem;margin:.1rem 0}
-.t4 .t-wind{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:.8rem}
-.t4 .t-wind strong{color:rgba(46,139,139,0.8)}
-.t4-dot{width:4px;height:4px;border-radius:50%;background:var(--teal);opacity:.5;position:absolute}
+/* T4 — Saison Kite · fond blanc, accent teal, texte navy */
+.t4{background:#fff}
+.t4-inner{padding:2rem 2rem 4.5rem;height:100%;display:flex;flex-direction:column;justify-content:center;gap:.5rem}
+.t4 .t-tag{font-size:.52rem;letter-spacing:.32em;text-transform:uppercase;color:var(--teal)}
+.t4 .t-dates{font-family:var(--font-serif);font-size:clamp(1.6rem,5.5vw,2.4rem);font-weight:300;color:var(--navy);line-height:1.1}
+.t4 .t-arrow{color:var(--teal);display:block;font-style:normal;font-size:1.4rem;margin:.1rem 0}
+.t4 .t-wind{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-light);margin-top:.8rem}
+.t4 .t-wind strong{color:var(--teal)}
+.t4-dot{width:4px;height:4px;border-radius:50%;background:var(--teal);opacity:.2;position:absolute}
 
-/* T5 — GKA Star */
-.t5{background:linear-gradient(145deg,#0a0a0a 0%,#1a1a18 100%)}
-.t5-inner{padding:2rem;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.5rem}
+/* T5 — GKA Star · fond blanc, accent gold, texte navy */
+.t5{background:#fff}
+.t5-inner{padding:2rem 2rem 4.5rem;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.5rem}
 .t5 .t-star{font-size:1.8rem;margin-bottom:.3rem}
-.t5 .t-label{font-size:.52rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(184,151,90,0.7)}
-.t5 .t-main{font-family:var(--font-serif);font-size:clamp(1.3rem,4.5vw,1.8rem);font-weight:300;color:#fff;line-height:1.2}
-.t5 .t-main em{font-style:italic;color:rgba(184,151,90,0.9)}
+.t5 .t-label{font-size:.52rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.t5 .t-main{font-family:var(--font-serif);font-size:clamp(1.3rem,4.5vw,1.8rem);font-weight:300;color:var(--navy);line-height:1.2}
+.t5 .t-main em{font-style:italic;color:var(--gold)}
 .t5 .t-line{width:30px;height:1px;background:rgba(184,151,90,0.4);margin:.5rem auto}
-.t5 .t-since{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,0.35)}
+.t5 .t-since{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-light)}
 
 /* T6 — Été en Famille */
 .t6{background:linear-gradient(145deg,#faf9f7 0%,rgba(200,96,58,0.1) 60%,rgba(184,151,90,0.15) 100%)}
 .t6-sun{position:absolute;top:1.5rem;right:1.5rem;width:60px;height:60px;border-radius:50%;background:radial-gradient(circle,rgba(184,151,90,0.4),rgba(200,96,58,0.1));border:1px solid rgba(184,151,90,0.3)}
-.t6-inner{padding:2rem;height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:.5rem;position:relative;z-index:1}
+.t6-inner{padding:2rem 2rem 4.5rem;height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:.5rem;position:relative;z-index:1}
 .t6 .t-tag{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--peach)}
 .t6 .t-main{font-family:var(--font-serif);font-size:clamp(1.5rem,5vw,2rem);font-weight:300;color:var(--ink);line-height:1.15}
 .t6 .t-main em{font-style:italic;color:var(--peach)}
 .t6 .t-perks{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.5rem}
 .t6 .t-perk{font-size:.58rem;padding:.2rem .6rem;border-radius:20px;background:rgba(200,96,58,0.1);color:var(--peach);letter-spacing:.08em}
 
-/* T7 — Glisse & Soleil */
-.t7{overflow:hidden}
+/* T7 — Glisse & Soleil · fond pêche léger, texte navy */
+.t7{background:linear-gradient(145deg,#faf9f7 0%,rgba(200,96,58,0.07) 55%,rgba(184,151,90,0.1) 100%);overflow:hidden}
 .t7-bands{position:absolute;inset:0;display:flex;flex-direction:column}
-.t7-band-1{flex:2;background:#132237}
-.t7-band-2{flex:1;background:linear-gradient(90deg,#1a3d4a,#2e8b8b)}
-.t7-band-3{flex:1;background:linear-gradient(90deg,rgba(200,96,58,0.7),rgba(184,151,90,0.6))}
-.t7-inner{position:relative;z-index:1;padding:2rem;height:100%;display:flex;flex-direction:column;justify-content:center;gap:.5rem}
-.t7 .t-main{font-family:var(--font-serif);font-size:clamp(1.4rem,4.8vw,2rem);font-weight:300;color:#fff;line-height:1.2}
-.t7 .t-sep{font-size:1.2rem;color:rgba(46,139,139,0.7);margin:.1rem 0;display:block}
-.t7 .t-sub{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:.5rem}
+.t7-band-1{flex:2;background:transparent}
+.t7-band-2{flex:1;background:linear-gradient(90deg,rgba(46,139,139,0.07),rgba(46,139,139,0.03))}
+.t7-band-3{flex:1;background:linear-gradient(90deg,rgba(200,96,58,0.12),rgba(184,151,90,0.08))}
+.t7-inner{position:relative;z-index:1;padding:2rem 2rem 4.5rem;height:100%;display:flex;flex-direction:column;justify-content:center;gap:.5rem}
+.t7 .t-main{font-family:var(--font-serif);font-size:clamp(1.4rem,4.8vw,2rem);font-weight:300;color:var(--navy);line-height:1.2}
+.t7 .t-main em{font-style:italic;color:var(--gold)}
+.t7 .t-sep{font-size:1.2rem;color:var(--teal);margin:.1rem 0;display:block}
+.t7 .t-sub{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-light);margin-top:.5rem}
 
 /* T8 — Citation */
 .t8{background:linear-gradient(145deg,#faf9f7,#f2ede6)}
-.t8-inner{padding:2.5rem;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.6rem}
+.t8-inner{padding:2.5rem 2.5rem 4.5rem;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.6rem}
 .t8 .t-quote-mark{font-family:var(--font-serif);font-size:5rem;font-weight:300;color:rgba(46,139,139,0.15);line-height:.6;margin-bottom:.5rem}
 .t8 .t-quote{font-family:var(--font-serif);font-size:clamp(1.1rem,3.5vw,1.35rem);font-weight:300;font-style:italic;color:var(--ink);line-height:1.6}
 .t8 .t-line{width:30px;height:1px;background:rgba(46,139,139,0.4);margin:.8rem auto}
 .t8 .t-attr{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal)}
 
-/* T9 — Nuit Atlantique */
-.t9{background:linear-gradient(165deg,#0d1b2a,#132237)}
-.t9-stars{position:absolute;inset:0;overflow:hidden}
-.t9-star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;opacity:.4}
-.t9-inner{position:relative;z-index:1;padding:2rem;height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:.4rem}
-.t9 .t-tag{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(184,151,90,0.7)}
-.t9 .t-main{font-family:var(--font-serif);font-size:clamp(1.5rem,4.8vw,2rem);font-weight:300;color:#fff;line-height:1.2}
-.t9 .t-main em{font-style:italic;color:rgba(184,151,90,0.9)}
-.t9 .t-sub{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:.3rem}
+/* T9 — Coucher de soleil · fond bg, texte navy */
+.t9{background:var(--bg)}
+.t9-stars{display:none}
+.t9-inner{position:relative;z-index:1;padding:2rem 2rem 4.5rem;height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:.4rem}
+.t9 .t-tag{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.t9 .t-main{font-family:var(--font-serif);font-size:clamp(1.5rem,4.8vw,2rem);font-weight:300;color:var(--navy);line-height:1.2}
+.t9 .t-main em{font-style:italic;color:var(--peach)}
+.t9 .t-sub{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-light);margin-top:.3rem}
 
-/* T10 — Tarifs */
-.t10{background:#fff;border:1px solid rgba(28,28,26,.06)}
-.t10-inner{padding:2rem;height:100%;display:flex;flex-direction:column;justify-content:center;gap:.6rem}
+/* T10 — Tarifs · fond blanc, prix teal, bordure peach */
+.t10{background:#fff;border:1px solid rgba(200,96,58,.12)}
+.t10-inner{padding:2rem 2rem 4.5rem;height:100%;display:flex;flex-direction:column;justify-content:center;gap:.6rem}
 .t10 .t-tag{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--teal)}
 .t10 .t-from{font-size:.7rem;color:var(--ink-light);letter-spacing:.1em;margin-top:.5rem}
-.t10 .t-price{font-family:var(--font-serif);font-size:clamp(2.5rem,8vw,3.5rem);font-weight:300;color:var(--ink);line-height:1}
+.t10 .t-price{font-family:var(--font-serif);font-size:clamp(2.5rem,8vw,3.5rem);font-weight:300;color:var(--teal);line-height:1}
 .t10 .t-unit{font-size:.8rem;color:var(--ink-light)}
 .t10 .t-pills{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.3rem}
-.t10 .t-pill{font-size:.52rem;padding:.2rem .55rem;border-radius:20px;border:1px solid rgba(46,139,139,0.25);color:var(--teal);letter-spacing:.05em}
-.t10 .t-divider{height:1px;background:rgba(28,28,26,.07);margin:.5rem 0}
+.t10 .t-pill{font-size:.52rem;padding:.2rem .55rem;border-radius:20px;border:1px solid rgba(200,96,58,0.25);color:var(--peach);letter-spacing:.05em}
+.t10 .t-divider{height:1px;background:rgba(200,96,58,.1);margin:.5rem 0}
 .t10 .t-cta{font-size:.58rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--peach);padding:.55rem 1rem;border-radius:var(--radius);text-align:center}
 
 /* ── LÉGENDE & HASHTAGS ── */
@@ -315,15 +316,16 @@ details[open]>summary.guide-sum::after{transform:rotate(45deg)}
       <div class="tpl-wrap">
         <p class="tpl-label"><span class="tpl-number">01 —</span> Présentation Lodge</p>
         <div class="post-frame t1">
-          <picture><source srcset="logo.webp" type="image/webp"><img src="logo.png" class="pf-logo" alt="" width="32"></picture>
           <div class="t1-inner">
-            <span class="t1-eyebrow">Résidence West Point · Dakhla</span>
-            <div class="t-main" style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,6.5vw,2.8rem);font-weight:300;color:#fff;line-height:1;">
-              Ocean Drift<em class="t1-em" style="font-style:italic;color:rgba(46,139,139,0.9);display:block">Lodge</em>
-            </div>
-            <div class="t1-line"></div>
-            <span class="t1-sub">Maroc · Atlantique · Kitesurf</span>
-            <span class="t1-gold">Là où l'Atlantique rencontre le Sahara</span>
+            <span class="t-eyebrow">Résidence West Point · Dakhla</span>
+            <div class="t-main">Ocean Drift<em class="t-em">Lodge</em></div>
+            <div class="t-line"></div>
+            <span class="t-sub">Maroc · Atlantique · Kitesurf</span>
+            <span class="t-tagline">Là où l'Atlantique rencontre le Sahara</span>
+          </div>
+          <div class="template-logo">
+            <picture class="no-translate"><source srcset="logo.webp" type="image/webp"><img src="logo.png" alt="Ocean Drift Lodge" class="no-translate" style="width:60px;height:auto;display:block;mix-blend-mode:multiply"></picture>
+            <span style="font-family:var(--font-serif);font-size:.9rem;font-weight:300;color:var(--navy);letter-spacing:.03em">Ocean Drift <em style="font-style:italic;color:var(--teal)">Lodge</em></span>
           </div>
         </div>
         <div class="tpl-meta">
@@ -340,18 +342,19 @@ details[open]>summary.guide-sum::after{transform:rotate(45deg)}
         <p class="tpl-label"><span class="tpl-number">02 —</span> L'Appartement</p>
         <div class="post-frame t2">
           <div class="t2-inner">
-            <span class="t2-tag">L'appartement</span>
-            <div class="t-headline" style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,4.5vw,1.9rem);font-weight:300;color:#1c1c1a;line-height:1.15;margin-top:.3rem">
-              60 m² face à <em style="font-style:italic;color:#2e8b8b">l'Atlantique</em>
-            </div>
-            <div class="t2-features">
-              <div class="t2-feat">Appartement entier · terrasse privée</div>
-              <div class="t2-feat">Vue océan · couchers de soleil</div>
-              <div class="t2-feat">Cuisine équipée · Wi-Fi fibre 200 Mb/s</div>
-              <div class="t2-feat">Parking · climatisation · literie premium</div>
+            <span class="t-tag">L'appartement</span>
+            <div class="t-headline">60 m² face à <em>l'Atlantique</em></div>
+            <div class="t-features">
+              <div class="t-feat">Appartement entier · terrasse privée</div>
+              <div class="t-feat">Vue océan · couchers de soleil</div>
+              <div class="t-feat">Cuisine équipée · Wi-Fi fibre 200 Mb/s</div>
+              <div class="t-feat">Parking · climatisation · literie premium</div>
             </div>
           </div>
-          <picture><source srcset="logo.webp" type="image/webp"><img src="logo.png" class="pf-logo-corner" alt="" width="24"></picture>
+          <div class="template-logo">
+            <picture class="no-translate"><source srcset="logo.webp" type="image/webp"><img src="logo.png" alt="Ocean Drift Lodge" class="no-translate" style="width:60px;height:auto;display:block;mix-blend-mode:multiply"></picture>
+            <span style="font-family:var(--font-serif);font-size:.9rem;font-weight:300;color:var(--navy);letter-spacing:.03em">Ocean Drift <em style="font-style:italic;color:var(--teal)">Lodge</em></span>
+          </div>
         </div>
         <div class="tpl-meta">
           <span class="tpl-meta-label">📝 Légende suggérée</span>
@@ -366,16 +369,17 @@ details[open]>summary.guide-sum::after{transform:rotate(45deg)}
         <p class="tpl-label"><span class="tpl-number">03 —</span> Résidence West Point</p>
         <div class="post-frame t3">
           <svg class="t3-wave" viewBox="0 0 400 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M0 40 C100 10 200 70 400 30 L400 80 L0 80 Z" fill="rgba(46,139,139,0.12)"/>
-            <path d="M0 55 C80 30 180 70 400 45 L400 80 L0 80 Z" fill="rgba(46,139,139,0.08)"/>
+            <path d="M0 40 C100 10 200 70 400 30 L400 80 L0 80 Z" fill="rgba(46,139,139,0.18)"/>
+            <path d="M0 55 C80 30 180 70 400 45 L400 80 L0 80 Z" fill="rgba(46,139,139,0.1)"/>
           </svg>
-          <img src="logo.png" class="t3-logo" alt="" width="28">
           <div class="t3-inner">
-            <span class="t3-loc">Foum El Bouir · Dakhla · Maroc</span>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,5vw,2.2rem);font-weight:300;color:#fff;line-height:1.15">
-              Résidence <em style="font-style:italic;color:rgba(46,139,139,0.9)">West Point</em>
-            </div>
-            <span class="t3-sub">Accès direct plage · Spot kite à 0 m</span>
+            <span class="t-loc">Foum El Bouir · Dakhla · Maroc</span>
+            <div class="t-main">Résidence <em>West Point</em></div>
+            <span class="t-sub">Accès direct plage · Spot kite à 0 m</span>
+          </div>
+          <div class="template-logo">
+            <picture class="no-translate"><source srcset="logo.webp" type="image/webp"><img src="logo.png" alt="Ocean Drift Lodge" class="no-translate" style="width:60px;height:auto;display:block;mix-blend-mode:multiply"></picture>
+            <span style="font-family:var(--font-serif);font-size:.9rem;font-weight:300;color:var(--navy);letter-spacing:.03em">Ocean Drift <em style="font-style:italic;color:var(--teal)">Lodge</em></span>
           </div>
         </div>
         <div class="tpl-meta">
@@ -391,15 +395,18 @@ details[open]>summary.guide-sum::after{transform:rotate(45deg)}
         <p class="tpl-label"><span class="tpl-number">04 —</span> Saison Kite · Dates</p>
         <div class="post-frame t4">
           <div class="t4-inner">
-            <span class="t4-tag">Saison Kite · Dakhla</span>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,5.5vw,2.4rem);font-weight:300;color:#fff;line-height:1.1">
+            <span class="t-tag">Saison Kite · Dakhla</span>
+            <div class="t-dates">
               15 Nov
-              <em class="t4-arrow" style="color:rgba(46,139,139,0.8);display:block;font-style:normal;font-size:1.4rem;margin:.1rem 0">→</em>
+              <em class="t-arrow">→</em>
               31 Mars
             </div>
-            <span class="t4-wind" style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:.8rem">Alizés · <strong style="color:rgba(46,139,139,0.8)">20–30 nœuds constants</strong> · Dakhla</span>
+            <span class="t-wind">Alizés · <strong>20–30 nœuds constants</strong> · Dakhla</span>
           </div>
-          <picture><source srcset="logo.webp" type="image/webp"><img src="logo.png" class="pf-logo-corner" alt="" width="24" style="mix-blend-mode:screen;opacity:.5"></picture>
+          <div class="template-logo">
+            <picture class="no-translate"><source srcset="logo.webp" type="image/webp"><img src="logo.png" alt="Ocean Drift Lodge" class="no-translate" style="width:60px;height:auto;display:block;mix-blend-mode:multiply"></picture>
+            <span style="font-family:var(--font-serif);font-size:.9rem;font-weight:300;color:var(--navy);letter-spacing:.03em">Ocean Drift <em style="font-style:italic;color:var(--teal)">Lodge</em></span>
+          </div>
         </div>
         <div class="tpl-meta">
           <span class="tpl-meta-label">📝 Légende suggérée</span>
@@ -414,15 +421,16 @@ details[open]>summary.guide-sum::after{transform:rotate(45deg)}
         <p class="tpl-label"><span class="tpl-number">05 —</span> Saison Kite · GKA</p>
         <div class="post-frame t5">
           <div class="t5-inner">
-            <span class="t5-star">⭐</span>
-            <span class="t5-label">Site officiel depuis 2009</span>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,4.5vw,1.8rem);font-weight:300;color:#fff;line-height:1.2;text-align:center">
-              GKA Kitesurf <em style="font-style:italic;color:rgba(184,151,90,0.9)">World Cup</em>
-            </div>
-            <div class="t5-line" style="width:30px;height:1px;background:rgba(184,151,90,0.4);margin:.5rem auto"></div>
-            <span class="t5-since" style="font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,0.35)">Foum El Bouir · Dakhla · Maroc</span>
+            <span class="t-star">⭐</span>
+            <span class="t-label">Site officiel depuis 2009</span>
+            <div class="t-main">GKA Kitesurf <em>World Cup</em></div>
+            <div class="t-line"></div>
+            <span class="t-since">Foum El Bouir · Dakhla · Maroc</span>
           </div>
-          <picture><source srcset="logo.webp" type="image/webp"><img src="logo.png" class="pf-logo-corner" alt="" width="24" style="mix-blend-mode:screen;opacity:.4"></picture>
+          <div class="template-logo">
+            <picture class="no-translate"><source srcset="logo.webp" type="image/webp"><img src="logo.png" alt="Ocean Drift Lodge" class="no-translate" style="width:60px;height:auto;display:block;mix-blend-mode:multiply"></picture>
+            <span style="font-family:var(--font-serif);font-size:.9rem;font-weight:300;color:var(--navy);letter-spacing:.03em">Ocean Drift <em style="font-style:italic;color:var(--teal)">Lodge</em></span>
+          </div>
         </div>
         <div class="tpl-meta">
           <span class="tpl-meta-label">📝 Légende suggérée</span>
@@ -438,18 +446,19 @@ details[open]>summary.guide-sum::after{transform:rotate(45deg)}
         <div class="post-frame t6">
           <div class="t6-sun"></div>
           <div class="t6-inner">
-            <span class="t6-tag" style="font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:#c8603a">Saison Été · Juin – Septembre</span>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,5vw,2rem);font-weight:300;color:#1c1c1a;line-height:1.15">
-              Un été à <em style="font-style:italic;color:#c8603a">Dakhla</em>
-            </div>
-            <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem">
-              <span style="font-size:.55rem;padding:.2rem .55rem;border-radius:20px;background:rgba(200,96,58,0.1);color:#c8603a;letter-spacing:.06em">🏖️ Plage</span>
-              <span style="font-size:.55rem;padding:.2rem .55rem;border-radius:20px;background:rgba(200,96,58,0.1);color:#c8603a;letter-spacing:.06em">🌊 Baignade</span>
-              <span style="font-size:.55rem;padding:.2rem .55rem;border-radius:20px;background:rgba(200,96,58,0.1);color:#c8603a;letter-spacing:.06em">🪁 Kite pour tous</span>
-              <span style="font-size:.55rem;padding:.2rem .55rem;border-radius:20px;background:rgba(200,96,58,0.1);color:#c8603a;letter-spacing:.06em">🌅 Couchers de soleil</span>
+            <span class="t-tag">Saison Été · Juin – Septembre</span>
+            <div class="t-main">Un été à <em>Dakhla</em></div>
+            <div class="t-perks">
+              <span class="t-perk">🏖️ Plage</span>
+              <span class="t-perk">🌊 Baignade</span>
+              <span class="t-perk">🪁 Kite pour tous</span>
+              <span class="t-perk">🌅 Couchers de soleil</span>
             </div>
           </div>
-          <picture><source srcset="logo.webp" type="image/webp"><img src="logo.png" class="pf-logo-corner" alt="" width="24"></picture>
+          <div class="template-logo">
+            <picture class="no-translate"><source srcset="logo.webp" type="image/webp"><img src="logo.png" alt="Ocean Drift Lodge" class="no-translate" style="width:60px;height:auto;display:block;mix-blend-mode:multiply"></picture>
+            <span style="font-family:var(--font-serif);font-size:.9rem;font-weight:300;color:var(--navy);letter-spacing:.03em">Ocean Drift <em style="font-style:italic;color:var(--teal)">Lodge</em></span>
+          </div>
         </div>
         <div class="tpl-meta">
           <span class="tpl-meta-label">📝 Légende suggérée</span>
@@ -469,14 +478,18 @@ details[open]>summary.guide-sum::after{transform:rotate(45deg)}
             <div class="t7-band-3"></div>
           </div>
           <div class="t7-inner">
-            <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,4.8vw,2rem);font-weight:300;color:#fff;line-height:1.2">
+            <div class="t-main">
               Glisse
-              <span style="font-size:1.2rem;color:rgba(46,139,139,0.7);display:block">·</span>
+              <span class="t-sep">·</span>
               Soleil
-              <span style="font-size:1.2rem;color:rgba(200,96,58,0.7);display:block">·</span>
-              <em style="font-style:italic;color:rgba(184,151,90,0.9)">Dépaysement</em>
+              <span class="t-sep" style="color:var(--peach)">·</span>
+              <em>Dépaysement</em>
             </div>
-            <span style="font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:.5rem">Ocean Drift Lodge · Dakhla</span>
+            <span class="t-sub">Ocean Drift Lodge · Dakhla</span>
+          </div>
+          <div class="template-logo">
+            <picture class="no-translate"><source srcset="logo.webp" type="image/webp"><img src="logo.png" alt="Ocean Drift Lodge" class="no-translate" style="width:60px;height:auto;display:block;mix-blend-mode:multiply"></picture>
+            <span style="font-family:var(--font-serif);font-size:.9rem;font-weight:300;color:var(--navy);letter-spacing:.03em">Ocean Drift <em style="font-style:italic;color:var(--teal)">Lodge</em></span>
           </div>
         </div>
         <div class="tpl-meta">
@@ -492,12 +505,14 @@ details[open]>summary.guide-sum::after{transform:rotate(45deg)}
         <p class="tpl-label"><span class="tpl-number">08 —</span> Lifestyle · Citation</p>
         <div class="post-frame t8">
           <div class="t8-inner">
-            <span class="t8-quote-mark" style="font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:300;color:rgba(46,139,139,0.15);line-height:.6;margin-bottom:.5rem">"</span>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,3.5vw,1.35rem);font-weight:300;font-style:italic;color:#1c1c1a;line-height:1.6;text-align:center">
-              Là où l'Atlantique rencontre le Sahara
-            </div>
-            <div style="width:30px;height:1px;background:rgba(46,139,139,0.4);margin:.8rem auto"></div>
-            <span style="font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:#2e8b8b">Ocean Drift Lodge · Dakhla, Maroc</span>
+            <span class="t-quote-mark">"</span>
+            <div class="t-quote">Là où l'Atlantique rencontre le Sahara</div>
+            <div class="t-line"></div>
+            <span class="t-attr">Ocean Drift Lodge · Dakhla, Maroc</span>
+          </div>
+          <div class="template-logo">
+            <picture class="no-translate"><source srcset="logo.webp" type="image/webp"><img src="logo.png" alt="Ocean Drift Lodge" class="no-translate" style="width:60px;height:auto;display:block;mix-blend-mode:multiply"></picture>
+            <span style="font-family:var(--font-serif);font-size:.9rem;font-weight:300;color:var(--navy);letter-spacing:.03em">Ocean Drift <em style="font-style:italic;color:var(--teal)">Lodge</em></span>
           </div>
         </div>
         <div class="tpl-meta">
@@ -512,22 +527,14 @@ details[open]>summary.guide-sum::after{transform:rotate(45deg)}
       <div class="tpl-wrap">
         <p class="tpl-label"><span class="tpl-number">09 —</span> Lifestyle · Ambiance Nuit</p>
         <div class="post-frame t9">
-          <div class="t9-stars" aria-hidden="true">
-            <div class="t9-star" style="top:12%;left:20%"></div>
-            <div class="t9-star" style="top:18%;left:65%;opacity:.6"></div>
-            <div class="t9-star" style="top:8%;left:45%;width:3px;height:3px;opacity:.5"></div>
-            <div class="t9-star" style="top:25%;left:30%;opacity:.3"></div>
-            <div class="t9-star" style="top:15%;left:80%;opacity:.7"></div>
-            <div class="t9-star" style="top:32%;left:55%;opacity:.4"></div>
-            <div class="t9-star" style="top:5%;left:10%"></div>
-            <div class="t9-star" style="top:22%;left:88%;opacity:.5"></div>
-          </div>
           <div class="t9-inner">
-            <span style="font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(184,151,90,0.7)">Chaque soir, depuis la terrasse</span>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4.8vw,2rem);font-weight:300;color:#fff;line-height:1.2">
-              Coucher de soleil <em style="font-style:italic;color:rgba(184,151,90,0.9);display:block">sur l'Atlantique</em>
-            </div>
-            <span style="font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:.4rem">Ocean Drift Lodge · Dakhla, Maroc</span>
+            <span class="t-tag">Chaque soir, depuis la terrasse</span>
+            <div class="t-main">Coucher de soleil <em>sur l'Atlantique</em></div>
+            <span class="t-sub">Ocean Drift Lodge · Dakhla, Maroc</span>
+          </div>
+          <div class="template-logo">
+            <picture class="no-translate"><source srcset="logo.webp" type="image/webp"><img src="logo.png" alt="Ocean Drift Lodge" class="no-translate" style="width:60px;height:auto;display:block;mix-blend-mode:multiply"></picture>
+            <span style="font-family:var(--font-serif);font-size:.9rem;font-weight:300;color:var(--navy);letter-spacing:.03em">Ocean Drift <em style="font-style:italic;color:var(--teal)">Lodge</em></span>
           </div>
         </div>
         <div class="tpl-meta">
@@ -543,21 +550,20 @@ details[open]>summary.guide-sum::after{transform:rotate(45deg)}
         <p class="tpl-label"><span class="tpl-number">10 —</span> Tarifs</p>
         <div class="post-frame t10">
           <div class="t10-inner">
-            <picture><source srcset="logo.webp" type="image/webp"><img src="logo.png" alt="" width="32" style="mix-blend-mode:multiply;margin-bottom:.4rem"></picture>
-            <span style="font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:#2e8b8b">Tarifs · Ocean Drift Lodge</span>
-            <span style="font-size:.7rem;color:#6b6b63;letter-spacing:.1em;margin-top:.5rem">À partir de</span>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,8vw,3.5rem);font-weight:300;color:#1c1c1a;line-height:1">
-              — <span style="font-size:.8rem;color:#6b6b63">€ / nuit</span>
+            <span class="t-tag">Tarifs · Ocean Drift Lodge</span>
+            <span class="t-from">À partir de</span>
+            <div class="t-price">— <span class="t-unit">€ / nuit</span></div>
+            <div class="t-pills">
+              <span class="t-pill">🪁 Haute Kite</span>
+              <span class="t-pill">☀️ Haute Été</span>
+              <span class="t-pill">🌿 Moyenne</span>
             </div>
-            <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.3rem">
-              <span style="font-size:.52rem;padding:.2rem .55rem;border-radius:20px;border:1px solid rgba(46,139,139,0.25);color:#2e8b8b;letter-spacing:.05em">🪁 Haute Kite</span>
-              <span style="font-size:.52rem;padding:.2rem .55rem;border-radius:20px;border:1px solid rgba(46,139,139,0.25);color:#2e8b8b;letter-spacing:.05em">☀️ Haute Été</span>
-              <span style="font-size:.52rem;padding:.2rem .55rem;border-radius:20px;border:1px solid rgba(46,139,139,0.25);color:#2e8b8b;letter-spacing:.05em">🌿 Moyenne</span>
-            </div>
-            <div style="height:1px;background:rgba(28,28,26,.07);margin:.5rem 0;width:100%"></div>
-            <div style="font-size:.58rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:#c8603a;padding:.55rem 1rem;border-radius:4px;text-align:center;width:100%">
-              oceandriftlodge.com/vitrine.html
-            </div>
+            <div class="t-divider"></div>
+            <div class="t-cta">oceandriftlodge.com/vitrine.html</div>
+          </div>
+          <div class="template-logo">
+            <picture class="no-translate"><source srcset="logo.webp" type="image/webp"><img src="logo.png" alt="Ocean Drift Lodge" class="no-translate" style="width:60px;height:auto;display:block;mix-blend-mode:multiply"></picture>
+            <span style="font-family:var(--font-serif);font-size:.9rem;font-weight:300;color:var(--navy);letter-spacing:.03em">Ocean Drift <em style="font-style:italic;color:var(--teal)">Lodge</em></span>
           </div>
         </div>
         <div class="tpl-meta">
