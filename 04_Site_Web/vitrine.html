@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ocean Drift Lodge · Dakhla, Maroc</title>
+<meta name="description" content="Ocean Drift Lodge — appartement boho-chic luxury à Dakhla, Maroc. Kitesurf, vue Atlantique, Wi-Fi fibre. Résidence West Point, Foum El Bouir.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ocean Drift Lodge">
+<meta property="og:url" content="https://oceandriftlodge.com/vitrine.html">
+<meta property="og:title" content="Ocean Drift Lodge · Dakhla, Maroc">
+<meta property="og:description" content="Appartement boho-chic luxury, accès direct kitesurf. Résidence West Point, Dakhla.">
+<meta property="og:image" content="https://oceandriftlodge.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://oceandriftlodge.com/vitrine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="apple-touch-icon" href="/logo.png">
+<link rel="stylesheet" href="odl-styles.css">
+<style>
+/* ── NAV ── */
+.vit-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2rem;background:rgba(250,249,247,0.93);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(28,28,26,0.08);transition:padding var(--trans)}
+.vit-nav.scrolled{padding:.6rem 2rem;box-shadow:0 2px 20px rgba(28,28,26,0.07)}
+.vit-logo{font-family:var(--font-serif);font-size:1.12rem;font-weight:400;color:var(--navy);letter-spacing:.03em;display:flex;align-items:center;gap:.5rem}
+.vit-logo em{font-style:italic;color:var(--teal)}
+.vit-logo img{width:28px;height:auto;mix-blend-mode:multiply;display:block}
+.vit-nav-right{display:flex;align-items:center;gap:.4rem}
+
+/* ── HERO ── */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;padding:7rem 1.5rem 5rem;background:radial-gradient(ellipse 70% 55% at 25% 35%,rgba(46,139,139,0.13) 0%,transparent 70%),radial-gradient(ellipse 55% 50% at 75% 70%,rgba(200,96,58,0.08) 0%,transparent 65%),linear-gradient(160deg,#ffffff 0%,#f4ede4 55%,#ede8df 100%);overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(46,139,139,0.04) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:620px;width:100%;display:flex;flex-direction:column;align-items:center}
+.hero-logo{width:90px;height:auto;mix-blend-mode:multiply;display:block;margin:0 auto 2rem}
+.hero-eyebrow{font-size:.68rem;letter-spacing:.38em;text-transform:uppercase;color:var(--ink-light);margin-bottom:1.4rem}
+.hero-title{font-family:var(--font-serif);font-size:clamp(3.2rem,11vw,5.5rem);font-weight:300;line-height:1;color:var(--ink)}
+.hero-title em{display:block;font-style:italic;color:var(--teal)}
+.hero-sub{font-size:.75rem;color:var(--ink-mid);letter-spacing:.2em;text-transform:uppercase;margin-top:1.2rem}
+.hero-tagline{font-family:var(--font-serif);font-size:1.05rem;font-weight:300;font-style:italic;color:var(--ink-light);margin-top:.9rem;line-height:1.5}
+.btn-peach{display:inline-block;background:var(--peach);color:#fff;font-size:.75rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;padding:.9rem 2.4rem;border-radius:var(--radius);border:none;cursor:pointer;transition:all var(--trans);text-decoration:none;margin-top:2.2rem}
+.btn-peach:hover{filter:brightness(.9);transform:translateY(-1px);box-shadow:0 6px 20px rgba(200,96,58,0.3)}
+.avail-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(46,139,139,0.1);border:1px solid rgba(46,139,139,0.25);border-radius:20px;padding:.38rem 1rem;margin-top:1.2rem}
+.avail-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite;flex-shrink:0}
+.avail-txt{font-size:.68rem;color:var(--teal-dk);letter-spacing:.1em}
+
+/* ── SECTIONS ── */
+.v-sec{padding:5rem 2rem;scroll-margin-top:70px}
+.v-sec-inner{max-width:960px;margin:0 auto}
+.v-sec-inner.centered{text-align:center}
+.v-sec-inner.centered .section-lead{margin:0 auto}
+.v-bg-sand{background:var(--bg-sand)}
+
+/* ── APPARTEMENT ── */
+.appt-pts{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.5rem}
+.appt-pt{background:#fff;border:1px solid rgba(28,28,26,0.07);border-radius:8px;padding:1.6rem 1.4rem;text-align:center;transition:all var(--trans)}
+.appt-pt:hover{box-shadow:0 8px 28px rgba(28,28,26,0.09);transform:translateY(-2px)}
+.appt-icon{font-size:1.8rem;margin-bottom:.8rem}
+.appt-pt-title{font-family:var(--font-serif);font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.4rem}
+.appt-pt-desc{font-size:.8rem;color:var(--ink-light);line-height:1.65}
+.gal-grid{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:200px 160px;gap:.6rem;margin-top:2rem}
+.gal-cell{background:var(--bg-sand-md);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.68rem;letter-spacing:.12em;color:var(--ink-light);text-transform:uppercase;overflow:hidden}
+.gal-cell:first-child{grid-row:1/3}
+
+/* ── SERVICES ── */
+.svc-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:2.5rem}
+.svc-item{display:flex;flex-direction:column;align-items:center;gap:.7rem;padding:1.6rem 1rem;background:#fff;border:1px solid rgba(28,28,26,0.07);border-radius:8px;text-align:center;transition:all var(--trans)}
+.svc-item:hover{box-shadow:0 8px 24px rgba(28,28,26,0.08);transform:translateY(-2px)}
+.svc-icon{font-size:1.8rem}
+.svc-name{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mid)}
+.svc-desc{font-size:.76rem;color:var(--ink-light);line-height:1.55}
+
+/* ── TARIFS ── */
+.tarifs-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+.t-card{background:#fff;border:1px solid rgba(28,28,26,0.08);border-radius:10px;padding:2rem 1.6rem;display:flex;flex-direction:column;gap:.5rem;transition:all var(--trans)}
+.t-card:hover{box-shadow:0 10px 36px rgba(28,28,26,0.09);transform:translateY(-3px)}
+.t-card.featured{border-color:var(--teal);box-shadow:0 4px 24px rgba(46,139,139,0.14)}
+.t-badge{font-size:.6rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--teal)}
+.t-name{font-family:var(--font-serif);font-size:1.3rem;font-weight:300;color:var(--ink)}
+.t-period{font-size:.72rem;color:var(--ink-light)}
+.t-from{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);margin-top:.6rem}
+.t-price{font-family:var(--font-serif);font-size:2.2rem;font-weight:300;color:var(--ink);line-height:1}
+.t-unit{font-size:.78rem;color:var(--ink-light)}
+.t-divider{height:1px;background:rgba(28,28,26,0.08);margin:.6rem 0}
+.t-btn{margin-top:auto;display:block;text-align:center;background:var(--teal);color:#fff;font-size:.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:.78rem 1rem;border-radius:var(--radius);transition:background var(--trans);text-decoration:none}
+.t-btn:hover{background:var(--teal-dk)}
+.t-card.featured .t-btn{background:var(--peach)}
+.t-card.featured .t-btn:hover{filter:brightness(.9)}
+
+/* ── AVIS ── */
+.avis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.5rem}
+.avis-card{background:#fff;border:1px solid rgba(28,28,26,0.07);border-radius:10px;padding:1.8rem 1.6rem;transition:all var(--trans)}
+.avis-card:hover{box-shadow:0 10px 36px rgba(28,28,26,0.09);transform:translateY(-2px)}
+.avis-stars{color:var(--gold);font-size:.85rem;letter-spacing:.05em;margin-bottom:.8rem}
+.avis-quote{font-family:var(--font-serif);font-size:1rem;font-weight:300;font-style:italic;color:var(--ink-mid);line-height:1.7;margin-bottom:1.2rem}
+.avis-name{font-size:.78rem;font-weight:500;color:var(--ink)}
+.avis-origin{font-size:.7rem;color:var(--ink-light);margin-top:.15rem}
+
+/* ── CONTACT ── */
+.contact-links{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:2.2rem}
+.c-btn{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.8rem;border-radius:var(--radius);font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;transition:all var(--trans);text-decoration:none}
+.c-btn.wa{background:#25d366;color:#fff}
+.c-btn.wa:hover{filter:brightness(.9);transform:translateY(-1px);box-shadow:0 4px 14px rgba(37,211,102,0.3)}
+.c-btn.email{background:var(--bg-sand);color:var(--ink-mid);border:1px solid rgba(28,28,26,0.12)}
+.c-btn.email:hover{border-color:var(--teal);color:var(--teal)}
+.c-btn.map{background:var(--bg-sand);color:var(--ink-mid);border:1px solid rgba(28,28,26,0.12)}
+.c-btn.map:hover{border-color:var(--teal);color:var(--teal)}
+
+/* ── WHATSAPP FLOTTANT ── */
+.wa-float{position:fixed;bottom:1.8rem;right:1.8rem;z-index:150;width:56px;height:56px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.42);transition:all var(--trans);text-decoration:none;cursor:pointer}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,0.55)}
+.wa-float svg{width:28px;height:28px;fill:#fff;display:block}
+
+/* ── BACK TO TOP ── */
+#back-top{position:fixed;bottom:5.5rem;right:1.9rem;z-index:140;width:38px;height:38px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.85rem;opacity:0;transform:translateY(8px);transition:all var(--trans);pointer-events:none;cursor:pointer;border:none}
+#back-top.visible{opacity:1;transform:none;pointer-events:auto}
+#back-top:hover{background:var(--teal)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .appt-pts,.svc-row,.tarifs-row,.avis-grid{grid-template-columns:1fr}
+  .gal-grid{grid-template-columns:1fr;grid-template-rows:auto}
+  .gal-cell{height:180px}
+  .gal-cell:first-child{grid-row:auto}
+  .contact-links{flex-direction:column;align-items:center;width:100%}
+  .c-btn{justify-content:center;min-width:220px}
+  .vit-nav-right .lang-sw .lang-btn{padding:.28rem .44rem;font-size:.52rem}
+}
+@media(max-width:480px){
+  .hero{padding:6rem 1.2rem 4rem}
+  .v-sec{padding:3.5rem 1.2rem}
+  .btn-peach{padding:.85rem 1.8rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="vit-nav" id="nav" aria-label="Navigation principale">
+  <a href="index.html" class="vit-logo no-translate" aria-label="Ocean Drift Lodge — accueil">
+    <picture class="logo-stable">
+      <source srcset="logo.webp" type="image/webp">
+      <img src="logo.png" alt="" width="28" height="28">
+    </picture>
+    Ocean Drift <em>Lodge</em>
+  </a>
+  <div class="vit-nav-right">
+    <div class="lang-sw" role="group" aria-label="Langue">
+      <button class="lang-btn active" data-lang-target="fr">FR</button>
+      <button class="lang-btn" data-lang-target="en">EN</button>
+      <button class="lang-btn" data-lang-target="es">ES</button>
+      <button class="lang-btn" data-lang-target="pt">PT</button>
+      <button class="lang-btn" data-lang-target="it">IT</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <picture class="logo-stable">
+      <source srcset="logo.webp" type="image/webp">
+      <img src="logo.png" alt="Ocean Drift Lodge" class="hero-logo" width="90">
+    </picture>
+
+    <p class="hero-eyebrow no-translate">Résidence West Point · Dakhla, Maroc</p>
+
+    <h1 class="hero-title no-translate">
+      Ocean Drift
+      <em>Lodge</em>
+    </h1>
+
+    <p class="hero-sub">
+      <span data-lang="fr">Résidence West Point · Dakhla, Maroc</span>
+      <span data-lang="en">West Point Residence · Dakhla, Morocco</span>
+      <span data-lang="es">Residencia West Point · Dakhla, Marruecos</span>
+      <span data-lang="pt">Residência West Point · Dakhla, Marrocos</span>
+      <span data-lang="it">Residenza West Point · Dakhla, Marocco</span>
+    </p>
+
+    <p class="hero-tagline">
+      <span data-lang="fr">Là où l'Atlantique rencontre le Sahara</span>
+      <span data-lang="en">Where the Atlantic meets the Sahara</span>
+      <span data-lang="es">Donde el Atlántico se encuentra con el Sáhara</span>
+      <span data-lang="pt">Onde o Atlântico encontra o Saara</span>
+      <span data-lang="it">Dove l'Atlantico incontra il Sahara</span>
+    </p>
+
+    <a href="devis.html" class="btn-peach">
+      <span data-lang="fr">Réserver maintenant</span>
+      <span data-lang="en">Book now</span>
+      <span data-lang="es">Reservar ahora</span>
+      <span data-lang="pt">Reservar agora</span>
+      <span data-lang="it">Prenota ora</span>
+    </a>
+
+    <div class="avail-badge">
+      <span class="avail-dot" aria-hidden="true"></span>
+      <span class="avail-txt">
+        <span data-lang="fr">Disponible — vérifier les dates</span>
+        <span data-lang="en">Available — check dates</span>
+        <span data-lang="es">Disponible — consultar fechas</span>
+        <span data-lang="pt">Disponível — verificar datas</span>
+        <span data-lang="it">Disponibile — verifica date</span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- APPARTEMENT -->
+<section class="v-sec" id="appartement">
+  <div class="v-sec-inner">
+    <p class="section-tag">
+      <span data-lang="fr">L'appartement</span>
+      <span data-lang="en">The apartment</span>
+      <span data-lang="es">El apartamento</span>
+      <span data-lang="pt">O apartamento</span>
+      <span data-lang="it">L'appartamento</span>
+    </p>
+    <h2 class="section-title">
+      <span data-lang="fr">Un lodge <em>face à l'océan</em></span>
+      <span data-lang="en">A lodge <em>facing the ocean</em></span>
+      <span data-lang="es">Un lodge <em>frente al océano</em></span>
+      <span data-lang="pt">Um lodge <em>de frente ao oceano</em></span>
+      <span data-lang="it">Un lodge <em>di fronte all'oceano</em></span>
+    </h2>
+    <p class="section-lead">
+      <span data-lang="fr">Boho-chic luxury, accès direct au spot de kitesurf de Foum El Bouir — site officiel GKA World Cup depuis 2009.</span>
+      <span data-lang="en">Boho-chic luxury, direct access to the Foum El Bouir kitesurf spot — official GKA World Cup venue since 2009.</span>
+      <span data-lang="es">Boho-chic luxury, acceso directo al spot de kitesurf de Foum El Bouir — sede oficial GKA World Cup desde 2009.</span>
+      <span data-lang="pt">Boho-chic luxury, acesso direto ao spot de kitesurf de Foum El Bouir — sede oficial GKA World Cup desde 2009.</span>
+      <span data-lang="it">Boho-chic luxury, accesso diretto allo spot di kitesurf di Foum El Bouir — sede ufficiale GKA World Cup dal 2009.</span>
+    </p>
+
+    <div class="appt-pts">
+      <div class="appt-pt reveal">
+        <div class="appt-icon">📐</div>
+        <p class="appt-pt-title">
+          <span data-lang="fr">60 m² lumineux</span>
+          <span data-lang="en">60 m² bright</span>
+          <span data-lang="es">60 m² luminoso</span>
+          <span data-lang="pt">60 m² luminoso</span>
+          <span data-lang="it">60 m² luminoso</span>
+        </p>
+        <p class="appt-pt-desc">
+          <span data-lang="fr">Appartement entier, salon, chambre, terrasse privée.</span>
+          <span data-lang="en">Entire apartment, living room, bedroom, private terrace.</span>
+          <span data-lang="es">Apartamento completo, sala, dormitorio, terraza privada.</span>
+          <span data-lang="pt">Apartamento inteiro, sala, quarto, terraço privado.</span>
+          <span data-lang="it">Appartamento intero, soggiorno, camera, terrazza privata.</span>
+        </p>
+      </div>
+      <div class="appt-pt reveal">
+        <div class="appt-icon">🌊</div>
+        <p class="appt-pt-title">
+          <span data-lang="fr">Vue Atlantique</span>
+          <span data-lang="en">Atlantic view</span>
+          <span data-lang="es">Vista al Atlántico</span>
+          <span data-lang="pt">Vista para o Atlântico</span>
+          <span data-lang="it">Vista Atlantico</span>
+        </p>
+        <p class="appt-pt-desc">
+          <span data-lang="fr">Spot de kitesurf à 0 m. Couchers de soleil sur l'océan depuis la terrasse.</span>
+          <span data-lang="en">Kitesurf spot at 0 m. Ocean sunsets from the terrace.</span>
+          <span data-lang="es">Spot de kitesurf a 0 m. Atardeceres oceánicos desde la terraza.</span>
+          <span data-lang="pt">Spot de kitesurf a 0 m. Pores do sol oceânicos da varanda.</span>
+          <span data-lang="it">Spot di kitesurf a 0 m. Tramonti sull'oceano dalla terrazza.</span>
+        </p>
+      </div>
+      <div class="appt-pt reveal">
+        <div class="appt-icon">✨</div>
+        <p class="appt-pt-title">
+          <span data-lang="fr">Tout équipé</span>
+          <span data-lang="en">Fully equipped</span>
+          <span data-lang="es">Todo equipado</span>
+          <span data-lang="pt">Totalmente equipado</span>
+          <span data-lang="it">Completamente attrezzato</span>
+        </p>
+        <p class="appt-pt-desc">
+          <span data-lang="fr">Cuisine équipée, literie premium, climatisation, rangements.</span>
+          <span data-lang="en">Equipped kitchen, premium bedding, air conditioning, storage.</span>
+          <span data-lang="es">Cocina equipada, ropa de cama premium, aire acondicionado.</span>
+          <span data-lang="pt">Cozinha equipada, roupa de cama premium, ar-condicionado.</span>
+          <span data-lang="it">Cucina attrezzata, biancheria premium, aria condizionata.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="gal-grid" aria-label="Galerie photos">
+      <div class="gal-cell">
+        <span data-lang="fr">Photo principale</span>
+        <span data-lang="en">Main photo</span>
+        <span data-lang="es">Foto principal</span>
+        <span data-lang="pt">Foto principal</span>
+        <span data-lang="it">Foto principale</span>
+      </div>
+      <div class="gal-cell">
+        <span data-lang="fr">Terrasse</span>
+        <span data-lang="en">Terrace</span>
+        <span data-lang="es">Terraza</span>
+        <span data-lang="pt">Varanda</span>
+        <span data-lang="it">Terrazza</span>
+      </div>
+      <div class="gal-cell">
+        <span data-lang="fr">Chambre</span>
+        <span data-lang="en">Bedroom</span>
+        <span data-lang="es">Habitación</span>
+        <span data-lang="pt">Quarto</span>
+        <span data-lang="it">Camera</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="v-sec v-bg-sand" id="services">
+  <div class="v-sec-inner">
+    <p class="section-tag">
+      <span data-lang="fr">Services inclus</span>
+      <span data-lang="en">Included services</span>
+      <span data-lang="es">Servicios incluidos</span>
+      <span data-lang="pt">Serviços incluídos</span>
+      <span data-lang="it">Servizi inclusi</span>
+    </p>
+    <h2 class="section-title">
+      <span data-lang="fr">Tout ce qu'il vous <em>faut</em></span>
+      <span data-lang="en">Everything you <em>need</em></span>
+      <span data-lang="es">Todo lo que <em>necesita</em></span>
+      <span data-lang="pt">Tudo o que você <em>precisa</em></span>
+      <span data-lang="it">Tutto ciò che <em>serve</em></span>
+    </h2>
+
+    <div class="svc-row">
+      <div class="svc-item reveal">
+        <span class="svc-icon">🪁</span>
+        <span class="svc-name">Kitesurf</span>
+        <p class="svc-desc">
+          <span data-lang="fr">Spot GKA à 0 m, vents 20–30 nœuds constants.</span>
+          <span data-lang="en">GKA spot at 0 m, constant 20–30 knot winds.</span>
+          <span data-lang="es">Spot GKA a 0 m, vientos constantes 20–30 nudos.</span>
+          <span data-lang="pt">Spot GKA a 0 m, ventos constantes 20–30 nós.</span>
+          <span data-lang="it">Spot GKA a 0 m, venti costanti 20–30 nodi.</span>
+        </p>
+      </div>
+      <div class="svc-item reveal">
+        <span class="svc-icon">⚡</span>
+        <span class="svc-name">Wi-Fi Fibre</span>
+        <p class="svc-desc">
+          <span data-lang="fr">200 Mb/s, idéal nomadisme digital.</span>
+          <span data-lang="en">200 Mb/s, ideal for digital nomads.</span>
+          <span data-lang="es">200 Mb/s, ideal para nómadas digitales.</span>
+          <span data-lang="pt">200 Mb/s, ideal para nômades digitais.</span>
+          <span data-lang="it">200 Mb/s, ideale per nomadi digitali.</span>
+        </p>
+      </div>
+      <div class="svc-item reveal">
+        <span class="svc-icon">🅿️</span>
+        <span class="svc-name">
+          <span data-lang="fr">Parking</span>
+          <span data-lang="en">Parking</span>
+          <span data-lang="es">Aparcamiento</span>
+          <span data-lang="pt">Estacionamento</span>
+          <span data-lang="it">Parcheggio</span>
+        </span>
+        <p class="svc-desc">
+          <span data-lang="fr">Parking sécurisé, accès véhicule + remorque kite.</span>
+          <span data="fr">Parking sécurisé, accès véhicule + remorque kite.</span>
+          <span data-lang="en">Secure parking, vehicle + kite trailer access.</span>
+          <span data-lang="es">Parking seguro, acceso vehículo + remolque kite.</span>
+          <span data-lang="pt">Estacionamento seguro, acesso veículo + trailer kite.</span>
+          <span data-lang="it">Parcheggio sicuro, accesso veicolo + rimorchio kite.</span>
+        </p>
+      </div>
+      <div class="svc-item reveal">
+        <span class="svc-icon">🍳</span>
+        <span class="svc-name">
+          <span data-lang="fr">Cuisine équipée</span>
+          <span data-lang="en">Full kitchen</span>
+          <span data-lang="es">Cocina equipada</span>
+          <span data-lang="pt">Cozinha equipada</span>
+          <span data-lang="it">Cucina attrezzata</span>
+        </span>
+        <p class="svc-desc">
+          <span data-lang="fr">Induction, réfrigérateur, four, vaisselle complète.</span>
+          <span data-lang="en">Induction, fridge, oven, full kitchenware.</span>
+          <span data-lang="es">Inducción, frigorífico, horno, vajilla completa.</span>
+          <span data-lang="pt">Indução, frigorífico, forno, utensílios completos.</span>
+          <span data-lang="it">Induzione, frigorifero, forno, stoviglie complete.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TARIFS -->
+<section class="v-sec" id="tarifs">
+  <div class="v-sec-inner centered">
+    <p class="section-tag">
+      <span data-lang="fr">Tarifs</span>
+      <span data-lang="en">Rates</span>
+      <span data-lang="es">Tarifas</span>
+      <span data-lang="pt">Tarifas</span>
+      <span data-lang="it">Tariffe</span>
+    </p>
+    <h2 class="section-title">
+      <span data-lang="fr">Choisissez votre <em>saison</em></span>
+      <span data-lang="en">Choose your <em>season</em></span>
+      <span data-lang="es">Elige tu <em>temporada</em></span>
+      <span data-lang="pt">Escolha a sua <em>temporada</em></span>
+      <span data-lang="it">Scegli la tua <em>stagione</em></span>
+    </h2>
+
+    <div class="tarifs-row">
+      <!-- Haute Kite -->
+      <div class="t-card featured">
+        <p class="t-badge">⭐
+          <span data-lang="fr">Haute saison</span>
+          <span data-lang="en">High season</span>
+          <span data-lang="es">Temporada alta</span>
+          <span data-lang="pt">Alta temporada</span>
+          <span data-lang="it">Alta stagione</span>
+        </p>
+        <p class="t-name">
+          <span data-lang="fr">Haute Kite</span>
+          <span data-lang="en">Kite Peak</span>
+          <span data-lang="es">Kite Alto</span>
+          <span data-lang="pt">Kite Alto</span>
+          <span data-lang="it">Kite Peak</span>
+        </p>
+        <p class="t-period">
+          <span data-lang="fr">Oct — Jan</span>
+          <span data-lang="en">Oct — Jan</span>
+          <span data-lang="es">Oct — Ene</span>
+          <span data-lang="pt">Out — Jan</span>
+          <span data-lang="it">Ott — Gen</span>
+        </p>
+        <p class="t-from">
+          <span data-lang="fr">À partir de</span>
+          <span data-lang="en">From</span>
+          <span data-lang="es">Desde</span>
+          <span data-lang="pt">A partir de</span>
+          <span data-lang="it">Da</span>
+        </p>
+        <!-- MODIFIER LE PRIX ICI -->
+        <p class="t-price">1 200 <span>DH/<span data-lang="fr">nuit</span><span data-lang="en">night</span><span data-lang="es">noche</span><span data-lang="pt">noite</span><span data-lang="it">notte</span></span></p>
+        <div class="t-divider"></div>
+        <a href="devis.html" class="t-btn">
+          <span data-lang="fr">Réserver</span>
+          <span data-lang="en">Book</span>
+          <span data-lang="es">Reservar</span>
+          <span data-lang="pt">Reservar</span>
+          <span data-lang="it">Prenota</span>
+        </a>
+      </div>
+
+      <!-- Haute Été -->
+      <div class="t-card">
+        <p class="t-badge">☀️
+          <span data-lang="fr">Été</span>
+          <span data-lang="en">Summer</span>
+          <span data-lang="es">Verano</span>
+          <span data-lang="pt">Verão</span>
+          <span data-lang="it">Estate</span>
+        </p>
+        <p class="t-name">
+          <span data-lang="fr">Haute Été</span>
+          <span data-lang="en">Summer Peak</span>
+          <span data-lang="es">Verano Alto</span>
+          <span data-lang="pt">Verão Alto</span>
+          <span data-lang="it">Estate Peak</span>
+        </p>
+        <p class="t-period">
+          <span data-lang="fr">Juin — Sep</span>
+          <span data-lang="en">Jun — Sep</span>
+          <span data-lang="es">Jun — Sep</span>
+          <span data-lang="pt">Jun — Set</span>
+          <span data-lang="it">Giu — Set</span>
+        </p>
+        <p class="t-from">
+          <span data-lang="fr">À partir de</span>
+          <span data-lang="en">From</span>
+          <span data-lang="es">Desde</span>
+          <span data-lang="pt">A partir de</span>
+          <span data-lang="it">Da</span>
+        </p>
+        <!-- MODIFIER LE PRIX ICI -->
+        <p class="t-price">900 <span>DH/<span data-lang="fr">nuit</span><span data-lang="en">night</span><span data-lang="es">noche</span><span data-lang="pt">noite</span><span data-lang="it">notte</span></span></p>
+        <div class="t-divider"></div>
+        <a href="devis.html" class="t-btn">
+          <span data-lang="fr">Réserver</span>
+          <span data-lang="en">Book</span>
+          <span data-lang="es">Reservar</span>
+          <span data-lang="pt">Reservar</span>
+          <span data-lang="it">Prenota</span>
+        </a>
+      </div>
+
+      <!-- Moyenne -->
+      <div class="t-card">
+        <p class="t-badge">🌿
+          <span data-lang="fr">Basse saison</span>
+          <span data-lang="en">Low season</span>
+          <span data-lang="es">Temporada baja</span>
+          <span data-lang="pt">Baixa temporada</span>
+          <span data-lang="it">Bassa stagione</span>
+        </p>
+        <p class="t-name">
+          <span data-lang="fr">Saison Moyenne</span>
+          <span data-lang="en">Mid Season</span>
+          <span data-lang="es">Temporada Media</span>
+          <span data-lang="pt">Média Temporada</span>
+          <span data-lang="it">Media Stagione</span>
+        </p>
+        <p class="t-period">
+          <span data-lang="fr">Fév — Mai</span>
+          <span data-lang="en">Feb — May</span>
+          <span data-lang="es">Feb — May</span>
+          <span data-lang="pt">Fev — Mai</span>
+          <span data-lang="it">Feb — Mag</span>
+        </p>
+        <p class="t-from">
+          <span data-lang="fr">À partir de</span>
+          <span data-lang="en">From</span>
+          <span data-lang="es">Desde</span>
+          <span data-lang="pt">A partir de</span>
+          <span data-lang="it">Da</span>
+        </p>
+        <!-- MODIFIER LE PRIX ICI -->
+        <p class="t-price">750 <span>DH/<span data-lang="fr">nuit</span><span data-lang="en">night</span><span data-lang="es">noche</span><span data-lang="pt">noite</span><span data-lang="it">notte</span></span></p>
+        <div class="t-divider"></div>
+        <a href="devis.html" class="t-btn">
+          <span data-lang="fr">Réserver</span>
+          <span data-lang="en">Book</span>
+          <span data-lang="es">Reservar</span>
+          <span data-lang="pt">Reservar</span>
+          <span data-lang="it">Prenota</span>
+        </a>
+      </div>
+    </div>
+
+    <p style="font-size:.78rem;color:var(--ink-light);margin-top:1.8rem;line-height:1.75">
+      <span data-lang="fr">Tarif par nuit · Séjour minimum 3 nuits · Caution 1 500 DH</span>
+      <span data-lang="en">Per night rate · 3-night minimum stay · 1,500 DH deposit</span>
+      <span data-lang="es">Tarifa por noche · Estancia mínima 3 noches · Fianza 1 500 DH</span>
+      <span data-lang="pt">Tarifa por noite · Estadia mínima 3 noites · Caução 1 500 DH</span>
+      <span data-lang="it">Tariffa per notte · Soggiorno minimo 3 notti · Deposito 1 500 DH</span>
+    </p>
+  </div>
+</section>
+
+<!-- AVIS -->
+<section class="v-sec v-bg-sand" id="avis">
+  <div class="v-sec-inner">
+    <p class="section-tag">
+      <span data-lang="fr">Avis clients</span>
+      <span data-lang="en">Guest reviews</span>
+      <span data-lang="es">Opiniones</span>
+      <span data-lang="pt">Avaliações</span>
+      <span data-lang="it">Recensioni</span>
+    </p>
+    <h2 class="section-title">
+      <span data-lang="fr">Ils ont vécu <em>l'expérience</em></span>
+      <span data-lang="en">They lived the <em>experience</em></span>
+      <span data-lang="es">Vivieron la <em>experiencia</em></span>
+      <span data-lang="pt">Viveram a <em>experiência</em></span>
+      <span data-lang="it">Hanno vissuto l'<em>esperienza</em></span>
+    </h2>
+
+    <div class="avis-grid">
+      <div class="avis-card reveal">
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-quote">
+          <span data-lang="fr">« Vue à couper le souffle, spot de kite à 50 mètres. On est repartis pour 3 semaines supplémentaires. »</span>
+          <span data-lang="en">« Breathtaking view, kite spot 50 metres away. We stayed 3 extra weeks. »</span>
+          <span data-lang="es">« Vista impresionante, spot de kite a 50 metros. Nos quedamos 3 semanas más. »</span>
+          <span data-lang="pt">« Vista deslumbrante, spot de kite a 50 metros. Ficámos 3 semanas a mais. »</span>
+          <span data-lang="it">« Vista mozzafiato, spot di kite a 50 metri. Siamo rimasti 3 settimane in più. »</span>
+        </p>
+        <p class="avis-name">Lucas M.</p>
+        <p class="avis-origin">🇫🇷 <span data-lang="fr">France, kiteur confirmé</span><span data-lang="en">France, advanced kiter</span><span data-lang="es">Francia, kiter avanzado</span><span data-lang="pt">França, kiter avançado</span><span data-lang="it">Francia, kiter avanzato</span></p>
+      </div>
+      <div class="avis-card reveal">
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-quote">
+          <span data-lang="fr">« Le lodge idéal pour travailler en remote le matin et rider l'après-midi. Wi-Fi parfait. »</span>
+          <span data-lang="en">« Ideal lodge for working remote in the morning and riding in the afternoon. Perfect Wi-Fi. »</span>
+          <span data-lang="es">« El lodge ideal para teletrabajar por la mañana y surfear por la tarde. Wi-Fi perfecto. »</span>
+          <span data-lang="pt">« O lodge ideal para trabalhar remotamente de manhã e surfar à tarde. Wi-Fi perfeito. »</span>
+          <span data-lang="it">« Il lodge ideale per lavorare in remoto la mattina e fare surf nel pomeriggio. Wi-Fi perfetto. »</span>
+        </p>
+        <p class="avis-name">Sofia R.</p>
+        <p class="avis-origin">🇩🇪 <span data-lang="fr">Allemagne, nomade digitale</span><span data-lang="en">Germany, digital nomad</span><span data-lang="es">Alemania, nómada digital</span><span data-lang="pt">Alemanha, nómade digital</span><span data-lang="it">Germania, nomade digitale</span></p>
+      </div>
+      <div class="avis-card reveal">
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-quote">
+          <span data-lang="fr">« Accueil chaleureux, appartement impeccable. Le coucher de soleil depuis la terrasse… inoubliable. »</span>
+          <span data-lang="en">« Warm welcome, spotless apartment. The sunset from the terrace… unforgettable. »</span>
+          <span data-lang="es">« Acogida cálida, apartamento impecable. El atardecer desde la terraza… inolvidable. »</span>
+          <span data-lang="pt">« Acolhimento caloroso, apartamento impecável. O pôr do sol da varanda… inesquecível. »</span>
+          <span data-lang="it">« Accoglienza calorosa, appartamento impeccabile. Il tramonto dalla terrazza… indimenticabile. »</span>
+        </p>
+        <p class="avis-name">Camille &amp; Tom</p>
+        <p class="avis-origin">🇧🇪 <span data-lang="fr">Belgique, couple</span><span data-lang="en">Belgium, couple</span><span data-lang="es">Bélgica, pareja</span><span data-lang="pt">Bélgica, casal</span><span data-lang="it">Belgio, coppia</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="v-sec" id="contact">
+  <div class="v-sec-inner centered">
+    <p class="section-tag">
+      <span data-lang="fr">Contact</span>
+      <span data-lang="en">Contact</span>
+      <span data-lang="es">Contacto</span>
+      <span data-lang="pt">Contato</span>
+      <span data-lang="it">Contatti</span>
+    </p>
+    <h2 class="section-title">
+      <span data-lang="fr">Prenons <em>contact</em></span>
+      <span data-lang="en">Let's get in <em>touch</em></span>
+      <span data-lang="es">Pongámonos en <em>contacto</em></span>
+      <span data-lang="pt">Vamos entrar em <em>contato</em></span>
+      <span data-lang="it">Mettiamoci in <em>contatto</em></span>
+    </h2>
+    <p class="section-lead">
+      <span data-lang="fr">Réponse sous 2 h · 7j/7</span>
+      <span data-lang="en">Reply within 2 h · 7 days/7</span>
+      <span data-lang="es">Respuesta en 2 h · 7 días/7</span>
+      <span data-lang="pt">Resposta em 2 h · 7 dias/7</span>
+      <span data-lang="it">Risposta entro 2 h · 7 giorni su 7</span>
+    </p>
+
+    <div class="contact-links">
+      <!-- REMPLACER 212600000000 par votre numéro WhatsApp -->
+      <a href="https://wa.me/212600000000" class="c-btn wa" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <a href="mailto:oceandriftlodge@gmail.com" class="c-btn email">
+        ✉️ oceandriftlodge@gmail.com
+      </a>
+      <a href="https://maps.google.com/?q=23.7136,-15.9355" class="c-btn map" target="_blank" rel="noopener">
+        📍 <span data-lang="fr">Voir sur Maps</span><span data-lang="en">View on Maps</span><span data-lang="es">Ver en Maps</span><span data-lang="pt">Ver no Maps</span><span data-lang="it">Vedi su Maps</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo-wrap">
+    <picture class="logo-stable">
+      <source srcset="logo.webp" type="image/webp">
+      <img src="logo.png" alt="" class="footer-logo-img" width="60">
+    </picture>
+  </div>
+  <span class="footer-logo-txt no-translate">Ocean Drift <em>Lodge</em></span>
+  <div class="footer-links">
+    <a href="mentions-legales.html"><span data-lang="fr">Mentions légales</span><span data-lang="en">Legal</span><span data-lang="es">Aviso legal</span><span data-lang="pt">Avisos legais</span><span data-lang="it">Note legali</span></a>
+    <a href="cgv.html"><span data-lang="fr">CGV</span><span data-lang="en">T&amp;C</span><span data-lang="es">T&amp;C</span><span data-lang="pt">T&amp;C</span><span data-lang="it">T&amp;C</span></a>
+    <a href="confidentialite.html"><span data-lang="fr">Confidentialité</span><span data-lang="en">Privacy</span><span data-lang="es">Privacidad</span><span data-lang="pt">Privacidade</span><span data-lang="it">Privacy</span></a>
+    <a href="index.html"><span data-lang="fr">Site complet</span><span data-lang="en">Full site</span><span data-lang="es">Sitio completo</span><span data-lang="pt">Site completo</span><span data-lang="it">Sito completo</span></a>
+  </div>
+  <span>© 2026 Ocean Drift Lodge — Dakhla, Maroc</span>
+</footer>
+
+<!-- WhatsApp flottant -->
+<!-- REMPLACER 212600000000 par votre numéro WhatsApp -->
+<a href="https://wa.me/212600000000" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- Retour en haut -->
+<button id="back-top" aria-label="Retour en haut">↑</button>
+
+<script>
+(function(){
+  'use strict';
+  var html = document.documentElement;
+  html.classList.add('js-lang');
+
+  /* ── LANGUE ── */
+  var stored = localStorage.getItem('odl-lang') || 'fr';
+  var btns   = document.querySelectorAll('[data-lang-target]');
+  var spans  = document.querySelectorAll('[data-lang]:not(.lang-btn):not(.no-translate):not(.logo-stable)');
+
+  function setLang(l) {
+    html.lang = l;
+    localStorage.setItem('odl-lang', l);
+    spans.forEach(function(s){
+      s.classList.toggle('lang-visible', s.dataset.lang === l);
+    });
+    btns.forEach(function(b){
+      b.classList.toggle('active', b.dataset.langTarget === l);
+    });
+  }
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.dataset.langTarget); });
+  });
+  setLang(stored);
+
+  /* ── NAV SCROLL ── */
+  var nav = document.getElementById('nav');
+  var backTop = document.getElementById('back-top');
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY;
+    nav && nav.classList.toggle('scrolled', y > 60);
+    backTop && backTop.classList.toggle('visible', y > 400);
+  }, {passive:true});
+  if(backTop) backTop.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+
+  /* ── REVEAL ── */
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    },{threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('visible'); });
+  }
+})();
+</script>
+</body>
+</html>
