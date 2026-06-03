@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Ocean Drift Lodge - Facture</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="odl-styles.css">
+    
+    <style>body {
+            font-family: 'Jost', sans-serif;
+            line-height: 1.6;
+            color: var(--ink-mid);
+            background-color: var(--bg);
+            margin: 0;
+            padding: 80px 2rem 4rem;
+        }
+
+        /* ── FORMULAIRE ── */
+        .form-panel {
+            max-width: 850px;
+            margin: 0 auto 3rem auto;
+            background: var(--bg-sand);
+            padding: 2.5rem 3rem;
+            border-radius: 8px;
+            border: 1px solid rgba(201,169,110,.15);
+        }
+        .form-panel-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 300;
+            margin: 0 0 .3rem 0;
+            color: var(--gold);
+        }
+        .form-panel-sub {
+            font-size: .72rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: var(--ink-light);
+            margin-bottom: 2rem;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+        .form-group { display: flex; flex-direction: column; gap: .4rem; }
+        .form-group label {
+            font-size: .68rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--ink-light);
+        }
+        .form-group select {
+            background: #fff;
+            border: 1px solid rgba(28,28,26,0.15);
+            color: var(--ink);
+            padding: .65rem .9rem;
+            border-radius: var(--radius);
+            font-family: 'Jost', sans-serif;
+            font-size: .9rem;
+            outline: none;
+            transition: border .2s, background .2s;
+        }
+        .form-group input::placeholder { color: rgba(28,28,26,0.35); }
+        .form-group select:focus {
+            border-color: var(--teal);
+            background: #fff;
+        }
+        .form-group select option { color: var(--ink); background: white; }
+        .form-span2 { grid-column: span 2; }
+
+        .form-actions { margin-top: 1.8rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn-generate {
+            background: var(--gold);
+            color: var(--bg);
+            border: none;
+            padding: .85rem 2rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-family: 'Jost', sans-serif;
+            font-weight: 500;
+            font-size: .8rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            transition: opacity .2s;
+        }
+        .btn-generate:hover { opacity: .85; }
+        .btn-reset {
+            background: transparent;
+            color: var(--ink-light);
+            border: 1px solid rgba(28,28,26,0.15);
+            padding: .85rem 1.5rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-family: 'Jost', sans-serif;
+            font-size: .8rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            transition: all .2s;
+        }
+        .btn-reset:hover { color: var(--ink); border-color: var(--teal); }
+
+        /* ── DOCUMENT ── */
+        .doc-box {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 3.5rem;
+            background: var(--bg-doc);
+            border-radius: 6px;
+            box-shadow: 0 8px 40px rgba(0,0,0,.3);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px solid var(--bg-sand);
+            padding-bottom: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .header-right { text-align: right; font-size: 0.8rem; color: var(--ink-light); }
+        .ch-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--teal);
+            margin: 0 0 .4rem 0;
+            font-weight: 300;
+        }
+        .client-info { margin-bottom: 3rem; font-size: 0.95rem; color: var(--ink); }
+        .client-info .sejour-tag {
+            color: var(--peach);
+            font-size: 0.85rem;
+            margin-top: .3rem;
+        }
+
+        table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        th {
+            text-align: left;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            padding: 1rem;
+            border-bottom: 2px solid var(--teal);
+            color: var(--teal);
+        }
+        td { padding: 1.2rem 1rem; border-bottom: 1px solid var(--bg-sand); color: var(--ink-mid); }
+
+        .summary-table { margin-left: auto; width: 320px; margin-top: 2rem; }
+        .summary-table td { border: none; padding: 0.5rem 1rem; text-align: right; font-size: .95rem; }
+        .summary-table tr:first-child td { border-top: 1px solid var(--bg-sand); }
+        .acompte-row td { color: var(--peach); }
+        .total-row td {
+            background: var(--teal);
+            color: white;
+            font-weight: 500;
+            font-size: 1.15rem;
+            border-radius: 0;
+        }
+        .total-row td:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+        .total-row td:last-child { border-radius: 0 var(--radius) var(--radius) 0; }
+
+        /* Tampon ACQUITTÉE */
+        .stamp-wrap { text-align: center; margin: 2rem 0 1rem; }
+        .status-stamp {
+            display: inline-block;
+            border: 2.5px solid var(--teal);
+            color: var(--teal);
+            padding: .5rem 1.4rem;
+            transform: rotate(-12deg);
+            font-weight: 500;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            letter-spacing: .12em;
+            opacity: .85;
+        }
+        .status-stamp.solde {
+            border-color: var(--peach);
+            color: var(--peach);
+        }
+
+        .doc-footer em { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--teal-lt); }
+
+        .btn-print {
+            background: var(--gold);
+            color: var(--bg);
+            border: none;
+            padding: 1rem 2.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Jost';
+            font-weight: 500;
+            font-size: .85rem;
+            letter-spacing: .08em;
+        }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { padding: 0; background: white; }
+            .doc-box { box-shadow: none; }
+        }
+        @media (max-width: 600px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .form-span2 { grid-column: span 1; }
+            .doc-box { padding: 2rem 1.5rem; }
+            .form-panel { padding: 1.8rem; }
+            .summary-table { width: 100%; }
+        }
+</style>
+
+<style>
+
+
+
+</style>
+</head>
+<body>
+
+<div id="progress" class="no-print"></div>
+<nav id="nav" class="no-print">
+  <a href="index.html" class="nav-logo"><picture class="logo-stable"><source srcset="logo.webp" type="image/webp"><img class="no-translate nav-logo-img" src="logo.png" alt="" style="mix-blend-mode:multiply" onerror="this.style.display='none'"></picture>Ocean Drift <em>Lodge</em></a>
+    <div class="nav-center">
+    <a href="index.html"><span data-lang="fr">Accueil</span><span data-lang="en">Home</span><span data-lang="es">Inicio</span><span data-lang="pt">Início</span><span data-lang="it">Home</span></a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-sw">
+      <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
+      <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
+    </div>
+    <a href="index.html#reservation" class="nav-cta"><span data-lang="fr">Accueil</span><span data-lang="en">Home</span><span data-lang="es">Inicio</span><span data-lang="pt">Início</span><span data-lang="it">Home</span></a>
+  </div>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" onclick="toggleMobile()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu no-print" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMobile()" aria-label="Fermer">✕</button>
+  <a href="index.html" onclick="closeMobile()"><span data-lang="fr">Accueil</span><span data-lang="en">Home</span><span data-lang="es">Inicio</span><span data-lang="pt">Início</span><span data-lang="it">Home</span></a>
+  <a href="index.html#reservation" onclick="closeMobile()" style="color:var(--teal)"><span data-lang="fr">Réserver</span><span data-lang="en">Book</span><span data-lang="es">Reservar</span><span data-lang="pt">Reservar</span><span data-lang="it">Prenota</span></a>
+  <div class="mobile-lang">
+    <button class="lang-btn active" data-lang="fr" onclick="setLang('fr');closeMobile()">FR</button>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en');closeMobile()">EN</button>
+    <button class="lang-btn" data-lang="es" onclick="setLang('es');closeMobile()">ES</button>
+    <button class="lang-btn" data-lang="pt" onclick="setLang('pt');closeMobile()">PT</button>
+    <button class="lang-btn" data-lang="it" onclick="setLang('it');closeMobile()">IT</button>
+  </div>
+</div>
+
+    <!-- ══ FORMULAIRE ══ -->
+    <div class="form-panel no-print">
+        <p class="form-panel-title"><span data-lang="fr">Générer une facture</span><span data-lang="en">Generate an invoice</span><span data-lang="es">Generar una factura</span><span data-lang="pt">Gerar uma fatura</span><span data-lang="it">Genera una fattura</span></p>
+        <p class="form-panel-sub"><span data-lang="fr">Remplissez les champs — le document se met à jour instantanément</span><span data-lang="en">Fill in the fields — the document updates instantly</span><span data-lang="es">Rellene los campos — el documento se actualiza al instante</span><span data-lang="pt">Preencha os campos — o documento é atualizado instantaneamente</span><span data-lang="it">Compila i campi — il documento si aggiorna istantaneamente</span></p>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label><span data-lang="fr">Civilité</span><span data-lang="en">Title</span><span data-lang="es">Tratamiento</span><span data-lang="pt">Título</span><span data-lang="it">Titolo</span></label>
+                <select id="f-civilite">
+                    <option value="M.">M.</option>
+                    <option value="Mme">Mme</option>
+                    <option value="M. et Mme">M. et Mme</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Prénom</span><span data-lang="en">First name</span><span data-lang="es">Nombre</span><span data-lang="pt">Nome</span><span data-lang="it">Nome</span></label>
+                <input type="text" id="f-prenom" placeholder="Jean">
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Nom</span><span data-lang="en">Last name</span><span data-lang="es">Apellido</span><span data-lang="pt">Apelido</span><span data-lang="it">Cognome</span></label>
+                <input type="text" id="f-nom" placeholder="Dupont">
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Hébergement</span><span data-lang="en">Accommodation</span><span data-lang="es">Alojamiento</span><span data-lang="pt">Alojamento</span><span data-lang="it">Alloggio</span></label>
+                <select id="f-logement">
+                    <option value="Appartement Rez de Jardin — Résidence West Point">Appartement Rez de Jardin — Résidence West Point</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Date d'arrivée</span><span data-lang="en">Arrival date</span><span data-lang="es">Fecha de llegada</span><span data-lang="pt">Data de chegada</span><span data-lang="it">Data di arrivo</span></label>
+                <input type="date" id="f-arrivee">
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Date de départ</span><span data-lang="en">Departure date</span><span data-lang="es">Fecha de salida</span><span data-lang="pt">Data de saída</span><span data-lang="it">Data di partenza</span></label>
+                <input type="date" id="f-depart">
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Loyer HT (€)</span><span data-lang="en">Rent excl. tax (€)</span><span data-lang="es">Alquiler s. imp. (€)</span><span data-lang="pt">Aluguer s. imp. (€)</span><span data-lang="it">Affitto s. IVA (€)</span></label>
+                <input type="number" id="f-loyer" placeholder="850" min="0" step="10">
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Taxe de séjour (€)</span><span data-lang="en">Tourist tax (€)</span><span data-lang="es">Tasa turística (€)</span><span data-lang="pt">Taxa turística (€)</span><span data-lang="it">Tassa di soggiorno (€)</span></label>
+                <input type="number" id="f-taxe" placeholder="15" min="0" step="1">
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">TPT — Taxe de Promotion du Tourisme (€)</span><span data-lang="en">TPT — Tourism Promotion Tax (€)</span><span data-lang="es">TPT — Tasa de Promoción del Turismo (€)</span><span data-lang="pt">TPT — Taxa de Promoção do Turismo (€)</span><span data-lang="it">TPT — Tassa di Promozione del Turismo (€)</span></label>
+                <input type="number" id="f-tpt" placeholder="5" min="0" step="1">
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Acompte déjà versé (€)</span><span data-lang="en">Deposit already paid (€)</span><span data-lang="es">Depósito ya pagado (€)</span><span data-lang="pt">Depósito já pago (€)</span><span data-lang="it">Acconto già versato (€)</span></label>
+                <input type="number" id="f-acompte" placeholder="250" min="0" step="10">
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Statut</span><span data-lang="en">Status</span><span data-lang="es">Estado</span><span data-lang="pt">Estado</span><span data-lang="it">Stato</span></label>
+                <select id="f-statut">
+                    <option value="solde">Solde restant dû</option>
+                    <option value="acquitte">Facture acquittée</option>
+                </select>
+            </div>
+            <div class="form-group form-span2">
+                <label><span data-lang="fr">Saison tarifaire <span style="font-style:italic;font-weight:300;">(référence — aucun calcul automatique)</span></span><span data-lang="en">Pricing season <span style="font-style:italic;font-weight:300;">(reference — no automatic calculation)</span></span><span data-lang="es">Temporada tarifaria <span style="font-style:italic;font-weight:300;">(referencia — sin cálculo automático)</span></span><span data-lang="pt">Época tarifária <span style="font-style:italic;font-weight:300;">(referência — sem cálculo automático)</span></span><span data-lang="it">Stagione tariffaria <span style="font-style:italic;font-weight:300;">(riferimento — nessun calcolo automatico)</span></span></label>
+                <select id="f-saison">
+                    <option value="">— Non précisée —</option>
+                    <option value="Haute saison — Kite (15 nov → 31 mars)">Haute saison — Kite (15 nov → 31 mars)</option>
+                    <option value="Haute saison — Été (1 jul → 31 août)">Haute saison — Été (1 jul → 31 août)</option>
+                    <option value="Moyenne saison (avr → jun · sep → 14 nov)">Moyenne saison (avr → jun · sep → 14 nov)</option>
+                    <option value="Basse saison">Basse saison</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn-generate" onclick="genererDoc()"><span data-lang="fr">✦ Générer la facture</span><span data-lang="en">✦ Generate invoice</span><span data-lang="es">✦ Generar factura</span><span data-lang="pt">✦ Gerar fatura</span><span data-lang="it">✦ Genera la fattura</span></button>
+            <button class="btn-reset" onclick="reinitialiser()"><span data-lang="fr">Réinitialiser</span><span data-lang="en">Reset</span><span data-lang="es">Restablecer</span><span data-lang="pt">Reiniciar</span><span data-lang="it">Reimposta</span></button>
+        </div>
+    </div>
+
+    <!-- ══ DOCUMENT ══ -->
+    <div class="doc-box" id="doc-output" style="display:none;">
+        <div class="header">
+            <div class="logo-area">
+                <img src="logo.png" alt="Ocean Drift Lodge" style="width:80px;height:auto;"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                <span style="display:none;font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--teal)">Ocean Drift <em>Lodge</em></span>
+            </div>
+            <div class="header-right">
+                <h1 class="ch-title"><span data-lang="fr">Facture</span><span data-lang="en">Invoice</span><span data-lang="es">Factura</span><span data-lang="pt">Fatura</span><span data-lang="it">Fattura</span></h1>
+                <strong><span data-lang="fr">N°</span><span data-lang="en">No.</span><span data-lang="es">N.°</span><span data-lang="pt">N.°</span><span data-lang="it">N°</span> <span id="var-num">---</span></strong><br>
+                <span data-lang="fr">Date :</span><span data-lang="en">Date:</span><span data-lang="es">Fecha:</span><span data-lang="pt">Data:</span><span data-lang="it">Data:</span> <span id="var-date">---</span>
+            </div>
+        </div>
+
+        <div class="client-info">
+            <strong><span data-lang="fr">Facturé à :</span><span data-lang="en">Billed to:</span><span data-lang="es">Facturado a:</span><span data-lang="pt">Faturado a:</span><span data-lang="it">Fatturato a:</span></strong><br>
+            <span id="var-client">---</span><br>
+            <div class="sejour-tag" id="var-sejour">---</div>
+            <div id="var-saison-wrap" style="display:none;margin-top:.3rem;font-size:.78rem;color:var(--ink-light);letter-spacing:.06em;">
+                <span data-lang="fr">Saison :</span><span data-lang="en">Season:</span><span data-lang="es">Temporada:</span><span data-lang="pt">Época:</span><span data-lang="it">Stagione:</span> <span id="var-saison"></span>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th><span data-lang="fr">Désignation</span><span data-lang="en">Description</span><span data-lang="es">Designación</span><span data-lang="pt">Designação</span><span data-lang="it">Designazione</span></th>
+                    <th style="text-align:right;">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="var-designation">Hébergement Ocean Drift Lodge</td>
+                    <td style="text-align:right;" id="var-ht">---</td>
+                </tr>
+                <tr>
+                    <td><span data-lang="fr">Taxe de séjour communale</span><span data-lang="en">Municipal tourist tax</span><span data-lang="es">Tasa de turismo municipal</span><span data-lang="pt">Taxa de turismo municipal</span><span data-lang="it">Tassa di soggiorno comunale</span></td>
+                    <td style="text-align:right;" id="var-taxe">---</td>
+                </tr>
+                <tr>
+                    <td><span data-lang="fr">TPT — Taxe de Promotion du Tourisme</span><span data-lang="en">TPT — Tourism Promotion Tax</span><span data-lang="es">TPT — Tasa de Promoción del Turismo</span><span data-lang="pt">TPT — Taxa de Promoção do Turismo</span><span data-lang="it">TPT — Tassa di Promozione del Turismo</span></td>
+                    <td style="text-align:right;" id="var-tpt">---</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="summary-table">
+            <tr>
+                <td><span data-lang="fr">Total TTC</span><span data-lang="en">Total incl. tax</span><span data-lang="es">Total IVA incl.</span><span data-lang="pt">Total incl. impostos</span><span data-lang="it">Totale IVA incl.</span></td>
+                <td id="var-total" style="font-weight:500;">---</td>
+            </tr>
+            <tr class="acompte-row">
+                <td><span data-lang="fr">Acompte déjà réglé</span><span data-lang="en">Deposit already paid</span><span data-lang="es">Depósito ya abonado</span><span data-lang="pt">Depósito já pago</span><span data-lang="it">Acconto già versato</span></td>
+                <td id="var-acompte">---</td>
+            </tr>
+            <tr class="total-row">
+                <td id="var-solde-label"><span data-lang="fr">Net à payer</span><span data-lang="en">Balance due</span><span data-lang="es">Saldo pendiente</span><span data-lang="pt">Saldo a pagar</span><span data-lang="it">Saldo dovuto</span></td>
+                <td id="var-solde">---</td>
+            </tr>
+        </table>
+
+        <div class="stamp-wrap">
+            <div class="status-stamp" id="var-stamp">FACTURE ACQUITTÉE</div>
+        </div>
+
+        <div class="doc-footer">
+            <strong>Ocean Drift Lodge</strong><br>
+            West Point, Dakhla, Maroc · IF : [À COMPLÉTER] · RC : [À COMPLÉTER]<br>
+            <span data-lang="fr">Non assujetti à la TVA — particulier propriétaire</span><span data-lang="en">Not subject to VAT — private owner</span><span data-lang="es">No sujeto al IVA — propietario particular</span><span data-lang="pt">Não sujeito a IVA — proprietário particular</span><span data-lang="it">Non soggetto a IVA — privato proprietario</span><br>
+            <em><span data-lang="fr">Merci pour votre séjour. Nous espérons vous revoir très bientôt face à l'océan.</span><span data-lang="en">Thank you for your stay. We hope to see you again very soon facing the ocean.</span><span data-lang="es">Gracias por su estancia. Esperamos volver a verle muy pronto frente al océano.</span><span data-lang="pt">Obrigado pela sua estadia. Esperamos revê-lo muito em breve em frente ao oceano.</span><span data-lang="it">Grazie per il suo soggiorno. Speriamo di rivederla molto presto di fronte all'oceano.</span></em>
+        </div>
+    </div>
+
+    <div style="text-align:center;margin-top:2rem;" class="no-print" id="btn-print-wrap">
+        <button class="btn-print" onclick="window.print()"><span data-lang="fr">⬇ Télécharger / Imprimer PDF</span><span data-lang="en">⬇ Download / Print PDF</span><span data-lang="es">⬇ Descargar / Imprimir PDF</span><span data-lang="pt">⬇ Descarregar / Imprimir PDF</span><span data-lang="it">⬇ Scarica / Stampa PDF</span></button>
+    </div>
+
+    <script>
+        function genNumero() {
+            const yr = new Date().getFullYear();
+            const seq = String(Math.floor(Math.random() * 900) + 100);
+            return `FAC-${yr}-${seq}`;
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return '—';
+            const [y, m, d] = dateStr.split('-');
+            const months = {
+                fr: ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'],
+                en: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+                es: ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],
+                pt: ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'],
+                it: ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre']
+            };
+            const lang = typeof currentLang !== 'undefined' ? currentLang : 'fr';
+            const mois = (months[lang] || months.fr);
+            return `${parseInt(d)} ${mois[parseInt(m)-1]} ${y}`;
+        }
+
+        function nbNuits(arrivee, depart) {
+            const a = new Date(arrivee), b = new Date(depart);
+            const diff = Math.round((b - a) / 86400000);
+            if (diff <= 0) return '';
+            const lang = typeof currentLang !== 'undefined' ? currentLang : 'fr';
+            const labels = {fr:`${diff} nuit${diff>1?'s':''}`,en:`${diff} night${diff>1?'s':''}`,es:`${diff} noche${diff>1?'s':''}`,pt:`${diff} noite${diff>1?'s':''}`,it:`${diff} notte${diff>1?'':'s'}`};
+            return labels[lang] || labels.fr;
+        }
+
+        function fmt(n) {
+            return n.toFixed(2).replace('.', ',') + ' €';
+        }
+
+        function genererDoc() {
+            const civilite = document.getElementById('f-civilite').value;
+            const prenom   = document.getElementById('f-prenom').value.trim();
+            const nom      = document.getElementById('f-nom').value.trim();
+            const logement = document.getElementById('f-logement').value;
+            const arrivee  = document.getElementById('f-arrivee').value;
+            const depart   = document.getElementById('f-depart').value;
+            const loyer    = parseFloat(document.getElementById('f-loyer').value) || 850;
+            const taxe     = parseFloat(document.getElementById('f-taxe').value) || 15;
+            const tpt      = parseFloat(document.getElementById('f-tpt').value) || 0;
+            const acompte  = parseFloat(document.getElementById('f-acompte').value) || 0;
+            const statut   = document.getElementById('f-statut').value;
+            const saison   = document.getElementById('f-saison').value;
+
+            const lang = typeof currentLang !== 'undefined' ? currentLang : 'fr';
+            const alertName = {fr:'Merci de saisir le prénom et le nom.',en:'Please enter the first and last name.',es:'Por favor, introduzca el nombre y apellido.',pt:'Por favor, introduza o nome e apelido.',it:'Per favore, inserisca nome e cognome.'};
+            const alertDate = {fr:'Merci de saisir les dates.',en:'Please enter the dates.',es:'Por favor, introduzca las fechas.',pt:'Por favor, introduza as datas.',it:'Per favore, inserisca le date.'};
+            if (!prenom || !nom) { alert(alertName[lang] || alertName.fr); return; }
+            if (!arrivee || !depart) { alert(alertDate[lang] || alertDate.fr); return; }
+
+            const totalTTC = loyer + taxe + tpt;
+            const solde    = totalTTC - acompte;
+            const nuits    = nbNuits(arrivee, depart);
+            const fromWord = {fr:'Du',en:'From',es:'Del',pt:'De',it:'Dal'};
+            const toWord   = {fr:'au',en:'to',es:'al',pt:'a',it:'al'};
+            const periode  = `${fromWord[lang]||'Du'} ${formatDate(arrivee)} ${toWord[lang]||'au'} ${formatDate(depart)}${nuits ? ' (' + nuits + ')' : ''}`;
+
+            const saisonWrap = document.getElementById('var-saison-wrap');
+            if (saison) {
+                document.getElementById('var-saison').textContent = saison;
+                saisonWrap.style.display = 'block';
+            } else {
+                saisonWrap.style.display = 'none';
+            }
+
+            document.getElementById('var-num').textContent         = genNumero();
+            document.getElementById('var-date').textContent        = new Date().toLocaleDateString('fr-FR');
+            document.getElementById('var-client').textContent      = `${civilite} ${prenom} ${nom}`;
+            document.getElementById('var-sejour').textContent      = periode;
+            document.getElementById('var-designation').textContent = logement;
+            document.getElementById('var-ht').textContent          = fmt(loyer);
+            document.getElementById('var-taxe').textContent        = fmt(taxe);
+            document.getElementById('var-tpt').textContent         = tpt > 0 ? fmt(tpt) : '—';
+            document.getElementById('var-total').textContent       = fmt(totalTTC);
+            document.getElementById('var-acompte').textContent     = `- ${fmt(acompte)}`;
+            document.getElementById('var-solde').textContent       = fmt(Math.max(0, solde));
+
+            const stamp = document.getElementById('var-stamp');
+            const stampPaid = {fr:'FACTURE ACQUITTÉE',en:'INVOICE PAID',es:'FACTURA PAGADA',pt:'FATURA PAGA',it:'FATTURA SALDATA'};
+            const stampDue  = {fr:'SOLDE À RÉGLER',en:'BALANCE DUE',es:'SALDO PENDIENTE',pt:'SALDO PENDENTE',it:'SALDO DOVUTO'};
+            if (statut === 'acquitte') {
+                stamp.textContent = stampPaid[lang] || stampPaid.fr;
+                stamp.className   = 'status-stamp';
+            } else {
+                stamp.textContent = stampDue[lang] || stampDue.fr;
+                stamp.className   = 'status-stamp solde';
+            }
+
+            document.getElementById('doc-output').style.display    = 'block';
+            document.getElementById('btn-print-wrap').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('doc-output').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        function reinitialiser() {
+            ['f-prenom','f-nom','f-arrivee','f-depart','f-loyer','f-taxe','f-tpt','f-acompte'].forEach(id => {
+                document.getElementById(id).value = '';
+            });
+            document.getElementById('f-civilite').value = 'M.';
+            document.getElementById('f-statut').value   = 'solde';
+            document.getElementById('f-saison').value   = '';
+            document.getElementById('doc-output').style.display    = 'none';
+            document.getElementById('btn-print-wrap').style.display = 'none';
+        }
+
+        document.getElementById('btn-print-wrap').style.display = 'none';
+
+        const prog=document.getElementById('progress');
+        window.addEventListener('scroll',()=>{const s=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;if(prog)prog.style.width=Math.min(s,100)+'%';document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);});
+        function toggleMobile(){const m=document.getElementById('mobileMenu');const b=document.getElementById('burger');const o=m.classList.toggle('open');b.classList.toggle('open');b.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';}
+        function closeMobile(){const m=document.getElementById('mobileMenu');if(m)m.classList.remove('open');const b=document.getElementById('burger');if(b){b.classList.remove('open');b.setAttribute('aria-expanded','false');}document.body.style.overflow='';}
+        document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMobile();});
+        let currentLang='fr';
+        function setLang(lang){document.documentElement.classList.add('js-lang');currentLang=lang;document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('active');if(b.dataset.lang===lang)b.classList.add('active');});document.querySelectorAll('[data-lang]').forEach(el=>el.classList.remove('lang-visible'));document.querySelectorAll('[data-lang="'+lang+'"]').forEach(el=>el.classList.add('lang-visible'));document.documentElement.lang=lang;const _sl=(id,langs)=>{const s=document.getElementById(id);if(!s)return;const lb=langs[lang]||langs.fr;Array.from(s.options).forEach((o,i)=>{if(lb[i]!==undefined)o.textContent=lb[i];});};_sl("f-civilite",{fr:["M.","Mme","M. et Mme"],en:["Mr.","Mrs.","Mr. & Mrs."],es:["Sr.","Sra.","Sr. y Sra."],pt:["Sr.","Sra.","Sr. e Sra."],it:["Sig.","Sig.ra","Sig. e Sig.ra"]});_sl("f-statut",{fr:["Solde restant dû","Facture acquittée"],en:["Outstanding balance","Invoice paid"],es:["Saldo pendiente","Factura liquidada"],pt:["Saldo em dívida","Fatura quitada"],it:["Saldo residuo","Fattura saldata"]});_sl("f-saison",{fr:["— Non précisée —","Haute saison — Kite (15 nov → 31 mars)","Haute saison — Été (1 jul → 31 août)","Moyenne saison (avr → jun · sep → 14 nov)","Basse saison"],en:["— Not specified —","High season — Kite (15 Nov → 31 Mar)","High season — Summer (1 Jul → 31 Aug)","Mid season (Apr → Jun · Sep → 14 Nov)","Low season"],es:["— No especificada —","Temporada alta — Kite (15 nov → 31 mar)","Temporada alta — Verano (1 jul → 31 ago)","Temporada media (abr → jun · sep → 14 nov)","Temporada baja"],pt:["— Não especificada —","Alta temporada — Kite (15 nov → 31 mar)","Alta temporada — Verão (1 jul → 31 ago)","Meia temporada (abr → jun · set → 14 nov)","Baixa temporada"],it:["— Non specificata —","Alta stagione — Kite (15 nov → 31 mar)","Alta stagione — Estate (1 lug → 31 ago)","Media stagione (apr → giu · set → 14 nov)","Bassa stagione"]});}
+        document.addEventListener('DOMContentLoaded',()=>setLang('fr'));
+    </script>
+
+<footer class="no-print">
+  <picture class="logo-stable footer-logo-wrap"><source srcset="logo.webp" type="image/webp"><img class="no-translate footer-logo-img" src="logo.png" alt="Ocean Drift Lodge" onerror="this.style.display='none'"></picture>
+  <span class="footer-logo-txt">Ocean Drift <em>Lodge</em></span>
+  <nav class="footer-links">
+    <a href="index.html"><span data-lang="fr">Accueil</span><span data-lang="en">Home</span><span data-lang="es">Inicio</span><span data-lang="pt">Início</span><span data-lang="it">Home</span></a>
+    <a href="livret-accueil.html"><span data-lang="fr">Livret d'accueil</span><span data-lang="en">Welcome guide</span><span data-lang="es">Guía de bienvenida</span><span data-lang="pt">Guia de boas-vindas</span><span data-lang="it">Guida di benvenuto</span></a>
+  </nav>
+  <nav class="footer-links" aria-label="Liens légaux">
+    <a href="cgv.html"><span data-lang="fr">CGV</span><span data-lang="en">GTC</span><span data-lang="es">CGV</span><span data-lang="pt">CGV</span><span data-lang="it">CGV</span></a>
+    <a href="mentions-legales.html"><span data-lang="fr">Mentions légales</span><span data-lang="en">Legal notice</span><span data-lang="es">Aviso legal</span><span data-lang="pt">Aviso legal</span><span data-lang="it">Note legali</span></a>
+    <a href="confidentialite.html"><span data-lang="fr">Confidentialité</span><span data-lang="en">Privacy</span><span data-lang="es">Privacidad</span><span data-lang="pt">Privacidade</span><span data-lang="it">Privacy</span></a>
+  </nav>
+  <span>© 2026 Ocean Drift Lodge · Dakhla, Maroc</span>
+</footer>
+<script>
+(function(){
+  if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));return;}
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>

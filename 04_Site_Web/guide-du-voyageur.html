@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ocean Drift Lodge · Guide Local — Dakhla</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="odl-styles.css">
+<style>body{font-family:'Jost',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;position:relative;overflow:hidden;
+  background:radial-gradient(ellipse 70% 55% at 25% 35%,rgba(46,139,139,0.13) 0%,transparent 70%),
+  radial-gradient(ellipse 55% 50% at 75% 70%,rgba(200,96,58,0.08) 0%,transparent 65%),
+  linear-gradient(160deg,#ffffff 0%,#f4ede4 55%,#ede8df 100%)}
+.hero-inner{position:relative;z-index:1;max-width:780px;width:100%;display:flex;flex-direction:column;align-items:center}
+.hero-eyebrow{font-size:.72rem;font-weight:400;letter-spacing:.38em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:2rem}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,9vw,7rem);font-weight:300;line-height:1;color:var(--ink);letter-spacing:-.01em}
+.hero-title em{display:block;font-style:italic;color:var(--teal)}
+.hero-sub{font-size:.85rem;font-weight:400;color:var(--ink-light);letter-spacing:.15em;text-transform:uppercase;margin-top:1.5rem}
+
+/* Profile selector */
+.profile-label{font-size:.65rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--ink-light);margin-top:3rem;margin-bottom:1rem}
+.profiles{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center}
+.profile-btn{display:flex;flex-direction:column;align-items:center;gap:.3rem;padding:.7rem 1.2rem;border-radius:6px;border:1px solid rgba(28,28,26,0.1);background:#fff;color:var(--ink-mid);transition:all var(--trans);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.profile-btn .p-icon{font-size:1.4rem}
+.profile-btn:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px);box-shadow:0 4px 16px rgba(46,139,139,0.12)}
+.profile-btn.active{border-color:var(--teal);background:var(--teal);color:#fff;transform:translateY(-2px);box-shadow:0 4px 16px rgba(46,139,139,0.25)}
+
+.scroll-hint{margin-top:3rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--ink-light);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase}
+.scroll-arrow{width:1px;height:36px;background:var(--teal);animation:scrolldown 1.6s ease infinite}
+@keyframes scrolldown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ── SECTIONS ── */
+section{padding:6rem 3.5rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-tag{font-size:.65rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:300;line-height:1.2;color:var(--ink);margin-bottom:1rem}
+.section-title em{font-style:italic;color:var(--teal)}
+.section-lead{font-size:.9rem;color:var(--ink-light);max-width:500px;line-height:1.75}
+
+/* ── SPOTS ── */
+#spots{background:var(--bg)}
+.expert-card{background:var(--bg-sand);border:1px solid rgba(28,28,26,0.07);border-radius:6px;padding:2rem 2.5rem;margin:2.5rem 0;display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:start}
+.expert-avatar{width:52px;height:52px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.expert-name{font-size:.65rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:.3rem}
+.expert-text{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;font-style:italic;color:var(--ink-mid);line-height:1.65}
+
+.spots-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+.spot-card{border-radius:6px;overflow:hidden;position:relative;border:1px solid rgba(28,28,26,0.07);transition:transform var(--trans),box-shadow var(--trans)}
+.spot-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(28,28,26,0.12)}
+.spot-card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(28,28,26,0.6) 0%,transparent 60%)}
+.spot-card-overlay{position:absolute;bottom:1rem;left:1rem;right:1rem}
+.spot-card-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:#fff;line-height:1.1}
+.spot-card-tag{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:.3rem}
+.spot-card-body{background:#fff;padding:1.5rem}
+.spot-card-desc{font-size:.85rem;color:var(--ink-light);line-height:1.65;margin-bottom:1rem}
+.spot-pills{display:flex;flex-wrap:wrap;gap:.4rem}
+.spot-pill{font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .6rem;border-radius:20px;border:1px solid rgba(46,139,139,0.3);color:var(--teal)}
+
+/* Profile recommendation */
+.profile-reco{margin-top:2rem;padding:1.2rem 1.8rem;background:#fff;border:1px solid rgba(28,28,26,0.07);border-left:3px solid var(--teal);border-radius:var(--radius);display:none}
+.profile-reco.visible{display:block}
+.reco-label{font-size:.62rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem}
+.reco-text{font-size:.88rem;color:var(--ink-mid);line-height:1.7}
+
+/* ── ACTIVITÉS ── */
+#activites{background:var(--bg-sand)}
+.act-filter{display:flex;flex-wrap:wrap;gap:.5rem;margin:2rem 0}
+.act-filter-btn{font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:.4rem 1rem;border-radius:20px;border:1px solid rgba(28,28,26,0.15);color:var(--ink-light);transition:all var(--trans)}
+.act-filter-btn.active,.act-filter-btn:hover{background:var(--teal);border-color:var(--teal);color:#fff}
+.acts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem}
+.act-card{background:#fff;border:1px solid rgba(28,28,26,0.07);border-radius:6px;overflow:hidden;transition:transform var(--trans),box-shadow var(--trans);display:flex;flex-direction:column}
+.act-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(28,28,26,0.10)}
+.act-card[data-cat].hidden{display:none}
+.act-body{padding:1.2rem 1.5rem;flex:1;display:flex;flex-direction:column}
+.act-cat{font-size:.58rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--peach);margin-bottom:.4rem}
+.act-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.4rem}
+.act-desc{font-size:.82rem;color:var(--ink-light);line-height:1.6;flex:1}
+.act-profile-tag{margin-top:.8rem;font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+
+/* ── ÉCOLES ── */
+#ecoles{background:var(--bg)}
+.ecoles-filter{display:flex;flex-wrap:wrap;gap:.5rem;margin:2rem 0}
+.ecole-filter-btn{font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:.4rem 1rem;border-radius:20px;border:1px solid rgba(28,28,26,0.15);color:var(--ink-light);transition:all var(--trans)}
+.ecole-filter-btn.active,.ecole-filter-btn:hover{background:var(--teal);border-color:var(--teal);color:#fff}
+.ecoles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+.ecole-card{background:var(--bg-sand);border:1px solid rgba(28,28,26,0.07);border-radius:6px;padding:1.8rem;transition:transform var(--trans),box-shadow var(--trans)}
+.ecole-card:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(28,28,26,0.09)}
+.ecole-card[data-type].hidden{display:none}
+.ecole-type{display:inline-block;padding:.25rem .7rem;font-size:.58rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;border:1px solid;border-radius:20px;margin-bottom:.8rem}
+.ecole-type.surf{color:var(--peach);border-color:rgba(200,96,58,0.35)}
+.ecole-type.kite{color:var(--teal);border-color:rgba(46,139,139,0.35)}
+.ecole-type.both{color:var(--gold);border-color:rgba(184,151,90,0.35)}
+.ecole-card h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.3rem}
+.ecole-loc{font-size:.72rem;color:var(--ink-light);margin-bottom:.6rem}
+.ecole-card p{font-size:.84rem;color:var(--ink-light);line-height:1.6}
+.ecole-tags{margin-top:.8rem;display:flex;flex-wrap:wrap;gap:.35rem}
+.tag{padding:.18rem .55rem;background:rgba(46,139,139,0.08);border:1px solid rgba(46,139,139,0.15);font-size:.6rem;color:var(--teal-dk);border-radius:20px;font-weight:500;letter-spacing:.05em}
+
+/* ── GASTRONOMIE ── */
+#gastro{background:var(--bg-sand)}
+.gastro-list{margin-top:3rem;display:flex;flex-direction:column;gap:0}
+.gastro-item{display:grid;grid-template-columns:80px 1fr;gap:1.5rem;padding:1.8rem 0;border-bottom:1px solid rgba(28,28,26,0.07);align-items:center;transition:background var(--trans)}
+.gastro-item:first-child{border-top:1px solid rgba(28,28,26,0.07)}
+.gastro-item:hover{background:rgba(46,139,139,0.03);border-radius:4px;padding-left:.8rem;padding-right:.8rem;margin:0 -.8rem}
+.gastro-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:rgba(46,139,139,0.2);text-align:center;line-height:1}
+.gastro-content h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--ink);margin-bottom:.2rem}
+.gastro-meta{font-size:.72rem;color:var(--peach);font-weight:500;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.4rem}
+.gastro-desc{font-size:.84rem;color:var(--ink-light);line-height:1.6}
+.gastro-icons{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
+.g-pill{font-size:.65rem;color:var(--ink-light);padding:.18rem .55rem;background:var(--bg);border-radius:20px;border:1px solid rgba(28,28,26,0.08)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  
+  section{padding:4.5rem 2rem}
+  .spots-cards{grid-template-columns:1fr}
+  .acts-grid{grid-template-columns:1fr 1fr}
+  .expert-card{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  
+  section{padding:3.5rem 1.5rem}
+  .acts-grid,.ecoles-grid{grid-template-columns:1fr}
+  .profiles{gap:.4rem}
+  .profile-btn{padding:.5rem .8rem;font-size:.6rem}
+  .gastro-item{grid-template-columns:50px 1fr;gap:1rem}
+}
+
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link"><span data-lang="fr" class="lang-visible">Aller au contenu</span><span data-lang="en">Skip to content</span><span data-lang="es">Ir al contenido</span><span data-lang="pt">Ir para o conteúdo</span><span data-lang="it">Vai al contenuto</span></a>
+<div id="progress" role="progressbar" aria-label="Progression de lecture"></div>
+
+<header>
+  <nav id="nav" aria-label="Navigation guide local">
+    <a href="index.html" class="nav-logo"><picture class="logo-stable"><source srcset="logo.webp" type="image/webp"><img class="no-translate nav-logo-img" src="logo.png" alt="" style="mix-blend-mode:multiply" onerror="this.style.display='none'"></picture>Ocean Drift <em>Lodge</em></a>
+    <ul class="nav-links" role="list">
+      <li><a href="#spots" data-nav="spots"><span data-lang="fr" class="lang-visible">Les Spots</span><span data-lang="en">The Spots</span><span data-lang="es">Los Spots</span><span data-lang="pt">Os Spots</span><span data-lang="it">Gli Spot</span></a></li>
+      <li><a href="#activites" data-nav="activites"><span data-lang="fr" class="lang-visible">Activités</span><span data-lang="en">Activities</span><span data-lang="es">Actividades</span><span data-lang="pt">Atividades</span><span data-lang="it">Attività</span></a></li>
+      <li><a href="#ecoles" data-nav="ecoles"><span data-lang="fr" class="lang-visible">Écoles</span><span data-lang="en">Schools</span><span data-lang="es">Escuelas</span><span data-lang="pt">Escolas</span><span data-lang="it">Scuole</span></a></li>
+      <li><a href="#gastro" data-nav="gastro"><span data-lang="fr" class="lang-visible">Gastronomie</span><span data-lang="en">Gastronomy</span><span data-lang="es">Gastronomía</span><span data-lang="pt">Gastronomia</span><span data-lang="it">Gastronomia</span></a></li>
+    </ul>
+    <div class="lang-sw" role="group" aria-label="Langue">
+      <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" onclick="setLang('pt')">PT</button>
+      <button class="lang-btn" onclick="setLang('it')">IT</button>
+    </div>
+  </nav>
+</header>
+
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut">↑</button>
+
+<main id="main">
+
+<!-- ── HERO ── -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-img" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-logo-wrap">
+      <picture class="no-translate">
+        <source srcset="logo.webp" type="image/webp">
+        <img src="logo.png" alt="Ocean Drift Lodge" class="hero-logo no-translate" style="mix-blend-mode:multiply;display:block;margin:0 auto;width:140px;height:auto;animation:none">
+      </picture>
+    </div>
+    <p class="hero-eyebrow reveal"><span data-lang="fr" class="lang-visible">📍 Résidence West Point · Foum El Bouir, Dakhla</span><span data-lang="en">📍 West Point Residence · Foum El Bouir, Dakhla</span><span data-lang="es">📍 Residencia West Point · Foum El Bouir, Dakhla</span><span data-lang="pt">📍 Residência West Point · Foum El Bouir, Dakhla</span><span data-lang="it">📍 Residenza West Point · Foum El Bouir, Dakhla</span></p>
+    <h1 class="hero-title reveal" id="hero-title" style="transition-delay:.1s">
+      <span data-lang="fr" class="lang-visible">Foum El Bouir<em>côté Atlantique</em></span><span data-lang="en">Foum El Bouir<em>Atlantic Side</em></span><span data-lang="es">Foum El Bouir<em>lado Atlántico</em></span><span data-lang="pt">Foum El Bouir<em>lado Atlântico</em></span><span data-lang="it">Foum El Bouir<em>lato Atlantico</em></span>
+    </h1>
+    <p class="hero-sub reveal" style="transition-delay:.2s">
+      <span data-lang="fr" class="lang-visible">Votre guide d'expériences · Dakhla, Sahara Atlantique</span>
+      <span data-lang="en">Your experience guide · Dakhla, Atlantic Sahara</span>
+      <span data-lang="es">Tu guía de experiencias · Dakhla, Sáhara Atlántico</span>
+      <span data-lang="pt">O vosso guia de experiências · Dakhla, Saara Atlântico</span>
+      <span data-lang="it">La vostra guida d'esperienze · Dakhla, Sahara Atlantico</span>
+    </p>
+
+    <div class="reveal" style="transition-delay:.25s;margin-top:2rem;text-align:center">
+      <p style="font-size:.82rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-mid)"><span data-lang="fr" class="lang-visible">Glisse &nbsp;·&nbsp; Désert &nbsp;·&nbsp; Gastronomie</span><span data-lang="en">Gliding &nbsp;·&nbsp; Desert &nbsp;·&nbsp; Gastronomy</span><span data-lang="es">Deslizamiento &nbsp;·&nbsp; Desierto &nbsp;·&nbsp; Gastronomía</span><span data-lang="pt">Deslize &nbsp;·&nbsp; Deserto &nbsp;·&nbsp; Gastronomia</span><span data-lang="it">Scivolo &nbsp;·&nbsp; Deserto &nbsp;·&nbsp; Gastronomia</span></p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;font-style:italic;color:var(--teal);margin-top:.6rem"><span data-lang="fr" class="lang-visible">Là où l'Atlantique rencontre le Sahara.</span><span data-lang="en">Where the Atlantic meets the Sahara.</span><span data-lang="es">Donde el Atlántico se encuentra con el Sáhara.</span><span data-lang="pt">Onde o Atlântico encontra o Saara.</span><span data-lang="it">Dove l'Atlantico incontra il Sahara.</span></p>
+    </div>
+
+    <p class="profile-label reveal" style="transition-delay:.3s">
+      <span data-lang="fr" class="lang-visible">Quel est votre profil ?</span>
+      <span data-lang="en">What's your profile?</span>
+      <span data-lang="es">¿Cuál es tu perfil?</span>
+      <span data-lang="pt">Qual é o seu perfil?</span>
+      <span data-lang="it">Qual è il tuo profilo?</span>
+    </p>
+    <div class="profiles reveal" style="transition-delay:.35s" role="group" aria-label="Sélection de profil">
+      <button class="profile-btn" data-profile="surfer" onclick="setProfile(this,'surfer')">
+        <span class="p-icon">🏄</span>
+        <span data-lang="fr" class="lang-visible">Surfeur</span>
+        <span data-lang="en">Surfer</span>
+        <span data-lang="es">Surfista</span>
+        <span data-lang="pt">Surfista</span>
+        <span data-lang="it">Surfista</span>
+      </button>
+      <button class="profile-btn" data-profile="kiter" onclick="setProfile(this,'kiter')">
+        <span class="p-icon">🪁</span>
+        <span data-lang="fr" class="lang-visible">Kiteur</span>
+        <span data-lang="en">Kiter</span>
+        <span data-lang="es">Kitero</span>
+        <span data-lang="pt">Kitesurfista</span>
+        <span data-lang="it">Kitesurfista</span>
+      </button>
+      <button class="profile-btn" data-profile="aventurier" onclick="setProfile(this,'aventurier')">
+        <span class="p-icon">🐪</span>
+        <span data-lang="fr" class="lang-visible">Aventurier</span>
+        <span data-lang="en">Adventurer</span>
+        <span data-lang="es">Aventurero</span>
+        <span data-lang="pt">Aventureiro</span>
+        <span data-lang="it">Avventuriero</span>
+      </button>
+      <button class="profile-btn" data-profile="famille" onclick="setProfile(this,'famille')">
+        <span class="p-icon">👨‍👩‍👧</span>
+        <span data-lang="fr" class="lang-visible">Famille</span>
+        <span data-lang="en">Family</span>
+        <span data-lang="es">Familia</span>
+        <span data-lang="pt">Família</span>
+        <span data-lang="it">Famiglia</span>
+      </button>
+      <button class="profile-btn" data-profile="couple" onclick="setProfile(this,'couple')">
+        <span class="p-icon">💫</span>
+        <span data-lang="fr" class="lang-visible">Couple</span>
+        <span data-lang="en">Couple</span>
+        <span data-lang="es">Pareja</span>
+        <span data-lang="pt">Casal</span>
+        <span data-lang="it">Coppia</span>
+      </button>
+    </div>
+
+    <div class="scroll-hint reveal" style="transition-delay:.5s" aria-hidden="true">
+      <span><span data-lang="fr" class="lang-visible">Explorer</span><span data-lang="en">Explore</span><span data-lang="es">Explorar</span><span data-lang="pt">Explorar</span><span data-lang="it">Esplorare</span></span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SPOTS ── -->
+<section id="spots" aria-labelledby="spots-title">
+  <div class="section-inner">
+    <p class="section-tag reveal"><span data-lang="fr" class="lang-visible">Spots · Avis d'expert</span><span data-lang="en">Spots · Expert insight</span><span data-lang="es">Spots · Opinión experta</span><span data-lang="pt">Spots · Opinião de especialista</span><span data-lang="it">Spot · Parere dell'esperto</span></p>
+    <h2 class="section-title reveal" id="spots-title" style="transition-delay:.05s">
+      <span data-lang="fr" class="lang-visible">Deux spots,<br><em>une seule péninsule</em></span><span data-lang="en">Two spots,<br><em>one peninsula</em></span><span data-lang="es">Dos spots,<br><em>una sola península</em></span><span data-lang="pt">Dois spots,<br><em>uma só península</em></span><span data-lang="it">Due spot,<br><em>un'unica penisola</em></span>
+    </h2>
+    <p class="section-lead reveal" style="transition-delay:.1s">
+      <span data-lang="fr" class="lang-visible">Foum El Bouir et la Lagune ne s'opposent pas — ils se complètent. L'un ouvre sur l'Atlantique sauvage, l'autre sur un plan d'eau protégé. Deux ambiances, deux pratiques, une seule destination.</span><span data-lang="en">Foum El Bouir and the Lagoon don't compete — they complement each other. One opens to the wild Atlantic, the other to sheltered waters. Two moods, two disciplines, one destination.</span><span data-lang="es">Foum El Bouir y la Laguna no se oponen — se complementan. Uno abre al Atlántico salvaje, el otro a aguas protegidas. Dos ambientes, dos prácticas, un solo destino.</span><span data-lang="pt">Foum El Bouir e a Lagoa não se opõem — complementam-se. Um abre para o Atlântico selvagem, o outro para águas protegidas. Dois ambientes, duas práticas, um único destino.</span><span data-lang="it">Foum El Bouir e la Laguna non si oppongono — si completano. Uno si apre sull'Atlantico selvaggio, l'altro su acque riparate. Due atmosfere, due pratiche, un'unica destinazione.</span>
+    </p>
+
+    <div class="expert-card reveal" style="transition-delay:.15s">
+      <div class="expert-avatar" aria-hidden="true">🎯</div>
+      <div>
+        <p class="expert-name"><span data-lang="fr" class="lang-visible">Le conseil de la résidence</span><span data-lang="en">The residence's insider tip</span><span data-lang="es">El consejo de la residencia</span><span data-lang="pt">O conselho da residência</span><span data-lang="it">Il consiglio della residenza</span></p>
+        <p class="expert-text"><span data-lang="fr" class="lang-visible">"Commencez par Foum El Bouir pour ressentir l'Atlantique brut. Partez à la lagune pour glisser. Revenez ici pour le coucher de soleil. C'est ainsi que Dakhla se vit vraiment."</span><span data-lang="en">"Start at Foum El Bouir to feel the raw Atlantic. Head to the lagoon to glide. Return here for the sunset. That's the true way to live Dakhla."</span><span data-lang="es">"Empieza en Foum El Bouir para sentir el Atlántico en bruto. Ve a la laguna a deslizarte. Regresa aquí para el atardecer. Así se vive Dakhla de verdad."</span><span data-lang="pt">"Comece em Foum El Bouir para sentir o Atlântico bruto. Vá à lagoa deslizar. Regresse aqui para o pôr do sol. É assim que Dakhla se vive de verdade."</span><span data-lang="it">"Inizia a Foum El Bouir per sentire l'Atlantico grezzo. Vai alla laguna per scivolare. Torna qui per il tramonto. È così che si vive davvero Dakhla."</span></p>
+      </div>
+    </div>
+
+    <div class="spots-cards reveal" style="transition-delay:.2s">
+      <div class="spot-card">
+        <div class="spot-card-img" style="background-image:url('https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=800&q=80')">
+          <div class="spot-card-overlay">
+            <p class="spot-card-tag"><span data-lang="fr" class="lang-visible">🌊 Côté Océan</span><span data-lang="en">🌊 Ocean Side</span><span data-lang="es">🌊 Lado Océano</span><span data-lang="pt">🌊 Lado Oceano</span><span data-lang="it">🌊 Lato Oceano</span></p>
+            <p class="spot-card-name">Foum El Bouir</p>
+          </div>
+        </div>
+        <div class="spot-card-body">
+          <p class="spot-card-desc"><span data-lang="fr" class="lang-visible">Droite mythique de l'Atlantique. Vagues puissantes, vent off-shore, barrels hivernaux. Surf, bodyboard, wing en vagues — l'authentique Dakhla.</span><span data-lang="en">The mythical Atlantic right-hander. Powerful waves, offshore wind, winter barrels. Surf, bodyboard, wing in waves — the authentic Dakhla.</span><span data-lang="es">La derecha mítica del Atlántico. Olas potentes, viento offshore, barrels invernales. Surf, bodyboard, wing en olas — la auténtica Dakhla.</span><span data-lang="pt">A direita mítica do Atlântico. Ondas poderosas, vento offshore, barrels de inverno. Surf, bodyboard, wing em ondas — a autêntica Dakhla.</span><span data-lang="it">Il mitico diritto dell'Atlantico. Onde potenti, vento offshore, barrel invernali. Surf, bodyboard, wing nelle onde — la vera Dakhla.</span></p>
+          <div class="spot-pills">
+            <span class="spot-pill">Surf</span>
+            <span class="spot-pill">Bodyboard</span>
+            <span class="spot-pill">Wing</span>
+            <span class="spot-pill"><span data-lang="fr" class="lang-visible">Couchers de soleil</span><span data-lang="en">Sunsets</span><span data-lang="es">Atardeceres</span><span data-lang="pt">Pôres do sol</span><span data-lang="it">Tramonti</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="spot-card">
+        <div class="spot-card-img" style="background-image:url('https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=800&q=80')">
+          <div class="spot-card-overlay">
+            <p class="spot-card-tag"><span data-lang="fr" class="lang-visible">🏝 Côté Lagune</span><span data-lang="en">🏝 Lagoon Side</span><span data-lang="es">🏝 Lado Laguna</span><span data-lang="pt">🏝 Lado Lagoa</span><span data-lang="it">🏝 Lato Laguna</span></p>
+            <p class="spot-card-name">La Lagune · PK 25</p>
+          </div>
+        </div>
+        <div class="spot-card-body">
+          <p class="spot-card-desc"><span data-lang="fr" class="lang-visible">Plan d'eau protégé, vent constant 300 jours/an. Kitesurf, wingfoil, SUP — le paradis des glisseurs. Dune Blanche, Île du Dragon à portée.</span><span data-lang="en">Sheltered water, constant wind 300 days a year. Kitesurf, wingfoil, SUP — a glider's paradise. White Dune, Dragon Island within reach.</span><span data-lang="es">Agua protegida, viento constante 300 días al año. Kitesurf, wingfoil, SUP — el paraíso de los deslizadores. Duna Blanca, Isla del Dragón al alcance.</span><span data-lang="pt">Água protegida, vento constante 300 dias por ano. Kitesurf, wingfoil, SUP — o paraíso dos deslizadores. Duna Branca, Ilha do Dragão ao alcance.</span><span data-lang="it">Acqua riparata, vento costante 300 giorni l'anno. Kitesurf, wingfoil, SUP — il paradiso degli scivolatori. Duna Bianca, Isola del Drago a portata.</span></p>
+          <div class="spot-pills">
+            <span class="spot-pill">Kitesurf</span>
+            <span class="spot-pill">Wingfoil</span>
+            <span class="spot-pill">SUP</span>
+            <span class="spot-pill"><span data-lang="fr" class="lang-visible">Débutants</span><span data-lang="en">Beginners</span><span data-lang="es">Principiantes</span><span data-lang="pt">Iniciantes</span><span data-lang="it">Principianti</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recommandations par profil -->
+    <div class="profile-reco" id="reco-surfer">
+      <p class="reco-label"><span data-lang="fr" class="lang-visible">🏄 Pour vous, surfeur</span><span data-lang="en">🏄 For you, surfer</span><span data-lang="es">🏄 Para ti, surfista</span><span data-lang="pt">🏄 Para si, surfista</span><span data-lang="it">🏄 Per voi, surfista</span></p>
+      <p class="reco-text"><span data-lang="fr" class="lang-visible">Foum El Bouir est votre spot de base — accès direct depuis la résidence. La droite fonctionne de septembre à avril. Complétez avec une session wing à la lagune si le swell est plat.</span><span data-lang="en">Foum El Bouir is your home spot — direct access from the residence. The right-hander runs September to April. Add a wing session at the lagoon when the swell is flat.</span><span data-lang="es">Foum El Bouir es tu spot base — acceso directo desde la residencia. La derecha funciona de septiembre a abril. Añade una sesión de wing en la laguna si el swell está plano.</span><span data-lang="pt">Foum El Bouir é o seu spot de base — acesso direto desde a residência. A direita funciona de setembro a abril. Complete com uma sessão de wing na lagoa se o swell estiver plano.</span><span data-lang="it">Foum El Bouir è il vostro spot di base — accesso diretto dalla residenza. Il diritto funziona da settembre ad aprile. Aggiungete una sessione wing alla laguna se il swell è piatto.</span></p>
+    </div>
+    <div class="profile-reco" id="reco-kiter">
+      <p class="reco-label"><span data-lang="fr" class="lang-visible">🪁 Pour vous, kiteur</span><span data-lang="en">🪁 For you, kiter</span><span data-lang="es">🪁 Para ti, kitero</span><span data-lang="pt">🪁 Para si, kitesurfista</span><span data-lang="it">🪁 Per voi, kitesurfista</span></p>
+      <p class="reco-text"><span data-lang="fr" class="lang-visible">La Lagune PK 25 est votre terrain de jeu principal. Foum El Bouir pour les sessions wing en vagues quand vous aurez le niveau. Comptez 15 min en taxi depuis la résidence.</span><span data-lang="en">Lagoon PK 25 is your main playground. Foum El Bouir for wing-in-waves sessions when you're ready. 15 minutes by taxi from the residence.</span><span data-lang="es">La Laguna PK 25 es tu campo de juego principal. Foum El Bouir para las sesiones de wing en olas cuando tengas el nivel. 15 min en taxi desde la residencia.</span><span data-lang="pt">A Lagoa PK 25 é o seu terreno de jogo principal. Foum El Bouir para sessões de wing em ondas quando tiver o nível. 15 minutos de táxi desde a residência.</span><span data-lang="it">La Laguna PK 25 è il vostro campo da gioco principale. Foum El Bouir per le sessioni wing-in-waves quando avrete il livello. 15 minuti in taxi dalla residenza.</span></p>
+    </div>
+    <div class="profile-reco" id="reco-aventurier">
+      <p class="reco-label"><span data-lang="fr" class="lang-visible">🐪 Pour vous, aventurier</span><span data-lang="en">🐪 For you, adventurer</span><span data-lang="es">🐪 Para ti, aventurero</span><span data-lang="pt">🐪 Para si, aventureiro</span><span data-lang="it">🐪 Per voi, avventuriero</span></p>
+      <p class="reco-text"><span data-lang="fr" class="lang-visible">Foum El Bouir le matin pour le surf ou l'observation, la Dune Blanche l'après-midi en quad, bivouac dans le désert le soir. Le programme parfait.</span><span data-lang="en">Foum El Bouir in the morning for surf or watching, the White Dune in the afternoon by quad, bivouac in the desert at night. The perfect itinerary.</span><span data-lang="es">Foum El Bouir por la mañana para surf o avistar, la Duna Blanca por la tarde en quad, bivouac en el desierto por la noche. El programa perfecto.</span><span data-lang="pt">Foum El Bouir de manhã para surf ou observação, Duna Branca à tarde em quad, bivaque no deserto à noite. O programa perfeito.</span><span data-lang="it">Foum El Bouir la mattina per il surf o l'osservazione, la Duna Bianca nel pomeriggio in quad, bivacco nel deserto la sera. Il programma perfetto.</span></p>
+    </div>
+    <div class="profile-reco" id="reco-famille">
+      <p class="reco-label"><span data-lang="fr" class="lang-visible">👨‍👩‍👧 Pour vous, en famille</span><span data-lang="en">👨‍👩‍👧 For you, as a family</span><span data-lang="es">👨‍👩‍👧 Para vosotros, en familia</span><span data-lang="pt">👨‍👩‍👧 Para vós, em família</span><span data-lang="it">👨‍👩‍👧 Per voi, in famiglia</span></p>
+      <p class="reco-text"><span data-lang="fr" class="lang-visible">La Lagune pour les initiation kite des ados, la plage de Foum El Bouir pour les plus petits. Équitation bord de mer pour tout le monde. Le Pescador pour le dîner.</span><span data-lang="en">The Lagoon for teen kite initiation, Foum El Bouir beach for the little ones. Horse riding by the sea for everyone. Pescador for dinner.</span><span data-lang="es">La Laguna para la iniciación kite de los adolescentes, la playa de Foum El Bouir para los más pequeños. Equitación junto al mar para todos. Pescador para cenar.</span><span data-lang="pt">A Lagoa para a iniciação kite dos adolescentes, a praia de Foum El Bouir para os mais pequenos. Equitação à beira-mar para todos. Pescador para jantar.</span><span data-lang="it">La Laguna per l'iniziazione kite degli adolescenti, la spiaggia di Foum El Bouir per i più piccoli. Equitazione in riva al mare per tutti. Pescador per cena.</span></p>
+    </div>
+    <div class="profile-reco" id="reco-couple">
+      <p class="reco-label"><span data-lang="fr" class="lang-visible">💫 Pour vous, en couple</span><span data-lang="en">💫 For you, as a couple</span><span data-lang="es">💫 Para vosotros, en pareja</span><span data-lang="pt">💫 Para vós, em casal</span><span data-lang="it">💫 Per voi, in coppia</span></p>
+      <p class="reco-text"><span data-lang="fr" class="lang-visible">Yoga au lever du soleil sur la plage, source Asma en milieu de journée, coucher de soleil au Pescador. Ajoutez une nuit de bivouac dans le désert — inoubliable.</span><span data-lang="en">Sunrise yoga on the beach, Source Asma at midday, sunset at Pescador. Add a night's bivouac in the desert — unforgettable.</span><span data-lang="es">Yoga al amanecer en la playa, fuente Asma a mediodía, puesta de sol en el Pescador. Añade una noche de bivouac en el desierto — inolvidable.</span><span data-lang="pt">Yoga ao nascer do sol na praia, nascente Asma ao meio-dia, pôr do sol no Pescador. Acrescente uma noite de bivaque no deserto — inesquecível.</span><span data-lang="it">Yoga all'alba sulla spiaggia, sorgente Asma a mezzogiorno, tramonto al Pescador. Aggiungete una notte di bivacco nel deserto — indimenticabile.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ── ACTIVITÉS ── -->
+<section id="activites" aria-labelledby="activites-title">
+  <div class="section-inner">
+    <p class="section-tag reveal"><span data-lang="fr" class="lang-visible">Expériences · Péninsule de Dakhla</span><span data-lang="en">Experiences · Peninsula of Dakhla</span><span data-lang="es">Experiencias · Península de Dakhla</span><span data-lang="pt">Experiências · Península de Dakhla</span><span data-lang="it">Esperienze · Penisola di Dakhla</span></p>
+    <h2 class="section-title reveal" id="activites-title" style="transition-delay:.05s">
+      <span data-lang="fr" class="lang-visible">Vivre <em>Dakhla</em></span><span data-lang="en">Living <em>Dakhla</em></span><span data-lang="es">Vivir <em>Dakhla</em></span><span data-lang="pt">Viver <em>Dakhla</em></span><span data-lang="it">Vivere <em>Dakhla</em></span>
+    </h2>
+    <p class="section-lead reveal" style="transition-delay:.1s"><span data-lang="fr" class="lang-visible">De l'Atlantique sauvage aux dunes du Sahara — chaque journée est une expérience différente.</span><span data-lang="en">From the wild Atlantic to the Saharan dunes — every day is a different experience.</span><span data-lang="es">Del Atlántico salvaje a las dunas del Sáhara — cada día es una experiencia diferente.</span><span data-lang="pt">Do Atlântico selvagem às dunas do Saara — cada dia é uma experiência diferente.</span><span data-lang="it">Dall'Atlantico selvaggio alle dune del Sahara — ogni giorno è un'esperienza diversa.</span></p>
+
+    <div class="act-filter reveal" style="transition-delay:.15s" role="group" aria-label="Filtrer les activités">
+      <button class="act-filter-btn active" onclick="filterActs('all',this)"><span data-lang="fr" class="lang-visible">Tout</span><span data-lang="en">All</span><span data-lang="es">Todo</span><span data-lang="pt">Tudo</span><span data-lang="it">Tutto</span></button>
+      <button class="act-filter-btn" onclick="filterActs('mer',this)"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></button>
+      <button class="act-filter-btn" onclick="filterActs('desert',this)"><span data-lang="fr" class="lang-visible">🏜 Désert</span><span data-lang="en">🏜 Desert</span><span data-lang="es">🏜 Desierto</span><span data-lang="pt">🏜 Deserto</span><span data-lang="it">🏜 Deserto</span></button>
+      <button class="act-filter-btn" onclick="filterActs('nature',this)"><span data-lang="fr" class="lang-visible">🌿 Nature</span><span data-lang="en">🌿 Nature</span><span data-lang="es">🌿 Naturaleza</span><span data-lang="pt">🌿 Natureza</span><span data-lang="it">🌿 Natura</span></button>
+      <button class="act-filter-btn" onclick="filterActs('culture',this)"><span data-lang="fr" class="lang-visible">🏺 Culture</span><span data-lang="en">🏺 Culture</span><span data-lang="es">🏺 Cultura</span><span data-lang="pt">🏺 Cultura</span><span data-lang="it">🏺 Cultura</span></button>
+    </div>
+
+    <div class="acts-grid reveal" style="transition-delay:.2s">
+
+      <div class="act-card" data-cat="mer">
+        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=70')"></div>
+        <div class="act-body">
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
+          <p class="act-name"><span data-lang="fr" class="lang-visible">Surf · Foum El Bouir</span><span data-lang="en">Surf · Foum El Bouir</span><span data-lang="es">Surf · Foum El Bouir</span><span data-lang="pt">Surf · Foum El Bouir</span><span data-lang="it">Surf · Foum El Bouir</span></p>
+          <p class="act-desc"><span data-lang="fr" class="lang-visible">La droite mythique de l'Atlantique. Point break atlantique technique, riders confirmés. Barrels hivernaux de classe mondiale.</span><span data-lang="en">The mythical Atlantic right-hander. Technical Atlantic point break, experienced riders. World-class winter barrels.</span><span data-lang="es">La derecha mítica del Atlántico. Point break atlántico técnico, riders confirmados. Barrels invernales de clase mundial.</span><span data-lang="pt">A direita mítica do Atlântico. Point break atlântico técnico, riders experientes. Barrels de inverno de classe mundial.</span><span data-lang="it">Il mitico diritto dell'Atlantico. Point break atlantico tecnico, rider confermati. Barrel invernali di classe mondiale.</span></p>
+          <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Surfeur · Aventurier</span><span data-lang="en">✓ Surfer · Adventurer</span><span data-lang="es">✓ Surfista · Aventurero</span><span data-lang="pt">✓ Surfista · Aventureiro</span><span data-lang="it">✓ Surfista · Avventuriero</span></p>
+        </div>
+      </div>
+
+      <div class="act-card" data-cat="mer">
+        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=600&q=70')"></div>
+        <div class="act-body">
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
+          <p class="act-name"><span data-lang="fr" class="lang-visible">Kitesurf · La Lagune</span><span data-lang="en">Kitesurf · The Lagoon</span><span data-lang="es">Kitesurf · La Laguna</span><span data-lang="pt">Kitesurf · A Lagoa</span><span data-lang="it">Kitesurf · La Laguna</span></p>
+          <p class="act-desc"><span data-lang="fr" class="lang-visible">300 jours de vent par an. Le spot kite référence mondial, PK 25.</span><span data-lang="en">300 days of wind a year. The world's benchmark kite spot, PK 25.</span><span data-lang="es">300 días de viento al año. El spot kite de referencia mundial, PK 25.</span><span data-lang="pt">300 dias de vento por ano. O spot kite de referência mundial, PK 25.</span><span data-lang="it">300 giorni di vento l'anno. Lo spot kite di riferimento mondiale, PK 25.</span></p>
+          <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Kiteur · Famille</span><span data-lang="en">✓ Kiter · Family</span><span data-lang="es">✓ Kitero · Familia</span><span data-lang="pt">✓ Kitesurfista · Família</span><span data-lang="it">✓ Kitesurfista · Famiglia</span></p>
+        </div>
+      </div>
+
+      <div class="act-card" data-cat="mer">
+        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=70')"></div>
+        <div class="act-body">
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
+          <p class="act-name"><span data-lang="fr" class="lang-visible">Kayak de mer</span><span data-lang="en">Sea kayak</span><span data-lang="es">Kayak de mar</span><span data-lang="pt">Kayak de mar</span><span data-lang="it">Kayak di mare</span></p>
+          <p class="act-desc"><span data-lang="fr" class="lang-visible">Exploration de la côte atlantique depuis Foum El Bouir. Faune marine exceptionnelle.</span><span data-lang="en">Exploring the Atlantic coast from Foum El Bouir. Exceptional marine wildlife.</span><span data-lang="es">Exploración de la costa atlántica desde Foum El Bouir. Fauna marina excepcional.</span><span data-lang="pt">Exploração da costa atlântica desde Foum El Bouir. Fauna marinha excecional.</span><span data-lang="it">Esplorazione della costa atlantica da Foum El Bouir. Fauna marina eccezionale.</span></p>
+          <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Couple · Nature</span><span data-lang="en">✓ Couple · Nature</span><span data-lang="es">✓ Pareja · Naturaleza</span><span data-lang="pt">✓ Casal · Natureza</span><span data-lang="it">✓ Coppia · Natura</span></p>
+        </div>
+      </div>
+
+      <div class="act-card" data-cat="mer">
+        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=70')"></div>
+        <div class="act-body">
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
+          <p class="act-name"><span data-lang="fr" class="lang-visible">Île du Dragon</span><span data-lang="en">Dragon Island</span><span data-lang="es">Isla del Dragón</span><span data-lang="pt">Ilha do Dragão</span><span data-lang="it">Isola del Drago</span></p>
+          <p class="act-desc"><span data-lang="fr" class="lang-visible">Spot iconique de la lagune, accessible en bateau. Eaux turquoise, flamants roses.</span><span data-lang="en">Iconic lagoon spot, accessible by boat. Turquoise waters, pink flamingos.</span><span data-lang="es">Spot icónico de la laguna, accesible en barco. Aguas turquesas, flamencos rosas.</span><span data-lang="pt">Spot icónico da lagoa, acessível de barco. Águas turquesa, flamingos cor-de-rosa.</span><span data-lang="it">Spot iconico della laguna, accessibile in barca. Acque turchesi, fenicotteri rosa.</span></p>
+          <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Tous profils</span><span data-lang="en">✓ All profiles</span><span data-lang="es">✓ Todos los perfiles</span><span data-lang="pt">✓ Todos os perfis</span><span data-lang="it">✓ Tutti i profili</span></p>
+        </div>
+      </div>
+
+      <div class="act-card" data-cat="mer">
+        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=70')"></div>
+        <div class="act-body">
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
+          <p class="act-name"><span data-lang="fr" class="lang-visible">Plage Porto Rico</span><span data-lang="en">Porto Rico Beach</span><span data-lang="es">Playa Porto Rico</span><span data-lang="pt">Praia Porto Rico</span><span data-lang="it">Spiaggia Porto Rico</span></p>
+          <p class="act-desc"><span data-lang="fr" class="lang-visible">Plage sauvage, préservée. Baignade, farniente, couchers de soleil spectaculaires.</span><span data-lang="en">Wild, untouched beach. Swimming, lazy days, spectacular sunsets.</span><span data-lang="es">Playa salvaje y preservada. Baño, dolce far niente, atardeceres espectaculares.</span><span data-lang="pt">Praia selvagem e preservada. Banho, dolce far niente, pôres do sol espetaculares.</span><span data-lang="it">Spiaggia selvaggia e preservata. Nuoto, dolce far niente, tramonti spettacolari.</span></p>
+          <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Couple · Famille</span><span data-lang="en">✓ Couple · Family</span><span data-lang="es">✓ Pareja · Familia</span><span data-lang="pt">✓ Casal · Família</span><span data-lang="it">✓ Coppia · Famiglia</span></p>
+        </div>
+      </div>
+
+      <div class="act-card" data-cat="mer">
+        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=70')"></div>
+        <div class="act-body">
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
+          <p class="act-name"><span data-lang="fr" class="lang-visible">Pêche traditionnelle</span><span data-lang="en">Traditional fishing</span><span data-lang="es">Pesca tradicional</span><span data-lang="pt">Pesca tradicional</span><span data-lang="it">Pesca tradizionale</span></p>
+          <p class="act-desc"><span data-lang="fr" class="lang-visible">Sortie à l'aube avec les pêcheurs locaux. Expérience authentique, poisson du jour.</span><span data-lang="en">Dawn outing with local fishermen. Authentic experience, catch of the day.</span><span data-lang="es">Salida al amanecer con los pescadores locales. Experiencia auténtica, pescado del día.</span><span data-lang="pt">Saída ao amanhecer com os pescadores locais. Experiência autêntica, peixe do dia.</span><span data-lang="it">Uscita all'alba con i pescatori locali. Esperienza autentica, pesce del giorno.</span></p>
+          <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Aventurier · Culture</span><span data-lang="en">✓ Adventurer · Culture</span><span data-lang="es">✓ Aventurero · Cultura</span><span data-lang="pt">✓ Aventureiro · Cultura</span><span data-lang="it">✓ Avventuriero · Cultura</span></p>
+        </div>
+      </div>
+
+      <div class="act-card" data-cat="desert">
+        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=600&q=70')"></div>
+        <div class="act-body">
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">🏜 Désert</span><span data-lang="en">🏜 Desert</span><span data-lang="es">🏜 Desierto</span><span data-lang="pt">🏜 Deserto</span><span data-lang="it">🏜 Deserto</span></p>
+          <p class="act-name"><span data-lang="fr" class="lang-visible">Quad · Dunes</span><span data-lang="en">Quad · Dunes</span><span data-lang="es">Quad · Dunas</span><span data-lang="pt">Quad · Dunas</span><span data-lang="it">Quad · Dune</span></p>
+          <p class="act-desc"><span data-lang="fr" class="lang-visible">Adrénaline entre dunes et côte. Excursion guidée, coucher de soleil sur les crêtes.</span><span data-lang="en">Adrenaline between dunes and coast. Guided excursion, sunset over the ridgelines.</span><span data-lang="es">Adrenalina entre dunas y costa. Excursión guiada, atardecer sobre las crestas.</span><span data-lang="pt">Adrenalina entre dunas e costa. Excursão guiada, pôr do sol sobre as cristas.</span><span data-lang="it">Adrenalina tra dune e costa. Escursione guidata, tramonto sulle creste.</span></p>
+          <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Aventurier · Couple</span><span data-lang="en">✓ Adventurer · Couple</span><span data-lang="es">✓ Aventurero · Pareja</span><span data-lang="pt">✓ Aventureiro · Casal</span><span data-lang="it">✓ Avventuriero · Coppia</span></p>
+        </div>
+      </div>
+
+      <div class="act-card" data-cat="desert">
+        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1541698444083-023c97d3f4b6?w=600&q=70')"></div>
+        <div class="act-body">
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">🏜 Désert</span><span data-lang="en">🏜 Desert</span><span data-lang="es">🏜 Desierto</span><span data-lang="pt">🏜 Deserto</span><span data-lang="it">🏜 Deserto</span></p>
+          <p class="act-name"><span data-lang="fr" class="lang-visible">La Dune Blanche</span><span data-lang="en">The White Dune</span><span data-lang="es">La Duna Blanca</span><span data-lang="pt">A Duna Branca</span><span data-lang="it">La Duna Bianca</span></p>
+          <p class="act-desc"><span data-lang="fr" class="lang-visible">Vue panoramique sur la lagune et l'Atlantique. Incontournable — à faire au lever du soleil.</span><span data-lang="en">Panoramic view over the lagoon and the Atlantic. A must — best at sunrise.</span><span data-lang="es">Vista panorámica sobre la laguna y el Atlántico. Imprescindible — a hacer al amanecer.</span><span data-lang="pt">Vista panorâmica sobre a lagoa e o Atlântico. Imperdível — melhor ao nascer do sol.</span><span data-lang="it">Vista panoramica sulla laguna e sull'Atlantico. Da non perdere — meglio all'alba.</span></p>
+          <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Tous profils</span><span data-lang="en">✓ All profiles</span><span data-lang="es">✓ Todos los perfiles</span><span data-lang="pt">✓ Todos os perfis</span><span data-lang="it">✓ Tutti i profili</span></p>
+        </div>
+      </div>
+
+      <div class="act-card" data-cat="desert">
+        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1445991842772-097fea258e7b?w=600&q=70')"></div>
+        <div class="act-body">
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">🏜 Désert</span><span data-lang="en">🏜 Desert</span><span data-lang="es">🏜 Desierto</span><span data-lang="pt">🏜 Deserto</span><span data-lang="it">🏜 Deserto</span></p>
+          <p class="act-name"><span data-lang="fr" class="lang-visible">Bivouac · Excursion désert</span><span data-lang="en">Bivouac · Desert excursion</span><span data-lang="es">Bivouac · Excursión desierto</span><span data-lang="pt">Bivaque · Excursão no deserto</span><span data-lang="it">Bivacco · Escursione nel deserto</span></p>
+          <p class="act-desc"><span data-lang="fr" class="lang-visible">4x4, nuit sous les étoiles, thé sahraoui au feu de camp. La vraie Mauritanie à portée.</span><span data-lang="en">4×4, night under the stars, Sahrawi tea by the campfire. The real Mauritania within reach.</span><span data-lang="es">4×4, noche bajo las estrellas, té saharaui junto al fuego. La verdadera Mauritania al alcance.</span><span data-lang="pt">4×4, noite sob as estrelas, chá saharawi à beira do fogo. A verdadeira Mauritânia ao alcance.</span><span data-lang="it">4×4, notte sotto le stelle, tè saharawi al fuoco. La vera Mauritania a portata di mano.</span></p>
+          <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Aventurier · Couple</span><span data-lang="en">✓ Adventurer · Couple</span><span data-lang="es">✓ Aventurero · Pareja</span><span data-lang="pt">✓ Aventureiro · Casal</span><span data-lang="it">✓ Avventuriero · Coppia</span></p>
+        </div>
+      </div>
+
+      <div class="act-card" data-cat="nature">
+        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=600&q=70')"></div>
+        <div class="act-body">
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">🌿 Nature</span><span data-lang="en">🌿 Nature</span><span data-lang="es">🌿 Nature</span><span data-lang="pt">🌿 Nature</span><span data-lang="it">🌿 Nature</span></p>
+          <p class="act-name"><span data-lang="fr" class="lang-visible">Équitation bord de mer</span><span data-lang="en">Horse riding by the sea</span><span data-lang="es">Equitación a orillas del mar</span><span data-lang="pt">Equitação à beira-mar</span><span data-lang="it">Equitazione in riva al mare</span></p>
+          <p class="act-desc"><span data-lang="fr" class="lang-visible">Galoper sur la plage de Foum El Bouir face aux vagues. Rare, photogénique, inoubliable.</span><span data-lang="en">Galloping along Foum El Bouir beach facing the waves. Rare, photogenic, unforgettable.</span><span data-lang="es">Galopar por la playa de Foum El Bouir frente a las olas. Raro, fotogénico, inolvidable.</span><span data-lang="pt">Galopar na praia de Foum El Bouir face às ondas. Raro, fotogénico, inesquecível.</span><span data-lang="it">Galoppare sulla spiaggia di Foum El Bouir di fronte alle onde. Raro, fotogenico, indimenticabile.</span></p>
+          <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Couple · Famille</span><span data-lang="en">✓ Couple · Family</span><span data-lang="es">✓ Pareja · Familia</span><span data-lang="pt">✓ Casal · Família</span><span data-lang="it">✓ Coppia · Famiglia</span></p>
+        </div>
+      </div>
+
+      <div class="act-card" data-cat="nature">
+        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=70')"></div>
+        <div class="act-body">
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">🌿 Nature</span><span data-lang="en">🌿 Nature</span><span data-lang="es">🌿 Nature</span><span data-lang="pt">🌿 Nature</span><span data-lang="it">🌿 Nature</span></p>
+          <p class="act-name"><span data-lang="fr" class="lang-visible">Yoga · Lever du soleil</span><span data-lang="en">Yoga · Sunrise</span><span data-lang="es">Yoga · Amanecer</span><span data-lang="pt">Yoga · Nascer do sol</span><span data-lang="it">Yoga · Alba</span></p>
+          <p class="act-desc"><span data-lang="fr" class="lang-visible">Sur la plage de Foum El Bouir, face à l'Atlantique. Sessions sur réservation.</span><span data-lang="en">On Foum El Bouir beach, facing the Atlantic. Sessions on booking.</span><span data-lang="es">En la playa de Foum El Bouir, frente al Atlántico. Sesiones bajo reserva.</span><span data-lang="pt">Na praia de Foum El Bouir, face ao Atlântico. Sessões mediante reserva.</span><span data-lang="it">Sulla spiaggia di Foum El Bouir, di fronte all'Atlantico. Sessioni su prenotazione.</span></p>
+          <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Couple · Bien-être</span><span data-lang="en">✓ Couple · Wellness</span><span data-lang="es">✓ Pareja · Bienestar</span><span data-lang="pt">✓ Casal · Bem-estar</span><span data-lang="it">✓ Coppia · Benessere</span></p>
+        </div>
+      </div>
+
+      <div class="act-card" data-cat="nature">
+        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1497752531616-c3afd9760a11?w=600&q=70')"></div>
+        <div class="act-body">
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">🌿 Nature</span><span data-lang="en">🌿 Nature</span><span data-lang="es">🌿 Nature</span><span data-lang="pt">🌿 Nature</span><span data-lang="it">🌿 Nature</span></p>
+          <p class="act-name"><span data-lang="fr" class="lang-visible">Source Asma</span><span data-lang="en">Source Asma</span><span data-lang="es">Fuente Asma</span><span data-lang="pt">Nascente Asma</span><span data-lang="it">Sorgente Asma</span></p>
+          <p class="act-desc"><span data-lang="fr" class="lang-visible">Off the beaten track. Source naturelle cachée dans la péninsule, lieu de sérénité absolue.</span><span data-lang="en">Off the beaten track. A natural spring hidden in the peninsula, a place of absolute serenity.</span><span data-lang="es">Off the beaten track. Fuente natural escondida en la península, lugar de serenidad absoluta.</span><span data-lang="pt">Fora dos circuitos turísticos. Nascente natural escondida na península, lugar de serenidade absoluta.</span><span data-lang="it">Fuori dai sentieri battuti. Sorgente naturale nascosta nella penisola, luogo di serenità assoluta.</span></p>
+          <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Aventurier · Couple</span><span data-lang="en">✓ Adventurer · Couple</span><span data-lang="es">✓ Aventurero · Pareja</span><span data-lang="pt">✓ Aventureiro · Casal</span><span data-lang="it">✓ Avventuriero · Coppia</span></p>
+        </div>
+      </div>
+
+      <div class="act-card" data-cat="nature">
+        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=600&q=70')"></div>
+        <div class="act-body">
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">🌿 Nature</span><span data-lang="en">🌿 Nature</span><span data-lang="es">🌿 Nature</span><span data-lang="pt">🌿 Nature</span><span data-lang="it">🌿 Nature</span></p>
+          <p class="act-name"><span data-lang="fr" class="lang-visible">Flamants roses · Lagune</span><span data-lang="en">Pink flamingos · Lagoon</span><span data-lang="es">Flamencos rosas · Laguna</span><span data-lang="pt">Flamingos · Lagoa</span><span data-lang="it">Fenicotteri rosa · Laguna</span></p>
+          <p class="act-desc"><span data-lang="fr" class="lang-visible">Colonie permanente sur la lagune. Observation au lever du soleil depuis la rive.</span><span data-lang="en">Permanent colony on the lagoon. Sunrise watching from the bank.</span><span data-lang="es">Colonia permanente en la laguna. Observación al amanecer desde la orilla.</span><span data-lang="pt">Colónia permanente na lagoa. Observação ao nascer do sol desde a margem.</span><span data-lang="it">Colonia permanente sulla laguna. Osservazione all'alba dalla riva.</span></p>
+          <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Famille · Nature</span><span data-lang="en">✓ Family · Nature</span><span data-lang="es">✓ Familia · Naturaleza</span><span data-lang="pt">✓ Família · Natureza</span><span data-lang="it">✓ Famiglia · Natura</span></p>
+        </div>
+      </div>
+
+      <div class="act-card" data-cat="nature">
+        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=70')"></div>
+        <div class="act-body">
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">🌿 Nature</span><span data-lang="en">🌿 Nature</span><span data-lang="es">🌿 Nature</span><span data-lang="pt">🌿 Nature</span><span data-lang="it">🌿 Nature</span></p>
+          <p class="act-name"><span data-lang="fr" class="lang-visible">Parapente · Dunes</span><span data-lang="en">Paragliding · Dunes</span><span data-lang="es">Parapente · Dunas</span><span data-lang="pt">Parapente · Dunas</span><span data-lang="it">Parapendio · Dune</span></p>
+          <p class="act-desc"><span data-lang="fr" class="lang-visible">Décollage des dunes face à l'océan. Vue à 360° sur la péninsule — unique au monde.</span><span data-lang="en">Takeoff from the dunes facing the ocean. 360° view over the peninsula — unique in the world.</span><span data-lang="es">Despegue desde las dunas frente al océano. Vista 360° sobre la península — única en el mundo.</span><span data-lang="pt">Descolagem das dunas face ao oceano. Vista a 360° sobre a península — única no mundo.</span><span data-lang="it">Decollo dalle dune di fronte all'oceano. Vista a 360° sulla penisola — unica al mondo.</span></p>
+          <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Aventurier · Sensations</span><span data-lang="en">✓ Adventurer · Thrills</span><span data-lang="es">✓ Aventurero · Sensaciones</span><span data-lang="pt">✓ Aventureiro · Sensações</span><span data-lang="it">✓ Avventuriero · Emozioni</span></p>
+        </div>
+      </div>
+
+      <div class="act-card" data-cat="culture">
+        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=600&q=70')"></div>
+        <div class="act-body">
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">🏺 Culture</span><span data-lang="en">🏺 Culture</span><span data-lang="es">🏺 Culture</span><span data-lang="pt">🏺 Culture</span><span data-lang="it">🏺 Culture</span></p>
+          <p class="act-name"><span data-lang="fr" class="lang-visible">Cérémonie du thé sahraoui</span><span data-lang="en">Sahrawi tea ceremony</span><span data-lang="es">Ceremonia del té saharaui</span><span data-lang="pt">Cerimónia do chá saharawi</span><span data-lang="it">Cerimonia del tè saharawi</span></p>
+          <p class="act-desc"><span data-lang="fr" class="lang-visible">Chez l'habitant, trois verres rituels. L'hospitalité saharienne dans toute son authenticité.</span><span data-lang="en">At a local home, three ritual glasses. Saharan hospitality in all its authenticity.</span><span data-lang="es">En casa de un habitante, tres vasos rituales. La hospitalidad sahariana en toda su autenticidad.</span><span data-lang="pt">Em casa de um habitante, três copos rituais. A hospitalidade sahariana em toda a sua autenticidade.</span><span data-lang="it">A casa di un locale, tre bicchieri rituali. L'ospitalità sahariana in tutta la sua autenticità.</span></p>
+          <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Tous profils</span><span data-lang="en">✓ All profiles</span><span data-lang="es">✓ Todos los perfiles</span><span data-lang="pt">✓ Todos os perfis</span><span data-lang="it">✓ Tutti i profili</span></p>
+        </div>
+      </div>
+
+      <div class="act-card" data-cat="culture">
+        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=600&q=70')"></div>
+        <div class="act-body">
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">🏺 Culture</span><span data-lang="en">🏺 Culture</span><span data-lang="es">🏺 Culture</span><span data-lang="pt">🏺 Culture</span><span data-lang="it">🏺 Culture</span></p>
+          <p class="act-name"><span data-lang="fr" class="lang-visible">Marché artisanal · Dakhla</span><span data-lang="en">Artisan market · Dakhla</span><span data-lang="es">Mercado artesanal · Dakhla</span><span data-lang="pt">Mercado artesanal · Dakhla</span><span data-lang="it">Mercato artigianale · Dakhla</span></p>
+          <p class="act-desc"><span data-lang="fr" class="lang-visible">Tissages, bijoux, épices sahraouies. Le cœur de la culture locale, à 15 min de la résidence.</span><span data-lang="en">Weavings, jewellery, Sahrawi spices. The heart of local culture, 15 min from the residence.</span><span data-lang="es">Tejidos, joyas, especias sahrauis. El corazón de la cultura local, a 15 min de la residencia.</span><span data-lang="pt">Tecidos, joias, especiarias sahrauis. O coração da cultura local, a 15 min da residência.</span><span data-lang="it">Tessuti, gioielli, spezie saharawi. Il cuore della cultura locale, a 15 min dalla residenza.</span></p>
+          <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Famille · Culture</span><span data-lang="en">✓ Family · Culture</span><span data-lang="es">✓ Familia · Cultura</span><span data-lang="pt">✓ Família · Cultura</span><span data-lang="it">✓ Famiglia · Cultura</span></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ÉCOLES ── -->
+<section id="ecoles" aria-labelledby="ecoles-title">
+  <div class="section-inner">
+    <p class="section-tag reveal"><span data-lang="fr" class="lang-visible">Partenaires recommandés</span><span data-lang="en">Recommended partners</span><span data-lang="es">Socios recomendados</span><span data-lang="pt">Parceiros recomendados</span><span data-lang="it">Partner consigliati</span></p>
+    <h2 class="section-title reveal" id="ecoles-title" style="transition-delay:.05s">
+      <span data-lang="fr" class="lang-visible">Écoles de surf<br>&amp; <em>kitesurf</em></span><span data-lang="en">Surf schools<br>&amp; <em>kitesurfing</em></span><span data-lang="es">Escuelas de surf<br>&amp; <em>kitesurf</em></span><span data-lang="pt">Escolas de surf<br>&amp; <em>kitesurf</em></span><span data-lang="it">Scuole di surf<br>&amp; <em>kitesurf</em></span>
+    </h2>
+    <p class="section-lead reveal" style="transition-delay:.1s"><span data-lang="fr" class="lang-visible">Sélection vérifiée — pour tous les niveaux, tous les profils.</span><span data-lang="en">Verified selection — for every level, every profile.</span><span data-lang="es">Selección verificada — para todos los niveles, todos los perfiles.</span><span data-lang="pt">Seleção verificada — para todos os níveis, todos os perfis.</span><span data-lang="it">Selezione verificata — per ogni livello, ogni profilo.</span></p>
+
+    <div class="ecoles-filter reveal" style="transition-delay:.15s" role="group" aria-label="Filtrer les écoles">
+      <button class="ecole-filter-btn active" onclick="filterEcoles('all',this)"><span data-lang="fr" class="lang-visible">Toutes</span><span data-lang="en">All</span><span data-lang="es">Todas</span><span data-lang="pt">Todas</span><span data-lang="it">Tutte</span></button>
+      <button class="ecole-filter-btn" onclick="filterEcoles('surf',this)"><span data-lang="fr" class="lang-visible">🏄 Surf</span><span data-lang="en">🏄 Surf</span><span data-lang="es">🏄 Surf</span><span data-lang="pt">🏄 Surf</span><span data-lang="it">🏄 Surf</span></button>
+      <button class="ecole-filter-btn" onclick="filterEcoles('kite',this)"><span data-lang="fr" class="lang-visible">🪁 Kite</span><span data-lang="en">🪁 Kite</span><span data-lang="es">🪁 Kite</span><span data-lang="pt">🪁 Kite</span><span data-lang="it">🪁 Kite</span></button>
+      <button class="ecole-filter-btn" onclick="filterEcoles('both',this)"><span data-lang="fr" class="lang-visible">⚡ Multi</span><span data-lang="en">⚡ Multi</span><span data-lang="es">⚡ Multi</span><span data-lang="pt">⚡ Multi</span><span data-lang="it">⚡ Multi</span></button>
+    </div>
+
+    <ul class="ecoles-grid reveal" style="transition-delay:.2s" role="list">
+      <li class="ecole-card" data-type="surf">
+        <span class="ecole-type surf">Surf</span>
+        <h3>Freestyle Academy Dakhla</h3>
+        <p class="ecole-loc"><span data-lang="fr" class="lang-visible">📍 Km 12, Plage Foum El Bouir</span><span data-lang="en">📍 Km 12, Foum El Bouir Beach</span><span data-lang="es">📍 Km 12, Playa Foum El Bouir</span><span data-lang="pt">📍 Km 12, Praia Foum El Bouir</span><span data-lang="it">📍 Km 12, Spiaggia Foum El Bouir</span></p>
+        <p><span data-lang="fr" class="lang-visible">L'école locale de référence, directement sur le spot. Surf, wing et kite face aux vagues de l'Atlantique.</span><span data-lang="en">The local benchmark school, right on the spot. Surf, wing and kite facing the Atlantic waves.</span><span data-lang="es">La escuela local de referencia, directamente en el spot. Surf, wing y kite frente a las olas del Atlántico.</span><span data-lang="pt">A escola local de referência, diretamente no spot. Surf, wing e kite face às ondas do Atlântico.</span><span data-lang="it">La scuola locale di riferimento, direttamente sullo spot. Surf, wing e kite di fronte alle onde atlantiche.</span></p>
+        <div class="ecole-tags"><span class="tag">Surf</span><span class="tag">Wing</span><span class="tag"><span data-lang="fr" class="lang-visible">Face au spot</span><span data-lang="en">On the spot</span><span data-lang="es">Frente al spot</span><span data-lang="pt">No spot</span><span data-lang="it">Sul posto</span></span></div>
+      </li>
+      <li class="ecole-card" data-type="both">
+        <span class="ecole-type both">Multi</span>
+        <h3>Ocean Academy — La Tour d'Éole</h3>
+        <p class="ecole-loc"><span data-lang="fr" class="lang-visible">📍 PK 28, Lagune</span><span data-lang="en">📍 PK 28, Lagoon</span><span data-lang="es">📍 PK 28, Laguna</span><span data-lang="pt">📍 PK 28, Lagoa</span><span data-lang="it">📍 PK 28, Laguna</span></p>
+        <p><span data-lang="fr" class="lang-visible">Co-fondée avec Bruna Kajiya, triple championne du monde. Multispot, niveau pro, excursions Foum El Bouir.</span><span data-lang="en">Co-founded with Bruna Kajiya, three-time world champion. Multispot, pro level, Foum El Bouir excursions.</span><span data-lang="es">Co-fundada con Bruna Kajiya, tricampeona del mundo. Multispot, nivel pro, excursiones Foum El Bouir.</span><span data-lang="pt">Co-fundada com Bruna Kajiya, tricampeã mundial. Multispot, nível pro, excursões Foum El Bouir.</span><span data-lang="it">Co-fondata con Bruna Kajiya, tre volte campionessa del mondo. Multispot, livello pro, escursioni Foum El Bouir.</span></p>
+        <div class="ecole-tags"><span class="tag">Pro</span><span class="tag">Multispot</span><span class="tag">Foil</span></div>
+      </li>
+      <li class="ecole-card" data-type="kite">
+        <span class="ecole-type kite">Kite</span>
+        <h3>Dakhla Attitude Kite School</h3>
+        <p class="ecole-loc"><span data-lang="fr" class="lang-visible">📍 Av. al Moukawama, Dakhla</span><span data-lang="en">📍 Av. al Moukawama, Dakhla</span><span data-lang="es">📍 Av. al Moukawama, Dakhla</span><span data-lang="pt">📍 Av. al Moukawama, Dakhla</span><span data-lang="it">📍 Av. al Moukawama, Dakhla</span></p>
+        <p><span data-lang="fr" class="lang-visible">Beach Bar, sessions DJ, accès direct lagune. Ambiance surf décontractée, idéal voyageurs solo.</span><span data-lang="en">Beach Bar, DJ sessions, direct lagoon access. Laid-back surf vibe, ideal for solo travellers.</span><span data-lang="es">Beach Bar, sesiones DJ, acceso directo laguna. Ambiente surf relajado, ideal para viajeros solos.</span><span data-lang="pt">Beach Bar, sessões DJ, acesso direto à lagoa. Ambiente surf descontraído, ideal para viajantes solo.</span><span data-lang="it">Beach Bar, sessioni DJ, accesso diretto alla laguna. Atmosfera surf rilassata, ideale per viaggiatori solo.</span></p>
+        <div class="ecole-tags"><span class="tag">Beach Bar</span><span class="tag"><span data-lang="fr" class="lang-visible">Ambiance</span><span data-lang="en">Vibe</span><span data-lang="es">Ambiente</span><span data-lang="pt">Ambiente</span><span data-lang="it">Atmosfera</span></span></div>
+      </li>
+      <li class="ecole-card" data-type="kite">
+        <span class="ecole-type kite">Kite</span>
+        <h3>Fennekite Dakhla</h3>
+        <p class="ecole-loc"><span data-lang="fr" class="lang-visible">📍 Quartier Moulay Rachid</span><span data-lang="en">📍 Quartier Moulay Rachid</span><span data-lang="es">📍 Quartier Moulay Rachid</span><span data-lang="pt">📍 Quartier Moulay Rachid</span><span data-lang="it">📍 Quartier Moulay Rachid</span></p>
+        <p><span data-lang="fr" class="lang-visible">Petits groupes, moniteurs certifiés. Suivi personnalisé — idéal débutants absolus.</span><span data-lang="en">Small groups, certified instructors. Personalised follow-up — ideal for complete beginners.</span><span data-lang="es">Grupos pequeños, monitores certificados. Seguimiento personalizado — ideal para principiantes absolutos.</span><span data-lang="pt">Grupos pequenos, monitores certificados. Acompanhamento personalizado — ideal para iniciantes absolutos.</span><span data-lang="it">Piccoli gruppi, istruttori certificati. Seguimento personalizzato — ideale per principianti assoluti.</span></p>
+        <div class="ecole-tags"><span class="tag"><span data-lang="fr" class="lang-visible">Débutants</span><span data-lang="en">Beginners</span><span data-lang="es">Principiantes</span><span data-lang="pt">Iniciantes</span><span data-lang="it">Principianti</span></span><span class="tag"><span data-lang="fr" class="lang-visible">Certifiés</span><span data-lang="en">Certified</span><span data-lang="es">Certificados</span><span data-lang="pt">Certificados</span><span data-lang="it">Certificati</span></span></div>
+      </li>
+      <li class="ecole-card" data-type="both">
+        <span class="ecole-type both">Multi</span>
+        <h3>Terres Nomades — Dakhla Surf</h3>
+        <p class="ecole-loc"><span data-lang="fr" class="lang-visible">📍 Péninsule de Dakhla</span><span data-lang="en">📍 Dakhla Peninsula</span><span data-lang="es">📍 Península de Dakhla</span><span data-lang="pt">📍 Península de Dakhla</span><span data-lang="it">📍 Penisola di Dakhla</span></p>
+        <p><span data-lang="fr" class="lang-visible">Séjours multisports. Surf, kite, SUP, kayak, yoga. Excursions Dune Blanche &amp; Île du Dragon.</span><span data-lang="en">Multi-sport stays. Surf, kite, SUP, kayak, yoga. White Dune &amp; Dragon Island excursions.</span><span data-lang="es">Estancias multideporte. Surf, kite, SUP, kayak, yoga. Excursiones Duna Blanca &amp; Isla del Dragón.</span><span data-lang="pt">Estâncias multisporto. Surf, kite, SUP, kayak, yoga. Excursões Duna Branca &amp; Ilha do Dragão.</span><span data-lang="it">Soggiorni multisport. Surf, kite, SUP, kayak, yoga. Escursioni Duna Bianca &amp; Isola del Drago.</span></p>
+        <div class="ecole-tags"><span class="tag">SUP</span><span class="tag">Yoga</span><span class="tag">Kayak</span></div>
+      </li>
+      <li class="ecole-card" data-type="both">
+        <span class="ecole-type both">Multi</span>
+        <h3>Salty Joy Dakhla</h3>
+        <p class="ecole-loc"><span data-lang="fr" class="lang-visible">📍 Dakhla centre</span><span data-lang="en">📍 Dakhla centre</span><span data-lang="es">📍 Centro de Dakhla</span><span data-lang="pt">📍 Centro de Dakhla</span><span data-lang="it">📍 Centro di Dakhla</span></p>
+        <p><span data-lang="fr" class="lang-visible">Club mixte, ambiance inclusive. Idéal pour les voyageuses solos ou groupes d'amies.</span><span data-lang="en">Mixed club, inclusive vibe. Ideal for solo female travellers or groups of friends.</span><span data-lang="es">Club mixto, ambiente inclusivo. Ideal para viajeras solas o grupos de amigas.</span><span data-lang="pt">Clube misto, ambiente inclusivo. Ideal para viajantes solo femininas ou grupos de amigas.</span><span data-lang="it">Club misto, ambiente inclusivo. Ideale per viaggiatrici in solitaria o gruppi di amiche.</span></p>
+        <div class="ecole-tags"><span class="tag"><span data-lang="fr" class="lang-visible">Mixte</span><span data-lang="en">Mixed</span><span data-lang="es">Mixto</span><span data-lang="pt">Misto</span><span data-lang="it">Misto</span></span><span class="tag">Solo welcome</span></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── GASTRONOMIE ── -->
+<section id="gastro" aria-labelledby="gastro-title">
+  <div class="section-inner">
+    <p class="section-tag reveal"><span data-lang="fr" class="lang-visible">Gastronomie &amp; Vie locale</span><span data-lang="en">Gastronomy &amp; Local life</span><span data-lang="es">Gastronomía &amp; Vida local</span><span data-lang="pt">Gastronomia &amp; Vida local</span><span data-lang="it">Gastronomia &amp; Vita locale</span></p>
+    <h2 class="section-title reveal" id="gastro-title" style="transition-delay:.05s">
+      <span data-lang="fr" class="lang-visible">Poisson frais &amp;<br><em>couchers de soleil</em></span><span data-lang="en">Fresh fish &amp;<br><em>sunsets</em></span><span data-lang="es">Pescado fresco &amp;<br><em>atardeceres</em></span><span data-lang="pt">Peixe fresco &amp;<br><em>pôres do sol</em></span><span data-lang="it">Pesce fresco &amp;<br><em>tramonti</em></span>
+    </h2>
+    <p class="section-lead reveal" style="transition-delay:.1s"><span data-lang="fr" class="lang-visible">Les adresses que les locaux se passent de bouche à oreille.</span><span data-lang="en">The addresses locals whisper to each other.</span><span data-lang="es">Los restaurantes que los locales se pasan de boca en boca.</span><span data-lang="pt">Os endereços que os locais passam de boca em boca.</span><span data-lang="it">Gli indirizzi che i locali si passano sottovoce.</span></p>
+
+    <ul class="gastro-list reveal" style="transition-delay:.15s" role="list">
+      <li class="gastro-item">
+        <div class="gastro-img" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=200&q=70')" role="img" aria-label="Westpoint Pescador"></div>
+        <div class="gastro-content">
+          <h3>Westpoint Pescador</h3>
+          <p class="gastro-meta"><span data-lang="fr" class="lang-visible">🌅 Sur place · Résidence West Point</span><span data-lang="en">🌅 On site · West Point Residence</span><span data-lang="es">🌅 En el lugar · Residencia West Point</span><span data-lang="pt">🌅 No local · Residência West Point</span><span data-lang="it">🌅 In loco · Residenza West Point</span></p>
+          <p class="gastro-desc"><span data-lang="fr" class="lang-visible">La meilleure table de Foum El Bouir. Fruits de mer ultra-frais, coucher de soleil face au point break.</span><span data-lang="en">The finest table in Foum El Bouir. Ultra-fresh seafood, sunset facing the point break.</span><span data-lang="es">La mejor mesa de Foum El Bouir. Mariscos ultrafrescos, atardecer frente al point break.</span><span data-lang="pt">A melhor mesa de Foum El Bouir. Marisco ultrafesco, pôr do sol face ao point break.</span><span data-lang="it">La tavola più raffinata di Foum El Bouir. Frutti di mare freschissimi, tramonto sul point break.</span></p>
+          <div class="gastro-icons">
+            <span class="g-pill"><span data-lang="fr" class="lang-visible">🐚 Fruits de mer</span><span data-lang="en">🐚 Seafood</span><span data-lang="es">🐚 Mariscos</span><span data-lang="pt">🐚 Marisco</span><span data-lang="it">🐚 Frutti di mare</span></span><span class="g-pill"><span data-lang="fr" class="lang-visible">🌊 Vue océan</span><span data-lang="en">🌊 Ocean view</span><span data-lang="es">🌊 Vista océano</span><span data-lang="pt">🌊 Vista oceano</span><span data-lang="it">🌊 Vista oceano</span></span><span class="g-pill">🌅 Sunset</span>
+          </div>
+        </div>
+      </li>
+      <li class="gastro-item">
+        <div class="gastro-img" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=200&q=70')" role="img" aria-label="Bavaro Beach Dakhla"></div>
+        <div class="gastro-content">
+          <h3>Bavaro Beach Dakhla</h3>
+          <p class="gastro-meta"><span data-lang="fr" class="lang-visible">🍽 Restaurant-plage · 5 km du centre</span><span data-lang="en">🍽 Beach restaurant · 5 km from centre</span><span data-lang="es">🍽 Restaurante playa · 5 km del centro</span><span data-lang="pt">🍽 Restaurante-praia · 5 km do centro</span><span data-lang="it">🍽 Ristorante-spiaggia · 5 km dal centro</span></p>
+          <p class="gastro-desc"><span data-lang="fr" class="lang-visible">Havre de paix en bord de plage. Poisson frais, terrasse lumière du soir.</span><span data-lang="en">A peaceful haven by the shore. Fresh fish, terrace in the evening light.</span><span data-lang="es">Refugio de paz a orillas de la playa. Pescado fresco, terraza en la luz del atardecer.</span><span data-lang="pt">Um refúgio de paz à beira da praia. Peixe fresco, esplanada com luz do entardecer.</span><span data-lang="it">Un rifugio di pace in riva alla spiaggia. Pesce fresco, terrazza nella luce della sera.</span></p>
+          <div class="gastro-icons">
+            <span class="g-pill"><span data-lang="fr" class="lang-visible">🐟 Poisson grillé</span><span data-lang="en">🐟 Grilled fish</span><span data-lang="es">🐟 Pescado a la brasa</span><span data-lang="pt">🐟 Peixe grelhado</span><span data-lang="it">🐟 Pesce alla griglia</span></span><span class="g-pill"><span data-lang="fr" class="lang-visible">🏖 Plage</span><span data-lang="en">🏖 Beach</span><span data-lang="es">🏖 Playa</span><span data-lang="pt">🏖 Praia</span><span data-lang="it">🏖 Spiaggia</span></span>
+          </div>
+        </div>
+      </li>
+      <li class="gastro-item">
+        <div class="gastro-img" style="background-image:url('https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=200&q=70')" role="img" aria-label="Casa Luis"></div>
+        <div class="gastro-content">
+          <h3>Casa Luis</h3>
+          <p class="gastro-meta"><span data-lang="fr" class="lang-visible">🍴 Local · Centre Dakhla · Budget maîtrisé</span><span data-lang="en">🍴 Local · Dakhla centre · Budget-friendly</span><span data-lang="es">🍴 Local · Centro Dakhla · Presupuesto ajustado</span><span data-lang="pt">🍴 Local · Centro de Dakhla · Orçamento controlado</span><span data-lang="it">🍴 Locale · Centro di Dakhla · Budget accessibile</span></p>
+          <p class="gastro-desc"><span data-lang="fr" class="lang-visible">L'adresse locale par excellence. Menus dès 80 MAD, recettes traditionnelles.</span><span data-lang="en">The local address par excellence. Set menus from 80 MAD, traditional recipes.</span><span data-lang="es">La dirección local por excelencia. Menús desde 80 MAD, recetas tradicionales.</span><span data-lang="pt">O endereço local por excelência. Menus a partir de 80 MAD, receitas tradicionais.</span><span data-lang="it">L'indirizzo locale per eccellenza. Menu da 80 MAD, ricette tradizionali.</span></p>
+          <div class="gastro-icons">
+            <span class="g-pill"><span data-lang="fr" class="lang-visible">💰 Petit budget</span><span data-lang="en">💰 Budget-friendly</span><span data-lang="es">💰 Económico</span><span data-lang="pt">💰 Económico</span><span data-lang="it">💰 Economico</span></span><span class="g-pill">🇲🇦 Local</span>
+          </div>
+        </div>
+      </li>
+      <li class="gastro-item">
+        <div class="gastro-img" style="background-image:url('https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=200&q=70')" role="img" aria-label="Beach Bar Dakhla Attitude"></div>
+        <div class="gastro-content">
+          <h3>Beach Bar · Dakhla Attitude</h3>
+          <p class="gastro-meta"><span data-lang="fr" class="lang-visible">🍹 Bar plage · Côté lagune</span><span data-lang="en">🍹 Beach bar · Lagoon side</span><span data-lang="es">🍹 Bar playa · Lado laguna</span><span data-lang="pt">🍹 Bar de praia · Lado lagoa</span><span data-lang="it">🍹 Bar spiaggia · Lato laguna</span></p>
+          <p class="gastro-desc"><span data-lang="fr" class="lang-visible">Mojitos après session, DJ sunset deux fois par semaine. L'énergie surf-nomade.</span><span data-lang="en">Post-session mojitos, DJ sunset twice a week. The surf-nomad energy.</span><span data-lang="es">Mojitos post-sesión, DJ sunset dos veces por semana. La energía surf-nómada.</span><span data-lang="pt">Mojitos pós-sessão, DJ sunset duas vezes por semana. A energia surf-nómada.</span><span data-lang="it">Mojito dopo la sessione, DJ sunset due volte a settimana. L'energia surf-nomade.</span></p>
+          <div class="gastro-icons">
+            <span class="g-pill">🍹 Cocktails</span><span class="g-pill">🎵 DJ</span>
+          </div>
+        </div>
+      </li>
+      <li class="gastro-item">
+        <div class="gastro-img" style="background-image:url('https://images.unsplash.com/photo-1544025162-d76694265947?w=200&q=70')" role="img" aria-label="Palais Rhoul"></div>
+        <div class="gastro-content">
+          <h3>Palais Rhoul · Table du Pêcheur</h3>
+          <p class="gastro-meta"><span data-lang="fr" class="lang-visible">🍽 Gastronomique · Bord de lagune</span><span data-lang="en">🍽 Gastronomic · Lagoon-side</span><span data-lang="es">🍽 Gastronómico · Orilla de la laguna</span><span data-lang="pt">🍽 Gastronómico · Beira da lagoa</span><span data-lang="it">🍽 Gastronomico · Bordo laguna</span></p>
+          <p class="gastro-desc"><span data-lang="fr" class="lang-visible">Poisson de leur propre bateau, charbon de bois, recettes raffinées. La grande table de Dakhla.</span><span data-lang="en">Fish from their own boat, wood charcoal, refined recipes. The great table of Dakhla.</span><span data-lang="es">Pescado de su propio barco, carbón de madera, recetas refinadas. La gran mesa de Dakhla.</span><span data-lang="pt">Peixe do próprio barco, carvão de madeira, receitas refinadas. A grande mesa de Dakhla.</span><span data-lang="it">Pesce dalla propria barca, carbone di legna, ricette raffinate. La grande tavola di Dakhla.</span></p>
+          <div class="gastro-icons">
+            <span class="g-pill"><span data-lang="fr" class="lang-visible">✨ Gastronomique</span><span data-lang="en">✨ Gastronomic</span><span data-lang="es">✨ Gastronómico</span><span data-lang="pt">✨ Gastronómico</span><span data-lang="it">✨ Gastronomico</span></span><span class="g-pill"><span data-lang="fr" class="lang-visible">🔥 Charbon</span><span data-lang="en">🔥 Charcoal</span><span data-lang="es">🔥 Carbón</span><span data-lang="pt">🔥 Carvão</span><span data-lang="it">🔥 Carbone</span></span>
+          </div>
+        </div>
+      </li>
+      <li class="gastro-item">
+        <div class="gastro-img" style="background-image:url('https://images.unsplash.com/photo-1516611317-fe33c8ee6dae?w=200&q=70')" role="img" aria-label="Parc à Huîtres"></div>
+        <div class="gastro-content">
+          <h3>Parc à Huîtres de Dakhla</h3>
+          <p class="gastro-meta"><span data-lang="fr" class="lang-visible">🦪 Institution · Lagune de Dakhla</span><span data-lang="en">🦪 Institution · Dakhla Lagoon</span><span data-lang="es">🦪 Institución · Laguna de Dakhla</span><span data-lang="pt">🦪 Instituição · Lagoa de Dakhla</span><span data-lang="it">🦪 Istituzione · Laguna di Dakhla</span></p>
+          <p class="gastro-desc"><span data-lang="fr" class="lang-visible">Huîtres remarquables élevées dans les eaux froides de la lagune. À faire à chaque visite.</span><span data-lang="en">Remarkable oysters grown in the lagoon's cool waters. A must on every visit.</span><span data-lang="es">Ostras notables criadas en las aguas frías de la laguna. Imprescindible en cada visita.</span><span data-lang="pt">Ostras notáveis criadas nas águas frias da lagoa. A fazer em cada visita.</span><span data-lang="it">Ostriche straordinarie allevate nelle acque fredde della laguna. Da fare ad ogni visita.</span></p>
+          <div class="gastro-icons">
+            <span class="g-pill"><span data-lang="fr" class="lang-visible">🦪 Huîtres</span><span data-lang="en">🦪 Oysters</span><span data-lang="es">🦪 Ostras</span><span data-lang="pt">🦪 Ostras</span><span data-lang="it">🦪 Ostriche</span></span><span class="g-pill">⭐ Institution</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <picture class="logo-stable footer-logo-wrap"><source srcset="logo.webp" type="image/webp"><img class="no-translate footer-logo-img" src="logo.png" alt="Ocean Drift Lodge" onerror="this.style.display='none'"></picture>
+  <span class="footer-logo-txt">Ocean Drift <em>Lodge</em></span>
+  <nav class="footer-links">
+    <a href="index.html"><span data-lang="fr">L'appartement</span><span data-lang="en">The apartment</span><span data-lang="es">El apartamento</span><span data-lang="pt">O apartamento</span><span data-lang="it">L'appartamento</span></a>
+    <a href="livret-accueil.html"><span data-lang="fr">Livret d'accueil</span><span data-lang="en">Welcome guide</span><span data-lang="es">Guía de bienvenida</span><span data-lang="pt">Guia de boas-vindas</span><span data-lang="it">Guida di benvenuto</span></a>
+    <a href="guide-du-voyageur.html"><span data-lang="fr">Guide local</span><span data-lang="en">Local guide</span><span data-lang="es">Guía local</span><span data-lang="pt">Guia local</span><span data-lang="it">Guida locale</span></a>
+  </nav>
+  <nav class="footer-links" aria-label="Liens légaux">
+    <a href="cgv.html"><span data-lang="fr">CGV</span><span data-lang="en">GTC</span><span data-lang="es">CGV</span><span data-lang="pt">CGV</span><span data-lang="it">CGV</span></a>
+    <a href="mentions-legales.html"><span data-lang="fr">Mentions légales</span><span data-lang="en">Legal notice</span><span data-lang="es">Aviso legal</span><span data-lang="pt">Aviso legal</span><span data-lang="it">Note legali</span></a>
+    <a href="confidentialite.html"><span data-lang="fr">Confidentialité</span><span data-lang="en">Privacy</span><span data-lang="es">Privacidad</span><span data-lang="pt">Privacidade</span><span data-lang="it">Privacy</span></a>
+  </nav>
+  <span>© 2026 Ocean Drift Lodge · Dakhla, Maroc</span>
+</footer>
+
+<script>
+/* ── PROGRESS BAR ── */
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement;
+  const pct=(s.scrollTop/(s.scrollHeight-s.clientHeight))*100;
+  document.getElementById('progress').style.width=pct+'%';
+},{passive:true});
+
+/* ── NAV SCROLL ── */
+(function(){
+  const nav=document.getElementById('nav');
+  let tick=false;
+  function u(){nav.classList.toggle('scrolled',window.scrollY>60);tick=false}
+  window.addEventListener('scroll',()=>{if(!tick){requestAnimationFrame(u);tick=true}},{passive:true});
+})();
+
+/* ── BACK TO TOP ── */
+(function(){
+  const btn=document.getElementById('back-top');
+  window.addEventListener('scroll',()=>{
+    btn.classList.toggle('visible',window.scrollY>400);
+  },{passive:true});
+})();
+
+/* ── ACTIVE NAV ── */
+(function(){
+  const sections=['spots','activites','ecoles','gastro'];
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        document.querySelectorAll('[data-nav]').forEach(a=>a.classList.remove('active'));
+        const a=document.querySelector('[data-nav="'+e.target.id+'"]');
+        if(a)a.classList.add('active');
+      }
+    });
+  },{threshold:.3});
+  sections.forEach(id=>{const el=document.getElementById(id);if(el)obs.observe(el);});
+})();
+
+/* ── SMOOTH SCROLL ── */
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
+  link.addEventListener('click',e=>{
+    const t=document.querySelector(link.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+
+/* ── REVEAL ── */
+(function(){
+  if(!('IntersectionObserver' in window)){
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));return;
+  }
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+  }),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+
+/* ── PROFILS ── */
+function setProfile(btn,profile){
+  document.querySelectorAll('.profile-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.profile-reco').forEach(r=>r.classList.remove('visible'));
+  const reco=document.getElementById('reco-'+profile);
+  if(reco)reco.classList.add('visible');
+}
+
+/* ── FILTRES ACTIVITÉS ── */
+function filterActs(cat,btn){
+  document.querySelectorAll('.act-filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.act-card').forEach(c=>{
+    if(cat==='all'||c.dataset.cat===cat){c.classList.remove('hidden');}
+    else{c.classList.add('hidden');}
+  });
+}
+
+/* ── FILTRES ÉCOLES ── */
+function filterEcoles(type,btn){
+  document.querySelectorAll('.ecole-filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.ecole-card').forEach(c=>{
+    if(type==='all'||c.dataset.type===type){c.classList.remove('hidden');}
+    else{c.classList.add('hidden');}
+  });
+}
+
+/* ── LANG ── */
+function setLang(lang){document.documentElement.classList.add('js-lang');
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active',b.textContent.trim().toLowerCase()===lang);
+  });
+  document.querySelectorAll('[data-lang]').forEach(el=>{
+    el.classList.toggle('lang-visible',el.dataset.lang===lang);
+  });
+}
+document.addEventListener('DOMContentLoaded',()=>setLang('fr'));
+</script>
+</body>
+</html>

@@ -1,0 +1,505 @@
+/* ═══════════════════════════════════════════════════════════════════
+   ODL-STYLES.CSS — Ocean Drift Lodge · Feuille de style commune
+   Extraite depuis les 15 fichiers HTML du dossier 04_Site_Web/
+   ═══════════════════════════════════════════════════════════════════ */
+
+
+/* ── 1. VARIABLES ── */
+:root {
+  --font-serif:  'Cormorant Garamond','Palatino Linotype',Palatino,Georgia,serif;
+  --font-sans:   'Jost','Gill Sans','Optima',Candara,'Segoe UI',sans-serif;
+  --bg:          #faf9f7;
+  --bg-sand:     #f2ede6;
+  --bg-sand-md:  #ece4d8;
+  --bg-ocean:    #1a3d4a;
+  --bg-teal-lt:  rgba(46,139,139,0.06);
+  --bg-dark:     #1c1c1a;
+  --bg-night:    #132237;
+  --navy:        #1a2e4a;
+  --ink:         #1c1c1a;
+  --ink-mid:     #3d3d38;
+  --ink-light:   #6b6b63;
+  --teal:        #2e8b8b;
+  --teal-dk:     #236868;
+  --teal-lt:     rgba(46,139,139,0.12);
+  --peach:       #c8603a;
+  --peach-lt:    rgba(200,96,58,0.08);
+  --gold:        #b8975a;
+  --terra:       #c8603a;      /* alias utilisé dans livret-accueil */
+  --terra-lt:    rgba(200,96,58,0.10);
+  --radius:      4px;
+  --trans:       0.3s ease;
+}
+
+
+/* ── 2. RESET ── */
+*,*::before,*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+img  { display: block; max-width: 100%; }
+a    { color: inherit; text-decoration: none; }
+ul   { list-style: none; }
+button { cursor: pointer; font-family: var(--font-sans); border: none; background: none; }
+
+/* Skip-link (accessibilité) */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--teal);
+  color: #fff;
+  padding: .5rem 1rem;
+  font-size: .8rem;
+  z-index: 9999;
+  border-radius: var(--radius);
+  transition: top .2s;
+}
+.skip-link:focus { top: 1rem; }
+
+
+/* ── 3. PROGRESS BAR ── */
+#progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--teal), var(--gold), var(--peach));
+  z-index: 300;
+  width: 0%;
+  transition: width .1s linear;
+}
+
+
+/* ── 4. NAVIGATION ── */
+
+/* Barre principale */
+#nav {
+  position: fixed;
+  top: 3px;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 3rem;
+  background: var(--bg-sand);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(28,28,26,0.1);
+  transition: padding var(--trans), box-shadow var(--trans);
+}
+#nav.scrolled {
+  padding: .55rem 3rem;
+  box-shadow: 0 2px 24px rgba(28,28,26,0.08);
+}
+
+/* Logo nav */
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--navy);
+  letter-spacing: .03em;
+}
+.nav-logo em  { font-style: italic; color: var(--teal); }
+a.nav-logo    { display: flex; align-items: center; gap: .5rem; }
+
+/* Liens centraux — utilisés dans la majorité des pages */
+.nav-center { display: flex; align-items: center; gap: 2.2rem; }
+.nav-center a {
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  transition: color var(--trans), border-bottom-color var(--trans);
+  padding: .3rem 0;
+  border-bottom: 1px solid transparent;
+}
+.nav-center a:hover {
+  color: var(--teal);
+  border-bottom-color: var(--teal);
+}
+
+/* Liens nav — variante guide-du-voyageur & livret-accueil (.nav-links) */
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-links a {
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  transition: color var(--trans), border-bottom-color var(--trans);
+  padding: .3rem 0;
+  border-bottom: 1px solid transparent;
+}
+.nav-links a:hover,
+.nav-links a.active { color: var(--teal); border-bottom-color: var(--teal); }
+
+/* Droite de la nav */
+.nav-right { display: flex; align-items: center; gap: .8rem; }
+
+/* Sélecteur de langue */
+.lang-sw  { display: flex; gap: .15rem; }
+.lang-btn {
+  font-size: .58rem;
+  font-weight: 500;
+  letter-spacing: .08em;
+  padding: .3rem .58rem;
+  border-radius: 20px;
+  color: var(--ink-light);
+  transition: all var(--trans);
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: none;
+}
+.lang-btn.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+.lang-btn:hover:not(.active) { color: var(--teal); border-color: rgba(46,139,139,0.3); }
+
+/* Bouton CTA nav */
+.nav-cta {
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  background: var(--peach);
+  color: #fff;
+  padding: .6rem 1.5rem;
+  border-radius: var(--radius);
+  transition: background var(--trans), transform var(--trans);
+  white-space: nowrap;
+  display: inline-block;
+}
+.nav-cta:hover { filter: brightness(.9); transform: translateY(-1px); }
+
+/* Burger mobile */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: .5rem;
+  cursor: pointer;
+  z-index: 210;
+  background: none;
+  border: none;
+}
+.burger span {
+  display: block;
+  width: 23px;
+  height: 2px;
+  background: var(--navy);
+  border-radius: 2px;
+  transition: all .3s;
+}
+.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Menu mobile overlay */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 190;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+.mobile-menu.open  { opacity: 1; pointer-events: auto; }
+.mobile-menu a     { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 300; color: var(--ink); }
+.mobile-menu a:hover { color: var(--teal); }
+.mobile-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ink-light);
+}
+.mobile-lang { display: flex; gap: .5rem; margin-top: .5rem; }
+
+/* Responsive nav */
+@media (max-width: 768px) {
+  .nav-center           { display: none; }
+  .nav-links            { display: none; }
+  .nav-right .nav-cta   { display: none; }
+  .burger               { display: flex; }
+  .mobile-menu          { display: flex; }
+}
+
+
+/* ── 5. LOGO ── */
+
+/* Bloc de stabilité logo (anti-FOUC) */
+.logo-stable { visibility: visible !important; opacity: 1 !important; }
+.logo-stable img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.hero-logo-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto 2rem;
+}
+.footer-logo-wrap { display: flex; justify-content: center; }
+
+/* Images logo */
+.nav-logo-img {
+  width: 36px;
+  height: auto;
+  mix-blend-mode: multiply;
+  display: inline-block;
+  vertical-align: middle;
+  animation: none !important;
+}
+.hero-logo {
+  animation: none !important;
+  opacity: 1 !important;
+  transition: none !important;
+  display: block;
+  margin: 0 auto;
+  width: 140px;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+.footer-logo-img {
+  display: block;
+  margin: 0 auto 1.5rem;
+  width: 70px;
+  height: auto;
+  mix-blend-mode: screen;
+  animation: none !important;
+}
+
+@keyframes floatLogo {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+
+/* ── 6. SECTIONS COMMUNES ── */
+section       { padding: 6rem 3.5rem; }
+.section      { padding: 5rem 2rem; scroll-margin-top: 80px; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+
+.section-tag {
+  font-size: .65rem;
+  font-weight: 500;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 1rem;
+}
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+.section-title em { font-style: italic; color: var(--teal); }
+.section-lead {
+  font-size: .9rem;
+  color: var(--ink-light);
+  max-width: 500px;
+  line-height: 1.75;
+}
+
+
+/* ── 7. BOUTONS COMMUNS ── */
+.btn-primary {
+  display: inline-block;
+  background: var(--teal);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: .78rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: .8rem 2rem;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: background var(--trans), transform var(--trans);
+}
+.btn-primary:hover { background: var(--teal-dk); transform: translateY(-1px); }
+
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: var(--teal);
+  font-family: var(--font-sans);
+  font-size: .78rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: .8rem 2rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(46,139,139,0.4);
+  cursor: pointer;
+  transition: all var(--trans);
+}
+.btn-outline:hover { background: var(--teal); color: #fff; border-color: var(--teal); }
+
+.btn-teal {
+  background: var(--teal);
+  color: #fff;
+  border: none;
+  padding: .85rem 2rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: .8rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  transition: opacity .2s;
+}
+.btn-teal:hover { opacity: .85; }
+
+
+/* ── 8. FOOTER ── */
+footer {
+  background: var(--bg-night);
+  color: rgba(255,255,255,0.85);
+  text-align: center;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
+}
+.footer-logo-txt {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: #fff;
+  letter-spacing: .03em;
+}
+.footer-logo-txt em { font-style: italic; color: rgba(46,139,139,0.8); }
+
+.footer-links { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; }
+.footer-links a {
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  transition: color var(--trans);
+}
+.footer-links a:hover { color: #fff; }
+
+footer > span:last-child {
+  font-size: .72rem;
+  color: rgba(255,255,255,0.38);
+  letter-spacing: .05em;
+}
+
+
+/* ── 9. SYSTÈME TRADUCTION ── */
+/* Sans JS : le français visible par défaut, autres langues masquées */
+[data-lang="en"]:not(.lang-btn):not(.no-translate):not(.logo-stable),
+[data-lang="es"]:not(.lang-btn):not(.no-translate):not(.logo-stable),
+[data-lang="pt"]:not(.lang-btn):not(.no-translate):not(.logo-stable),
+[data-lang="it"]:not(.lang-btn):not(.no-translate):not(.logo-stable) { display: none; }
+
+/* Avec JS (js-lang sur <html>) : contrôle total de la visibilité */
+.js-lang [data-lang]:not(.lang-btn):not(.no-translate):not(.logo-stable) { display: none !important; }
+.js-lang [data-lang].lang-visible:not(.lang-btn):not(.no-translate):not(.logo-stable) { display: inline !important; }
+
+.no-translate {
+  opacity: 1 !important;
+  display: block !important;
+  visibility: visible !important;
+}
+span[data-lang].lang-visible { display: inline; }
+
+
+/* ── 10. ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: .5; }
+}
+
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+
+/* ── 11. UTILITAIRES ── */
+
+/* Bouton retour en haut */
+#back-top,
+.back-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 90;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .9rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity var(--trans), transform var(--trans);
+  pointer-events: none;
+}
+#back-top.visible,
+.back-top.visible { opacity: 1; transform: none; pointer-events: auto; }
+#back-top:hover,
+.back-top:hover   { background: var(--teal); }
+
+
+/* ── 12. RESPONSIVE ── */
+@media (max-width: 768px) {
+  /* Sections */
+  section  { padding: 4.5rem 2rem; }
+  .section { padding: 3.5rem 1.5rem; }
+}
+
+@media (max-width: 620px) {
+  section  { padding: 3.5rem 1.5rem; }
+  .section { padding: 2.5rem 1rem; }
+}

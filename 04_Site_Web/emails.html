@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Templates Email · Ocean Drift Lodge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="odl-styles.css">
+<style>
+
+
+
+/* ── HERO ── */
+.page-hero { padding: 4rem 3rem 3rem; text-align: center; background: radial-gradient(ellipse 70% 55% at 25% 35%,rgba(46,139,139,0.13) 0%,transparent 70%),radial-gradient(ellipse 55% 50% at 75% 70%,rgba(200,96,58,0.08) 0%,transparent 65%),linear-gradient(160deg,#ffffff 0%,#f4ede4 55%,#ede8df 100%); }
+.page-tag { display: block; font-family: var(--font-sans); font-size: .62rem; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: var(--teal); margin-bottom: 1rem; }
+.page-hero-title { font-family: var(--font-serif); font-size: clamp(2.2rem,5vw,3.5rem); font-weight: 300; color: var(--navy); letter-spacing: -.01em; margin-bottom: .8rem; }
+.page-hero-sub { font-size: .78rem; color: var(--ink-light); letter-spacing: .15em; text-transform: uppercase; }
+
+/* ── TIMELINE NAV ── */
+.timeline-nav { background: var(--bg-sand); padding: 1.2rem 3rem; display: flex; align-items: center; gap: 0; overflow-x: auto; border-bottom: 1px solid rgba(28,28,26,0.08); }
+.tl-item { display: flex; align-items: center; flex-shrink: 0; }
+.tl-link { display: flex; align-items: center; gap: .55rem; padding: .55rem 1rem; border-radius: var(--radius); font-size: .7rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-light); transition: color var(--trans), background var(--trans); white-space: nowrap; }
+.tl-link:hover { color: var(--teal); background: var(--teal-lt); }
+.tl-badge { display: inline-flex; align-items: center; justify-content: center; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--teal-lt); color: var(--teal); font-size: .65rem; font-weight: 500; border: 1px solid rgba(46,139,139,0.2); flex-shrink: 0; }
+.tl-sep { color: rgba(28,28,26,0.2); font-size: .65rem; padding: 0 .25rem; user-select: none; }
+
+/* ── SECTIONS ── */
+.section-wrap     { background: var(--bg); }
+.section-wrap--alt{ background: var(--bg-sand); }
+.email-section    { padding: 3.5rem 3rem; max-width: 900px; margin: 0 auto; }
+
+/* ── EMAIL CARD ── */
+.email-card-header { display: flex; align-items: flex-start; gap: 1.2rem; margin-bottom: 1.5rem; }
+.email-badge { display: inline-flex; align-items: center; justify-content: center; width: 2.4rem; height: 2.4rem; border-radius: 50%; background: var(--teal); color: #fff; font-family: var(--font-sans); font-size: .7rem; font-weight: 500; letter-spacing: .06em; flex-shrink: 0; margin-top: .15rem; }
+.email-meta { flex: 1; min-width: 0; }
+.email-moment { display: block; font-size: .62rem; font-weight: 500; letter-spacing: .25em; text-transform: uppercase; color: var(--teal); margin-bottom: .3rem; }
+.email-title { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 300; color: var(--ink); }
+.btn-copy { margin-left: auto; background: transparent; border: 1px solid rgba(46,139,139,0.35); color: var(--teal); font-family: var(--font-sans); font-size: .68rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; padding: .5rem 1.1rem; border-radius: var(--radius); cursor: pointer; transition: all var(--trans); white-space: nowrap; flex-shrink: 0; }
+.btn-copy:hover   { background: var(--teal); color: #fff; border-color: var(--teal); }
+.btn-copy.copied  { background: var(--teal); color: #fff; border-color: var(--teal); }
+
+.email-subject { background: var(--bg-teal-lt); border-left: 3px solid var(--teal); padding: .75rem 1.1rem; border-radius: 0 var(--radius) var(--radius) 0; font-size: .82rem; font-weight: 500; color: var(--ink-mid); margin-bottom: 1.2rem; }
+.email-subject-label { font-size: .6rem; letter-spacing: .22em; text-transform: uppercase; color: var(--teal); margin-right: .6rem; font-weight: 500; }
+
+.email-body { background: #fff; border: 1px solid rgba(28,28,26,0.08); border-radius: var(--radius); padding: 1.8rem 2rem; font-family: var(--font-sans); font-size: .88rem; color: var(--ink-mid); line-height: 1.9; white-space: pre-wrap; box-shadow: 0 2px 12px rgba(0,0,0,0.03); }
+.var { background: var(--teal-lt); color: var(--teal-dk); border-radius: 2px; padding: .05em .3em; font-size: .85em; font-weight: 500; }
+.var-alt { background: rgba(200,96,58,0.1); color: var(--peach); border-radius: 2px; padding: .05em .3em; font-size: .85em; font-weight: 500; }
+
+@media(max-width:768px){
+  .page-hero      { padding: 3rem 1.5rem 2.5rem; }
+  .timeline-nav   { padding: 1rem 1.2rem; }
+  .email-section  { padding: 2.5rem 1.5rem; }
+  .email-card-header { flex-wrap: wrap; }
+  .btn-copy       { margin-left: 0; }
+}
+@media(max-width:480px){
+  .email-section  { padding: 2rem 1rem; }
+  .email-body     { padding: 1.2rem 1rem; }
+}
+
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <button class="mobile-close" onclick="closeMobile()" aria-label="Fermer">✕</button>
+  <a href="index.html" onclick="closeMobile()"><span data-lang="fr">Accueil</span><span data-lang="en">Home</span><span data-lang="es">Inicio</span><span data-lang="pt">Início</span><span data-lang="it">Home</span></a>
+  <a href="dashboard.html" onclick="closeMobile()">Dashboard</a>
+  <a href="index.html#reservation" onclick="closeMobile()" style="color:var(--teal)"><span data-lang="fr">Réserver</span><span data-lang="en">Book</span><span data-lang="es">Reservar</span><span data-lang="pt">Reservar</span><span data-lang="it">Prenota</span></a>
+  <div class="mobile-lang">
+    <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
+    <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
+  </div>
+</div>
+<header>
+<nav id="nav" aria-label="Navigation principale">
+  <a href="index.html" class="nav-logo"><picture class="logo-stable"><source srcset="logo.webp" type="image/webp"><img class="no-translate nav-logo-img" src="logo.png" alt="" style="mix-blend-mode:multiply" onerror="this.style.display='none'"></picture>Ocean Drift <em>Lodge</em></a>
+  <div class="nav-center">
+    <a href="index.html#appartement"><span data-lang="fr">L'Appartement</span><span data-lang="en">The Apartment</span><span data-lang="es">El Apartamento</span><span data-lang="pt">O Apartamento</span><span data-lang="it">L'Appartamento</span></a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="index.html#tarifs"><span data-lang="fr">Tarifs</span><span data-lang="en">Rates</span><span data-lang="es">Tarifas</span><span data-lang="pt">Preços</span><span data-lang="it">Tariffe</span></a>
+    <a href="index.html#reservation"><span data-lang="fr">Réservation</span><span data-lang="en">Booking</span><span data-lang="es">Reserva</span><span data-lang="pt">Reserva</span><span data-lang="it">Prenotazione</span></a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-sw" role="group" aria-label="Langue">
+      <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
+      <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
+    </div>
+    <a href="index.html#reservation" class="nav-cta"><span data-lang="fr">Réserver</span><span data-lang="en">Book</span><span data-lang="es">Reservar</span><span data-lang="pt">Reservar</span><span data-lang="it">Prenota</span></a>
+    <button class="burger" id="burger" onclick="toggleMobile()" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+</header>
+
+<div class="page-hero">
+  <div class="hero-logo-wrap">
+    <picture class="no-translate">
+      <source srcset="logo.webp" type="image/webp">
+      <img src="logo.png" alt="Ocean Drift Lodge" class="hero-logo no-translate" style="mix-blend-mode:multiply;display:block;margin:0 auto;width:140px;height:auto;animation:none">
+    </picture>
+  </div>
+
+  <span class="page-tag"><span data-lang="fr">Workflow client</span><span data-lang="en">Guest workflow</span><span data-lang="es">Flujo de cliente</span><span data-lang="pt">Fluxo de cliente</span><span data-lang="it">Flusso cliente</span></span>
+  <h1 class="page-hero-title">Templates <em>Email</em></h1>
+  <p class="page-hero-sub"><span data-lang="fr">6 modèles · Du premier contact au suivi post-séjour</span><span data-lang="en">6 templates · From first contact to post-stay follow-up</span><span data-lang="es">6 plantillas · Del primer contacto al seguimiento post-estancia</span><span data-lang="pt">6 modelos · Do primeiro contacto ao acompanhamento pós-estadia</span><span data-lang="it">6 modelli · Dal primo contatto al follow-up post-soggiorno</span></p>
+</div>
+
+<nav class="timeline-nav" aria-label="Navigation emails">
+  <div class="tl-item"><a href="#e1" class="tl-link"><span class="tl-badge">E1</span><span data-lang="fr">Accusé réception</span><span data-lang="en">Acknowledgement</span><span data-lang="es">Acuse de recibo</span><span data-lang="pt">Acuse de recepção</span><span data-lang="it">Ricevuta</span></a></div>
+  <span class="tl-sep">·</span>
+  <div class="tl-item"><a href="#e2" class="tl-link"><span class="tl-badge">E2</span><span data-lang="fr">Confirmation</span><span data-lang="en">Confirmation</span><span data-lang="es">Confirmación</span><span data-lang="pt">Confirmação</span><span data-lang="it">Conferma</span></a></div>
+  <span class="tl-sep">·</span>
+  <div class="tl-item"><a href="#e3" class="tl-link"><span class="tl-badge">E3</span><span data-lang="fr">J−7</span><span data-lang="en">D−7</span><span data-lang="es">D−7</span><span data-lang="pt">D−7</span><span data-lang="it">G−7</span></a></div>
+  <span class="tl-sep">·</span>
+  <div class="tl-item"><a href="#e4" class="tl-link"><span class="tl-badge">E4</span><span data-lang="fr">J−1 / Accès</span><span data-lang="en">D−1 / Access</span><span data-lang="es">D−1 / Acceso</span><span data-lang="pt">D−1 / Acesso</span><span data-lang="it">G−1 / Accesso</span></a></div>
+  <span class="tl-sep">·</span>
+  <div class="tl-item"><a href="#e5" class="tl-link"><span class="tl-badge">E5</span><span data-lang="fr">Post-séjour</span><span data-lang="en">Post-stay</span><span data-lang="es">Post-estancia</span><span data-lang="pt">Pós-estadia</span><span data-lang="it">Post-soggiorno</span></a></div>
+  <span class="tl-sep">·</span>
+  <div class="tl-item"><a href="#e6" class="tl-link"><span class="tl-badge">E6</span><span data-lang="fr">Satisfaction</span><span data-lang="en">Satisfaction</span><span data-lang="es">Satisfacción</span><span data-lang="pt">Satisfação</span><span data-lang="it">Soddisfazione</span></a></div>
+</nav>
+
+<!-- ══ E1 ══ -->
+<div class="section-wrap" id="e1">
+  <div class="email-section">
+    <div class="email-card-header">
+      <span class="email-badge">E1</span>
+      <div class="email-meta">
+        <span class="email-moment"><span data-lang="fr">Dès réception de la demande</span><span data-lang="en">Upon receipt of request</span><span data-lang="es">En cuanto se recibe la solicitud</span><span data-lang="pt">Após receção do pedido</span><span data-lang="it">Al ricevimento della richiesta</span></span>
+        <h2 class="email-title reveal"><span data-lang="fr">Accusé de réception</span><span data-lang="en">Acknowledgement</span><span data-lang="es">Acuse de recibo</span><span data-lang="pt">Acuse de recepção</span><span data-lang="it">Ricevuta di ricezione</span></h2>
+      </div>
+      <button class="btn-copy" onclick="copier('body-e1', this)"><span data-lang="fr">Copier</span><span data-lang="en">Copy</span><span data-lang="es">Copiar</span><span data-lang="pt">Copiar</span><span data-lang="it">Copia</span></button>
+    </div>
+    <div class="email-subject">
+      <span class="email-subject-label"><span data-lang="fr">Objet</span><span data-lang="en">Subject</span><span data-lang="es">Asunto</span><span data-lang="pt">Assunto</span><span data-lang="it">Oggetto</span></span>Votre demande de séjour à Dakhla — Ocean Drift Lodge
+    </div>
+    <div class="email-body" id="body-e1">Madame, Monsieur <span class="var">[NOM]</span>,
+
+Merci pour votre message et l'intérêt que vous portez à l'Ocean Drift Lodge.
+
+Nous avons bien reçu votre demande de séjour pour la période du <span class="var">[DATE ARRIVÉE]</span> au <span class="var">[DATE DÉPART]</span> (<span class="var">[N PERSONNES]</span>).
+
+Nous revenons vers vous dans les 24 heures pour confirmer la disponibilité et vous transmettre notre proposition tarifaire.
+
+À très vite,
+—
+Ocean Drift Lodge · Dakhla, Maroc
+oceandriftlodge@gmail.com · oceandriftlodge.com</div>
+  </div>
+</div>
+
+<!-- ══ E2 ══ -->
+<div class="section-wrap--alt" id="e2">
+  <div class="email-section">
+    <div class="email-card-header">
+      <span class="email-badge">E2</span>
+      <div class="email-meta">
+        <span class="email-moment"><span data-lang="fr">Après réception de l'acompte</span><span data-lang="en">After receipt of deposit</span><span data-lang="es">Tras la recepción de la señal</span><span data-lang="pt">Após receção do sinal</span><span data-lang="it">Dopo il ricevimento della caparra</span></span>
+        <h2 class="email-title reveal"><span data-lang="fr">Confirmation de réservation</span><span data-lang="en">Booking confirmation</span><span data-lang="es">Confirmación de reserva</span><span data-lang="pt">Confirmação de reserva</span><span data-lang="it">Conferma di prenotazione</span></h2>
+      </div>
+      <button class="btn-copy" onclick="copier('body-e2', this)"><span data-lang="fr">Copier</span><span data-lang="en">Copy</span><span data-lang="es">Copiar</span><span data-lang="pt">Copiar</span><span data-lang="it">Copia</span></button>
+    </div>
+    <div class="email-subject">
+      <span class="email-subject-label"><span data-lang="fr">Objet</span><span data-lang="en">Subject</span><span data-lang="es">Asunto</span><span data-lang="pt">Assunto</span><span data-lang="it">Oggetto</span></span>✓ Réservation confirmée — Ocean Drift Lodge · Dakhla
+    </div>
+    <div class="email-body" id="body-e2">Madame, Monsieur <span class="var">[NOM]</span>,
+
+Votre réservation est confirmée. Voici le récapitulatif de votre séjour :
+
+Hébergement   : Appartement Rez de Jardin — Résidence West Point, Foum El Bouir, Dakhla
+Période       : du <span class="var">[DATE ARRIVÉE]</span> au <span class="var">[DATE DÉPART]</span> · <span class="var">[N NUITS]</span> · <span class="var">[N PERSONNES]</span>
+Acompte reçu  : <span class="var">[MONTANT ACOMPTE]</span> €
+Solde restant : <span class="var">[MONTANT SOLDE]</span> € — à régler à l'arrivée
+Caution       : <span class="var">[MONTANT CAUTION]</span> € (empreinte bancaire ou virement — restituée sous 7 jours après départ)
+
+Vous trouverez en pièce jointe votre contrat de location. Merci de le contresigner et de nous le retourner par email avant votre arrivée.
+
+Pour toute question : oceandriftlodge@gmail.com
+
+À bientôt à Dakhla,
+—
+Ocean Drift Lodge</div>
+  </div>
+</div>
+
+<!-- ══ E3 ══ -->
+<div class="section-wrap" id="e3">
+  <div class="email-section">
+    <div class="email-card-header">
+      <span class="email-badge">E3</span>
+      <div class="email-meta">
+        <span class="email-moment"><span data-lang="fr">7 jours avant l'arrivée</span><span data-lang="en">7 days before arrival</span><span data-lang="es">7 días antes de la llegada</span><span data-lang="pt">7 dias antes da chegada</span><span data-lang="it">7 giorni prima dell'arrivo</span></span>
+        <h2 class="email-title reveal"><span data-lang="fr">Rappel pré-arrivée</span><span data-lang="en">Pre-arrival reminder</span><span data-lang="es">Recordatorio pre-llegada</span><span data-lang="pt">Lembrete pré-chegada</span><span data-lang="it">Promemoria pre-arrivo</span></h2>
+      </div>
+      <button class="btn-copy" onclick="copier('body-e3', this)"><span data-lang="fr">Copier</span><span data-lang="en">Copy</span><span data-lang="es">Copiar</span><span data-lang="pt">Copiar</span><span data-lang="it">Copia</span></button>
+    </div>
+    <div class="email-subject">
+      <span class="email-subject-label"><span data-lang="fr">Objet</span><span data-lang="en">Subject</span><span data-lang="es">Asunto</span><span data-lang="pt">Assunto</span><span data-lang="it">Oggetto</span></span>Dans 7 jours à Dakhla — vos informations pratiques
+    </div>
+    <div class="email-body" id="body-e3">Madame, Monsieur <span class="var">[NOM]</span>,
+
+Votre séjour à l'Ocean Drift Lodge approche — plus que 7 jours !
+
+CHECK-IN
+Le logement est accessible à partir de 15h00.
+Adresse : Résidence West Point, Foum El Bouir, Dakhla, Maroc
+
+CAUTION
+Un dépôt de garantie de <span class="var">[MONTANT CAUTION]</span> € sera demandé à l'arrivée (empreinte bancaire ou virement).
+
+SOLDE
+Le solde de <span class="var">[MONTANT SOLDE]</span> € est à régler à votre arrivée.
+
+À PRÉVOIR
+— Pièce d'identité valide (passeport ou carte nationale d'identité)
+— La capacité du logement est limitée à <span class="var">[N PERSONNES]</span>
+
+Nous vous transmettrons vos instructions d'accès détaillées la veille de votre arrivée. N'hésitez pas à nous contacter pour toute question.
+
+À très bientôt,
+—
+Ocean Drift Lodge · Dakhla, Maroc
+oceandriftlodge@gmail.com</div>
+  </div>
+</div>
+
+<!-- ══ E4 ══ -->
+<div class="section-wrap--alt" id="e4">
+  <div class="email-section">
+    <div class="email-card-header">
+      <span class="email-badge">E4</span>
+      <div class="email-meta">
+        <span class="email-moment"><span data-lang="fr">La veille ou le jour de l'arrivée</span><span data-lang="en">The day before or day of arrival</span><span data-lang="es">La víspera o el día de la llegada</span><span data-lang="pt">Na véspera ou no dia da chegada</span><span data-lang="it">Il giorno prima o il giorno dell'arrivo</span></span>
+        <h2 class="email-title reveal"><span data-lang="fr">Instructions d'accès</span><span data-lang="en">Access instructions</span><span data-lang="es">Instrucciones de acceso</span><span data-lang="pt">Instruções de acesso</span><span data-lang="it">Istruzioni per l'accesso</span></h2>
+      </div>
+      <button class="btn-copy" onclick="copier('body-e4', this)"><span data-lang="fr">Copier</span><span data-lang="en">Copy</span><span data-lang="es">Copiar</span><span data-lang="pt">Copiar</span><span data-lang="it">Copia</span></button>
+    </div>
+    <div class="email-subject">
+      <span class="email-subject-label"><span data-lang="fr">Objet</span><span data-lang="en">Subject</span><span data-lang="es">Asunto</span><span data-lang="pt">Assunto</span><span data-lang="it">Oggetto</span></span>Demain à Dakhla — vos instructions d'accès · Ocean Drift Lodge
+    </div>
+    <div class="email-body" id="body-e4">Madame, Monsieur <span class="var">[NOM]</span>,
+
+Plus qu'une nuit ! Voici tout ce qu'il vous faut pour rejoindre le logement :
+
+ADRESSE
+Résidence West Point, Foum El Bouir, Dakhla, Maroc
+<span class="var">[LIEN GOOGLE MAPS]</span>
+
+ACCÈS
+<span class="var">[INSTRUCTIONS D'ACCÈS — code porte, boîte à clé, étage, interphone…]</span>
+
+WI-FI
+Réseau       : <span class="var">[NOM DU RÉSEAU]</span>
+Mot de passe : <span class="var">[MOT DE PASSE WIFI]</span>
+
+HORAIRES
+Check-in  : à partir de 15h00
+Check-out : avant 11h00
+
+En cas de besoin le jour J, contactez-nous directement :
+WhatsApp : <span class="var">[NUMÉRO WHATSAPP]</span>
+
+Bon voyage,
+—
+Ocean Drift Lodge · Dakhla, Maroc</div>
+  </div>
+</div>
+
+<!-- ══ E5 ══ -->
+<div class="section-wrap" id="e5">
+  <div class="email-section">
+    <div class="email-card-header">
+      <span class="email-badge">E5</span>
+      <div class="email-meta">
+        <span class="email-moment"><span data-lang="fr">Le lendemain du départ</span><span data-lang="en">The day after departure</span><span data-lang="es">El día siguiente a la salida</span><span data-lang="pt">No dia seguinte à partida</span><span data-lang="it">Il giorno dopo la partenza</span></span>
+        <h2 class="email-title reveal"><span data-lang="fr">Remerciement &amp; libération de caution</span><span data-lang="en">Thank you &amp; deposit release</span><span data-lang="es">Agradecimiento &amp; liberación de fianza</span><span data-lang="pt">Agradecimento &amp; libertação de caução</span><span data-lang="it">Ringraziamento &amp; svincolo cauzione</span></h2>
+      </div>
+      <button class="btn-copy" onclick="copier('body-e5', this)"><span data-lang="fr">Copier</span><span data-lang="en">Copy</span><span data-lang="es">Copiar</span><span data-lang="pt">Copiar</span><span data-lang="it">Copia</span></button>
+    </div>
+    <div class="email-subject">
+      <span class="email-subject-label"><span data-lang="fr">Objet</span><span data-lang="en">Subject</span><span data-lang="es">Asunto</span><span data-lang="pt">Assunto</span><span data-lang="it">Oggetto</span></span>Merci pour votre séjour — libération de caution · Ocean Drift Lodge
+    </div>
+    <div class="email-body" id="body-e5">Madame, Monsieur <span class="var">[NOM]</span>,
+
+Merci d'avoir séjourné à l'Ocean Drift Lodge. Ce fut un réel plaisir de vous accueillir.
+
+L'état des lieux de sortie a été réalisé ce jour. <span class="var-alt">[Choisir :]</span>
+<span class="var">→ Votre caution de [MONTANT] € est libérée intégralement — la mainlevée sera effective sous 7 jours ouvrés.</span>
+<span class="var-alt">→ Un montant de [MONTANT RETENU] € est retenu pour [MOTIF]. Le solde de [MONTANT RESTITUÉ] € vous sera restitué sous 7 jours ouvrés.</span>
+
+Nous espérons que Dakhla vous a laissé de beaux souvenirs et que nous aurons le plaisir de vous revoir.
+
+Chaleureusement,
+—
+Ocean Drift Lodge · Dakhla, Maroc
+oceandriftlodge@gmail.com</div>
+  </div>
+</div>
+
+<!-- ══ E6 ══ -->
+<div class="section-wrap--alt" id="e6">
+  <div class="email-section">
+    <div class="email-card-header">
+      <span class="email-badge">E6</span>
+      <div class="email-meta">
+        <span class="email-moment"><span data-lang="fr">5 jours après le départ</span><span data-lang="en">5 days after departure</span><span data-lang="es">5 días después de la salida</span><span data-lang="pt">5 dias após a partida</span><span data-lang="it">5 giorni dopo la partenza</span></span>
+        <h2 class="email-title reveal"><span data-lang="fr">Questionnaire de satisfaction</span><span data-lang="en">Satisfaction survey</span><span data-lang="es">Encuesta de satisfacción</span><span data-lang="pt">Questionário de satisfação</span><span data-lang="it">Questionario di soddisfazione</span></h2>
+      </div>
+      <button class="btn-copy" onclick="copier('body-e6', this)"><span data-lang="fr">Copier</span><span data-lang="en">Copy</span><span data-lang="es">Copiar</span><span data-lang="pt">Copiar</span><span data-lang="it">Copia</span></button>
+    </div>
+    <div class="email-subject">
+      <span class="email-subject-label"><span data-lang="fr">Objet</span><span data-lang="en">Subject</span><span data-lang="es">Asunto</span><span data-lang="pt">Assunto</span><span data-lang="it">Oggetto</span></span>Comment s'est passé votre séjour à Dakhla ? — Ocean Drift Lodge
+    </div>
+    <div class="email-body" id="body-e6">Madame, Monsieur <span class="var">[NOM]</span>,
+
+Cinq jours déjà depuis votre départ de Dakhla — le temps passe vite !
+
+Votre retour nous est précieux pour continuer à offrir la meilleure expérience possible à nos hôtes.
+
+Si vous avez quelques minutes, nous serions ravis de connaître votre avis :
+→ <span class="var">[LIEN QUESTIONNAIRE — oceandriftlodge.com/satisfaction.html]</span>
+
+Ou laissez-nous un commentaire sur la plateforme de votre choix — chaque avis compte et nous aide à grandir.
+
+Merci infiniment pour votre confiance. Nous espérons vous retrouver à Dakhla.
+
+Avec toute notre reconnaissance,
+—
+Ocean Drift Lodge · Dakhla, Maroc
+oceandriftlodge@gmail.com · oceandriftlodge.com</div>
+  </div>
+</div>
+
+<footer>
+  <picture class="logo-stable footer-logo-wrap"><source srcset="logo.webp" type="image/webp"><img class="no-translate footer-logo-img" src="logo.png" alt="Ocean Drift Lodge" onerror="this.style.display='none'"></picture>
+  <span class="footer-logo-txt">Ocean Drift <em>Lodge</em></span>
+  <nav class="footer-links">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="index.html" target="_blank" rel="noopener"><span data-lang="fr">Site public</span><span data-lang="en">Public site</span><span data-lang="es">Sitio público</span><span data-lang="pt">Site público</span><span data-lang="it">Sito pubblico</span></a>
+  </nav>
+  <nav class="footer-links" aria-label="Liens légaux">
+    <a href="mentions-legales.html" target="_blank" rel="noopener"><span data-lang="fr">Mentions légales</span><span data-lang="en">Legal notice</span><span data-lang="es">Aviso legal</span><span data-lang="pt">Aviso legal</span><span data-lang="it">Note legali</span></a>
+    <a href="confidentialite.html" target="_blank" rel="noopener"><span data-lang="fr">Confidentialité</span><span data-lang="en">Privacy</span><span data-lang="es">Privacidad</span><span data-lang="pt">Privacidade</span><span data-lang="it">Privacy</span></a>
+  </nav>
+  <span>© 2026 Ocean Drift Lodge · Dashboard · Dakhla, Maroc</span>
+</footer>
+
+<script>
+const prog=document.getElementById('progress');
+window.addEventListener('scroll',()=>{const s=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;if(prog)prog.style.width=Math.min(s,100)+'%';document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);});
+function toggleMobile(){const m=document.getElementById('mobileMenu');const b=document.getElementById('burger');const o=m.classList.toggle('open');b.classList.toggle('open');b.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';}
+function closeMobile(){const m=document.getElementById('mobileMenu');if(m)m.classList.remove('open');const b=document.getElementById('burger');if(b){b.classList.remove('open');b.setAttribute('aria-expanded','false');}document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMobile();});
+let currentLang='fr';
+function setLang(lang){document.documentElement.classList.add('js-lang');currentLang=lang;document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('active');if(b.dataset.lang===lang)b.classList.add('active');});document.querySelectorAll('[data-lang]').forEach(el=>el.classList.remove('lang-visible'));document.querySelectorAll('[data-lang="'+lang+'"]').forEach(el=>el.classList.add('lang-visible'));document.documentElement.lang=lang;}
+document.addEventListener('DOMContentLoaded',()=>setLang('fr'));
+</script>
+
+<script>
+function copier(id, btn) {
+  const el = document.getElementById(id);
+  const text = el.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    feedback(btn);
+  }).catch(() => {
+    const range = document.createRange();
+    range.selectNodeContents(el);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    document.execCommand('copy');
+    sel.removeAllRanges();
+    feedback(btn);
+  });
+}
+
+function feedback(btn) {
+  const orig = btn.innerHTML;
+  const lang = typeof currentLang !== 'undefined' ? currentLang : 'fr';
+  const labels = {fr:'Copié !',en:'Copied!',es:'¡Copiado!',pt:'Copiado!',it:'Copiato!'};
+  btn.textContent = labels[lang] || labels.fr;
+  btn.classList.add('copied');
+  setTimeout(() => {
+    btn.innerHTML = orig;
+    btn.classList.remove('copied');
+  }, 2000);
+}
+</script>
+
+<script>
+(function(){
+  if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));return;}
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>

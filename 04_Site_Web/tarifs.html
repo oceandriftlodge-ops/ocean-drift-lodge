@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grille Tarifaire · Ocean Drift Lodge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="odl-styles.css">
+<style>
+
+
+
+/* ── HERO ── */
+.page-hero { padding: 4rem 3rem 3rem; text-align: center; background: radial-gradient(ellipse 70% 55% at 25% 35%,rgba(46,139,139,0.13) 0%,transparent 70%),radial-gradient(ellipse 55% 50% at 75% 70%,rgba(200,96,58,0.08) 0%,transparent 65%),linear-gradient(160deg,#ffffff 0%,#f4ede4 55%,#ede8df 100%); }
+.page-tag { display: block; font-size: .62rem; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: var(--teal); margin-bottom: 1rem; }
+.page-hero-title { font-family: var(--font-serif); font-size: clamp(2.2rem,5vw,3.5rem); font-weight: 300; color: var(--navy); letter-spacing: -.01em; margin-bottom: .8rem; }
+.page-hero-sub { font-size: .78rem; color: var(--ink-light); letter-spacing: .15em; text-transform: uppercase; }
+
+/* ── NOTICE ── */
+.notice-wrap { background: var(--bg-sand); padding: 2rem 3rem; }
+.notice { max-width: 960px; margin: 0 auto; background: var(--bg-teal-lt); border-left: 3px solid var(--teal); padding: .9rem 1.2rem; border-radius: 0 var(--radius) var(--radius) 0; font-size: .82rem; color: var(--ink-mid); display: flex; align-items: center; gap: .8rem; }
+.notice-icon { font-size: 1rem; flex-shrink: 0; }
+
+/* ── SECTION PRINCIPALE ── */
+.main-wrap { background: var(--bg); padding: 3rem 3rem 4rem; }
+.main-inner { max-width: 960px; margin: 0 auto; }
+
+.section-title { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 300; color: var(--ink); margin-bottom: 1.5rem; padding-bottom: .6rem; border-bottom: 1px solid rgba(28,28,26,0.1); }
+
+/* ── GRILLE TARIFAIRE ── */
+.tarif-table-wrap { overflow-x: auto; margin-bottom: 3rem; }
+.tarif-table { width: 100%; border-collapse: collapse; min-width: 700px; }
+.tarif-table thead tr { border-bottom: 2px solid var(--teal); }
+.tarif-table th {
+  text-align: left;
+  font-family: var(--font-sans);
+  font-size: .66rem;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--teal);
+  padding: .85rem 1rem;
+}
+.tarif-table th.right { text-align: right; }
+.tarif-table td { padding: 1.1rem 1rem; border-bottom: 1px solid rgba(28,28,26,0.07); font-size: .88rem; color: var(--ink-mid); vertical-align: middle; }
+.tarif-table td.right { text-align: right; }
+.tarif-table tbody tr:hover { background: rgba(46,139,139,0.03); }
+
+.season-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-weight: 500;
+  font-size: .85rem;
+  color: var(--ink);
+}
+.season-dot {
+  width: .55rem;
+  height: .55rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.dot-haute-kite { background: var(--peach); }
+.dot-haute-ete  { background: var(--gold); }
+.dot-moyenne    { background: var(--teal); }
+.dot-basse      { background: var(--ink-light); }
+
+.periode-text { font-size: .8rem; color: var(--ink-light); margin-top: .15rem; }
+
+.empty-cell {
+  font-size: .8rem;
+  color: rgba(28,28,26,0.25);
+  font-style: italic;
+  letter-spacing: .05em;
+}
+
+.notes-text { font-size: .78rem; color: var(--ink-light); max-width: 180px; line-height: 1.5; }
+
+/* ── RÈGLES DE CALCUL ── */
+.rules-wrap { background: var(--bg-sand); padding: 3rem; }
+.rules-inner { max-width: 960px; margin: 0 auto; }
+
+.rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+.rule-card { background: #fff; border: 1px solid rgba(28,28,26,0.08); border-radius: var(--radius); padding: 1.3rem 1.5rem; }
+.rule-label { font-size: .65rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--teal); margin-bottom: .5rem; }
+.rule-formula { font-family: var(--font-serif); font-size: 1.15rem; color: var(--ink); margin-bottom: .4rem; }
+.rule-note { font-size: .78rem; color: var(--ink-light); line-height: 1.6; }
+
+/* ── PRINT ── */
+.btn-print-wrap { text-align: center; padding: 2.5rem 3rem; background: var(--bg); }
+.btn-print {
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  padding: .85rem 2rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: .78rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transition: opacity var(--trans);
+}
+.btn-print:hover { opacity: .8; }
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; }
+  #nav, #progress, .mobile-menu, .notice-wrap, .btn-print-wrap { display: none; }
+  .main-wrap, .rules-wrap { padding: 1.5rem 0; }
+  .tarif-table-wrap { overflow: visible; }
+  body { padding-top: 0; }
+}
+@media(max-width:768px){
+  .page-hero    { padding: 3rem 1.5rem 2.5rem; }
+  .notice-wrap  { padding: 1.5rem; }
+  .main-wrap    { padding: 2.5rem 1.5rem; }
+  .rules-wrap   { padding: 2.5rem 1.5rem; }
+  .rules-grid   { grid-template-columns: 1fr; }
+}
+@media(max-width:480px){
+  .main-wrap    { padding: 2rem 1rem; }
+  .rules-wrap   { padding: 2rem 1rem; }
+}
+
+</style>
+</head>
+<body>
+
+<div id="progress" class="no-print"></div>
+<div class="mobile-menu no-print" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <button class="mobile-close" onclick="closeMobile()" aria-label="Fermer">✕</button>
+  <a href="index.html" onclick="closeMobile()"><span data-lang="fr">Accueil</span><span data-lang="en">Home</span><span data-lang="es">Inicio</span><span data-lang="pt">Início</span><span data-lang="it">Home</span></a>
+  <a href="dashboard.html" onclick="closeMobile()">Dashboard</a>
+  <a href="index.html#reservation" onclick="closeMobile()" style="color:var(--teal)"><span data-lang="fr">Réserver</span><span data-lang="en">Book</span><span data-lang="es">Reservar</span><span data-lang="pt">Reservar</span><span data-lang="it">Prenota</span></a>
+  <div class="mobile-lang">
+    <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
+    <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
+  </div>
+</div>
+<header class="no-print">
+<nav id="nav" aria-label="Navigation principale">
+  <a href="index.html" class="nav-logo"><picture class="logo-stable"><source srcset="logo.webp" type="image/webp"><img class="no-translate nav-logo-img" src="logo.png" alt="" style="mix-blend-mode:multiply" onerror="this.style.display='none'"></picture>Ocean Drift <em>Lodge</em></a>
+  <div class="nav-center">
+    <a href="index.html#appartement"><span data-lang="fr">L'Appartement</span><span data-lang="en">The Apartment</span><span data-lang="es">El Apartamento</span><span data-lang="pt">O Apartamento</span><span data-lang="it">L'Appartamento</span></a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="index.html#tarifs"><span data-lang="fr">Tarifs</span><span data-lang="en">Rates</span><span data-lang="es">Tarifas</span><span data-lang="pt">Preços</span><span data-lang="it">Tariffe</span></a>
+    <a href="index.html#reservation"><span data-lang="fr">Réservation</span><span data-lang="en">Booking</span><span data-lang="es">Reserva</span><span data-lang="pt">Reserva</span><span data-lang="it">Prenotazione</span></a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-sw" role="group" aria-label="Langue">
+      <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
+      <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
+    </div>
+    <a href="index.html#reservation" class="nav-cta"><span data-lang="fr">Réserver</span><span data-lang="en">Book</span><span data-lang="es">Reservar</span><span data-lang="pt">Reservar</span><span data-lang="it">Prenota</span></a>
+    <button class="burger" id="burger" onclick="toggleMobile()" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+</header>
+
+<div class="page-hero no-print">
+  <div class="hero-logo-wrap">
+    <picture class="no-translate">
+      <source srcset="logo.webp" type="image/webp">
+      <img src="logo.png" alt="Ocean Drift Lodge" class="hero-logo no-translate" style="mix-blend-mode:multiply;display:block;margin:0 auto;width:140px;height:auto;animation:none">
+    </picture>
+  </div>
+  <span class="page-tag">Yield Management</span>
+  <h1 class="page-hero-title"><span data-lang="fr">Grille</span><span data-lang="en">Rate</span><span data-lang="es">Tabla</span><span data-lang="pt">Grelha</span><span data-lang="it">Griglia</span> <em><span data-lang="fr">Tarifaire</span><span data-lang="en">Schedule</span><span data-lang="es">Tarifaria</span><span data-lang="pt">Tarifária</span><span data-lang="it">Tariffaria</span></em></h1>
+  <p class="page-hero-sub">Ocean Drift Lodge · Dakhla, Maroc · <span data-lang="fr">Usage interne</span><span data-lang="en">Internal use</span><span data-lang="es">Uso interno</span><span data-lang="pt">Uso interno</span><span data-lang="it">Uso interno</span></p>
+</div>
+
+<div class="notice-wrap no-print">
+  <div class="notice">
+    <span class="notice-icon">✎</span>
+    <span><span data-lang="fr">Grille à compléter après validation des tarifs. Tous les champs tarifaires sont laissés vides intentionnellement. Imprimer après remplissage comme référence interne.</span><span data-lang="en">Rate schedule to be completed after rate validation. All rate fields are intentionally left blank. Print after completion as an internal reference.</span><span data-lang="es">Tabla a completar tras la validación de tarifas. Todos los campos tarifarios se dejan en blanco intencionalmente. Imprimir tras el relleno como referencia interna.</span><span data-lang="pt">Grelha a preencher após validação das tarifas. Todos os campos tarifários são deixados em branco intencionalmente. Imprimir após preenchimento como referência interna.</span><span data-lang="it">Griglia da completare dopo la convalida delle tariffe. Tutti i campi tariffari vengono lasciati vuoti intenzionalmente. Stampare dopo la compilazione come riferimento interno.</span></span>
+  </div>
+</div>
+
+<!-- ══ GRILLE ══ -->
+<div class="main-wrap">
+  <div class="main-inner">
+
+    <h2 class="section-title reveal"><span data-lang="fr">Tarifs par saison — Appartement Rez de Jardin</span><span data-lang="en">Seasonal rates — Garden-level Apartment</span><span data-lang="es">Tarifas por temporada — Apartamento planta jardín</span><span data-lang="pt">Tarifas por época — Apartamento rés-do-jardim</span><span data-lang="it">Tariffe per stagione — Appartamento piano giardino</span></h2>
+
+    <div class="tarif-table-wrap">
+      <table class="tarif-table">
+        <thead>
+          <tr>
+            <th><span data-lang="fr">Saison</span><span data-lang="en">Season</span><span data-lang="es">Temporada</span><span data-lang="pt">Época</span><span data-lang="it">Stagione</span></th>
+            <th><span data-lang="fr">Période</span><span data-lang="en">Period</span><span data-lang="es">Período</span><span data-lang="pt">Período</span><span data-lang="it">Periodo</span></th>
+            <th class="right"><span data-lang="fr">Prix / nuit</span><span data-lang="en">Price / night</span><span data-lang="es">Precio / noche</span><span data-lang="pt">Preço / noite</span><span data-lang="it">Prezzo / notte</span></th>
+            <th class="right"><span data-lang="fr">Frais ménage</span><span data-lang="en">Cleaning fee</span><span data-lang="es">Gastos limpieza</span><span data-lang="pt">Taxa limpeza</span><span data-lang="it">Spese pulizia</span></th>
+            <th class="right"><span data-lang="fr">Taxe séjour</span><span data-lang="en">Tourist tax</span><span data-lang="es">Tasa estancia</span><span data-lang="pt">Taxa estadia</span><span data-lang="it">Tassa soggiorno</span><br><span style="font-size:.58rem;font-weight:400;letter-spacing:.05em;text-transform:none;"><span data-lang="fr">/pers/nuit</span><span data-lang="en">/pers/night</span><span data-lang="es">/pers/noche</span><span data-lang="pt">/pes/noite</span><span data-lang="it">/pers/notte</span></span></th>
+            <th class="right">TPT<br><span style="font-size:.58rem;font-weight:400;letter-spacing:.05em;text-transform:none;">2,5 % HT</span></th>
+            <th><span data-lang="fr">Notes</span><span data-lang="en">Notes</span><span data-lang="es">Notas</span><span data-lang="pt">Notas</span><span data-lang="it">Note</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="season-badge">
+                <span class="season-dot dot-haute-kite"></span>
+                <span data-lang="fr">Haute — Kite</span><span data-lang="en">High — Kite</span><span data-lang="es">Alta — Kite</span><span data-lang="pt">Alta — Kite</span><span data-lang="it">Alta — Kite</span>
+              </div>
+            </td>
+            <td>
+              <div>15 nov → 31 mars</div>
+              <div class="periode-text"><span data-lang="fr">Saison des alizés · Peak kite</span><span data-lang="en">Trade wind season · Peak kite</span><span data-lang="es">Temporada de alisios · Peak kite</span><span data-lang="pt">Época dos alísios · Peak kite</span><span data-lang="it">Stagione degli alisei · Peak kite</span></div>
+            </td>
+            <td class="right"><span class="empty-cell">—</span></td>
+            <td class="right"><span class="empty-cell">—</span></td>
+            <td class="right"><span class="empty-cell">—</span></td>
+            <td class="right"><span class="empty-cell">auto</span></td>
+            <td><span class="notes-text"><span data-lang="fr">Alizés constants · Compétitions kite · Clientèle EU hiver</span><span data-lang="en">Constant trade winds · Kite competitions · EU winter guests</span><span data-lang="es">Alisios constantes · Competiciones kite · Clientes EU invierno</span><span data-lang="pt">Alísios constantes · Competições kite · Clientes UE inverno</span><span data-lang="it">Alisei costanti · Gare kite · Clientela UE inverno</span></span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="season-badge">
+                <span class="season-dot dot-haute-ete"></span>
+                <span data-lang="fr">Haute — Été</span><span data-lang="en">High — Summer</span><span data-lang="es">Alta — Verano</span><span data-lang="pt">Alta — Verão</span><span data-lang="it">Alta — Estate</span>
+              </div>
+            </td>
+            <td>
+              <div>1 jul → 31 août</div>
+              <div class="periode-text"><span data-lang="fr">Vacances scolaires</span><span data-lang="en">School holidays</span><span data-lang="es">Vacaciones escolares</span><span data-lang="pt">Férias escolares</span><span data-lang="it">Vacanze scolastiche</span></div>
+            </td>
+            <td class="right"><span class="empty-cell">—</span></td>
+            <td class="right"><span class="empty-cell">—</span></td>
+            <td class="right"><span class="empty-cell">—</span></td>
+            <td class="right"><span class="empty-cell">auto</span></td>
+            <td><span class="notes-text"><span data-lang="fr">Demande familiale · Vent estival · Forte occupation</span><span data-lang="en">Family demand · Summer wind · High occupancy</span><span data-lang="es">Demanda familiar · Viento estival · Alta ocupación</span><span data-lang="pt">Procura familiar · Vento estival · Forte ocupação</span><span data-lang="it">Domanda familiare · Vento estivo · Alta occupazione</span></span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="season-badge">
+                <span class="season-dot dot-moyenne"></span>
+                <span data-lang="fr">Moyenne</span><span data-lang="en">Mid</span><span data-lang="es">Media</span><span data-lang="pt">Média</span><span data-lang="it">Media</span>
+              </div>
+            </td>
+            <td>
+              <div>1 avr → 30 jun</div>
+              <div class="periode-text">+ 1 sep → 14 nov</div>
+            </td>
+            <td class="right"><span class="empty-cell">—</span></td>
+            <td class="right"><span class="empty-cell">—</span></td>
+            <td class="right"><span class="empty-cell">—</span></td>
+            <td class="right"><span class="empty-cell">auto</span></td>
+            <td><span class="notes-text"><span data-lang="fr">Épaule · Vent modéré · Clientèle mixte</span><span data-lang="en">Shoulder · Moderate wind · Mixed clientele</span><span data-lang="es">Temporada hombro · Viento moderado · Clientela mixta</span><span data-lang="pt">Época de transição · Vento moderado · Clientela mista</span><span data-lang="it">Spalla · Vento moderato · Clientela mista</span></span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="season-badge">
+                <span class="season-dot dot-basse"></span>
+                <span data-lang="fr">Basse</span><span data-lang="en">Low</span><span data-lang="es">Baja</span><span data-lang="pt">Baixa</span><span data-lang="it">Bassa</span>
+              </div>
+            </td>
+            <td>
+              <div><span data-lang="fr">Reste de l'année</span><span data-lang="en">Rest of year</span><span data-lang="es">Resto del año</span><span data-lang="pt">Resto do ano</span><span data-lang="it">Resto dell'anno</span></div>
+              <div class="periode-text"><span data-lang="fr">Hors-saison</span><span data-lang="en">Off-season</span><span data-lang="es">Temporada baja</span><span data-lang="pt">Época baixa</span><span data-lang="it">Bassa stagione</span></div>
+            </td>
+            <td class="right"><span class="empty-cell">—</span></td>
+            <td class="right"><span class="empty-cell">—</span></td>
+            <td class="right"><span class="empty-cell">—</span></td>
+            <td class="right"><span class="empty-cell">auto</span></td>
+            <td><span class="notes-text"><span data-lang="fr">Creux · Fidélisation · Séjours longue durée</span><span data-lang="en">Trough · Loyalty · Long-stay guests</span><span data-lang="es">Temporada baja · Fidelización · Estancias larga duración</span><span data-lang="pt">Crise · Fidelização · Estadias de longa duração</span><span data-lang="it">Calo · Fidelizzazione · Soggiorni lunga durata</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-title reveal"><span data-lang="fr">Caution &amp; conditions financières</span><span data-lang="en">Security deposit &amp; financial terms</span><span data-lang="es">Fianza &amp; condiciones financieras</span><span data-lang="pt">Caução &amp; condições financeiras</span><span data-lang="it">Cauzione &amp; condizioni finanziarie</span></h2>
+
+    <div class="tarif-table-wrap">
+      <table class="tarif-table">
+        <thead>
+          <tr>
+            <th><span data-lang="fr">Élément</span><span data-lang="en">Item</span><span data-lang="es">Elemento</span><span data-lang="pt">Elemento</span><span data-lang="it">Elemento</span></th>
+            <th><span data-lang="fr">Montant</span><span data-lang="en">Amount</span><span data-lang="es">Importe</span><span data-lang="pt">Montante</span><span data-lang="it">Importo</span></th>
+            <th><span data-lang="fr">Conditions</span><span data-lang="en">Conditions</span><span data-lang="es">Condiciones</span><span data-lang="pt">Condições</span><span data-lang="it">Condizioni</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span data-lang="fr">Dépôt de garantie (caution)</span><span data-lang="en">Security deposit</span><span data-lang="es">Depósito de garantía (fianza)</span><span data-lang="pt">Depósito de garantia (caução)</span><span data-lang="it">Deposito cauzionale</span></td>
+            <td><span class="empty-cell">—</span></td>
+            <td><span class="notes-text"><span data-lang="fr">Empreinte bancaire ou virement · Libérée sous 7 jours ouvrés après état des lieux</span><span data-lang="en">Card imprint or bank transfer · Released within 7 working days after inspection</span><span data-lang="es">Impronta bancaria o transferencia · Liberada en 7 días laborables tras inventario</span><span data-lang="pt">Impressão bancária ou transferência · Libertada em 7 dias úteis após vistoria</span><span data-lang="it">Impronta bancaria o bonifico · Svincolata entro 7 giorni lavorativi dopo ispezione</span></span></td>
+          </tr>
+          <tr>
+            <td><span data-lang="fr">Acompte à la réservation</span><span data-lang="en">Booking deposit</span><span data-lang="es">Señal en la reserva</span><span data-lang="pt">Sinal na reserva</span><span data-lang="it">Caparra alla prenotazione</span></td>
+            <td><span class="empty-cell"><span data-lang="fr">—  % du total TTC</span><span data-lang="en">—  % of total incl. tax</span><span data-lang="es">—  % del total con IVA</span><span data-lang="pt">—  % do total c/ IVA</span><span data-lang="it">—  % del totale IVA incl.</span></span></td>
+            <td><span class="notes-text"><span data-lang="fr">Requis pour confirmation · Non remboursable selon délai annulation CGV</span><span data-lang="en">Required for confirmation · Non-refundable per GTC cancellation policy</span><span data-lang="es">Requerido para confirmación · No reembolsable según plazo CGV</span><span data-lang="pt">Necessário para confirmação · Não reembolsável conforme CGV</span><span data-lang="it">Richiesto per conferma · Non rimborsabile secondo CGV</span></span></td>
+          </tr>
+          <tr>
+            <td><span data-lang="fr">Durée minimum de séjour</span><span data-lang="en">Minimum stay</span><span data-lang="es">Duración mínima de estancia</span><span data-lang="pt">Duração mínima de estadia</span><span data-lang="it">Durata minima del soggiorno</span></td>
+            <td><span class="empty-cell"><span data-lang="fr">—  nuits</span><span data-lang="en">—  nights</span><span data-lang="es">—  noches</span><span data-lang="pt">—  noites</span><span data-lang="it">—  notti</span></span></td>
+            <td><span class="notes-text"><span data-lang="fr">À définir par saison si souhaité</span><span data-lang="en">To be defined per season if desired</span><span data-lang="es">A definir por temporada si se desea</span><span data-lang="pt">A definir por época se desejado</span><span data-lang="it">Da definire per stagione se desiderato</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ RÈGLES DE CALCUL ══ -->
+<div class="rules-wrap">
+  <div class="rules-inner">
+    <h2 class="section-title reveal"><span data-lang="fr">Règles de calcul</span><span data-lang="en">Calculation rules</span><span data-lang="es">Reglas de cálculo</span><span data-lang="pt">Regras de cálculo</span><span data-lang="it">Regole di calcolo</span></h2>
+    <div class="rules-grid">
+
+      <div class="rule-card">
+        <div class="rule-label"><span data-lang="fr">TPT — Taxe de Promotion du Tourisme</span><span data-lang="en">TPT — Tourism Promotion Tax</span><span data-lang="es">TPT — Impuesto de Promoción del Turismo</span><span data-lang="pt">TPT — Taxa de Promoção do Turismo</span><span data-lang="it">TPT — Tassa di Promozione del Turismo</span></div>
+        <div class="rule-formula">2,5 % × <span data-lang="fr">Loyer HT</span><span data-lang="en">Rent excl. tax</span><span data-lang="es">Alquiler neto</span><span data-lang="pt">Renda líquida</span><span data-lang="it">Affitto netto</span></div>
+        <div class="rule-note"><span data-lang="fr">Loi de finances marocaine · Reversée à l'ONMT · Appear sur facture séparément du loyer</span><span data-lang="en">Moroccan Finance Act · Remitted to ONMT · Shown separately on invoice</span><span data-lang="es">Ley de Presupuestos marroquí · Abonada a la ONMT · Aparece en factura separada del alquiler</span><span data-lang="pt">Lei das Finanças marroquina · Paga à ONMT · Indicada separadamente na fatura</span><span data-lang="it">Legge Finanziaria marocchina · Versata all'ONMT · Indicata separatamente in fattura</span></div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-label"><span data-lang="fr">Taxe de séjour communale</span><span data-lang="en">Municipal tourist tax</span><span data-lang="es">Tasa de estancia municipal</span><span data-lang="pt">Taxa de estadia municipal</span><span data-lang="it">Tassa di soggiorno comunale</span></div>
+        <div class="rule-formula">— € × <span data-lang="fr">personnes × nuits</span><span data-lang="en">persons × nights</span><span data-lang="es">personas × noches</span><span data-lang="pt">pessoas × noites</span><span data-lang="it">persone × notti</span></div>
+        <div class="rule-note"><span data-lang="fr">Montant fixé par la Commune de Dakhla · À compléter après vérification auprès de la mairie</span><span data-lang="en">Amount set by the Commune of Dakhla · To be completed after checking with the town hall</span><span data-lang="es">Importe fijado por el municipio de Dakhla · A completar tras verificación en el ayuntamiento</span><span data-lang="pt">Montante fixado pela Câmara de Dakhla · A preencher após verificação junto da câmara</span><span data-lang="it">Importo fissato dal Comune di Dakhla · Da completare dopo verifica con il comune</span></div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-label"><span data-lang="fr">Total TTC</span><span data-lang="en">Total incl. tax</span><span data-lang="es">Total con impuestos</span><span data-lang="pt">Total com impostos</span><span data-lang="it">Totale IVA inclusa</span></div>
+        <div class="rule-formula"><span data-lang="fr">Loyer + Ménage + Taxe séjour + TPT</span><span data-lang="en">Rent + Cleaning + Tourist tax + TPT</span><span data-lang="es">Alquiler + Limpieza + Tasa estancia + TPT</span><span data-lang="pt">Renda + Limpeza + Taxa estadia + TPT</span><span data-lang="it">Affitto + Pulizia + Tassa soggiorno + TPT</span></div>
+        <div class="rule-note"><span data-lang="fr">Calculé automatiquement dans</span><span data-lang="en">Auto-calculated in</span><span data-lang="es">Calculado automáticamente en</span><span data-lang="pt">Calculado automaticamente em</span><span data-lang="it">Calcolato automaticamente in</span> <a href="/facture.html" style="color:var(--teal)">facture.html</a> <span data-lang="fr">et</span><span data-lang="en">and</span><span data-lang="es">y</span><span data-lang="pt">e</span><span data-lang="it">e</span> <a href="/devis.html" style="color:var(--teal)">devis.html</a></div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-label"><span data-lang="fr">Remises &amp; promotions</span><span data-lang="en">Discounts &amp; promotions</span><span data-lang="es">Descuentos &amp; promociones</span><span data-lang="pt">Descontos &amp; promoções</span><span data-lang="it">Sconti &amp; promozioni</span></div>
+        <div class="rule-formula"><span data-lang="fr">À définir</span><span data-lang="en">To be defined</span><span data-lang="es">A definir</span><span data-lang="pt">A definir</span><span data-lang="it">Da definire</span></div>
+        <div class="rule-note"><span data-lang="fr">Ex. : -10 % à partir de 7 nuits · -15 % à partir de 14 nuits · Code promo partenaires · À appliquer manuellement sur le loyer HT</span><span data-lang="en">E.g.: -10% from 7 nights · -15% from 14 nights · Partner promo codes · Apply manually to net rent</span><span data-lang="es">Ej.: -10 % a partir de 7 noches · -15 % a partir de 14 noches · Código promo socios · Aplicar manualmente al alquiler neto</span><span data-lang="pt">Ex.: -10% a partir de 7 noites · -15% a partir de 14 noites · Código promo parceiros · Aplicar manualmente à renda líquida</span><span data-lang="it">Es.: -10% da 7 notti · -15% da 14 notti · Codice promo partner · Applicare manualmente all'affitto netto</span></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="btn-print-wrap no-print">
+  <button class="btn-print" onclick="window.print()"><span data-lang="fr">⬇ Imprimer la grille</span><span data-lang="en">⬇ Print schedule</span><span data-lang="es">⬇ Imprimir tabla</span><span data-lang="pt">⬇ Imprimir grelha</span><span data-lang="it">⬇ Stampa griglia</span></button>
+</div>
+
+<footer class="no-print">
+  <picture class="logo-stable footer-logo-wrap"><source srcset="logo.webp" type="image/webp"><img class="no-translate footer-logo-img" src="logo.png" alt="Ocean Drift Lodge" onerror="this.style.display='none'"></picture>
+  <span class="footer-logo-txt">Ocean Drift <em>Lodge</em></span>
+  <nav class="footer-links">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="index.html" target="_blank" rel="noopener"><span data-lang="fr">Site public</span><span data-lang="en">Public site</span><span data-lang="es">Sitio público</span><span data-lang="pt">Site público</span><span data-lang="it">Sito pubblico</span></a>
+  </nav>
+  <nav class="footer-links" aria-label="Liens légaux">
+    <a href="mentions-legales.html" target="_blank" rel="noopener"><span data-lang="fr">Mentions légales</span><span data-lang="en">Legal notice</span><span data-lang="es">Aviso legal</span><span data-lang="pt">Aviso legal</span><span data-lang="it">Note legali</span></a>
+    <a href="confidentialite.html" target="_blank" rel="noopener"><span data-lang="fr">Confidentialité</span><span data-lang="en">Privacy</span><span data-lang="es">Privacidad</span><span data-lang="pt">Privacidade</span><span data-lang="it">Privacy</span></a>
+  </nav>
+  <span>© 2026 Ocean Drift Lodge · Dashboard · Dakhla, Maroc</span>
+</footer>
+<script>
+const prog=document.getElementById('progress');
+window.addEventListener('scroll',()=>{const s=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;if(prog)prog.style.width=Math.min(s,100)+'%';document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);});
+function toggleMobile(){const m=document.getElementById('mobileMenu');const b=document.getElementById('burger');const o=m.classList.toggle('open');b.classList.toggle('open');b.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';}
+function closeMobile(){const m=document.getElementById('mobileMenu');if(m)m.classList.remove('open');const b=document.getElementById('burger');if(b){b.classList.remove('open');b.setAttribute('aria-expanded','false');}document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMobile();});
+let currentLang='fr';
+function setLang(lang){document.documentElement.classList.add('js-lang');currentLang=lang;document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('active');if(b.dataset.lang===lang)b.classList.add('active');});document.querySelectorAll('[data-lang]').forEach(el=>el.classList.remove('lang-visible'));document.querySelectorAll('[data-lang="'+lang+'"]').forEach(el=>el.classList.add('lang-visible'));document.documentElement.lang=lang;}
+document.addEventListener('DOMContentLoaded',()=>setLang('fr'));
+(function(){
+  if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));return;}
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>

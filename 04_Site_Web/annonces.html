@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Templates Annonces · Ocean Drift Lodge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="odl-styles.css">
+<style>
+
+
+
+/* ── HERO ── */
+.page-hero { padding: 4rem 3rem 3rem; text-align: center; background: radial-gradient(ellipse 70% 55% at 25% 35%,rgba(46,139,139,0.13) 0%,transparent 70%),radial-gradient(ellipse 55% 50% at 75% 70%,rgba(200,96,58,0.08) 0%,transparent 65%),linear-gradient(160deg,#ffffff 0%,#f4ede4 55%,#ede8df 100%); }
+.page-tag { display: block; font-size: .62rem; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: var(--teal); margin-bottom: 1rem; }
+.page-hero-title { font-family: var(--font-serif); font-size: clamp(2.2rem,5vw,3.5rem); font-weight: 300; color: var(--navy); letter-spacing: -.01em; margin-bottom: .8rem; }
+.page-hero-sub { font-size: .78rem; color: var(--ink-light); letter-spacing: .15em; text-transform: uppercase; }
+
+/* ── PLATFORM NAV ── */
+.platform-nav { background: var(--bg-sand); padding: 0 3rem; display: flex; border-bottom: 1px solid rgba(28,28,26,0.08); overflow-x: auto; }
+.platform-tab { display: flex; align-items: center; gap: .6rem; padding: 1.1rem 1.4rem; font-size: .72rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-light); border-bottom: 2px solid transparent; transition: color var(--trans), border-color var(--trans); white-space: nowrap; cursor: pointer; }
+.platform-tab:hover { color: var(--teal); }
+.platform-tab.active { color: var(--teal); border-bottom-color: var(--teal); }
+.platform-icon { font-size: 1rem; }
+
+/* ── PLATFORM SECTION HEADER ── */
+.platform-header { padding: 2.5rem 3rem 0; max-width: 900px; margin: 0 auto; }
+.platform-title { font-family: var(--font-serif); font-size: 2rem; font-weight: 300; color: var(--ink); margin-bottom: .3rem; }
+.platform-subtitle { font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 2rem; }
+.platform-divider { height: 1px; background: rgba(28,28,26,0.08); max-width: 900px; margin: 0 auto; }
+
+/* ── SECTIONS ── */
+.section-wrap      { background: var(--bg); }
+.section-wrap--alt { background: var(--bg-sand); }
+.section-wrap--platform { background: var(--bg-ocean); }
+
+/* ── TEMPLATE CARD ── */
+.tpl-section { padding: 3rem 3rem; max-width: 900px; margin: 0 auto; }
+.tpl-card-header { display: flex; align-items: flex-start; gap: 1.2rem; margin-bottom: 1.5rem; }
+.tpl-badge { display: inline-flex; align-items: center; justify-content: center; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--teal); color: #fff; font-size: .68rem; font-weight: 500; flex-shrink: 0; margin-top: .2rem; }
+.tpl-badge.gold { background: var(--gold); }
+.tpl-meta { flex: 1; min-width: 0; }
+.tpl-platform-tag { display: block; font-size: .6rem; font-weight: 500; letter-spacing: .25em; text-transform: uppercase; color: var(--teal); margin-bottom: .25rem; }
+.tpl-platform-tag.gold-tag { color: var(--gold); }
+.tpl-title { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 300; color: var(--ink); }
+.tpl-hint { font-size: .72rem; color: var(--ink-light); margin-top: .2rem; font-style: italic; }
+
+.btn-copy { margin-left: auto; background: transparent; border: 1px solid rgba(46,139,139,0.35); color: var(--teal); font-family: var(--font-sans); font-size: .68rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; padding: .5rem 1.1rem; border-radius: var(--radius); cursor: pointer; transition: all var(--trans); white-space: nowrap; flex-shrink: 0; }
+.btn-copy:hover   { background: var(--teal); color: #fff; border-color: var(--teal); }
+.btn-copy.copied  { background: var(--teal); color: #fff; border-color: var(--teal); }
+.btn-copy.gold-btn { border-color: rgba(184,151,90,0.4); color: var(--gold); }
+.btn-copy.gold-btn:hover, .btn-copy.gold-btn.copied { background: var(--gold); color: #fff; border-color: var(--gold); }
+
+.tpl-body { background: #fff; border: 1px solid rgba(28,28,26,0.08); border-radius: var(--radius); padding: 1.8rem 2rem; font-family: var(--font-sans); font-size: .88rem; color: var(--ink-mid); line-height: 1.9; white-space: pre-wrap; box-shadow: 0 2px 12px rgba(0,0,0,0.03); }
+.var     { background: var(--teal-lt); color: var(--teal-dk); border-radius: 2px; padding: .05em .3em; font-size: .84em; font-weight: 500; }
+.var-g   { background: rgba(184,151,90,0.12); color: #8a6e38; border-radius: 2px; padding: .05em .3em; font-size: .84em; font-weight: 500; }
+.char-count { font-size: .68rem; color: var(--ink-light); margin-top: .6rem; letter-spacing: .06em; }
+
+/* ── SEPARATOR ── */
+.section-separator { height: .5rem; background: var(--navy); }
+
+@media(max-width:768px){
+  .page-hero     { padding: 3rem 1.5rem 2.5rem; }
+  .platform-nav  { padding: 0 1.2rem; }
+  .platform-header { padding: 2rem 1.5rem 0; }
+  .tpl-section   { padding: 2.5rem 1.5rem; }
+  .tpl-card-header { flex-wrap: wrap; }
+  .btn-copy      { margin-left: 0; }
+}
+@media(max-width:480px){
+  .tpl-section   { padding: 2rem 1rem; }
+  .tpl-body      { padding: 1.2rem 1rem; }
+}
+
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <button class="mobile-close" onclick="closeMobile()" aria-label="Fermer">✕</button>
+  <a href="index.html" onclick="closeMobile()"><span data-lang="fr">Accueil</span><span data-lang="en">Home</span><span data-lang="es">Inicio</span><span data-lang="pt">Início</span><span data-lang="it">Home</span></a>
+  <a href="dashboard.html" onclick="closeMobile()">Dashboard</a>
+  <a href="index.html#reservation" onclick="closeMobile()" style="color:var(--teal)"><span data-lang="fr">Réserver</span><span data-lang="en">Book</span><span data-lang="es">Reservar</span><span data-lang="pt">Reservar</span><span data-lang="it">Prenota</span></a>
+  <div class="mobile-lang">
+    <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
+    <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
+  </div>
+</div>
+<header>
+<nav id="nav" aria-label="Navigation principale">
+  <a href="index.html" class="nav-logo"><picture class="logo-stable"><source srcset="logo.webp" type="image/webp"><img class="no-translate nav-logo-img" src="logo.png" alt="" style="mix-blend-mode:multiply" onerror="this.style.display='none'"></picture>Ocean Drift <em>Lodge</em></a>
+  <div class="nav-center">
+    <a href="index.html#appartement"><span data-lang="fr">L'Appartement</span><span data-lang="en">The Apartment</span><span data-lang="es">El Apartamento</span><span data-lang="pt">O Apartamento</span><span data-lang="it">L'Appartamento</span></a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="index.html#tarifs"><span data-lang="fr">Tarifs</span><span data-lang="en">Rates</span><span data-lang="es">Tarifas</span><span data-lang="pt">Preços</span><span data-lang="it">Tariffe</span></a>
+    <a href="index.html#reservation"><span data-lang="fr">Réservation</span><span data-lang="en">Booking</span><span data-lang="es">Reserva</span><span data-lang="pt">Reserva</span><span data-lang="it">Prenotazione</span></a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-sw" role="group" aria-label="Langue">
+      <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
+      <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
+    </div>
+    <a href="index.html#reservation" class="nav-cta"><span data-lang="fr">Réserver</span><span data-lang="en">Book</span><span data-lang="es">Reservar</span><span data-lang="pt">Reservar</span><span data-lang="it">Prenota</span></a>
+    <button class="burger" id="burger" onclick="toggleMobile()" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+</header>
+
+<div class="page-hero">
+  <div class="hero-logo-wrap">
+    <picture class="no-translate">
+      <source srcset="logo.webp" type="image/webp">
+      <img src="logo.png" alt="Ocean Drift Lodge" class="hero-logo no-translate" style="mix-blend-mode:multiply;display:block;margin:0 auto;width:140px;height:auto;animation:none">
+    </picture>
+  </div>
+
+  <span class="page-tag"><span data-lang="fr">Distribution · Canaux de vente</span><span data-lang="en">Distribution · Sales channels</span><span data-lang="es">Distribución · Canales de venta</span><span data-lang="pt">Distribuição · Canais de venda</span><span data-lang="it">Distribuzione · Canali di vendita</span></span>
+  <h1 class="page-hero-title">Templates <em><span data-lang="fr">Annonces</span><span data-lang="en">Listings</span><span data-lang="es">Anuncios</span><span data-lang="pt">Anúncios</span><span data-lang="it">Annunci</span></em></h1>
+  <p class="page-hero-sub">Airbnb · Booking.com · <span data-lang="fr">Prêts à compléter</span><span data-lang="en">Ready to complete</span><span data-lang="es">Listos para completar</span><span data-lang="pt">Prontos a completar</span><span data-lang="it">Pronti da completare</span></p>
+</div>
+
+<nav class="platform-nav" aria-label="Plateformes">
+  <a href="#airbnb" class="platform-tab active">
+    <span class="platform-icon">🏠</span>Airbnb
+  </a>
+  <a href="#booking" class="platform-tab">
+    <span class="platform-icon">🔵</span>Booking.com
+  </a>
+</nav>
+
+
+<!-- ════════════════════════════════
+     AIRBNB
+════════════════════════════════ -->
+<div id="airbnb">
+
+  <div class="platform-header">
+    <h2 class="platform-title reveal">Airbnb</h2>
+    <p class="platform-subtitle"><span data-lang="fr">4 blocs · Titre · Résumé · Description longue · Règles</span><span data-lang="en">4 blocks · Title · Summary · Full description · Rules</span><span data-lang="es">4 bloques · Título · Resumen · Descripción completa · Normas</span><span data-lang="pt">4 blocos · Título · Resumo · Descrição longa · Regras</span><span data-lang="it">4 blocchi · Titolo · Riepilogo · Descrizione estesa · Regole</span></p>
+  </div>
+  <div class="platform-divider"></div>
+
+  <!-- A1 — Titre -->
+  <div class="section-wrap">
+    <div class="tpl-section">
+      <div class="tpl-card-header">
+        <span class="tpl-badge">A1</span>
+        <div class="tpl-meta">
+          <span class="tpl-platform-tag"><span data-lang="fr">Airbnb · Titre de l'annonce</span><span data-lang="en">Airbnb · Listing title</span><span data-lang="es">Airbnb · Título del anuncio</span><span data-lang="pt">Airbnb · Título do anúncio</span><span data-lang="it">Airbnb · Titolo dell'annuncio</span></span>
+          <h3 class="tpl-title"><span data-lang="fr">Titre</span><span data-lang="en">Title</span><span data-lang="es">Título</span><span data-lang="pt">Título</span><span data-lang="it">Titolo</span></h3>
+          <p class="tpl-hint"><span data-lang="fr">Maximum 50 caractères · Priorité : localisation + élément distinctif</span><span data-lang="en">Max 50 characters · Priority: location + distinctive element</span><span data-lang="es">Máximo 50 caracteres · Prioridad: localización + elemento distintivo</span><span data-lang="pt">Máximo 50 caracteres · Prioridade: localização + elemento distintivo</span><span data-lang="it">Massimo 50 caratteri · Priorità: posizione + elemento distintivo</span></p>
+        </div>
+        <button class="btn-copy" onclick="copier('body-a1', this)"><span data-lang="fr">Copier</span><span data-lang="en">Copy</span><span data-lang="es">Copiar</span><span data-lang="pt">Copiar</span><span data-lang="it">Copia</span></button>
+      </div>
+      <div class="tpl-body" id="body-a1">Face à l'Atlantique — Terrasse privée · Dakhla</div>
+      <p class="char-count">47 caractères · ≤ 50 ✓</p>
+    </div>
+  </div>
+
+  <!-- A2 — Résumé -->
+  <div class="section-wrap--alt">
+    <div class="tpl-section">
+      <div class="tpl-card-header">
+        <span class="tpl-badge">A2</span>
+        <div class="tpl-meta">
+          <span class="tpl-platform-tag"><span data-lang="fr">Airbnb · Résumé (Summary)</span><span data-lang="en">Airbnb · Summary</span><span data-lang="es">Airbnb · Resumen (Summary)</span><span data-lang="pt">Airbnb · Resumo (Summary)</span><span data-lang="it">Airbnb · Riepilogo (Summary)</span></span>
+          <h3 class="tpl-title"><span data-lang="fr">Description courte</span><span data-lang="en">Short description</span><span data-lang="es">Descripción corta</span><span data-lang="pt">Descrição curta</span><span data-lang="it">Descrizione breve</span></h3>
+          <p class="tpl-hint"><span data-lang="fr">Affiché en premier dans les résultats · Accroche + promesse principale</span><span data-lang="en">Displayed first in search results · Hook + main promise</span><span data-lang="es">Se muestra primero en los resultados · Gancho + promesa principal</span><span data-lang="pt">Exibido primeiro nos resultados · Gancho + promessa principal</span><span data-lang="it">Visualizzato per primo nei risultati · Aggancio + promessa principale</span></p>
+        </div>
+        <button class="btn-copy" onclick="copier('body-a2', this)"><span data-lang="fr">Copier</span><span data-lang="en">Copy</span><span data-lang="es">Copiar</span><span data-lang="pt">Copiar</span><span data-lang="it">Copia</span></button>
+      </div>
+      <div class="tpl-body" id="body-a2">Un appartement rez de jardin face à l'Atlantique, conçu comme un sanctuaire de sérénité au cœur du lagon de Dakhla.
+
+Terrasse privée avec vue sur l'océan, décoration boho-chic, matériaux naturels et atmosphère lumineuse. Idéalement situé à <span class="var">[X min]</span> du spot de kitesurf de <span class="var">[NOM DU SPOT]</span>, à <span class="var">[X min]</span> du centre de Dakhla.
+
+Parfait pour les kitesurfeurs, les voyageurs en quête d'authenticité et les couples souhaitant s'évader face à l'océan.</div>
+    </div>
+  </div>
+
+  <!-- A3 — Description longue -->
+  <div class="section-wrap">
+    <div class="tpl-section">
+      <div class="tpl-card-header">
+        <span class="tpl-badge">A3</span>
+        <div class="tpl-meta">
+          <span class="tpl-platform-tag"><span data-lang="fr">Airbnb · Description complète (The Space)</span><span data-lang="en">Airbnb · Full description (The Space)</span><span data-lang="es">Airbnb · Descripción completa (The Space)</span><span data-lang="pt">Airbnb · Descrição completa (The Space)</span><span data-lang="it">Airbnb · Descrizione completa (The Space)</span></span>
+          <h3 class="tpl-title"><span data-lang="fr">Description longue</span><span data-lang="en">Full description</span><span data-lang="es">Descripción completa</span><span data-lang="pt">Descrição longa</span><span data-lang="it">Descrizione estesa</span></h3>
+          <p class="tpl-hint"><span data-lang="fr">L'espace · Accès · Le quartier · Notes importantes</span><span data-lang="en">The space · Access · The neighbourhood · Important notes</span><span data-lang="es">El espacio · Acceso · El barrio · Notas importantes</span><span data-lang="pt">O espaço · Acesso · O bairro · Notas importantes</span><span data-lang="it">Lo spazio · Accesso · Il quartiere · Note importanti</span></p>
+        </div>
+        <button class="btn-copy" onclick="copier('body-a3', this)"><span data-lang="fr">Copier</span><span data-lang="en">Copy</span><span data-lang="es">Copiar</span><span data-lang="pt">Copiar</span><span data-lang="it">Copia</span></button>
+      </div>
+      <div class="tpl-body" id="body-a3">— L'ESPACE —
+
+Appartement rez de jardin de <span class="var">[SUPERFICIE]</span> m², pensé comme un refuge élégant face à l'Atlantique. Décoration boho-chic avec matériaux naturels, linge de qualité et touches africaines soigneusement choisies.
+
+<span class="var">[DESCRIPTION DES PIÈCES — ex. : Un salon ouvert, une chambre avec lit [type], une salle de bain [description], une cuisine équipée et une terrasse privée donnant sur l'océan]</span>
+
+La terrasse est le cœur du logement : face à l'Atlantique, elle invite à savourer le lever de soleil, le café du matin et les couchers de soleil embrasés sur l'océan.
+
+— ACCÈS —
+
+Vous disposez de l'intégralité du logement en accès privé. Les instructions d'accès détaillées (code d'entrée, localisation exacte) vous sont transmises 24h avant votre arrivée.
+
+<span class="var">[PRÉCISER : parking disponible / accès véhicule / accès PMR si applicable]</span>
+
+— LE QUARTIER —
+
+Résidence West Point, Foum El Bouir, Dakhla — un secteur calme et résidentiel, sécurisé, à deux pas de l'océan. À <span class="var">[X min]</span> du célèbre lagon de Dakhla et des spots de kitesurf parmi les meilleurs au monde.
+
+<span class="var">[AJOUTER : commerces à proximité, restaurants recommandés, distances clés]</span>
+
+— NOTES —
+
+— Pièce d'identité valide requise à l'arrivée (réglementation marocaine obligatoire)
+— Capacité maximale : <span class="var">[N]</span> personnes
+— Idéal pour kitesurfeurs, couples, voyageurs solo en quête de sérénité
+— <span class="var">[AUTRES INFORMATIONS SPÉCIFIQUES]</span></div>
+    </div>
+  </div>
+
+  <!-- A4 — Règles -->
+  <div class="section-wrap--alt">
+    <div class="tpl-section">
+      <div class="tpl-card-header">
+        <span class="tpl-badge">A4</span>
+        <div class="tpl-meta">
+          <span class="tpl-platform-tag"><span data-lang="fr">Airbnb · Règles de la maison (House Rules)</span><span data-lang="en">Airbnb · House rules</span><span data-lang="es">Airbnb · Normas de la casa (House Rules)</span><span data-lang="pt">Airbnb · Regras da casa (House Rules)</span><span data-lang="it">Airbnb · Regole della casa (House Rules)</span></span>
+          <h3 class="tpl-title"><span data-lang="fr">Règles de la maison</span><span data-lang="en">House rules</span><span data-lang="es">Normas de la casa</span><span data-lang="pt">Regras da casa</span><span data-lang="it">Regole della casa</span></h3>
+          <p class="tpl-hint"><span data-lang="fr">À copier dans le champ "Règles supplémentaires" d'Airbnb</span><span data-lang="en">To paste in Airbnb's "Additional rules" field</span><span data-lang="es">Copiar en el campo "Reglas adicionales" de Airbnb</span><span data-lang="pt">A copiar no campo "Regras adicionais" do Airbnb</span><span data-lang="it">Da copiare nel campo "Regole aggiuntive" di Airbnb</span></p>
+        </div>
+        <button class="btn-copy" onclick="copier('body-a4', this)"><span data-lang="fr">Copier</span><span data-lang="en">Copy</span><span data-lang="es">Copiar</span><span data-lang="pt">Copiar</span><span data-lang="it">Copia</span></button>
+      </div>
+      <div class="tpl-body" id="body-a4">HORAIRES
+— Check-in : à partir de 15h00
+— Check-out : avant 11h00
+— Arrivée tardive possible — merci de nous prévenir à l'avance
+
+LOGEMENT
+— Non-fumeur (intérieur strict — terrasse tolérée)
+— Pas d'animaux de compagnie
+— Pas de fêtes ni d'événements
+— Capacité maximale : <span class="var">[N]</span> personnes — aucun invité supplémentaire non déclaré
+
+RÉGLEMENTATION MAROCAINE
+— Pièce d'identité valide obligatoire pour chaque occupant (passeport ou carte nationale d'identité)
+— Déclaration auprès des autorités locales requise par la loi marocaine — vos données sont traitées en toute confidentialité
+
+RESPECT DU VOISINAGE
+— Nuisances sonores interdites après 22h00
+— Respecter les parties communes de la résidence
+
+ÉTAT DU LOGEMENT
+— Le logement doit être rendu dans un état de propreté acceptable
+— Frais de nettoyage exceptionnel applicables en cas de dégradation constatée</div>
+    </div>
+  </div>
+
+</div><!-- /#airbnb -->
+
+<div class="section-separator"></div>
+
+<!-- ════════════════════════════════
+     BOOKING.COM
+════════════════════════════════ -->
+<div id="booking">
+
+  <div class="platform-header">
+    <h2 class="platform-title reveal">Booking.com</h2>
+    <p class="platform-subtitle"><span data-lang="fr">6 blocs · Nom · Propriété · Unité · Équipements · Annulation · Check-in</span><span data-lang="en">6 blocks · Name · Property · Unit · Amenities · Cancellation · Check-in</span><span data-lang="es">6 bloques · Nombre · Propiedad · Unidad · Equipamiento · Cancelación · Check-in</span><span data-lang="pt">6 blocos · Nome · Propriedade · Unidade · Equipamentos · Cancelamento · Check-in</span><span data-lang="it">6 blocchi · Nome · Proprietà · Unità · Servizi · Cancellazione · Check-in</span></p>
+  </div>
+  <div class="platform-divider"></div>
+
+  <!-- B1 — Nom -->
+  <div class="section-wrap">
+    <div class="tpl-section">
+      <div class="tpl-card-header">
+        <span class="tpl-badge gold">B1</span>
+        <div class="tpl-meta">
+          <span class="tpl-platform-tag gold-tag"><span data-lang="fr">Booking.com · Nom de l'établissement</span><span data-lang="en">Booking.com · Property name</span><span data-lang="es">Booking.com · Nombre del establecimiento</span><span data-lang="pt">Booking.com · Nome do estabelecimento</span><span data-lang="it">Booking.com · Nome della struttura</span></span>
+          <h3 class="tpl-title"><span data-lang="fr">Nom de la propriété</span><span data-lang="en">Property name</span><span data-lang="es">Nombre de la propiedad</span><span data-lang="pt">Nome da propriedade</span><span data-lang="it">Nome della proprietà</span></h3>
+          <p class="tpl-hint"><span data-lang="fr">Affiché dans les résultats de recherche · Clair et distinctif</span><span data-lang="en">Displayed in search results · Clear and distinctive</span><span data-lang="es">Se muestra en los resultados de búsqueda · Claro y distintivo</span><span data-lang="pt">Exibido nos resultados de pesquisa · Claro e distintivo</span><span data-lang="it">Visualizzato nei risultati di ricerca · Chiaro e distintivo</span></p>
+        </div>
+        <button class="btn-copy gold-btn" onclick="copier('body-b1', this)"><span data-lang="fr">Copier</span><span data-lang="en">Copy</span><span data-lang="es">Copiar</span><span data-lang="pt">Copiar</span><span data-lang="it">Copia</span></button>
+      </div>
+      <div class="tpl-body" id="body-b1">Ocean Drift Lodge — Appartement Vue Atlantique · Dakhla</div>
+    </div>
+  </div>
+
+  <!-- B2 — Description propriété -->
+  <div class="section-wrap--alt">
+    <div class="tpl-section">
+      <div class="tpl-card-header">
+        <span class="tpl-badge gold">B2</span>
+        <div class="tpl-meta">
+          <span class="tpl-platform-tag gold-tag"><span data-lang="fr">Booking.com · Description de la propriété</span><span data-lang="en">Booking.com · Property description</span><span data-lang="es">Booking.com · Descripción de la propiedad</span><span data-lang="pt">Booking.com · Descrição da propriedade</span><span data-lang="it">Booking.com · Descrizione della proprietà</span></span>
+          <h3 class="tpl-title"><span data-lang="fr">Description générale</span><span data-lang="en">General description</span><span data-lang="es">Descripción general</span><span data-lang="pt">Descrição geral</span><span data-lang="it">Descrizione generale</span></h3>
+          <p class="tpl-hint"><span data-lang="fr">Présentation globale de l'établissement · Positionnement et expérience</span><span data-lang="en">Overall property presentation · Positioning and experience</span><span data-lang="es">Presentación general del establecimiento · Posicionamiento y experiencia</span><span data-lang="pt">Apresentação geral do estabelecimento · Posicionamento e experiência</span><span data-lang="it">Presentazione generale della struttura · Posizionamento ed esperienza</span></p>
+        </div>
+        <button class="btn-copy gold-btn" onclick="copier('body-b2', this)"><span data-lang="fr">Copier</span><span data-lang="en">Copy</span><span data-lang="es">Copiar</span><span data-lang="pt">Copiar</span><span data-lang="it">Copia</span></button>
+      </div>
+      <div class="tpl-body" id="body-b2">Niché au sein de la Résidence West Point à Foum El Bouir, l'Ocean Drift Lodge est un appartement de caractère alliant esthétique boho-chic et vue imprenable sur l'Atlantique.
+
+Conçu comme un sanctuaire de sérénité, il s'adresse aux voyageurs en quête d'authenticité, aux amateurs de kitesurf et aux couples souhaitant vivre une expérience unique face à l'océan marocain.
+
+La terrasse privée, véritable prolongement du logement, offre une vue directe sur l'Atlantique — cadre idéal pour apprécier les couchers de soleil de Dakhla.
+
+Situé à <span class="var">[X min]</span> des spots de kitesurf réputés du lagon et à <span class="var">[X min]</span> du centre-ville, l'Ocean Drift Lodge bénéficie d'un emplacement calme et sécurisé, à deux pas de l'océan.</div>
+    </div>
+  </div>
+
+  <!-- B3 — Description unité -->
+  <div class="section-wrap">
+    <div class="tpl-section">
+      <div class="tpl-card-header">
+        <span class="tpl-badge gold">B3</span>
+        <div class="tpl-meta">
+          <span class="tpl-platform-tag gold-tag"><span data-lang="fr">Booking.com · Description de l'unité</span><span data-lang="en">Booking.com · Unit description</span><span data-lang="es">Booking.com · Descripción de la unidad</span><span data-lang="pt">Booking.com · Descrição da unidade</span><span data-lang="it">Booking.com · Descrizione dell'unità</span></span>
+          <h3 class="tpl-title"><span data-lang="fr">Description de l'appartement</span><span data-lang="en">Apartment description</span><span data-lang="es">Descripción del apartamento</span><span data-lang="pt">Descrição do apartamento</span><span data-lang="it">Descrizione dell'appartamento</span></h3>
+          <p class="tpl-hint"><span data-lang="fr">Détail des espaces · Superficie · Configuration</span><span data-lang="en">Space details · Surface area · Configuration</span><span data-lang="es">Detalle de los espacios · Superficie · Configuración</span><span data-lang="pt">Detalhe dos espaços · Área · Configuração</span><span data-lang="it">Dettaglio degli spazi · Superficie · Configurazione</span></p>
+        </div>
+        <button class="btn-copy gold-btn" onclick="copier('body-b3', this)"><span data-lang="fr">Copier</span><span data-lang="en">Copy</span><span data-lang="es">Copiar</span><span data-lang="pt">Copiar</span><span data-lang="it">Copia</span></button>
+      </div>
+      <div class="tpl-body" id="body-b3">Appartement rez de jardin de <span class="var">[SUPERFICIE]</span> m² entièrement privatisé.
+
+COMPOSITION
+<span class="var">[DÉTAILLER : ex. — 1 salon / salle à manger ouverte sur la cuisine / 1 chambre avec lit [type et taille] / 1 salle de bain avec [douche/baignoire] / 1 WC / terrasse privée]</span>
+
+DÉCORATION
+Style boho-chic avec matériaux naturels (bois, rotin, lin), palette de couleurs naturelles et pièces artisanales sélectionnées. Atmosphère lumineuse et apaisante.
+
+TERRASSE
+Terrasse privée de <span class="var">[SUPERFICIE]</span> m² donnant sur <span class="var">[VUE PRÉCISE]</span>. Mobilier extérieur <span class="var">[À DÉCRIRE]</span>.
+
+CUISINE
+Cuisine entièrement équipée : <span class="var">[LISTE ÉQUIPEMENTS — réfrigérateur, plaques, micro-ondes, cafetière, etc.]</span>
+
+CAPACITÉ
+<span class="var">[N]</span> personnes maximum.</div>
+    </div>
+  </div>
+
+  <!-- B4 — Équipements -->
+  <div class="section-wrap--alt">
+    <div class="tpl-section">
+      <div class="tpl-card-header">
+        <span class="tpl-badge gold">B4</span>
+        <div class="tpl-meta">
+          <span class="tpl-platform-tag gold-tag"><span data-lang="fr">Booking.com · Équipements &amp; services</span><span data-lang="en">Booking.com · Amenities &amp; services</span><span data-lang="es">Booking.com · Equipamiento y servicios</span><span data-lang="pt">Booking.com · Equipamentos e serviços</span><span data-lang="it">Booking.com · Servizi e dotazioni</span></span>
+          <h3 class="tpl-title"><span data-lang="fr">Liste des équipements</span><span data-lang="en">Amenities list</span><span data-lang="es">Lista de equipamiento</span><span data-lang="pt">Lista de equipamentos</span><span data-lang="it">Lista dei servizi</span></h3>
+          <p class="tpl-hint"><span data-lang="fr">À saisir dans les champs Booking.com par catégorie · Cocher ce qui est disponible</span><span data-lang="en">Enter in Booking.com fields by category · Check what is available</span><span data-lang="es">Introducir en los campos de Booking.com por categoría · Marcar lo disponible</span><span data-lang="pt">Preencher nos campos do Booking.com por categoria · Marcar o que está disponível</span><span data-lang="it">Da inserire nei campi Booking.com per categoria · Spuntare ciò che è disponibile</span></p>
+        </div>
+        <button class="btn-copy gold-btn" onclick="copier('body-b4', this)"><span data-lang="fr">Copier</span><span data-lang="en">Copy</span><span data-lang="es">Copiar</span><span data-lang="pt">Copiar</span><span data-lang="it">Copia</span></button>
+      </div>
+      <div class="tpl-body" id="body-b4">CONNECTIVITÉ
+☐ Wi-Fi haut débit (gratuit)
+☐ <span class="var">[Vitesse en Mbps si connue]</span>
+
+SALLE DE BAIN
+☐ Douche
+☐ <span class="var">[Baignoire si applicable]</span>
+☐ Sèche-cheveux
+☐ Articles de toilette fournis
+☐ Serviettes incluses
+
+CHAMBRE &amp; LITERIE
+☐ Lit <span class="var">[type : double / queen / king]</span>
+☐ Linge de lit fourni (qualité hôtelière)
+☐ Placards / rangements
+☐ <span class="var">[Climatisation / ventilateur]</span>
+
+CUISINE
+☐ Cuisine équipée
+☐ Réfrigérateur
+☐ Plaques de cuisson
+☐ Micro-ondes
+☐ Cafetière
+☐ Bouilloire
+☐ Vaisselle et couverts
+☐ <span class="var">[Autres équipements]</span>
+
+EXTÉRIEUR
+☐ Terrasse privée
+☐ Mobilier de jardin / terrasse
+☐ <span class="var">[Parking si disponible]</span>
+☐ <span class="var">[Accès direct à l'océan si applicable]</span>
+
+SERVICES INCLUS
+☐ Ménage de fin de séjour
+☐ Linge de maison (draps + serviettes)
+☐ <span class="var">[Accueil personnalisé si prévu]</span>
+☐ <span class="var">[Panier de bienvenue si prévu]</span>
+
+SÉCURITÉ
+☐ Détecteur de fumée
+☐ <span class="var">[Détecteur CO si applicable]</span>
+☐ Extincteur
+☐ Trousse de premiers secours</div>
+    </div>
+  </div>
+
+  <!-- B5 — Politique d'annulation -->
+  <div class="section-wrap">
+    <div class="tpl-section">
+      <div class="tpl-card-header">
+        <span class="tpl-badge gold">B5</span>
+        <div class="tpl-meta">
+          <span class="tpl-platform-tag gold-tag"><span data-lang="fr">Booking.com · Politique d'annulation</span><span data-lang="en">Booking.com · Cancellation policy</span><span data-lang="es">Booking.com · Política de cancelación</span><span data-lang="pt">Booking.com · Política de cancelamento</span><span data-lang="it">Booking.com · Politica di cancellazione</span></span>
+          <h3 class="tpl-title"><span data-lang="fr">Conditions d'annulation</span><span data-lang="en">Cancellation terms</span><span data-lang="es">Condiciones de cancelación</span><span data-lang="pt">Condições de cancelamento</span><span data-lang="it">Condizioni di cancellazione</span></h3>
+          <p class="tpl-hint"><span data-lang="fr">Alignée avec les CGV Ocean Drift Lodge · Art. 5 du contrat</span><span data-lang="en">Aligned with Ocean Drift Lodge T&amp;Cs · Art. 5 of the contract</span><span data-lang="es">Alineada con las CGV Ocean Drift Lodge · Art. 5 del contrato</span><span data-lang="pt">Alinhada com os T&amp;C Ocean Drift Lodge · Art. 5 do contrato</span><span data-lang="it">In linea con le CGV Ocean Drift Lodge · Art. 5 del contratto</span></p>
+        </div>
+        <button class="btn-copy gold-btn" onclick="copier('body-b5', this)"><span data-lang="fr">Copier</span><span data-lang="en">Copy</span><span data-lang="es">Copiar</span><span data-lang="pt">Copiar</span><span data-lang="it">Copia</span></button>
+      </div>
+      <div class="tpl-body" id="body-b5">POLITIQUE D'ANNULATION — OCEAN DRIFT LODGE
+
+Toute annulation doit être notifiée par email à oceandriftlodge@gmail.com.
+
+— Annulation à plus de 30 jours avant l'arrivée : remboursement intégral de l'acompte
+— Annulation entre 15 et 30 jours avant l'arrivée : 50 % de l'acompte remboursé
+— Annulation à moins de 15 jours avant l'arrivée : acompte conservé intégralement
+— Non-présentation (no-show) : aucun remboursement
+
+En cas d'annulation par le propriétaire : remboursement intégral des sommes versées.
+
+Force majeure : en cas d'événement exceptionnel indépendant de la volonté des parties (catastrophe naturelle, décision administrative, pandémie), les sommes versées sont remboursées au prorata du séjour non effectué.
+
+Conformément au droit marocain (Dahir des Obligations et Contrats — D.O.C. 1913), aucun droit de rétractation légal ne s'applique aux locations saisonnières.</div>
+    </div>
+  </div>
+
+  <!-- B6 — Instructions check-in -->
+  <div class="section-wrap--alt">
+    <div class="tpl-section">
+      <div class="tpl-card-header">
+        <span class="tpl-badge gold">B6</span>
+        <div class="tpl-meta">
+          <span class="tpl-platform-tag gold-tag"><span data-lang="fr">Booking.com · Instructions d'arrivée</span><span data-lang="en">Booking.com · Arrival instructions</span><span data-lang="es">Booking.com · Instrucciones de llegada</span><span data-lang="pt">Booking.com · Instruções de chegada</span><span data-lang="it">Booking.com · Istruzioni per l'arrivo</span></span>
+          <h3 class="tpl-title"><span data-lang="fr">Check-in &amp; accès</span><span data-lang="en">Check-in &amp; access</span><span data-lang="es">Check-in y acceso</span><span data-lang="pt">Check-in e acesso</span><span data-lang="it">Check-in e accesso</span></h3>
+          <p class="tpl-hint"><span data-lang="fr">À compléter avec codes et informations d'accès réels avant mise en ligne</span><span data-lang="en">Complete with real access codes and info before publishing</span><span data-lang="es">Completar con códigos e información de acceso reales antes de publicar</span><span data-lang="pt">A completar com códigos e informações de acesso reais antes de publicar</span><span data-lang="it">Da completare con codici e informazioni di accesso reali prima della pubblicazione</span></p>
+        </div>
+        <button class="btn-copy gold-btn" onclick="copier('body-b6', this)"><span data-lang="fr">Copier</span><span data-lang="en">Copy</span><span data-lang="es">Copiar</span><span data-lang="pt">Copiar</span><span data-lang="it">Copia</span></button>
+      </div>
+      <div class="tpl-body" id="body-b6">ARRIVÉE (CHECK-IN)
+Heure d'arrivée : à partir de 15h00
+Arrivée tardive : possible — merci de nous prévenir par email ou WhatsApp
+
+ADRESSE EXACTE
+Résidence West Point, Foum El Bouir, Dakhla, Maroc
+<span class="var">[LIEN GOOGLE MAPS À COMPLÉTER]</span>
+
+ACCÈS AU LOGEMENT
+<span class="var">[DÉCRIRE LE PROCESSUS D'ACCÈS — ex. : code porte d'entrée résidence : XXXX / boîte à clé numéro X / appartement n° X au rez de chaussée côté jardin]</span>
+
+CONTACT LE JOUR J
+En cas de difficulté à l'arrivée, contactez-nous directement :
+WhatsApp : <span class="var">[NUMÉRO WHATSAPP À COMPLÉTER]</span>
+Email : oceandriftlodge@gmail.com
+
+DÉPART (CHECK-OUT)
+Heure de départ : avant 11h00
+<span class="var">[INSTRUCTIONS DE DÉPART — ex. : laisser les clés dans la boîte à clé / déposer à la réception]</span>
+
+PARKING
+<span class="var">[PRÉCISER : parking gratuit sur place / parking payant à X mètres / pas de parking dédié]</span></div>
+    </div>
+  </div>
+
+</div><!-- /#booking -->
+
+<footer>
+  <picture class="logo-stable footer-logo-wrap"><source srcset="logo.webp" type="image/webp"><img class="no-translate footer-logo-img" src="logo.png" alt="Ocean Drift Lodge" onerror="this.style.display='none'"></picture>
+  <span class="footer-logo-txt">Ocean Drift <em>Lodge</em></span>
+  <nav class="footer-links">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="index.html" target="_blank" rel="noopener"><span data-lang="fr">Site public</span><span data-lang="en">Public site</span><span data-lang="es">Sitio público</span><span data-lang="pt">Site público</span><span data-lang="it">Sito pubblico</span></a>
+  </nav>
+  <nav class="footer-links" aria-label="Liens légaux">
+    <a href="mentions-legales.html" target="_blank" rel="noopener"><span data-lang="fr">Mentions légales</span><span data-lang="en">Legal notice</span><span data-lang="es">Aviso legal</span><span data-lang="pt">Aviso legal</span><span data-lang="it">Note legali</span></a>
+    <a href="confidentialite.html" target="_blank" rel="noopener"><span data-lang="fr">Confidentialité</span><span data-lang="en">Privacy</span><span data-lang="es">Privacidad</span><span data-lang="pt">Privacidade</span><span data-lang="it">Privacy</span></a>
+  </nav>
+  <span>© 2026 Ocean Drift Lodge · Dashboard · Dakhla, Maroc</span>
+</footer>
+
+<script>
+const prog=document.getElementById('progress');
+window.addEventListener('scroll',()=>{const s=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;if(prog)prog.style.width=Math.min(s,100)+'%';document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);});
+function toggleMobile(){const m=document.getElementById('mobileMenu');const b=document.getElementById('burger');const o=m.classList.toggle('open');b.classList.toggle('open');b.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';}
+function closeMobile(){const m=document.getElementById('mobileMenu');if(m)m.classList.remove('open');const b=document.getElementById('burger');if(b){b.classList.remove('open');b.setAttribute('aria-expanded','false');}document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMobile();});
+let currentLang='fr';
+function setLang(lang){document.documentElement.classList.add('js-lang');currentLang=lang;document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('active');if(b.dataset.lang===lang)b.classList.add('active');});document.querySelectorAll('[data-lang]').forEach(el=>el.classList.remove('lang-visible'));document.querySelectorAll('[data-lang="'+lang+'"]').forEach(el=>el.classList.add('lang-visible'));document.documentElement.lang=lang;}
+document.addEventListener('DOMContentLoaded',()=>setLang('fr'));
+</script>
+
+<script>
+function copier(id, btn) {
+  const el   = document.getElementById(id);
+  const text = el.innerText;
+  navigator.clipboard.writeText(text).then(() => feedback(btn)).catch(() => {
+    const range = document.createRange();
+    range.selectNodeContents(el);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    document.execCommand('copy');
+    sel.removeAllRanges();
+    feedback(btn);
+  });
+}
+
+function feedback(btn) {
+  const orig = btn.innerHTML;
+  const lang = typeof currentLang !== 'undefined' ? currentLang : 'fr';
+  const labels = {fr:'Copié !',en:'Copied!',es:'¡Copiado!',pt:'Copiado!',it:'Copiato!'};
+  btn.textContent = labels[lang] || labels.fr;
+  btn.classList.add('copied');
+  setTimeout(() => {
+    btn.innerHTML = orig;
+    btn.classList.remove('copied');
+  }, 2000);
+}
+
+document.querySelectorAll('.platform-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.platform-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+  });
+});
+</script>
+
+<script>
+(function(){
+  if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));return;}
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>

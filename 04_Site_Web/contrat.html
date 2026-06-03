@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Ocean Drift Lodge - Contrat de Séjour</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="odl-styles.css">
+    
+    <style>/* ── FORMULAIRE ── */
+        body {
+            font-family: 'Jost', sans-serif;
+            line-height: 1.6;
+            color: var(--ink-mid);
+            background-color: var(--bg);
+            margin: 0;
+            padding: 80px 2rem 4rem;
+        }
+
+        .form-panel {
+            max-width: 850px;
+            margin: 0 auto 3rem auto;
+            background: var(--bg-sand);
+            color: var(--ink);
+            padding: 2.5rem 3rem;
+            border-radius: 8px;
+            border: 1px solid #d5cec5;
+        }
+        .form-panel-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 300;
+            margin: 0 0 .3rem 0;
+            color: var(--teal);
+        }
+        .form-panel-sub {
+            font-size: .72rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: var(--ink-light);
+            margin-bottom: 2rem;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+        .form-group { display: flex; flex-direction: column; gap: .4rem; }
+        .form-group label {
+            font-size: .68rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--ink-light);
+        }
+        .form-group select {
+            background: var(--bg-white);
+            border: 1px solid #c5bdb3;
+            color: var(--ink);
+            padding: .65rem .9rem;
+            border-radius: var(--radius);
+            font-family: 'Jost', sans-serif;
+            font-size: .9rem;
+            outline: none;
+            transition: border .2s, background .2s;
+        }
+        .form-group input::placeholder { color: #b0a89e; }
+        .form-group select:focus {
+            border-color: var(--teal);
+            background: #fff;
+        }
+        .form-group select option { color: var(--ink); background: white; }
+        .form-span2 { grid-column: span 2; }
+
+        .form-actions {
+            margin-top: 1.8rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn-generate {
+            background: var(--teal);
+            color: white;
+            border: none;
+            padding: .85rem 2rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-family: 'Jost', sans-serif;
+            font-weight: 500;
+            font-size: .8rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            transition: opacity .2s;
+        }
+        .btn-generate:hover { opacity: .85; }
+        .btn-reset {
+            background: transparent;
+            color: var(--ink-light);
+            border: 1px solid #c5bdb3;
+            padding: .85rem 1.5rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-family: 'Jost', sans-serif;
+            font-size: .8rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            transition: all .2s;
+        }
+        .btn-reset:hover { color: var(--ink); border-color: var(--ink-light); }
+
+        /* ── DOCUMENT ── */
+        .doc-box {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 3.5rem;
+            background: var(--bg-white);
+            border-radius: 6px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px solid var(--bg-sand);
+            padding-bottom: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .meta { text-align: right; font-size: 0.8rem; color: var(--ink-light); }
+        .ch-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: var(--peach);
+            margin-bottom: 2rem;
+        }
+        .client-box {
+            background: var(--bg);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 2.5rem;
+            font-size: 0.95rem;
+            color: var(--ink);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .terms { font-size: 0.85rem; color: var(--ink-mid); text-align: justify; }
+        .terms h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--teal);
+            margin-top: 1.8rem;
+            font-weight: 500;
+            border-bottom: 1px solid var(--bg-sand);
+            display: inline-block;
+        }
+        .alert-card {
+            border-left: 3px solid var(--peach);
+            background: var(--bg);
+            padding: 1.2rem;
+            border-radius: var(--radius);
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            margin: 2rem 0;
+        }
+        .signature-area {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--bg-sand);
+        }
+        .sig-block {
+            width: 45%;
+            min-height: 150px;
+            font-size: 0.8rem;
+            border: 1px dashed #c5bdb3;
+            padding: 10px;
+            border-radius: var(--radius);
+            color: var(--ink);
+        }
+        .btn-print {
+            background: var(--teal);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Jost';
+            font-size: .85rem;
+            letter-spacing: .08em;
+        }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { padding: 0; background: white; }
+            .doc-box { box-shadow: none; }
+        }
+        @media (max-width: 600px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .form-span2 { grid-column: span 1; }
+            .doc-box { padding: 2rem 1.5rem; }
+            .form-panel { padding: 1.8rem; }
+            .client-box { grid-template-columns: 1fr; }
+            .signature-area { flex-direction: column; gap: 1rem; }
+            .sig-block { width: 100%; }
+        }
+</style>
+
+<style>
+
+
+
+</style>
+</head>
+<body>
+
+<div id="progress" class="no-print"></div>
+<div class="mobile-menu no-print" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <button class="mobile-close" onclick="closeMobile()" aria-label="Fermer">✕</button>
+  <a href="index.html" onclick="closeMobile()"><span data-lang="fr">Accueil</span><span data-lang="en">Home</span><span data-lang="es">Inicio</span><span data-lang="pt">Início</span><span data-lang="it">Home</span></a>
+  <a href="index.html#reservation" onclick="closeMobile()" style="color:var(--teal)"><span data-lang="fr">Réserver</span><span data-lang="en">Book</span><span data-lang="es">Reservar</span><span data-lang="pt">Reservar</span><span data-lang="it">Prenota</span></a>
+  <div class="mobile-lang">
+    <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
+    <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
+  </div>
+</div>
+<header class="no-print">
+<nav id="nav" aria-label="Navigation principale">
+  <a href="index.html" class="nav-logo"><picture class="logo-stable"><source srcset="logo.webp" type="image/webp"><img class="no-translate nav-logo-img" src="logo.png" alt="" style="mix-blend-mode:multiply" onerror="this.style.display='none'"></picture>Ocean Drift <em>Lodge</em></a>
+    <div class="nav-center">
+    <a href="index.html"><span data-lang="fr">Accueil</span><span data-lang="en">Home</span><span data-lang="es">Inicio</span><span data-lang="pt">Início</span><span data-lang="it">Home</span></a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-sw" role="group" aria-label="Langue">
+      <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
+      <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
+    </div>
+    <a href="index.html#reservation" class="nav-cta"><span data-lang="fr">Réserver</span><span data-lang="en">Book</span><span data-lang="es">Reservar</span><span data-lang="pt">Reservar</span><span data-lang="it">Prenota</span></a>
+    <button class="burger" id="burger" onclick="toggleMobile()" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+</header>
+
+    <!-- ══ FORMULAIRE ══ -->
+    <div class="form-panel no-print">
+        <p class="form-panel-title"><span data-lang="fr">Générer un contrat</span><span data-lang="en">Generate a contract</span><span data-lang="es">Generar un contrato</span><span data-lang="pt">Gerar um contrato</span><span data-lang="it">Genera un contratto</span></p>
+        <p class="form-panel-sub"><span data-lang="fr">Remplissez les champs — le document se met à jour instantanément</span><span data-lang="en">Fill in the fields — the document updates instantly</span><span data-lang="es">Rellene los campos — el documento se actualiza al instante</span><span data-lang="pt">Preencha os campos — o documento é atualizado instantaneamente</span><span data-lang="it">Compila i campi — il documento si aggiorna istantaneamente</span></p>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label><span data-lang="fr">Civilité</span><span data-lang="en">Title</span><span data-lang="es">Tratamiento</span><span data-lang="pt">Título</span><span data-lang="it">Titolo</span></label>
+                <select id="f-civilite">
+                    <option value="M.">M.</option>
+                    <option value="Mme">Mme</option>
+                    <option value="M. et Mme">M. et Mme</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Prénom</span><span data-lang="en">First name</span><span data-lang="es">Nombre</span><span data-lang="pt">Nome</span><span data-lang="it">Nome</span></label>
+                <input type="text" id="f-prenom" placeholder="Jean">
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Nom</span><span data-lang="en">Last name</span><span data-lang="es">Apellido</span><span data-lang="pt">Apelido</span><span data-lang="it">Cognome</span></label>
+                <input type="text" id="f-nom" placeholder="Dupont">
+            </div>
+            <div class="form-group form-span2">
+                <label><span data-lang="fr">Email du locataire</span><span data-lang="en">Tenant's email</span><span data-lang="es">Correo del inquilino</span><span data-lang="pt">Email do inquilino</span><span data-lang="it">Email dell'inquilino</span></label>
+                <input type="email" id="f-email" placeholder="jean.dupont@email.com">
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">N° pièce d'identité</span><span data-lang="en">ID number</span><span data-lang="es">N° de identificación</span><span data-lang="pt">N° do documento de identidade</span><span data-lang="it">N° documento d'identità</span></label>
+                <input type="text" id="f-piece" placeholder="AB123456">
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Nationalité</span><span data-lang="en">Nationality</span><span data-lang="es">Nacionalidad</span><span data-lang="pt">Nacionalidade</span><span data-lang="it">Nazionalità</span></label>
+                <input type="text" id="f-nationalite" placeholder="Française">
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Nombre d'occupants</span><span data-lang="en">Number of occupants</span><span data-lang="es">Número de ocupantes</span><span data-lang="pt">Número de ocupantes</span><span data-lang="it">Numero di occupanti</span></label>
+                <select id="f-occupants">
+                    <option value="1 personne">1 personne</option>
+                    <option value="2 personnes" selected>2 personnes</option>
+                    <option value="3 personnes">3 personnes</option>
+                    <option value="4 personnes">4 personnes</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Date d'arrivée</span><span data-lang="en">Arrival date</span><span data-lang="es">Fecha de llegada</span><span data-lang="pt">Data de chegada</span><span data-lang="it">Data di arrivo</span></label>
+                <input type="date" id="f-arrivee">
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Date de départ</span><span data-lang="en">Departure date</span><span data-lang="es">Fecha de salida</span><span data-lang="pt">Data de saída</span><span data-lang="it">Data di partenza</span></label>
+                <input type="date" id="f-depart">
+            </div>
+            <div class="form-group form-span2">
+                <label><span data-lang="fr">Hébergement</span><span data-lang="en">Accommodation</span><span data-lang="es">Alojamiento</span><span data-lang="pt">Alojamento</span><span data-lang="it">Alloggio</span></label>
+                <select id="f-logement">
+                    <option value="Appartement Rez de Jardin — Résidence West Point">Appartement Rez de Jardin — Résidence West Point</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Loyer total (€)</span><span data-lang="en">Total rent (€)</span><span data-lang="es">Alquiler total (€)</span><span data-lang="pt">Aluguer total (€)</span><span data-lang="it">Affitto totale (€)</span></label>
+                <input type="number" id="f-loyer" placeholder="850" min="0" step="10">
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Acompte versé (€)</span><span data-lang="en">Deposit paid (€)</span><span data-lang="es">Depósito pagado (€)</span><span data-lang="pt">Depósito pago (€)</span><span data-lang="it">Acconto versato (€)</span></label>
+                <input type="number" id="f-acompte" placeholder="250" min="0" step="10">
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Caution (€)</span><span data-lang="en">Security deposit (€)</span><span data-lang="es">Fianza (€)</span><span data-lang="pt">Caução (€)</span><span data-lang="it">Cauzione (€)</span></label>
+                <input type="number" id="f-caution" placeholder="500" min="0" step="50">
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn-generate" onclick="genererDoc()"><span data-lang="fr">✦ Générer le contrat</span><span data-lang="en">✦ Generate contract</span><span data-lang="es">✦ Generar contrato</span><span data-lang="pt">✦ Gerar contrato</span><span data-lang="it">✦ Genera il contratto</span></button>
+            <button class="btn-reset" onclick="reinitialiser()"><span data-lang="fr">Réinitialiser</span><span data-lang="en">Reset</span><span data-lang="es">Restablecer</span><span data-lang="pt">Reiniciar</span><span data-lang="it">Reimposta</span></button>
+        </div>
+    </div>
+
+    <!-- ══ DOCUMENT ══ -->
+    <div class="doc-box" id="doc-output" style="display:none;">
+        <div class="header">
+            <div class="logo-side">
+                <div class="logo-area">
+                    <img src="logo.png" alt="Ocean Drift Lodge" style="width:80px;height:auto;"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                    <span style="display:none;font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--teal)">Ocean Drift <em>Lodge</em></span>
+                </div>
+            </div>
+            <div class="meta">
+                <strong><span data-lang="fr">Contrat N°</span><span data-lang="en">Contract N°</span><span data-lang="es">Contrato N°</span><span data-lang="pt">Contrato N°</span><span data-lang="it">Contratto N°</span> <span id="var-num">---</span></strong><br>
+                <span data-lang="fr">Émis le :</span><span data-lang="en">Issued on:</span><span data-lang="es">Emitido el:</span><span data-lang="pt">Emitido em:</span><span data-lang="it">Emesso il:</span> <span id="var-date">---</span><br>
+                Dakhla, Maroc
+            </div>
+        </div>
+
+        <h1 class="ch-title"><span data-lang="fr">Contrat d'<em>Hébergement</em></span><span data-lang="en">Rental <em>Contract</em></span><span data-lang="es">Contrato de <em>Alojamiento</em></span><span data-lang="pt">Contrato de <em>Alojamento</em></span><span data-lang="it">Contratto di <em>Alloggio</em></span></h1>
+
+        <div class="client-box" style="margin-bottom:1rem;">
+            <div><strong><span data-lang="fr">Le Bailleur :</span><span data-lang="en">The Landlord:</span><span data-lang="es">El Propietario:</span><span data-lang="pt">O Proprietário:</span><span data-lang="it">Il Locatore:</span></strong><br>Ocean Drift Lodge<br>Résidence West Point, Foum El Bouir, Dakhla, Maroc<br>oceandriftlodge@gmail.com</div>
+            <div><strong><span data-lang="fr">Droit applicable :</span><span data-lang="en">Applicable law:</span><span data-lang="es">Derecho aplicable:</span><span data-lang="pt">Direito aplicável:</span><span data-lang="it">Diritto applicabile:</span></strong><br>Droit marocain — Dahir des obligations et contrats. Tout litige relève de la compétence des tribunaux de Dakhla, Maroc.</div>
+        </div>
+
+        <div class="client-box">
+            <div><strong><span data-lang="fr">Le Locataire :</span><span data-lang="en">The Tenant:</span><span data-lang="es">El Inquilino:</span><span data-lang="pt">O Inquilino:</span><span data-lang="it">L'Inquilino:</span></strong><br><span id="var-client">---</span><br><span id="var-email" style="font-size:.85em;color:var(--ink-light)"></span></div>
+            <div><strong><span data-lang="fr">Période :</span><span data-lang="en">Period:</span><span data-lang="es">Período:</span><span data-lang="pt">Período:</span><span data-lang="it">Periodo:</span></strong><br><span id="var-periode">---</span></div>
+            <div style="grid-column: span 2; margin-top: 10px; border-top: 1px solid #d5cec5; padding-top: 10px;">
+                <strong><span data-lang="fr">Pièce d'identité :</span><span data-lang="en">ID:</span><span data-lang="es">Identificación:</span><span data-lang="pt">Documento:</span><span data-lang="it">Documento:</span></strong> <span id="var-piece">---</span> &nbsp;|&nbsp;
+                <strong><span data-lang="fr">Nationalité :</span><span data-lang="en">Nationality:</span><span data-lang="es">Nacionalidad:</span><span data-lang="pt">Nacionalidade:</span><span data-lang="it">Nazionalità:</span></strong> <span id="var-nationalite">---</span>
+            </div>
+            <div style="grid-column: span 2; margin-top: 6px; border-top: 1px solid #d5cec5; padding-top: 10px;">
+                <strong><span data-lang="fr">Désignation :</span><span data-lang="en">Property:</span><span data-lang="es">Designación:</span><span data-lang="pt">Designação:</span><span data-lang="it">Designazione:</span></strong> <span id="var-details">---</span><br>
+                <strong><span data-lang="fr">Capacité autorisée :</span><span data-lang="en">Authorized capacity:</span><span data-lang="es">Capacidad autorizada:</span><span data-lang="pt">Capacidade autorizada:</span><span data-lang="it">Capacità autorizzata:</span></strong> <span id="var-occupants">---</span><br>
+                <strong><span data-lang="fr">Loyer total :</span><span data-lang="en">Total rent:</span><span data-lang="es">Alquiler total:</span><span data-lang="pt">Aluguer total:</span><span data-lang="it">Affitto totale:</span></strong> <span id="var-loyer">---</span> &nbsp;|&nbsp;
+                <strong><span data-lang="fr">Acompte versé :</span><span data-lang="en">Deposit paid:</span><span data-lang="es">Depósito pagado:</span><span data-lang="pt">Depósito pago:</span><span data-lang="it">Acconto versato:</span></strong> <span id="var-acompte">---</span> &nbsp;|&nbsp;
+                <strong><span data-lang="fr">Caution :</span><span data-lang="en">Security deposit:</span><span data-lang="es">Fianza:</span><span data-lang="pt">Caução:</span><span data-lang="it">Cauzione:</span></strong> <span id="var-caution">---</span>
+            </div>
+        </div>
+
+        <div class="terms">
+            <h3><span data-lang="fr">1. Arrivée et Sortie (Check-in/out)</span><span data-lang="en">1. Arrival & Departure (Check-in/out)</span><span data-lang="es">1. Llegada y Salida (Check-in/out)</span><span data-lang="pt">1. Chegada e Partida (Check-in/out)</span><span data-lang="it">1. Arrivo e Partenza (Check-in/out)</span></h3>
+            <p>Les clés sont remises à partir de 15h00. Le logement doit être libéré avant 11h00. Un état des lieux contradictoire sera réalisé à l'entrée. À défaut, le locataire dispose de 12h pour signaler toute anomalie.</p>
+
+            <h3><span data-lang="fr">2. Occupation et Assurance</span><span data-lang="en">2. Occupancy & Insurance</span><span data-lang="es">2. Ocupación y Seguro</span><span data-lang="pt">2. Ocupação e Seguro</span><span data-lang="it">2. Occupazione e Assicurazione</span></h3>
+            <p>Le logement est destiné exclusivement à l'habitation saisonnière. Le locataire certifie être titulaire d'une assurance responsabilité civile (clause villégiature). La sous-location est strictement interdite. Le nombre d'occupants ne peut excéder la capacité mentionnée ci-dessus.</p>
+
+            <h3><span data-lang="fr">3. Caution et Dégradations</span><span data-lang="en">3. Security Deposit & Damages</span><span data-lang="es">3. Fianza y Daños</span><span data-lang="pt">3. Caução e Danos</span><span data-lang="it">3. Cauzione e Danni</span></h3>
+            <p>Un dépôt de garantie (caution) est requis avant l'entrée. Il sera libéré après l'état des lieux de sortie, déduction faite des éventuels dommages constatés ou frais de nettoyage exceptionnel.</p>
+
+            <h3><span data-lang="fr">4. Règlement Intérieur</span><span data-lang="en">4. House Rules</span><span data-lang="es">4. Reglamento Interno</span><span data-lang="pt">4. Regulamento Interno</span><span data-lang="it">4. Regolamento Interno</span></h3>
+            <p>Ocean Drift Lodge est un sanctuaire de sérénité. Le respect du calme (pas de nuisances après 22h) et l'interdiction de fumer à l'intérieur sont des conditions essentielles du présent contrat.</p>
+
+            <h3><span data-lang="fr">5. Annulation et Remboursement</span><span data-lang="en">5. Cancellation & Refund</span><span data-lang="es">5. Cancelación y Reembolso</span><span data-lang="pt">5. Cancelamento e Reembolso</span><span data-lang="it">5. Cancellazione e Rimborso</span></h3>
+            <p>Toute annulation doit être notifiée par écrit (email) à oceandriftlodge@gmail.com. En cas d'annulation par le locataire : annulation à plus de 30 jours avant l'arrivée — acompte restitué intégralement ; annulation entre 15 et 30 jours — 50 % de l'acompte restitué ; annulation à moins de 15 jours — acompte conservé. En cas d'annulation par le bailleur, le locataire est remboursé intégralement.</p>
+
+            <h3><span data-lang="fr">6. Force Majeure</span><span data-lang="en">6. Force Majeure</span><span data-lang="es">6. Fuerza Mayor</span><span data-lang="pt">6. Força Maior</span><span data-lang="it">6. Forza Maggiore</span></h3>
+            <p>Aucune des parties ne pourra être tenue responsable en cas d'inexécution due à un événement de force majeure (catastrophe naturelle, pandémie, décision administrative). Dans ce cas, les sommes versées seront remboursées au prorata du séjour non effectué.</p>
+
+            <h3><span data-lang="fr">7. Déclaration aux Autorités Marocaines</span><span data-lang="en">7. Declaration to Moroccan Authorities</span><span data-lang="es">7. Declaración a las Autoridades Marroquíes</span><span data-lang="pt">7. Declaração às Autoridades Marroquinas</span><span data-lang="it">7. Dichiarazione alle Autorità Marocchine</span></h3>
+            <p>Conformément à la réglementation marocaine applicable aux hébergements touristiques (circulaires du Ministère de l'Intérieur — Sûreté nationale et Gendarmerie royale), le bailleur est tenu de déclarer l'identité de tout occupant auprès des autorités compétentes. Le locataire s'engage à présenter une pièce d'identité valide (passeport ou carte nationale d'identité) dès son arrivée et à en remettre une copie. Ces données sont traitées conformément à la <a href="/confidentialite.html" style="color:var(--teal)">politique de confidentialité</a> d'Ocean Drift Lodge et conservées pour la durée légale applicable.</p>
+        </div>
+
+        <div class="alert-card">
+            <strong><span data-lang="fr">Note Juridique :</span><span data-lang="en">Legal Note:</span><span data-lang="es">Nota Jurídica:</span><span data-lang="pt">Nota Jurídica:</span><span data-lang="it">Nota Legale:</span></strong> La validation de ce contrat et le versement de l'acompte valent acceptation totale des <a href="/cgv.html" style="color:var(--teal);border-bottom:1px solid rgba(46,139,139,0.3)">Conditions Générales de Vente</a> d'Ocean Drift Lodge, disponibles sur oceandriftlodge.com. Le présent contrat est régi par le droit marocain — Dahir des Obligations et Contrats (D.O.C.) de 1913.
+        </div>
+
+        <div class="signature-area">
+            <div class="sig-block">
+                <strong><span data-lang="fr">Pour Ocean Drift Lodge</span><span data-lang="en">For Ocean Drift Lodge</span><span data-lang="es">Por Ocean Drift Lodge</span><span data-lang="pt">Por Ocean Drift Lodge</span><span data-lang="it">Per Ocean Drift Lodge</span></strong><br><br>
+                <span style="font-size: 0.7rem; color: #999;"><span data-lang="fr">Cachet et signature</span><span data-lang="en">Stamp and signature</span><span data-lang="es">Sello y firma</span><span data-lang="pt">Carimbo e assinatura</span><span data-lang="it">Timbro e firma</span></span>
+            </div>
+            <div class="sig-block">
+                <strong><span data-lang="fr">Le Locataire</span><span data-lang="en">The Tenant</span><span data-lang="es">El Inquilino</span><span data-lang="pt">O Inquilino</span><span data-lang="it">L'Inquilino</span></strong><br>
+                <span style="font-size: 0.7rem; color: #999;"><span data-lang="fr">Signature précédée de la mention "Lu et approuvé"</span><span data-lang="en">Signature preceded by "Read and approved"</span><span data-lang="es">Firma precedida de "Leído y aprobado"</span><span data-lang="pt">Assinatura precedida de "Lido e aprovado"</span><span data-lang="it">Firma preceduta da "Letto e approvato"</span></span>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem;" class="no-print" id="btn-print-wrap">
+        <button class="btn-print" onclick="window.print()"><span data-lang="fr">⬇ Télécharger / Imprimer PDF</span><span data-lang="en">⬇ Download / Print PDF</span><span data-lang="es">⬇ Descargar / Imprimir PDF</span><span data-lang="pt">⬇ Descarregar / Imprimir PDF</span><span data-lang="it">⬇ Scarica / Stampa PDF</span></button>
+    </div>
+
+    <script>
+        function genNumero() {
+            const yr = new Date().getFullYear();
+            const seq = String(Math.floor(Math.random() * 900) + 100);
+            return `CTR-${yr}-${seq}`;
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return '—';
+            const [y, m, d] = dateStr.split('-');
+            const months = {
+                fr: ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'],
+                en: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+                es: ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],
+                pt: ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'],
+                it: ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre']
+            };
+            const lang = typeof currentLang !== 'undefined' ? currentLang : 'fr';
+            const mois = months[lang] || months.fr;
+            return `${parseInt(d)} ${mois[parseInt(m)-1]} ${y}`;
+        }
+
+        function nbNuits(arrivee, depart) {
+            const a = new Date(arrivee), b = new Date(depart);
+            const diff = Math.round((b - a) / 86400000);
+            if (diff <= 0) return '';
+            const lang = typeof currentLang !== 'undefined' ? currentLang : 'fr';
+            const labels = {fr:`${diff} nuit${diff>1?'s':''}`,en:`${diff} night${diff>1?'s':''}`,es:`${diff} noche${diff>1?'s':''}`,pt:`${diff} noite${diff>1?'s':''}`,it:`${diff} notte${diff>1?'':'s'}`};
+            return labels[lang] || labels.fr;
+        }
+
+        function fmt(n) {
+            return n.toFixed(2).replace('.', ',') + ' €';
+        }
+
+        function genererDoc() {
+            const civilite   = document.getElementById('f-civilite').value;
+            const prenom     = document.getElementById('f-prenom').value.trim();
+            const nom        = document.getElementById('f-nom').value.trim();
+            const email      = document.getElementById('f-email').value.trim();
+            const piece      = document.getElementById('f-piece').value.trim();
+            const nationalite = document.getElementById('f-nationalite').value.trim();
+            const occupants  = document.getElementById('f-occupants').value;
+            const arrivee    = document.getElementById('f-arrivee').value;
+            const depart     = document.getElementById('f-depart').value;
+            const logement   = document.getElementById('f-logement').value;
+            const loyer      = parseFloat(document.getElementById('f-loyer').value) || 0;
+            const acompte    = parseFloat(document.getElementById('f-acompte').value) || 0;
+            const caution    = parseFloat(document.getElementById('f-caution').value) || 0;
+
+            const lang = typeof currentLang !== 'undefined' ? currentLang : 'fr';
+            const alertName = {fr:'Merci de saisir le prénom et le nom.',en:'Please enter the first and last name.',es:'Por favor, introduzca el nombre y apellido.',pt:'Por favor, introduza o nome e apelido.',it:'Per favore, inserisca nome e cognome.'};
+            const alertDate = {fr:'Merci de saisir les dates d\'arrivée et de départ.',en:'Please enter the arrival and departure dates.',es:'Por favor, introduzca las fechas de llegada y salida.',pt:'Por favor, introduza as datas de chegada e partida.',it:'Per favore, inserisca le date di arrivo e partenza.'};
+            if (!prenom || !nom) { alert(alertName[lang] || alertName.fr); return; }
+            if (!arrivee || !depart) { alert(alertDate[lang] || alertDate.fr); return; }
+
+            const nuits = nbNuits(arrivee, depart);
+            const periodeFrom = {fr:'Du',en:'From',es:'Del',pt:'De',it:'Dal'};
+            const periodeTo = {fr:'au',en:'to',es:'al',pt:'a',it:'al'};
+            const periode = `${periodeFrom[lang]||'Du'} ${formatDate(arrivee)} ${periodeTo[lang]||'au'} ${formatDate(depart)}${nuits ? ' (' + nuits + ')' : ''}`;
+
+            document.getElementById('var-num').textContent        = genNumero();
+            document.getElementById('var-date').textContent       = new Date().toLocaleDateString('fr-FR');
+            document.getElementById('var-client').textContent     = `${civilite} ${prenom} ${nom}`;
+            document.getElementById('var-email').textContent      = email || '';
+            document.getElementById('var-piece').textContent      = piece || '—';
+            document.getElementById('var-nationalite').textContent = nationalite || '—';
+            document.getElementById('var-details').textContent    = logement;
+            document.getElementById('var-periode').textContent    = periode;
+            document.getElementById('var-occupants').textContent  = `${occupants} maximum`;
+            document.getElementById('var-loyer').textContent      = loyer > 0 ? fmt(loyer) : '—';
+            document.getElementById('var-acompte').textContent    = acompte > 0 ? fmt(acompte) : '—';
+            document.getElementById('var-caution').textContent    = caution > 0 ? fmt(caution) : '—';
+
+            document.getElementById('doc-output').style.display    = 'block';
+            document.getElementById('btn-print-wrap').style.display = 'block';
+
+            setTimeout(() => {
+                document.getElementById('doc-output').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        function reinitialiser() {
+            ['f-prenom','f-nom','f-email','f-piece','f-nationalite','f-arrivee','f-depart','f-loyer','f-acompte','f-caution'].forEach(id => document.getElementById(id).value = '');
+            document.getElementById('f-civilite').value  = 'M.';
+            document.getElementById('f-occupants').value = '2 personnes';
+            document.getElementById('f-logement').value  = 'Appartement Rez de Jardin — Résidence West Point';
+            document.getElementById('doc-output').style.display    = 'none';
+            document.getElementById('btn-print-wrap').style.display = 'none';
+        }
+
+        // Masquer le bouton print au départ
+        document.getElementById('btn-print-wrap').style.display = 'none';
+
+        const prog=document.getElementById('progress');
+        window.addEventListener('scroll',()=>{const s=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;if(prog)prog.style.width=Math.min(s,100)+'%';document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);});
+        function toggleMobile(){const m=document.getElementById('mobileMenu');const b=document.getElementById('burger');const o=m.classList.toggle('open');b.classList.toggle('open');b.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';}
+        function closeMobile(){const m=document.getElementById('mobileMenu');if(m)m.classList.remove('open');const b=document.getElementById('burger');if(b){b.classList.remove('open');b.setAttribute('aria-expanded','false');}document.body.style.overflow='';}
+        document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMobile();});
+        let currentLang='fr';
+        function setLang(lang){document.documentElement.classList.add('js-lang');currentLang=lang;document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('active');if(b.dataset.lang===lang)b.classList.add('active');});document.querySelectorAll('[data-lang]').forEach(el=>el.classList.remove('lang-visible'));document.querySelectorAll('[data-lang="'+lang+'"]').forEach(el=>el.classList.add('lang-visible'));document.documentElement.lang=lang;const _sl=(id,langs)=>{const s=document.getElementById(id);if(!s)return;const lb=langs[lang]||langs.fr;Array.from(s.options).forEach((o,i)=>{if(lb[i]!==undefined)o.textContent=lb[i];});};_sl("f-civilite",{fr:["M.","Mme","M. et Mme"],en:["Mr.","Mrs.","Mr. & Mrs."],es:["Sr.","Sra.","Sr. y Sra."],pt:["Sr.","Sra.","Sr. e Sra."],it:["Sig.","Sig.ra","Sig. e Sig.ra"]});_sl("f-occupants",{fr:["1 personne","2 personnes","3 personnes","4 personnes"],en:["1 person","2 persons","3 persons","4 persons"],es:["1 persona","2 personas","3 personas","4 personas"],pt:["1 pessoa","2 pessoas","3 pessoas","4 pessoas"],it:["1 persona","2 persone","3 persone","4 persone"]});}
+        document.addEventListener('DOMContentLoaded',()=>setLang('fr'));
+    </script>
+
+<footer class="no-print">
+  <picture class="logo-stable footer-logo-wrap"><source srcset="logo.webp" type="image/webp"><img class="no-translate footer-logo-img" src="logo.png" alt="Ocean Drift Lodge" onerror="this.style.display='none'"></picture>
+  <span class="footer-logo-txt">Ocean Drift <em>Lodge</em></span>
+  <nav class="footer-links">
+    <a href="index.html"><span data-lang="fr">Accueil</span><span data-lang="en">Home</span><span data-lang="es">Inicio</span><span data-lang="pt">Início</span><span data-lang="it">Home</span></a>
+    <a href="livret-accueil.html"><span data-lang="fr">Livret d'accueil</span><span data-lang="en">Welcome guide</span><span data-lang="es">Guía de bienvenida</span><span data-lang="pt">Guia de boas-vindas</span><span data-lang="it">Guida di benvenuto</span></a>
+  </nav>
+  <nav class="footer-links" aria-label="Liens légaux">
+    <a href="cgv.html"><span data-lang="fr">CGV</span><span data-lang="en">GTC</span><span data-lang="es">CGV</span><span data-lang="pt">CGV</span><span data-lang="it">CGV</span></a>
+    <a href="mentions-legales.html"><span data-lang="fr">Mentions légales</span><span data-lang="en">Legal notice</span><span data-lang="es">Aviso legal</span><span data-lang="pt">Aviso legal</span><span data-lang="it">Note legali</span></a>
+    <a href="confidentialite.html"><span data-lang="fr">Confidentialité</span><span data-lang="en">Privacy</span><span data-lang="es">Privacidad</span><span data-lang="pt">Privacidade</span><span data-lang="it">Privacy</span></a>
+  </nav>
+  <span>© 2026 Ocean Drift Lodge · Dakhla, Maroc</span>
+</footer>
+<script>
+(function(){
+  if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));return;}
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>

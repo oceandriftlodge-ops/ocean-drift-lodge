@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard · Ocean Drift Lodge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="odl-styles.css">
+<style>body{font-family:var(--font-sans);background:var(--bg);color:var(--ink-mid);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* ═══════════════ LOGIN ═══════════════ */
+#login-screen{position:fixed;inset:0;background:var(--bg-night);display:flex;align-items:center;justify-content:center;z-index:500;padding:2rem}
+#login-screen.hidden{display:none}
+.login-box{width:100%;max-width:380px;text-align:center}
+.login-logo{font-family:var(--font-serif);font-size:2rem;font-weight:300;color:var(--bg);letter-spacing:.04em;margin-bottom:.5rem}
+.login-logo em{font-style:italic;color:var(--gold)}
+.login-tag{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--teal);font-weight:500;margin-bottom:2.5rem;display:block}
+.login-field{position:relative;margin-bottom:1.2rem}
+.login-field input{width:100%;background:transparent;border:none;border-bottom:1px solid var(--teal);color:var(--bg);font-family:var(--font-sans);font-size:1.35rem;font-weight:300;padding:.75rem .5rem;outline:none;text-align:center;letter-spacing:.2em;transition:border-color var(--trans)}
+.login-field input::placeholder{color:rgba(250,249,247,.35);font-size:.85rem;letter-spacing:.18em}
+.login-field input:focus{border-bottom-color:var(--bg)}
+.login-field input.shake{animation:shake .4s ease}
+.login-btn{width:100%;background:var(--teal);color:var(--bg);border:none;padding:.9rem 2rem;border-radius:var(--radius);font-family:var(--font-sans);font-weight:500;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:background var(--trans);margin-bottom:1rem}
+.login-btn:hover{background:var(--teal-dk)}
+.login-error{font-size:.78rem;color:var(--peach);min-height:1.2rem;letter-spacing:.05em}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+
+/* ═══════════════ DASHBOARD ═══════════════ */
+#dashboard{display:none}
+#dashboard.visible{display:block}
+
+/* ── HERO ── */
+.hero{
+  padding:9rem 2rem 5rem;
+  text-align:center;
+    linear-gradient(180deg,rgba(26,46,74,0) 55%,var(--bg-sand) 100%),
+    linear-gradient(160deg,var(--navy) 0%,#1e3d54 35%,#236868 65%,#3d8080 85%,var(--bg) 100%);
+  position:relative;overflow:hidden
+}
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(46,139,139,0.15) 0%,transparent 60%);pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
+.hero-eyebrow{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink);font-weight:500;margin-bottom:1.5rem}
+.hero-title{font-family:var(--font-serif);font-size:clamp(2.4rem,6vw,4rem);font-weight:300;color:var(--white);letter-spacing:.02em;line-height:1.1;margin-bottom:1.2rem}
+.hero-title em{font-style:italic;color:rgba(46,139,139,0.85)}
+.hero-sub{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);font-weight:400}
+
+/* ── SECTIONS ── */
+.section{padding:5rem 2rem;scroll-margin-top:80px}
+.section--sand{background:var(--bg-sand)}
+.section--white{background:var(--bg)}
+.section-inner{max-width:1000px;margin:0 auto}
+.section-eyebrow{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--teal);font-weight:500;margin-bottom:.8rem}
+.section-title{font-family:var(--font-serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;color:var(--ink);letter-spacing:.02em;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid rgba(28,28,26,0.1)}
+.section-title em{font-style:italic;color:var(--teal)}
+
+/* ── CARDS ── */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+.card{display:flex;flex-direction:column;gap:.8rem;background:var(--white);border:1px solid rgba(28,28,26,.07);border-radius:6px;padding:1.4rem 1.5rem;transition:border-color var(--trans),transform var(--trans),box-shadow var(--trans);position:relative}
+.card:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:0 6px 20px rgba(46,139,139,0.1)}
+.card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:.8rem}
+.card-icon{font-size:1.3rem;flex-shrink:0}
+.badge{font-size:.52rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .6rem;border-radius:20px;border:1px solid;white-space:nowrap;flex-shrink:0}
+.badge--conforme{background:rgba(46,139,139,0.1);color:var(--teal);border-color:rgba(46,139,139,0.25)}
+.badge--reference{background:rgba(184,151,90,0.1);color:var(--gold);border-color:rgba(184,151,90,0.25)}
+.card-name{font-weight:500;font-size:.92rem;color:var(--ink);line-height:1.3}
+.card-desc{font-size:.75rem;font-weight:300;color:var(--ink-light);line-height:1.45;flex:1}
+.card-filename{font-size:.62rem;font-family:monospace;color:rgba(107,107,99,0.55);margin-top:.2rem}
+.card-arrow{font-size:.8rem;color:var(--ink-light);align-self:flex-end;transition:color var(--trans),transform var(--trans)}
+.card:hover .card-arrow{color:var(--teal);transform:translateX(3px)}
+
+/* ── OUTILS EXTERNES ── */
+.outils-label{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-light);font-weight:500;margin:3rem 0 1rem}
+.outils-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.outil-card{display:flex;align-items:center;gap:1rem;background:rgba(28,28,26,0.03);border:1px solid rgba(28,28,26,.06);border-radius:6px;padding:1rem 1.2rem;transition:border-color var(--trans),background var(--trans)}
+.outil-card:hover{border-color:var(--teal);background:rgba(46,139,139,0.04)}
+.outil-icon{font-size:1.2rem;flex-shrink:0}
+.outil-body{flex:1;min-width:0}
+.outil-name{display:block;font-weight:500;font-size:.85rem;color:var(--ink)}
+.outil-url{display:block;font-size:.7rem;color:var(--ink-light);font-weight:300}
+
+/* ── CHECKLIST ── */
+.checklist-grid{display:flex;flex-direction:column;gap:.7rem}
+.check-item{display:flex;align-items:center;gap:1rem;background:var(--white);border:1px solid rgba(28,28,26,.07);border-radius:var(--radius);padding:1rem 1.2rem;cursor:pointer;user-select:none;transition:background var(--trans),border-color var(--trans)}
+.check-item:hover{border-color:var(--teal)}
+.check-item.done{background:rgba(46,139,139,.08);border-color:rgba(46,139,139,.2)}
+.check-box{width:1.25rem;height:1.25rem;border:2px solid rgba(28,28,26,.2);border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:transparent;transition:background var(--trans),border-color var(--trans),color var(--trans)}
+.check-item.done .check-box{background:var(--teal);border-color:var(--teal);color:var(--white)}
+.check-label{font-size:.88rem;color:var(--ink-mid);transition:color var(--trans)}
+.check-item.done .check-label{text-decoration:line-through;color:var(--ink-light)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  
+  
+  
+  
+  
+  .section{padding:3.5rem 1.5rem}
+  .hero{padding:7rem 1.5rem 4rem}
+}
+@media(max-width:620px){
+  .cards{grid-template-columns:1fr}
+  .outils-grid{grid-template-columns:1fr}
+  .section{padding:3rem 1.2rem}
+  .hero-title{font-size:2.2rem}
+  .login-logo{font-size:1.7rem}
+}
+
+/* ── LANG ── */
+
+/* ── STATUS HERO ── */
+.status-row{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-top:1.8rem}
+.status-badge{font-size:.58rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;background:rgba(46,139,139,0.2);color:var(--ink);padding:.35rem .9rem;border-radius:20px;border:1px solid rgba(46,139,139,0.4)}
+</style>
+</head>
+<body>
+
+<!-- ══ ÉCRAN DE CONNEXION ══ -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">Ocean Drift <em>Lodge</em></div>
+    <span class="login-tag"><span data-lang="fr">Accès privé · Dashboard</span><span data-lang="en">Private access · Dashboard</span><span data-lang="es">Acceso privado · Dashboard</span><span data-lang="pt">Acesso privado · Dashboard</span><span data-lang="it">Accesso privato · Dashboard</span></span>
+    <div class="login-field">
+      <input type="password" id="pwd-input" autocomplete="current-password">
+    </div>
+    <button class="login-btn" id="login-btn"><span data-lang="fr">Accéder →</span><span data-lang="en">Enter →</span><span data-lang="es">Acceder →</span><span data-lang="pt">Aceder →</span><span data-lang="it">Accedi →</span></button>
+    <div class="login-error" id="login-error"></div>
+  </div>
+</div>
+
+<!-- ══ DASHBOARD ══ -->
+<div id="dashboard">
+
+<div id="progress"></div>
+
+<nav id="nav">
+  <a href="#" class="nav-logo"><picture class="logo-stable"><source srcset="logo.webp" type="image/webp"><img class="no-translate nav-logo-img" src="logo.png" alt="" style="mix-blend-mode:multiply" onerror="this.style.display='none'"></picture>Ocean Drift <em>Lodge</em></a>
+  <div class="nav-center">
+    <a href="#site-public"><span data-lang="fr">Site public</span><span data-lang="en">Public site</span><span data-lang="es">Sitio público</span><span data-lang="pt">Site público</span><span data-lang="it">Sito pubblico</span></a>
+    <a href="#communication"><span data-lang="fr">Communication</span><span data-lang="en">Communication</span><span data-lang="es">Comunicación</span><span data-lang="pt">Comunicação</span><span data-lang="it">Comunicazione</span></a>
+    <a href="#commercial"><span data-lang="fr">Commercial</span><span data-lang="en">Commercial</span><span data-lang="es">Comercial</span><span data-lang="pt">Comercial</span><span data-lang="it">Commerciale</span></a>
+    <a href="#ressources"><span data-lang="fr">Ressources</span><span data-lang="en">Resources</span><span data-lang="es">Recursos</span><span data-lang="pt">Recursos</span><span data-lang="it">Risorse</span></a>
+    <a href="#checklist">Checklist</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-sw">
+      <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
+      <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
+    </div>
+    <a href="index.html" class="nav-cta" target="_blank" rel="noopener"><span data-lang="fr">Voir le site →</span><span data-lang="en">View site →</span><span data-lang="es">Ver sitio →</span><span data-lang="pt">Ver site →</span><span data-lang="it">Vedi sito →</span></a>
+  </div>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" onclick="toggleMobile()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMobile()" aria-label="Fermer">✕</button>
+  <a href="#site-public" onclick="closeMobile()"><span data-lang="fr">Site public</span><span data-lang="en">Public site</span><span data-lang="es">Sitio público</span><span data-lang="pt">Site público</span><span data-lang="it">Sito pubblico</span></a>
+  <a href="#communication" onclick="closeMobile()"><span data-lang="fr">Communication</span><span data-lang="en">Communication</span><span data-lang="es">Comunicación</span><span data-lang="pt">Comunicação</span><span data-lang="it">Comunicazione</span></a>
+  <a href="#commercial" onclick="closeMobile()"><span data-lang="fr">Commercial</span><span data-lang="en">Commercial</span><span data-lang="es">Comercial</span><span data-lang="pt">Comercial</span><span data-lang="it">Commerciale</span></a>
+  <a href="#ressources" onclick="closeMobile()"><span data-lang="fr">Ressources</span><span data-lang="en">Resources</span><span data-lang="es">Recursos</span><span data-lang="pt">Recursos</span><span data-lang="it">Risorse</span></a>
+  <a href="#checklist" onclick="closeMobile()">Checklist</a>
+  <div class="mobile-lang">
+    <button class="lang-btn active" data-lang="fr" onclick="setLang('fr');closeMobile()">FR</button>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en');closeMobile()">EN</button>
+    <button class="lang-btn" data-lang="es" onclick="setLang('es');closeMobile()">ES</button>
+    <button class="lang-btn" data-lang="pt" onclick="setLang('pt');closeMobile()">PT</button>
+    <button class="lang-btn" data-lang="it" onclick="setLang('it');closeMobile()">IT</button>
+  </div>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-logo-wrap">
+      <picture class="no-translate">
+        <source srcset="logo.webp" type="image/webp">
+        <img src="logo.png" alt="Ocean Drift Lodge" class="hero-logo no-translate" style="mix-blend-mode:multiply;display:block;margin:0 auto;width:140px;height:auto;animation:none">
+      </picture>
+    </div>
+    <p class="hero-eyebrow"><span data-lang="fr">Espace privé · Gestion interne</span><span data-lang="en">Private area · Internal management</span><span data-lang="es">Área privada · Gestión interna</span><span data-lang="pt">Área privada · Gestão interna</span><span data-lang="it">Area privata · Gestione interna</span></p>
+    <h1 class="hero-title"><span data-lang="fr">Tableau de <em>bord</em></span><span data-lang="en">Control <em>Panel</em></span><span data-lang="es">Panel de <em>control</em></span><span data-lang="pt">Painel de <em>controlo</em></span><span data-lang="it">Pannello di <em>controllo</em></span></h1>
+    <p class="hero-sub">Ocean Drift Lodge · Dakhla, Maroc · 2026</p>
+    <div class="status-row">
+      <span class="status-badge"><span data-lang="fr">Navigation reliée</span><span data-lang="en">Navigation linked</span><span data-lang="es">Navegación enlazada</span><span data-lang="pt">Navegação ligada</span><span data-lang="it">Navigazione collegata</span> ✓</span>
+      <span class="status-badge">FR / EN / ES / PT / IT ✓</span>
+      <span class="status-badge"><span data-lang="fr">Logo corrigé</span><span data-lang="en">Logo fixed</span><span data-lang="es">Logo corregido</span><span data-lang="pt">Logo corrigido</span><span data-lang="it">Logo corretto</span> ✓</span>
+      <span class="status-badge">SEO · GKA · Foum El Bouir ✓</span>
+      <span class="status-badge"><span data-lang="fr">Modals Livret & Guide</span><span data-lang="en">Booklet & Guide modals</span><span data-lang="es">Modales Livret & Guía</span><span data-lang="pt">Modais Livret & Guia</span><span data-lang="it">Modali Libretto & Guida</span> ✓</span>
+      <span class="status-badge"><span data-lang="fr">Formulaire contact</span><span data-lang="en">Contact form</span><span data-lang="es">Formulario contacto</span><span data-lang="pt">Formulário contacto</span><span data-lang="it">Modulo contatto</span> ✓</span>
+      <span class="status-badge">QR scannable ✓</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 1 — Site public ══ -->
+<section class="section section--sand" id="site-public">
+  <div class="section-inner reveal">
+    <p class="section-eyebrow"><span data-lang="fr">Pages visiteurs</span><span data-lang="en">Visitor pages</span><span data-lang="es">Páginas de visitantes</span><span data-lang="pt">Páginas de visitantes</span><span data-lang="it">Pagine visitatori</span></p>
+    <h2 class="section-title"><span data-lang="fr">Site <em>public</em></span><span data-lang="en">Public <em>site</em></span><span data-lang="es">Sitio <em>público</em></span><span data-lang="pt">Site <em>público</em></span><span data-lang="it">Sito <em>pubblico</em></span></h2>
+    <div class="cards">
+      <a class="card" href="index.html" target="_blank" rel="noopener">
+        <div class="card-header"><span class="card-icon">🌐</span><span class="badge badge--conforme"><span data-lang="fr">Conforme Brand Book ✓</span><span data-lang="en">Brand Book compliant ✓</span><span data-lang="es">Conforme Brand Book ✓</span><span data-lang="pt">Conforme Brand Book ✓</span><span data-lang="it">Conforme Brand Book ✓</span></span></div>
+        <span class="card-name">Landing page</span>
+        <span class="card-desc"><span data-lang="fr">Page d'accueil publique · SEO GKA · Modals Livret & Guide · Formulaire pré-réservation · QR scannable · 5 langues</span><span data-lang="en">Public homepage · GKA SEO · Booklet & Guide modals · Pre-booking form · Real QR code · 5 languages</span><span data-lang="es">Página de inicio pública · SEO GKA · Modales · Formulario · QR real · 5 idiomas</span><span data-lang="pt">Página inicial pública · SEO GKA · Modais · Formulário · QR real · 5 línguas</span><span data-lang="it">Homepage pubblica · SEO GKA · Modali · Modulo · QR reale · 5 lingue</span></span>
+        <span class="card-filename">index.html</span>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="livret-accueil.html" target="_blank" rel="noopener">
+        <div class="card-header"><span class="card-icon">📋</span><span class="badge badge--conforme"><span data-lang="fr">Conforme Brand Book ✓</span><span data-lang="en">Brand Book compliant ✓</span><span data-lang="es">Conforme Brand Book ✓</span><span data-lang="pt">Conforme Brand Book ✓</span><span data-lang="it">Conforme Brand Book ✓</span></span></div>
+        <span class="card-name"><span data-lang="fr">Livret d'accueil</span><span data-lang="en">Welcome guide</span><span data-lang="es">Guía de bienvenida</span><span data-lang="pt">Guia de boas-vindas</span><span data-lang="it">Guida di benvenuto</span></span>
+        <span class="card-desc"><span data-lang="fr">Bienvenue voyageurs · Infos pratiques, accès WiFi, check-in / check-out</span><span data-lang="en">Welcome travellers · Practical info, WiFi access, check-in / check-out</span><span data-lang="es">Bienvenidos viajeros · Info práctica, acceso WiFi, check-in / check-out</span><span data-lang="pt">Bem-vindos viajantes · Info prática, acesso WiFi, check-in / check-out</span><span data-lang="it">Benvenuti viaggiatori · Info pratiche, accesso WiFi, check-in / check-out</span></span>
+        <span class="card-filename">livret-accueil.html</span>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="guide-du-voyageur.html" target="_blank" rel="noopener">
+        <div class="card-header"><span class="card-icon">🗺️</span><span class="badge badge--conforme"><span data-lang="fr">Conforme Brand Book ✓</span><span data-lang="en">Brand Book compliant ✓</span><span data-lang="es">Conforme Brand Book ✓</span><span data-lang="pt">Conforme Brand Book ✓</span><span data-lang="it">Conforme Brand Book ✓</span></span></div>
+        <span class="card-name"><span data-lang="fr">Guide du voyageur</span><span data-lang="en">Traveller's guide</span><span data-lang="es">Guía del viajero</span><span data-lang="pt">Guia do viajante</span><span data-lang="it">Guida del viaggiatore</span></span>
+        <span class="card-desc"><span data-lang="fr">Dakhla incontournable · Restaurants, activités kite, spots, excursions</span><span data-lang="en">Dakhla must-sees · Restaurants, kite activities, spots, excursions</span><span data-lang="es">Lo mejor de Dakhla · Restaurantes, actividades kite, spots, excursiones</span><span data-lang="pt">O melhor de Dakhla · Restaurantes, kitesurf, spots, excursões</span><span data-lang="it">Il meglio di Dakhla · Ristoranti, kitesurf, spot, escursioni</span></span>
+        <span class="card-filename">guide-du-voyageur.html</span>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="mentions-legales.html" target="_blank" rel="noopener">
+        <div class="card-header"><span class="card-icon">⚖️</span><span class="badge badge--conforme"><span data-lang="fr">Conforme ✓</span><span data-lang="en">Compliant ✓</span><span data-lang="es">Conforme ✓</span><span data-lang="pt">Conforme ✓</span><span data-lang="it">Conforme ✓</span></span></div>
+        <span class="card-name"><span data-lang="fr">Mentions légales</span><span data-lang="en">Legal notice</span><span data-lang="es">Aviso legal</span><span data-lang="pt">Aviso legal</span><span data-lang="it">Note legali</span></span>
+        <span class="card-desc"><span data-lang="fr">Éditeur, hébergeur, coordonnées légales obligatoires</span><span data-lang="en">Publisher, host, mandatory legal information</span><span data-lang="es">Editor, alojamiento, información legal obligatoria</span><span data-lang="pt">Editor, alojamento, informações legais obrigatórias</span><span data-lang="it">Editore, host, informazioni legali obbligatorie</span></span>
+        <span class="card-filename">mentions-legales.html</span>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="confidentialite.html" target="_blank" rel="noopener">
+        <div class="card-header"><span class="card-icon">🔒</span><span class="badge badge--conforme"><span data-lang="fr">Conforme ✓</span><span data-lang="en">Compliant ✓</span><span data-lang="es">Conforme ✓</span><span data-lang="pt">Conforme ✓</span><span data-lang="it">Conforme ✓</span></span></div>
+        <span class="card-name"><span data-lang="fr">Politique de confidentialité</span><span data-lang="en">Privacy policy</span><span data-lang="es">Política de privacidad</span><span data-lang="pt">Política de privacidade</span><span data-lang="it">Informativa sulla privacy</span></span>
+        <span class="card-desc"><span data-lang="fr">RGPD · Collecte et traitement des données personnelles</span><span data-lang="en">GDPR · Collection and processing of personal data</span><span data-lang="es">RGPD · Recogida y tratamiento de datos personales</span><span data-lang="pt">RGPD · Recolha e tratamento de dados pessoais</span><span data-lang="it">GDPR · Raccolta e trattamento dei dati personali</span></span>
+        <span class="card-filename">confidentialite.html</span>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="cgv.html" target="_blank" rel="noopener">
+        <div class="card-header"><span class="card-icon">📜</span><span class="badge badge--conforme"><span data-lang="fr">Conforme ✓</span><span data-lang="en">Compliant ✓</span><span data-lang="es">Conforme ✓</span><span data-lang="pt">Conforme ✓</span><span data-lang="it">Conforme ✓</span></span></div>
+        <span class="card-name"><span data-lang="fr">Conditions générales de vente</span><span data-lang="en">General terms of sale</span><span data-lang="es">Condiciones generales de venta</span><span data-lang="pt">Condições gerais de venda</span><span data-lang="it">Condizioni generali di vendita</span></span>
+        <span class="card-desc"><span data-lang="fr">CGV · Règles de réservation, annulation, remboursement</span><span data-lang="en">T&amp;Cs · Booking, cancellation and refund rules</span><span data-lang="es">CGV · Reglas de reserva, cancelación, reembolso</span><span data-lang="pt">CGV · Regras de reserva, cancelamento, reembolso</span><span data-lang="it">CGV · Regole di prenotazione, cancellazione, rimborso</span></span>
+        <span class="card-filename">cgv.html</span>
+        <span class="card-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 2 — Communication ══ -->
+<section class="section section--white" id="communication">
+  <div class="section-inner reveal">
+    <p class="section-eyebrow"><span data-lang="fr">Emails &amp; Annonces</span><span data-lang="en">Emails &amp; Listings</span><span data-lang="es">Emails y Anuncios</span><span data-lang="pt">Emails e Anúncios</span><span data-lang="it">Email e Annunci</span></p>
+    <h2 class="section-title"><span data-lang="fr">Communication <em>clients</em></span><span data-lang="en">Client <em>communications</em></span><span data-lang="es">Comunicaciones con <em>clientes</em></span><span data-lang="pt">Comunicações com <em>clientes</em></span><span data-lang="it">Comunicazioni con i <em>clienti</em></span></h2>
+    <div class="cards">
+      <a class="card" href="emails.html">
+        <div class="card-header"><span class="card-icon">✉️</span><span class="badge badge--conforme"><span data-lang="fr">Conforme ✓</span><span data-lang="en">Compliant ✓</span><span data-lang="es">Conforme ✓</span><span data-lang="pt">Conforme ✓</span><span data-lang="it">Conforme ✓</span></span></div>
+        <span class="card-name"><span data-lang="fr">Templates email</span><span data-lang="en">Email templates</span><span data-lang="es">Plantillas de email</span><span data-lang="pt">Modelos de email</span><span data-lang="it">Modelli email</span></span>
+        <span class="card-desc"><span data-lang="fr">6 modèles · Confirmation, pré-arrivée, accueil, départ, satisfaction, relance avis</span><span data-lang="en">6 templates · Confirmation, pre-arrival, welcome, departure, satisfaction, review follow-up</span><span data-lang="es">6 modelos · Confirmación, pre-llegada, bienvenida, salida, satisfacción, recordatorio reseña</span><span data-lang="pt">6 modelos · Confirmação, pré-chegada, boas-vindas, partida, satisfação, seguimento de avaliação</span><span data-lang="it">6 modelli · Conferma, pre-arrivo, benvenuto, partenza, soddisfazione, sollecito recensione</span></span>
+        <span class="card-filename">emails.html</span>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="satisfaction.html">
+        <div class="card-header"><span class="card-icon">⭐</span><span class="badge badge--conforme"><span data-lang="fr">Conforme ✓</span><span data-lang="en">Compliant ✓</span><span data-lang="es">Conforme ✓</span><span data-lang="pt">Conforme ✓</span><span data-lang="it">Conforme ✓</span></span></div>
+        <span class="card-name"><span data-lang="fr">Questionnaire satisfaction</span><span data-lang="en">Satisfaction survey</span><span data-lang="es">Encuesta de satisfacción</span><span data-lang="pt">Questionário de satisfação</span><span data-lang="it">Sondaggio soddisfazione</span></span>
+        <span class="card-desc"><span data-lang="fr">Formulaire J+5 après départ · PDF imprimable, multilingue 5 langues</span><span data-lang="en">Form D+5 after departure · Printable PDF, 5-language multilingual</span><span data-lang="es">Formulario D+5 tras salida · PDF imprimible, multilingüe 5 idiomas</span><span data-lang="pt">Formulário D+5 após saída · PDF imprimível, multilingue 5 idiomas</span><span data-lang="it">Modulo G+5 dopo la partenza · PDF stampabile, multilingue 5 lingue</span></span>
+        <span class="card-filename">satisfaction.html</span>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="annonces.html">
+        <div class="card-header"><span class="card-icon">📣</span><span class="badge badge--conforme"><span data-lang="fr">Conforme ✓</span><span data-lang="en">Compliant ✓</span><span data-lang="es">Conforme ✓</span><span data-lang="pt">Conforme ✓</span><span data-lang="it">Conforme ✓</span></span></div>
+        <span class="card-name"><span data-lang="fr">Templates annonces</span><span data-lang="en">Listing templates</span><span data-lang="es">Plantillas de anuncios</span><span data-lang="pt">Modelos de anúncios</span><span data-lang="it">Modelli di annunci</span></span>
+        <span class="card-desc"><span data-lang="fr">Airbnb &amp; Booking.com · Titres, descriptions optimisées, copy SEO</span><span data-lang="en">Airbnb &amp; Booking.com · Titles, optimised descriptions, SEO copy</span><span data-lang="es">Airbnb &amp; Booking.com · Títulos, descripciones optimizadas, copy SEO</span><span data-lang="pt">Airbnb &amp; Booking.com · Títulos, descrições otimizadas, copy SEO</span><span data-lang="it">Airbnb &amp; Booking.com · Titoli, descrizioni ottimizzate, copy SEO</span></span>
+        <span class="card-filename">annonces.html</span>
+        <span class="card-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 3 — Commercial ══ -->
+<section class="section section--sand" id="commercial">
+  <div class="section-inner reveal">
+    <p class="section-eyebrow"><span data-lang="fr">Génération de documents</span><span data-lang="en">Document generation</span><span data-lang="es">Generación de documentos</span><span data-lang="pt">Geração de documentos</span><span data-lang="it">Generazione documenti</span></p>
+    <h2 class="section-title"><span data-lang="fr">Documents <em>commerciaux</em></span><span data-lang="en">Commercial <em>documents</em></span><span data-lang="es">Documentos <em>comerciales</em></span><span data-lang="pt">Documentos <em>comerciais</em></span><span data-lang="it">Documenti <em>commerciali</em></span></h2>
+    <div class="cards">
+      <a class="card" href="contrat.html">
+        <div class="card-header"><span class="card-icon">📝</span><span class="badge badge--conforme"><span data-lang="fr">Conforme ✓</span><span data-lang="en">Compliant ✓</span><span data-lang="es">Conforme ✓</span><span data-lang="pt">Conforme ✓</span><span data-lang="it">Conforme ✓</span></span></div>
+        <span class="card-name"><span data-lang="fr">Contrat de location</span><span data-lang="en">Rental contract</span><span data-lang="es">Contrato de arrendamiento</span><span data-lang="pt">Contrato de arrendamento</span><span data-lang="it">Contratto di affitto</span></span>
+        <span class="card-desc"><span data-lang="fr">Générateur · Contrat de séjour personnalisé, imprimable, multilingue</span><span data-lang="en">Generator · Customised stay contract, printable, multilingual</span><span data-lang="es">Generador · Contrato de estancia personalizado, imprimible, multilingüe</span><span data-lang="pt">Gerador · Contrato de estadia personalizado, imprimível, multilingue</span><span data-lang="it">Generatore · Contratto di soggiorno personalizzato, stampabile, multilingue</span></span>
+        <span class="card-filename">contrat.html</span>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="facture.html">
+        <div class="card-header"><span class="card-icon">🧾</span><span class="badge badge--conforme"><span data-lang="fr">Conforme ✓</span><span data-lang="en">Compliant ✓</span><span data-lang="es">Conforme ✓</span><span data-lang="pt">Conforme ✓</span><span data-lang="it">Conforme ✓</span></span></div>
+        <span class="card-name"><span data-lang="fr">Facture</span><span data-lang="en">Invoice</span><span data-lang="es">Factura</span><span data-lang="pt">Fatura</span><span data-lang="it">Fattura</span></span>
+        <span class="card-desc"><span data-lang="fr">Générateur · Facture client avec ventilation loyer, taxes, acompte</span><span data-lang="en">Generator · Client invoice with breakdown of rent, taxes, deposit</span><span data-lang="es">Generador · Factura con desglose de alquiler, impuestos, anticipo</span><span data-lang="pt">Gerador · Fatura com discriminação de renda, impostos, adiantamento</span><span data-lang="it">Generatore · Fattura con ripartizione affitto, tasse, acconto</span></span>
+        <span class="card-filename">facture.html</span>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="devis.html">
+        <div class="card-header"><span class="card-icon">📊</span><span class="badge badge--conforme"><span data-lang="fr">Conforme ✓</span><span data-lang="en">Compliant ✓</span><span data-lang="es">Conforme ✓</span><span data-lang="pt">Conforme ✓</span><span data-lang="it">Conforme ✓</span></span></div>
+        <span class="card-name"><span data-lang="fr">Devis</span><span data-lang="en">Quote</span><span data-lang="es">Presupuesto</span><span data-lang="pt">Orçamento</span><span data-lang="it">Preventivo</span></span>
+        <span class="card-desc"><span data-lang="fr">Générateur · Proposition tarifaire personnalisée, exportable en PDF</span><span data-lang="en">Generator · Customised pricing proposal, exportable to PDF</span><span data-lang="es">Generador · Propuesta de precio personalizada, exportable en PDF</span><span data-lang="pt">Gerador · Proposta de preço personalizada, exportável em PDF</span><span data-lang="it">Generatore · Proposta tariffaria personalizzata, esportabile in PDF</span></span>
+        <span class="card-filename">devis.html</span>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="caution.html">
+        <div class="card-header"><span class="card-icon">🔐</span><span class="badge badge--conforme"><span data-lang="fr">Conforme ✓</span><span data-lang="en">Compliant ✓</span><span data-lang="es">Conforme ✓</span><span data-lang="pt">Conforme ✓</span><span data-lang="it">Conforme ✓</span></span></div>
+        <span class="card-name"><span data-lang="fr">Attestation de caution</span><span data-lang="en">Deposit attestation</span><span data-lang="es">Certificado de depósito</span><span data-lang="pt">Comprovativo de caução</span><span data-lang="it">Attestato di cauzione</span></span>
+        <span class="card-desc"><span data-lang="fr">Générateur · Dépôt de garantie PLBS, empreinte bancaire</span><span data-lang="en">Generator · PLBS security deposit, bank pre-authorisation</span><span data-lang="es">Generador · Depósito de garantía PLBS, pre-autorización bancaria</span><span data-lang="pt">Gerador · Depósito de garantia PLBS, pré-autorização bancária</span><span data-lang="it">Generatore · Deposito cauzionale PLBS, pre-autorizzazione bancaria</span></span>
+        <span class="card-filename">caution.html</span>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="tarifs.html">
+        <div class="card-header"><span class="card-icon">📈</span><span class="badge badge--conforme"><span data-lang="fr">Conforme ✓</span><span data-lang="en">Compliant ✓</span><span data-lang="es">Conforme ✓</span><span data-lang="pt">Conforme ✓</span><span data-lang="it">Conforme ✓</span></span></div>
+        <span class="card-name"><span data-lang="fr">Grille tarifaire</span><span data-lang="en">Rate schedule</span><span data-lang="es">Tabla de tarifas</span><span data-lang="pt">Tabela de preços</span><span data-lang="it">Listino prezzi</span></span>
+        <span class="card-desc"><span data-lang="fr">Yield management · Basse, moyenne, haute, très haute saison</span><span data-lang="en">Yield management · Low, mid, high, peak season</span><span data-lang="es">Yield management · Temporada baja, media, alta, muy alta</span><span data-lang="pt">Yield management · Época baixa, média, alta, muito alta</span><span data-lang="it">Yield management · Bassa, media, alta, altissima stagione</span></span>
+        <span class="card-filename">tarifs.html</span>
+        <span class="card-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 4 — Ressources & Outils ══ -->
+<section class="section section--white" id="ressources">
+  <div class="section-inner reveal">
+    <p class="section-eyebrow"><span data-lang="fr">Ressources internes &amp; Services</span><span data-lang="en">Internal resources &amp; services</span><span data-lang="es">Recursos internos y servicios</span><span data-lang="pt">Recursos internos e serviços</span><span data-lang="it">Risorse interne e servizi</span></p>
+    <h2 class="section-title"><span data-lang="fr">Outils <em>&amp; ressources</em></span><span data-lang="en">Tools <em>&amp; resources</em></span><span data-lang="es">Herramientas <em>y recursos</em></span><span data-lang="pt">Ferramentas <em>e recursos</em></span><span data-lang="it">Strumenti <em>e risorse</em></span></h2>
+    <div class="cards">
+      <a class="card" href="brandbook.html" target="_blank" rel="noopener">
+        <div class="card-header"><span class="card-icon">🎨</span><span class="badge badge--reference"><span data-lang="fr">Référence</span><span data-lang="en">Reference</span><span data-lang="es">Referencia</span><span data-lang="pt">Referência</span><span data-lang="it">Riferimento</span></span></div>
+        <span class="card-name">Brand Book ODL</span>
+        <span class="card-desc"><span data-lang="fr">Charte graphique · Variables CSS, typographies, palettes, composants UI</span><span data-lang="en">Brand guide · CSS variables, typography, palettes, UI components</span><span data-lang="es">Guía de marca · Variables CSS, tipografías, paletas, componentes UI</span><span data-lang="pt">Guia de marca · Variáveis CSS, tipografias, paletas, componentes UI</span><span data-lang="it">Guida del brand · Variabili CSS, tipografie, palette, componenti UI</span></span>
+        <span class="card-filename">brandbook.html</span>
+        <span class="card-arrow">→</span>
+      </a>
+      <a class="card" href="../03_Signature/signature-gmail.html" target="_blank" rel="noopener">
+        <div class="card-header"><span class="card-icon">✍️</span><span class="badge badge--conforme"><span data-lang="fr">Conforme ✓</span><span data-lang="en">Compliant ✓</span><span data-lang="es">Conforme ✓</span><span data-lang="pt">Conforme ✓</span><span data-lang="it">Conforme ✓</span></span></div>
+        <span class="card-name">Signature Gmail</span>
+        <span class="card-desc"><span data-lang="fr">Bloc signature email · Logo, nom, coordonnées, liens de contact</span><span data-lang="en">Email signature block · Logo, name, contact details, contact links</span><span data-lang="es">Bloque de firma de email · Logo, nombre, contacto, enlaces</span><span data-lang="pt">Bloco de assinatura email · Logo, nome, contactos, links</span><span data-lang="it">Blocco firma email · Logo, nome, recapiti, link di contatto</span></span>
+        <span class="card-filename">03_Signature/signature-gmail.html</span>
+        <span class="card-arrow">→</span>
+      </a>
+    </div>
+    <p class="outils-label"><span data-lang="fr">Services tiers</span><span data-lang="en">Third-party services</span><span data-lang="es">Servicios de terceros</span><span data-lang="pt">Serviços de terceiros</span><span data-lang="it">Servizi di terze parti</span></p>
+    <div class="outils-grid">
+      <a class="outil-card" href="https://app.netlify.com" target="_blank" rel="noopener">
+        <span class="outil-icon">🚀</span>
+        <span class="outil-body">
+          <span class="outil-name">Netlify</span>
+          <span class="outil-url"><span data-lang="fr">Hébergement · app.netlify.com</span><span data-lang="en">Hosting · app.netlify.com</span><span data-lang="es">Alojamiento · app.netlify.com</span><span data-lang="pt">Alojamento · app.netlify.com</span><span data-lang="it">Hosting · app.netlify.com</span></span>
+        </span>
+      </a>
+      <a class="outil-card" href="https://www.namecheap.com" target="_blank" rel="noopener">
+        <span class="outil-icon">🌍</span>
+        <span class="outil-body">
+          <span class="outil-name">Namecheap</span>
+          <span class="outil-url"><span data-lang="fr">Domaine · namecheap.com</span><span data-lang="en">Domain · namecheap.com</span><span data-lang="es">Dominio · namecheap.com</span><span data-lang="pt">Domínio · namecheap.com</span><span data-lang="it">Dominio · namecheap.com</span></span>
+        </span>
+      </a>
+      <a class="outil-card" href="https://www.emailjs.com" target="_blank" rel="noopener">
+        <span class="outil-icon">✉️</span>
+        <span class="outil-body">
+          <span class="outil-name">EmailJS</span>
+          <span class="outil-url"><span data-lang="fr">Formulaires email · emailjs.com</span><span data-lang="en">Email forms · emailjs.com</span><span data-lang="es">Formularios email · emailjs.com</span><span data-lang="pt">Formulários email · emailjs.com</span><span data-lang="it">Moduli email · emailjs.com</span></span>
+        </span>
+      </a>
+      <a class="outil-card" href="https://plausible.io" target="_blank" rel="noopener">
+        <span class="outil-icon">📈</span>
+        <span class="outil-body">
+          <span class="outil-name">Plausible</span>
+          <span class="outil-url">Analytics · plausible.io</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 5 — Checklist ══ -->
+<section class="section section--sand" id="checklist">
+  <div class="section-inner reveal">
+    <p class="section-eyebrow"><span data-lang="fr">Avant ouverture</span><span data-lang="en">Before opening</span><span data-lang="es">Antes de la apertura</span><span data-lang="pt">Antes da abertura</span><span data-lang="it">Prima dell'apertura</span></p>
+    <h2 class="section-title"><span data-lang="fr">Checklist <em>déc. 2026</em></span><span data-lang="en">Checklist <em>Dec. 2026</em></span><span data-lang="es">Checklist <em>dic. 2026</em></span><span data-lang="pt">Checklist <em>dez. 2026</em></span><span data-lang="it">Checklist <em>dic. 2026</em></span></h2>
+    <div class="checklist-grid" id="checklist-list">
+      <div class="check-item" data-key="emailjs"><span class="check-box">✓</span><span class="check-label"><span data-lang="fr">EmailJS — connecter le formulaire de réservation</span><span data-lang="en">EmailJS — connect the booking form</span><span data-lang="es">EmailJS — conectar el formulario de reserva</span><span data-lang="pt">EmailJS — conectar o formulário de reserva</span><span data-lang="it">EmailJS — connettere il modulo di prenotazione</span></span></div>
+      <div class="check-item" data-key="whatsapp"><span class="check-box">✓</span><span class="check-label"><span data-lang="fr">Numéro WhatsApp — renseigner dans tous les fichiers</span><span data-lang="en">WhatsApp number — fill in all files</span><span data-lang="es">Número de WhatsApp — rellenar en todos los archivos</span><span data-lang="pt">Número WhatsApp — preencher em todos os ficheiros</span><span data-lang="it">Numero WhatsApp — inserire in tutti i file</span></span></div>
+      <div class="check-item" data-key="photos"><span class="check-box">✓</span><span class="check-label"><span data-lang="fr">Photos ODL réelles — remplacer les Unsplash</span><span data-lang="en">Real ODL photos — replace Unsplash images</span><span data-lang="es">Fotos ODL reales — reemplazar las de Unsplash</span><span data-lang="pt">Fotos ODL reais — substituir as do Unsplash</span><span data-lang="it">Foto ODL reali — sostituire le immagini Unsplash</span></span></div>
+      <div class="check-item" data-key="qrcode"><span class="check-box">✓</span><span class="check-label"><span data-lang="fr">QR Code — imprimer pour l'appartement</span><span data-lang="en">QR Code — print for the apartment</span><span data-lang="es">Código QR — imprimir para el apartamento</span><span data-lang="pt">QR Code — imprimir para o apartamento</span><span data-lang="it">QR Code — stampare per l'appartamento</span></span></div>
+      <div class="check-item" data-key="plausible"><span class="check-box">✓</span><span class="check-label"><span data-lang="fr">Plausible — créer le compte analytics</span><span data-lang="en">Plausible — create the analytics account</span><span data-lang="es">Plausible — crear la cuenta de analytics</span><span data-lang="pt">Plausible — criar a conta de analytics</span><span data-lang="it">Plausible — creare l'account analytics</span></span></div>
+      <div class="check-item" data-key="signature"><span class="check-box">✓</span><span class="check-label"><span data-lang="fr">Signature email — corriger placeholder "Prénom NOM"</span><span data-lang="en">Email signature — fix "First LAST" placeholder</span><span data-lang="es">Firma de email — corregir marcador "Nombre APELLIDO"</span><span data-lang="pt">Assinatura de email — corrigir marcador "Nome APELIDO"</span><span data-lang="it">Firma email — correggere il segnaposto "Nome COGNOME"</span></span></div>
+      <div class="check-item" data-key="dns"><span class="check-box">✓</span><span class="check-label"><span data-lang="fr">oceandriftlodge.com — vérifier propagation DNS active</span><span data-lang="en">oceandriftlodge.com — verify active DNS propagation</span><span data-lang="es">oceandriftlodge.com — verificar propagación DNS activa</span><span data-lang="pt">oceandriftlodge.com — verificar propagação DNS ativa</span><span data-lang="it">oceandriftlodge.com — verificare la propagazione DNS attiva</span></span></div>
+      <div class="check-item" data-key="legal"><span class="check-box">✓</span><span class="check-label"><span data-lang="fr">Pages légales créées et intégrées</span><span data-lang="en">Legal pages created and integrated</span><span data-lang="es">Páginas legales creadas e integradas</span><span data-lang="pt">Páginas legais criadas e integradas</span><span data-lang="it">Pagine legali create e integrate</span></span></div>
+      <div class="check-item" data-key="emails-vars"><span class="check-box">✓</span><span class="check-label"><span data-lang="fr">Templates email — renseigner accès, WiFi, WhatsApp, lien Maps</span><span data-lang="en">Email templates — fill in access, WiFi, WhatsApp, Maps link</span><span data-lang="es">Plantillas email — rellenar acceso, WiFi, WhatsApp, enlace Maps</span><span data-lang="pt">Modelos de email — preencher acesso, WiFi, WhatsApp, link Maps</span><span data-lang="it">Modelli email — inserire accesso, WiFi, WhatsApp, link Maps</span></span></div>
+      <div class="check-item" data-key="satisfaction-first"><span class="check-box">✓</span><span class="check-label"><span data-lang="fr">Premier questionnaire de satisfaction envoyé (J+5 après départ)</span><span data-lang="en">First satisfaction survey sent (D+5 after departure)</span><span data-lang="es">Primer cuestionario de satisfacción enviado (D+5 tras la salida)</span><span data-lang="pt">Primeiro questionário de satisfação enviado (D+5 após a saída)</span><span data-lang="it">Primo sondaggio soddisfazione inviato (G+5 dopo la partenza)</span></span></div>
+      <div class="check-item" data-key="caution-suivi"><span class="check-box">✓</span><span class="check-label"><span data-lang="fr">Suivi caution — toutes les mainlevées effectuées sous 7 jours</span><span data-lang="en">Deposit tracking — all releases completed within 7 days</span><span data-lang="es">Seguimiento de fianzas — todas las liberaciones realizadas en 7 días</span><span data-lang="pt">Acompanhamento de cauções — todas as liberações efetuadas em 7 dias</span><span data-lang="it">Monitoraggio cauzione — tutti gli svincoli effettuati entro 7 giorni</span></span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <picture class="logo-stable footer-logo-wrap"><source srcset="logo.webp" type="image/webp"><img class="no-translate footer-logo-img" src="logo.png" alt="Ocean Drift Lodge" onerror="this.style.display='none'"></picture>
+  <span class="footer-logo-txt">Ocean Drift <em>Lodge</em></span>
+  <nav class="footer-links">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="index.html" target="_blank" rel="noopener"><span data-lang="fr">Site public</span><span data-lang="en">Public site</span><span data-lang="es">Sitio público</span><span data-lang="pt">Site público</span><span data-lang="it">Sito pubblico</span></a>
+  </nav>
+  <nav class="footer-links" aria-label="Liens légaux">
+    <a href="mentions-legales.html" target="_blank" rel="noopener"><span data-lang="fr">Mentions légales</span><span data-lang="en">Legal notice</span><span data-lang="es">Aviso legal</span><span data-lang="pt">Aviso legal</span><span data-lang="it">Note legali</span></a>
+    <a href="confidentialite.html" target="_blank" rel="noopener"><span data-lang="fr">Confidentialité</span><span data-lang="en">Privacy</span><span data-lang="es">Privacidad</span><span data-lang="pt">Privacidade</span><span data-lang="it">Privacy</span></a>
+  </nav>
+  <span>© 2026 Ocean Drift Lodge · Dashboard · Dakhla, Maroc</span>
+</footer>
+
+</div><!-- /#dashboard -->
+
+<script>
+const MOT_DE_PASSE  = 'odl2026';
+const SESSION_KEY   = 'odl-auth';
+const CHECKLIST_KEY = 'odl-checklist';
+
+const loginScreen = document.getElementById('login-screen');
+const dashboardEl = document.getElementById('dashboard');
+const pwdInput    = document.getElementById('pwd-input');
+const loginBtn    = document.getElementById('login-btn');
+const loginError  = document.getElementById('login-error');
+
+let currentLang = 'fr';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.remove('active');
+    if (b.dataset.lang === lang) b.classList.add('active');
+  });
+  document.querySelectorAll('[data-lang]').forEach(el => el.classList.remove('lang-visible'));
+  document.querySelectorAll('[data-lang="' + lang + '"]').forEach(el => el.classList.add('lang-visible'));
+  document.documentElement.lang = lang;
+  const placeholders = {fr:'Mot de passe',en:'Password',es:'Contraseña',pt:'Palavra-passe',it:'Password'};
+  pwdInput.placeholder = placeholders[lang] || placeholders.fr;
+}
+
+function initReveal() {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+}
+
+function unlock() {
+  loginScreen.classList.add('hidden');
+  dashboardEl.classList.add('visible');
+  requestAnimationFrame(() => initReveal());
+}
+
+function tryLogin() {
+  if (pwdInput.value === MOT_DE_PASSE) {
+    sessionStorage.setItem(SESSION_KEY, '1');
+    unlock();
+  } else {
+    const errorMsg = {fr:'Accès refusé',en:'Access denied',es:'Acceso denegado',pt:'Acesso negado',it:'Accesso negato'};
+    loginError.textContent = errorMsg[currentLang] || errorMsg.fr;
+    pwdInput.classList.remove('shake');
+    void pwdInput.offsetWidth;
+    pwdInput.classList.add('shake');
+    pwdInput.value = '';
+    setTimeout(() => { loginError.textContent = ''; }, 3000);
+  }
+}
+
+loginBtn.addEventListener('click', tryLogin);
+pwdInput.addEventListener('keydown', e => { if (e.key === 'Enter') tryLogin(); });
+if (sessionStorage.getItem(SESSION_KEY) === '1') { unlock(); } else { pwdInput.focus(); }
+
+/* ── Scroll progress + nav shrink ── */
+const prog = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  const s = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  if (prog) prog.style.width = Math.min(s, 100) + '%';
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+/* ── Mobile menu ── */
+function toggleMobile() {
+  const m = document.getElementById('mobileMenu');
+  const b = document.getElementById('burger');
+  const o = m.classList.toggle('open');
+  b.classList.toggle('open');
+  b.setAttribute('aria-expanded', o);
+  document.body.style.overflow = o ? 'hidden' : '';
+}
+function closeMobile() {
+  const m = document.getElementById('mobileMenu');
+  if (m) m.classList.remove('open');
+  const b = document.getElementById('burger');
+  if (b) { b.classList.remove('open'); b.setAttribute('aria-expanded', 'false'); }
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobile(); });
+
+/* ── Checklist ── */
+function loadChecklist() {
+  const saved = JSON.parse(localStorage.getItem(CHECKLIST_KEY) || '{}');
+  document.querySelectorAll('.check-item').forEach(item => { if (saved[item.dataset.key]) item.classList.add('done'); });
+}
+function saveChecklist() {
+  const state = {};
+  document.querySelectorAll('.check-item').forEach(item => { state[item.dataset.key] = item.classList.contains('done'); });
+  localStorage.setItem(CHECKLIST_KEY, JSON.stringify(state));
+}
+document.getElementById('checklist-list').addEventListener('click', e => {
+  const item = e.target.closest('.check-item');
+  if (!item) return;
+  item.classList.toggle('done');
+  saveChecklist();
+});
+loadChecklist();
+
+document.addEventListener('DOMContentLoaded',()=>setLang('fr'));
+</script>
+
+</body>
+</html>

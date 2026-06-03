@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Politique de Confidentialité — Ocean Drift Lodge · Dakhla</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="odl-styles.css">
+<style>body{font-family:var(--font-sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6;counter-reset:section-num;padding-top:80px}
+
+
+
+.page-hero{padding:4rem 3rem 3rem;text-align:center;background:radial-gradient(ellipse 70% 55% at 25% 35%,rgba(46,139,139,0.13) 0%,transparent 70%),radial-gradient(ellipse 55% 50% at 75% 70%,rgba(200,96,58,0.08) 0%,transparent 65%),linear-gradient(160deg,#ffffff 0%,#f4ede4 55%,#ede8df 100%)}
+.page-tag{display:block;font-family:var(--font-sans);font-size:.62rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem}
+.page-hero-title{font-family:var(--font-serif);font-size:clamp(2.2rem,5vw,3.5rem);font-weight:300;color:var(--navy);letter-spacing:-.01em;margin-bottom:.8rem}
+.page-hero-sub{font-size:.78rem;color:var(--ink-light);letter-spacing:.15em;text-transform:uppercase}
+
+.section-wrap{background:var(--bg);border-left:3px solid var(--teal);counter-increment:section-num}
+.section-wrap--alt{background:var(--bg-sand);border-left:3px solid var(--peach);counter-increment:section-num}
+.legal-section{padding:3.5rem 3rem;max-width:840px;margin:0 auto}
+.section-title{font-family:var(--font-serif);font-size:1.45rem;font-weight:300;color:var(--ink);margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:1px solid rgba(28,28,26,0.10);position:relative;padding-left:3.5rem}
+.section-title::before{content:counter(section-num,decimal-leading-zero);position:absolute;left:0;top:50%;transform:translateY(-50%);font-family:var(--font-serif);font-size:4rem;font-weight:300;color:var(--gold);opacity:0.15;line-height:1;pointer-events:none}
+.section-body{font-family:var(--font-sans);font-size:.92rem;font-weight:400;color:var(--ink-mid);line-height:1.8}
+.section-body p+p{margin-top:.9rem}
+.section-body ul li{padding:.1rem 0;padding-left:.8rem;position:relative}
+.section-body ul li::before{content:'—';position:absolute;left:0;color:var(--teal);font-size:.85em}
+.section-body strong{font-weight:500;color:var(--ink)}
+.section-body a:hover{border-bottom-color:var(--teal)}
+.quote-block{border-left:4px solid var(--gold);background:rgba(184,151,90,0.06);font-family:var(--font-serif);font-style:italic;font-size:1.05rem;color:var(--ink);padding:1.5rem 2rem;margin:1.5rem 0;border-radius:0 var(--radius) var(--radius) 0}
+
+@media(max-width:768px){
+  .site-header{padding:1.2rem 1.5rem}
+  .page-hero{padding:3rem 1.5rem 2.5rem}
+  .legal-section{padding:3rem 1.5rem}
+}
+@media(max-width:480px){
+  .site-header{padding:1rem 1.2rem}
+  .legal-section{padding:2rem 1rem}
+  .footer-legal-links{gap:1.2rem}
+}
+
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <button class="mobile-close" onclick="closeMobile()" aria-label="Fermer">✕</button>
+  <a href="index.html" onclick="closeMobile()"><span data-lang="fr">Accueil</span><span data-lang="en">Home</span><span data-lang="es">Inicio</span><span data-lang="pt">Início</span><span data-lang="it">Home</span></a>
+  <a href="guide-du-voyageur.html" onclick="closeMobile()"><span data-lang="fr">Guide Local</span><span data-lang="en">Local Guide</span><span data-lang="es">Guía Local</span><span data-lang="pt">Guia Local</span><span data-lang="it">Guida Locale</span></a>
+  <a href="livret-accueil.html" onclick="closeMobile()"><span data-lang="fr">Livret d'Accueil</span><span data-lang="en">Welcome Guide</span><span data-lang="es">Guía de Bienvenida</span><span data-lang="pt">Guia de Boas-Vindas</span><span data-lang="it">Guida di Benvenuto</span></a>
+  <a href="index.html#tarifs" onclick="closeMobile()"><span data-lang="fr">Tarifs</span><span data-lang="en">Rates</span><span data-lang="es">Tarifas</span><span data-lang="pt">Preços</span><span data-lang="it">Tariffe</span></a>
+  <a href="index.html#reservation" onclick="closeMobile()" style="color:var(--teal)"><span data-lang="fr">Réserver</span><span data-lang="en">Book</span><span data-lang="es">Reservar</span><span data-lang="pt">Reservar</span><span data-lang="it">Prenota</span></a>
+  <div class="mobile-lang">
+    <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
+    <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
+  </div>
+</div>
+<header>
+<nav id="nav" aria-label="Navigation principale">
+  <a href="index.html" class="nav-logo"><picture class="logo-stable"><source srcset="logo.webp" type="image/webp"><img class="no-translate nav-logo-img" src="logo.png" alt="" style="mix-blend-mode:multiply" onerror="this.style.display='none'"></picture>Ocean Drift <em>Lodge</em></a>
+    <div class="nav-center">
+    <a href="index.html#appartement"><span data-lang="fr">L'Appartement</span><span data-lang="en">The Apartment</span><span data-lang="es">El Apartamento</span><span data-lang="pt">O Apartamento</span><span data-lang="it">L'Appartamento</span></a>
+    <a href="guide-du-voyageur.html"><span data-lang="fr">Guide Local</span><span data-lang="en">Local Guide</span><span data-lang="es">Guía Local</span><span data-lang="pt">Guia Local</span><span data-lang="it">Guida Locale</span></a>
+    <a href="livret-accueil.html"><span data-lang="fr">Livret d'Accueil</span><span data-lang="en">Welcome Guide</span><span data-lang="es">Guía de Bienvenida</span><span data-lang="pt">Guia de Boas-Vindas</span><span data-lang="it">Guida di Benvenuto</span></a>
+    <a href="index.html#tarifs"><span data-lang="fr">Tarifs</span><span data-lang="en">Rates</span><span data-lang="es">Tarifas</span><span data-lang="pt">Preços</span><span data-lang="it">Tariffe</span></a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-sw" role="group" aria-label="Langue">
+      <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
+      <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
+    </div>
+    <a href="index.html#reservation" class="nav-cta"><span data-lang="fr">Réserver</span><span data-lang="en">Book</span><span data-lang="es">Reservar</span><span data-lang="pt">Reservar</span><span data-lang="it">Prenota</span></a>
+    <button class="burger" id="burger" onclick="toggleMobile()" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+</header>
+
+<div class="page-hero">
+  <div class="hero-logo-wrap">
+    <picture class="no-translate">
+      <source srcset="logo.webp" type="image/webp">
+      <img src="logo.png" alt="Ocean Drift Lodge" class="hero-logo no-translate" style="mix-blend-mode:multiply;display:block;margin:0 auto;width:140px;height:auto;animation:none">
+    </picture>
+  </div>
+
+  <span class="page-tag"><span data-lang="fr">Protection des données</span><span data-lang="en">Data Protection</span><span data-lang="es">Protección de datos</span><span data-lang="pt">Proteção de dados</span><span data-lang="it">Protezione dei dati</span></span>
+  <h1 class="page-hero-title"><span data-lang="fr">Politique de confidentialité</span><span data-lang="en">Privacy Policy</span><span data-lang="es">Política de privacidad</span><span data-lang="pt">Política de privacidade</span><span data-lang="it">Politica sulla privacy</span></h1>
+  <p class="page-hero-sub">Ocean Drift Lodge · Dakhla, Maroc</p>
+</div>
+
+<div class="section-wrap">
+  <div class="legal-section reveal">
+    <h2 class="section-title"><span data-lang="fr">Introduction</span><span data-lang="en">Introduction</span><span data-lang="es">Introducción</span><span data-lang="pt">Introdução</span><span data-lang="it">Introduzione</span></h2>
+    <div class="section-body">
+      <p><span data-lang="fr">Ocean Drift Lodge respecte votre vie privée et s'engage à protéger vos données personnelles conformément au RGPD (Règlement Général sur la Protection des Données) et à la loi marocaine 09-08 relative à la protection des personnes physiques à l'égard du traitement des données personnelles.</span><span data-lang="en">Ocean Drift Lodge respects your privacy and is committed to protecting your personal data in accordance with the GDPR (General Data Protection Regulation) and Moroccan law 09-08 relating to the protection of individuals with regard to the processing of personal data.</span><span data-lang="es">Ocean Drift Lodge respeta su privacidad y se compromete a proteger sus datos personales de conformidad con el RGPD (Reglamento General de Protección de Datos) y la ley marroquí 09-08 relativa a la protección de las personas físicas con respecto al tratamiento de datos personales.</span><span data-lang="pt">O Ocean Drift Lodge respeita a sua privacidade e compromete-se a proteger os seus dados pessoais em conformidade com o RGPD (Regulamento Geral sobre a Proteção de Dados) e a lei marroquina 09-08 relativa à proteção das pessoas singulares no que diz respeito ao tratamento de dados pessoais.</span><span data-lang="it">Ocean Drift Lodge rispetta la vostra privacy e si impegna a proteggere i vostri dati personali in conformità con il GDPR (Regolamento Generale sulla Protezione dei Dati) e la legge marocchina 09-08 relativa alla protezione delle persone fisiche riguardo al trattamento dei dati personali.</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="section-wrap--alt">
+  <div class="legal-section reveal">
+    <h2 class="section-title"><span data-lang="fr">Données collectées</span><span data-lang="en">Collected Data</span><span data-lang="es">Datos recopilados</span><span data-lang="pt">Dados recolhidos</span><span data-lang="it">Dati raccolti</span></h2>
+    <div class="section-body">
+      <p><span data-lang="fr">Via le formulaire de contact :</span><span data-lang="en">Via the contact form:</span><span data-lang="es">A través del formulario de contacto:</span><span data-lang="pt">Através do formulário de contacto:</span><span data-lang="it">Tramite il modulo di contatto:</span></p>
+      <ul>
+        <li><span data-lang="fr">Nom et prénom</span><span data-lang="en">First and last name</span><span data-lang="es">Nombre y apellidos</span><span data-lang="pt">Nome e apelido</span><span data-lang="it">Nome e cognome</span></li>
+        <li><span data-lang="fr">Adresse email</span><span data-lang="en">Email address</span><span data-lang="es">Dirección de correo electrónico</span><span data-lang="pt">Endereço de email</span><span data-lang="it">Indirizzo email</span></li>
+        <li><span data-lang="fr">Numéro de téléphone (optionnel)</span><span data-lang="en">Phone number (optional)</span><span data-lang="es">Número de teléfono (opcional)</span><span data-lang="pt">Número de telefone (opcional)</span><span data-lang="it">Numero di telefono (facoltativo)</span></li>
+        <li><span data-lang="fr">Dates de séjour souhaitées</span><span data-lang="en">Desired stay dates</span><span data-lang="es">Fechas de estancia deseadas</span><span data-lang="pt">Datas de estadia desejadas</span><span data-lang="it">Date di soggiorno desiderate</span></li>
+        <li><span data-lang="fr">Message</span><span data-lang="en">Message</span><span data-lang="es">Mensaje</span><span data-lang="pt">Mensagem</span><span data-lang="it">Messaggio</span></li>
+      </ul>
+      <p><span data-lang="fr">Ces données sont collectées uniquement pour répondre à votre demande de réservation ou d'information.</span><span data-lang="en">This data is collected solely to respond to your booking or information request.</span><span data-lang="es">Estos datos se recopilan únicamente para responder a su solicitud de reserva o información.</span><span data-lang="pt">Estes dados são recolhidos exclusivamente para responder ao seu pedido de reserva ou informação.</span><span data-lang="it">Questi dati vengono raccolti esclusivamente per rispondere alla vostra richiesta di prenotazione o di informazioni.</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="section-wrap">
+  <div class="legal-section reveal">
+    <h2 class="section-title"><span data-lang="fr">Utilisation des données</span><span data-lang="en">Data Use</span><span data-lang="es">Uso de los datos</span><span data-lang="pt">Utilização dos dados</span><span data-lang="it">Utilizzo dei dati</span></h2>
+    <div class="section-body">
+      <p><span data-lang="fr">Vos données sont utilisées exclusivement pour :</span><span data-lang="en">Your data is used exclusively to:</span><span data-lang="es">Sus datos se utilizan exclusivamente para:</span><span data-lang="pt">Os seus dados são utilizados exclusivamente para:</span><span data-lang="it">I vostri dati vengono utilizzati esclusivamente per:</span></p>
+      <ul>
+        <li><span data-lang="fr">Traiter votre demande de réservation</span><span data-lang="en">Process your booking request</span><span data-lang="es">Tramitar su solicitud de reserva</span><span data-lang="pt">Processar o seu pedido de reserva</span><span data-lang="it">Elaborare la vostra richiesta di prenotazione</span></li>
+        <li><span data-lang="fr">Vous envoyer une confirmation de séjour</span><span data-lang="en">Send you a stay confirmation</span><span data-lang="es">Enviarle una confirmación de estancia</span><span data-lang="pt">Enviar-lhe uma confirmação de estadia</span><span data-lang="it">Inviarvi una conferma del soggiorno</span></li>
+        <li><span data-lang="fr">Vous contacter concernant votre réservation</span><span data-lang="en">Contact you regarding your booking</span><span data-lang="es">Contactarle en relación con su reserva</span><span data-lang="pt">Contactá-lo relativamente à sua reserva</span><span data-lang="it">Contattarvi in merito alla vostra prenotazione</span></li>
+      </ul>
+      <p class="quote-block"><span data-lang="fr">Vos données ne sont jamais vendues, louées ou transmises à des tiers.</span><span data-lang="en">Your data is never sold, rented, or shared with third parties.</span><span data-lang="es">Sus datos nunca se venden, alquilan ni transmiten a terceros.</span><span data-lang="pt">Os seus dados nunca são vendidos, alugados ou transmitidos a terceiros.</span><span data-lang="it">I vostri dati non vengono mai venduti, affittati o trasmessi a terzi.</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="section-wrap--alt">
+  <div class="legal-section reveal">
+    <h2 class="section-title"><span data-lang="fr">Durée de conservation</span><span data-lang="en">Retention Period</span><span data-lang="es">Período de conservación</span><span data-lang="pt">Prazo de conservação</span><span data-lang="it">Periodo di conservazione</span></h2>
+    <div class="section-body">
+      <p class="quote-block"><span data-lang="fr">Vos données sont conservées pendant 3 ans à compter de votre dernier contact, puis supprimées de nos systèmes.</span><span data-lang="en">Your data is kept for 3 years from your last contact, then deleted from our systems.</span><span data-lang="es">Sus datos se conservan durante 3 años desde su último contacto y luego se eliminan de nuestros sistemas.</span><span data-lang="pt">Os seus dados são conservados durante 3 anos a partir do seu último contacto e depois eliminados dos nossos sistemas.</span><span data-lang="it">I vostri dati vengono conservati per 3 anni dall'ultimo contatto, poi eliminati dai nostri sistemi.</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="section-wrap">
+  <div class="legal-section reveal">
+    <h2 class="section-title">Cookies</h2>
+    <div class="section-body">
+      <p class="quote-block"><span data-lang="fr">Ce site utilise Plausible Analytics — un outil de mesure d'audience respectueux de la vie privée, sans cookies de traçage, conforme au RGPD. Aucun bandeau de cookies n'est nécessaire.</span><span data-lang="en">This site uses Plausible Analytics — a privacy-friendly audience measurement tool, with no tracking cookies, GDPR-compliant. No cookie banner is required.</span><span data-lang="es">Este sitio utiliza Plausible Analytics, una herramienta de medición de audiencia respetuosa con la privacidad, sin cookies de seguimiento, conforme al RGPD. No se necesita ningún banner de cookies.</span><span data-lang="pt">Este site utiliza o Plausible Analytics — uma ferramenta de medição de audiência respeitosa da privacidade, sem cookies de rastreio, conforme o RGPD. Não é necessário nenhum banner de cookies.</span><span data-lang="it">Questo sito utilizza Plausible Analytics, uno strumento di misurazione dell'audience rispettoso della privacy, senza cookie di tracciamento, conforme al GDPR. Non è necessario alcun banner per i cookie.</span></p>
+      <p><span data-lang="fr">Aucune donnée personnelle n'est collectée via les outils d'analyse.</span><span data-lang="en">No personal data is collected via analytics tools.</span><span data-lang="es">No se recogen datos personales a través de las herramientas de análisis.</span><span data-lang="pt">Nenhum dado pessoal é recolhido através das ferramentas de análise.</span><span data-lang="it">Nessun dato personale viene raccolto tramite gli strumenti di analisi.</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="section-wrap--alt">
+  <div class="legal-section reveal">
+    <h2 class="section-title"><span data-lang="fr">Vos droits</span><span data-lang="en">Your Rights</span><span data-lang="es">Sus derechos</span><span data-lang="pt">Os seus direitos</span><span data-lang="it">I vostri diritti</span></h2>
+    <div class="section-body">
+      <p><span data-lang="fr">Conformément au RGPD, vous disposez des droits suivants :</span><span data-lang="en">In accordance with the GDPR, you have the following rights:</span><span data-lang="es">De conformidad con el RGPD, usted tiene los siguientes derechos:</span><span data-lang="pt">Em conformidade com o RGPD, dispõe dos seguintes direitos:</span><span data-lang="it">In conformità con il GDPR, avete i seguenti diritti:</span></p>
+      <ul>
+        <li><span data-lang="fr">Droit d'accès à vos données</span><span data-lang="en">Right of access to your data</span><span data-lang="es">Derecho de acceso a sus datos</span><span data-lang="pt">Direito de acesso aos seus dados</span><span data-lang="it">Diritto di accesso ai vostri dati</span></li>
+        <li><span data-lang="fr">Droit de rectification</span><span data-lang="en">Right of rectification</span><span data-lang="es">Derecho de rectificación</span><span data-lang="pt">Direito de retificação</span><span data-lang="it">Diritto di rettifica</span></li>
+        <li><span data-lang="fr">Droit à l'effacement</span><span data-lang="en">Right to erasure</span><span data-lang="es">Derecho al borrado</span><span data-lang="pt">Direito ao apagamento</span><span data-lang="it">Diritto alla cancellazione</span></li>
+        <li><span data-lang="fr">Droit d'opposition</span><span data-lang="en">Right to object</span><span data-lang="es">Derecho de oposición</span><span data-lang="pt">Direito de oposição</span><span data-lang="it">Diritto di opposizione</span></li>
+      </ul>
+      <p><span data-lang="fr">Pour exercer ces droits, contactez :</span><span data-lang="en">To exercise these rights, contact:</span><span data-lang="es">Para ejercer estos derechos, contacte:</span><span data-lang="pt">Para exercer estes direitos, contacte:</span><span data-lang="it">Per esercitare questi diritti, contattateci:</span> <a href="mailto:oceandriftlodge@gmail.com">oceandriftlodge@gmail.com</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="section-wrap">
+  <div class="legal-section reveal">
+    <h2 class="section-title"><span data-lang="fr">Contact</span><span data-lang="en">Contact</span><span data-lang="es">Contacto</span><span data-lang="pt">Contacto</span><span data-lang="it">Contatto</span></h2>
+    <div class="section-body">
+      <p><span data-lang="fr">Pour toute question relative à vos données personnelles :</span><span data-lang="en">For any questions regarding your personal data:</span><span data-lang="es">Para cualquier pregunta relacionada con sus datos personales:</span><span data-lang="pt">Para qualquer questão relativa aos seus dados pessoais:</span><span data-lang="it">Per qualsiasi domanda riguardante i vostri dati personali:</span></p>
+      <p><a href="mailto:oceandriftlodge@gmail.com">oceandriftlodge@gmail.com</a><br>
+      Résidence West Point, Foum El Bouir, Dakhla, Maroc</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <picture class="logo-stable footer-logo-wrap"><source srcset="logo.webp" type="image/webp"><img class="no-translate footer-logo-img" src="logo.png" alt="Ocean Drift Lodge" onerror="this.style.display='none'"></picture>
+  <span class="footer-logo-txt">Ocean Drift <em>Lodge</em></span>
+  <nav class="footer-links">
+    <a href="index.html"><span data-lang="fr">L'appartement</span><span data-lang="en">The apartment</span><span data-lang="es">El apartamento</span><span data-lang="pt">O apartamento</span><span data-lang="it">L'appartamento</span></a>
+    <a href="livret-accueil.html"><span data-lang="fr">Livret d'accueil</span><span data-lang="en">Welcome guide</span><span data-lang="es">Guía de bienvenida</span><span data-lang="pt">Guia de boas-vindas</span><span data-lang="it">Guida di benvenuto</span></a>
+    <a href="guide-du-voyageur.html"><span data-lang="fr">Guide local</span><span data-lang="en">Local guide</span><span data-lang="es">Guía local</span><span data-lang="pt">Guia local</span><span data-lang="it">Guida locale</span></a>
+  </nav>
+  <nav class="footer-links" aria-label="Liens légaux">
+    <a href="cgv.html"><span data-lang="fr">CGV</span><span data-lang="en">GTC</span><span data-lang="es">CGV</span><span data-lang="pt">CGV</span><span data-lang="it">CGV</span></a>
+    <a href="mentions-legales.html"><span data-lang="fr">Mentions légales</span><span data-lang="en">Legal notice</span><span data-lang="es">Aviso legal</span><span data-lang="pt">Aviso legal</span><span data-lang="it">Note legali</span></a>
+    <a href="confidentialite.html"><span data-lang="fr">Confidentialité</span><span data-lang="en">Privacy</span><span data-lang="es">Privacidad</span><span data-lang="pt">Privacidade</span><span data-lang="it">Privacy</span></a>
+  </nav>
+  <span>© 2026 Ocean Drift Lodge · Dakhla, Maroc</span>
+</footer>
+<script>
+const prog=document.getElementById('progress');
+window.addEventListener('scroll',()=>{const s=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;if(prog)prog.style.width=Math.min(s,100)+'%';document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);});
+function toggleMobile(){const m=document.getElementById('mobileMenu');const b=document.getElementById('burger');const o=m.classList.toggle('open');b.classList.toggle('open');b.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';}
+function closeMobile(){const m=document.getElementById('mobileMenu');if(m)m.classList.remove('open');const b=document.getElementById('burger');if(b){b.classList.remove('open');b.setAttribute('aria-expanded','false');}document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMobile();});
+let currentLang='fr';
+function setLang(lang){document.documentElement.classList.add('js-lang');currentLang=lang;document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('active');if(b.dataset.lang===lang)b.classList.add('active');});document.querySelectorAll('[data-lang]').forEach(el=>el.classList.remove('lang-visible'));document.querySelectorAll('[data-lang="'+lang+'"]').forEach(el=>el.classList.add('lang-visible'));document.documentElement.lang=lang;}
+document.addEventListener('DOMContentLoaded',()=>setLang('fr'));
+(function(){
+  if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));return;}
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>

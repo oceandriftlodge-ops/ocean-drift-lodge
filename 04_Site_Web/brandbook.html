@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ocean Drift Lodge · Brand Book v1.0</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════════════════════════════════════
+   BRAND BOOK — OCEAN DRIFT LODGE
+   Source : 3 fichiers référents absolus
+   index.html · guide-du-voyageur.html · livret-accueil.html
+   Version 1.0 · 2026
+   ════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── PALETTE OFFICIELLE ── */
+  --navy:       #1a2e4a;   /* Navbar, cards dark, titres institutionnels */
+  --bg:         #faf9f7;   /* Fond page principal */
+  --bg-sand:    #f2ede6;   /* Fond sections alternées */
+  --bg-sand-md: #ece4d8;   /* Fond sable medium (livret) */
+  --bg-ocean:   #1a3d4a;   /* Fond section plateformes dark (annonces.html) */
+  --bg-night:   #132237;   /* Fond footer, écran login dashboard */
+  --bg-dark:    #1c1c1a;   /* Doublon de --ink. Non utilisée dans le site. Préférer --ink. */
+  --ink:        #1c1c1a;   /* Texte principal */
+  --ink-mid:    #3d3d38;   /* Texte secondaire */
+  --ink-light:  #6b6b63;   /* Texte tertiaire / captions */
+  --teal:       #2e8b8b;   /* Couleur signature — accent principal */
+  --teal-dk:    #236868;   /* Teal hover / states */
+  --teal-lt:    rgba(46,139,139,0.12); /* Teal léger — fonds */
+  --bg-teal-lt: rgba(46,139,139,0.06); /* Teal très léger */
+  --peach:      #c8603a;   /* CTA, badges, accents chauds */
+  --peach-lt:   rgba(200,96,58,0.08);  /* Peach léger — fonds */
+  --gold:       #b8975a;   /* Accent luxe — usage ponctuel */
+  --radius:     4px;       /* Border-radius global */
+  --trans:      0.3s ease; /* Transition globale */
+
+  /* ── TYPOGRAPHIE ── */
+  --font-serif: 'Cormorant Garamond','Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;
+  --font-sans:  'Jost','Gill Sans','Optima',Candara,'Segoe UI',sans-serif;
+}
+
+/* ── RESET BRAND BOOK ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-sans);background:#f0ece5;color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+code{font-family:'Courier New',monospace;font-size:.82em;background:rgba(28,28,26,0.06);padding:.15em .4em;border-radius:3px;color:var(--peach)}
+
+/* ── HEADER BRAND BOOK ── */
+.bb-header{background:var(--navy);padding:5rem 4rem;position:relative;overflow:hidden}
+.bb-header::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(46,139,139,0.08) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+.bb-header-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto}
+.bb-badge{display:inline-block;font-size:.6rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(46,139,139,0.4);padding:.35rem 1rem;border-radius:20px;margin-bottom:2rem}
+.bb-header h1{font-family:var(--font-serif);font-size:clamp(3rem,8vw,6rem);font-weight:300;color:#fff;line-height:1;letter-spacing:-.02em}
+.bb-header h1 em{display:block;font-style:italic;color:var(--teal)}
+.bb-header-sub{font-size:.8rem;color:rgba(250,249,247,0.5);letter-spacing:.2em;text-transform:uppercase;margin-top:1.5rem}
+.bb-header-meta{display:flex;gap:3rem;margin-top:3rem;flex-wrap:wrap}
+.bb-meta-item{display:flex;flex-direction:column;gap:.3rem}
+.bb-meta-label{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,0.35)}
+.bb-meta-value{font-size:.82rem;color:rgba(255,255,255,0.8);font-weight:400}
+
+/* ── NAVIGATION BRAND BOOK ── */
+.bb-nav{background:var(--bg);border-bottom:1px solid rgba(28,28,26,0.1);position:sticky;top:0;z-index:50;padding:.8rem 4rem}
+.bb-nav-inner{max-width:1100px;margin:0 auto;display:flex;gap:2.5rem;flex-wrap:wrap;align-items:center}
+.bb-nav a{font-size:.65rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-light);transition:color .2s;padding:.3rem 0;border-bottom:1px solid transparent}
+.bb-nav a:hover{color:var(--teal);border-bottom-color:var(--teal)}
+.bb-nav-logo{font-family:var(--font-serif);font-size:1rem;font-weight:300;color:var(--navy);margin-right:auto}
+.bb-nav-logo em{font-style:italic;color:var(--teal)}
+
+/* ── LAYOUT SECTIONS ── */
+.bb-section{padding:5rem 4rem;border-bottom:1px solid rgba(28,28,26,0.06)}
+.bb-section:nth-child(even){background:var(--bg)}
+.bb-section:nth-child(odd){background:var(--bg-sand)}
+.bb-section-inner{max-width:1100px;margin:0 auto}
+
+/* ── TITRES SECTIONS ── */
+.bb-section-num{font-size:.6rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--peach);margin-bottom:.8rem}
+.bb-section-title{font-family:var(--font-serif);font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--navy);margin-bottom:.8rem;line-height:1.15}
+.bb-section-title em{font-style:italic;color:var(--teal)}
+.bb-section-lead{font-size:.88rem;color:var(--ink-light);max-width:560px;line-height:1.75;margin-bottom:3rem}
+.bb-rule{font-size:.75rem;color:var(--ink-mid);background:#fff;border-left:3px solid var(--teal);padding:.9rem 1.2rem;border-radius:var(--radius);margin-bottom:1rem;line-height:1.6}
+.bb-rule strong{color:var(--navy);font-weight:500}
+.bb-rule.danger{border-left-color:var(--peach)}
+.bb-rule.danger strong{color:var(--peach)}
+
+/* ── GRILLE COULEURS ── */
+.color-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.5rem;margin-bottom:3rem}
+.color-swatch{border-radius:8px;overflow:hidden;box-shadow:0 4px 16px rgba(28,28,26,0.08)}
+.swatch-block{height:100px}
+.swatch-info{background:#fff;padding:1rem 1.2rem}
+.swatch-name{font-size:.72rem;font-weight:500;color:var(--ink);letter-spacing:.04em}
+.swatch-var{font-size:.65rem;color:var(--teal);letter-spacing:.04em;margin-top:.15rem}
+.swatch-hex{font-size:.7rem;color:var(--ink-light);font-family:'Courier New',monospace;margin-top:.2rem}
+.swatch-usage{font-size:.62rem;color:var(--ink-light);margin-top:.4rem;line-height:1.5}
+
+/* ── TYPO SHOWCASE ── */
+.typo-block{background:#fff;border-radius:8px;padding:2.5rem;margin-bottom:1.5rem;border:1px solid rgba(28,28,26,0.06)}
+.typo-label{font-size:.6rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-light);margin-bottom:1.2rem;display:flex;justify-content:space-between;align-items:center}
+.typo-spec{font-size:.62rem;color:var(--ink-light);font-family:'Courier New',monospace}
+.typo-display{font-family:var(--font-serif);font-size:clamp(3rem,7vw,5.5rem);font-weight:300;line-height:1;color:var(--ink);letter-spacing:-.02em}
+.typo-display em{font-style:italic;color:var(--teal)}
+.typo-h2{font-family:var(--font-serif);font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.2;color:var(--ink)}
+.typo-h3{font-family:var(--font-serif);font-size:1.35rem;font-weight:300;color:var(--ink)}
+.typo-eyebrow{font-size:.72rem;font-weight:400;letter-spacing:.38em;text-transform:uppercase;color:var(--ink-mid)}
+.typo-section-tag{font-size:.65rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--teal)}
+.typo-body{font-size:.95rem;color:var(--ink-mid);line-height:1.75}
+.typo-caption{font-size:.8rem;color:var(--ink-light);line-height:1.6}
+.typo-nav{font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mid)}
+.typo-pairing{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.5rem}
+.font-specimen{padding:1.5rem;background:var(--bg-sand);border-radius:6px}
+.font-name{font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-light);margin-bottom:.8rem}
+.font-alpha{color:var(--ink-mid);line-height:1.4}
+
+/* ── COMPOSANTS ── */
+.comp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-bottom:3rem}
+.comp-block{background:#fff;border-radius:8px;padding:2rem;border:1px solid rgba(28,28,26,0.07)}
+.comp-label{font-size:.6rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--ink-light);margin-bottom:1.2rem;padding-bottom:.8rem;border-bottom:1px solid rgba(28,28,26,0.06)}
+.comp-specs{margin-top:1.2rem;font-size:.7rem;color:var(--ink-light);line-height:1.8}
+.comp-specs code{display:block;margin:.2rem 0}
+
+/* Boutons */
+.btn-primary{display:inline-block;font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;background:var(--peach);color:#fff;padding:.85rem 2.2rem;border-radius:var(--radius);border:none;cursor:pointer;transition:all var(--trans)}
+.btn-primary:hover{filter:brightness(.9);transform:translateY(-1px);box-shadow:0 6px 20px rgba(200,96,58,0.3)}
+.btn-outline{display:inline-block;font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;background:transparent;color:var(--ink);padding:.85rem 2.2rem;border-radius:var(--radius);border:2px solid var(--ink);cursor:pointer;transition:all var(--trans)}
+.btn-outline:hover{background:var(--ink);color:#fff;transform:translateY(-1px)}
+.btn-teal{display:inline-block;font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;background:var(--teal);color:#fff;padding:.85rem 2.2rem;border-radius:var(--radius);border:none;cursor:pointer;transition:all var(--trans)}
+.btn-teal:hover{background:var(--teal-dk);transform:translateY(-1px)}
+.btn-nav-cta{display:inline-block;font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;background:var(--peach);color:#fff;padding:.6rem 1.5rem;border-radius:var(--radius);transition:all var(--trans)}
+.btn-row{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+
+/* Badges */
+.badge-teal{display:inline-block;font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(46,139,139,0.3);color:var(--teal);padding:.3rem .85rem;border-radius:20px}
+.badge-peach{display:inline-block;font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;background:var(--peach);color:#fff;padding:.3rem .85rem;border-radius:20px}
+.badge-gold{display:inline-block;font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;background:rgba(184,151,90,0.15);color:var(--gold);padding:.3rem .85rem;border-radius:20px}
+.badge-ink{display:inline-block;font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;background:rgba(28,28,26,0.08);color:var(--ink-mid);padding:.3rem .85rem;border-radius:20px}
+.badge-row{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center}
+
+/* Cards */
+.card-white{background:#fff;border:1px solid rgba(28,28,26,0.07);border-radius:8px;padding:2rem 1.8rem;transition:all var(--trans)}
+.card-white:hover{box-shadow:0 10px 36px rgba(28,28,26,0.09);transform:translateY(-3px)}
+.card-sand{background:var(--bg-sand);border:1px solid rgba(28,28,26,0.07);border-radius:6px;padding:2rem 2.5rem}
+.card-teal-border{background:#fff;border:1px solid var(--teal);border-radius:10px;padding:2rem 1.8rem;box-shadow:0 4px 24px rgba(46,139,139,0.14)}
+.card-navy{background:var(--navy);color:#fff;border-radius:8px;padding:2.5rem 2rem}
+.card-peach{background:var(--peach);color:#fff;border-radius:8px;padding:2.5rem 2rem}
+.card-highlight{background:linear-gradient(135deg,rgba(46,139,139,0.07),rgba(46,139,139,0.01));border:1px solid rgba(46,139,139,0.18);border-radius:10px;padding:2rem 2.5rem}
+
+/* Cards section-tag + title pattern */
+.card-section-tag{font-size:.65rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--teal);margin-bottom:.8rem}
+.card-title{font-family:var(--font-serif);font-size:1.3rem;font-weight:300;color:var(--ink);margin-bottom:.5rem}
+.card-desc{font-size:.84rem;color:var(--ink-light);line-height:1.65}
+
+/* Nav composant */
+.nav-demo{background:var(--bg-sand);border:1px solid rgba(28,28,26,0.08);border-radius:6px;padding:.8rem 2rem;display:flex;align-items:center;justify-content:space-between}
+.nav-logo-demo{font-family:var(--font-serif);font-size:1.25rem;font-weight:400;color:var(--ink);letter-spacing:.03em}
+.nav-logo-demo em{font-style:italic;color:var(--teal)}
+.nav-links-demo{display:flex;gap:2rem}
+.nav-link-demo{font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mid)}
+.nav-link-demo.active{color:var(--teal);border-bottom:1px solid var(--teal)}
+
+/* Footer composant */
+.footer-demo{background:#132237;border-radius:6px;padding:3rem 2rem;text-align:center}
+.footer-logo-demo{font-family:var(--font-serif);font-size:1.4rem;font-weight:300;color:#fff;letter-spacing:.04em;margin-bottom:1.5rem}
+.footer-logo-demo em{font-style:italic;color:var(--teal)}
+.footer-links-demo{display:flex;justify-content:center;gap:2.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.footer-link-demo{font-size:.65rem;color:rgba(250,249,247,0.4);letter-spacing:.15em;text-transform:uppercase;font-weight:500}
+.footer-credits-demo{font-size:.6rem;color:rgba(255,255,255,0.2);letter-spacing:.05em;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.04)}
+
+/* Section tag + title block */
+.stb-demo{padding:2rem;background:var(--bg);border-radius:6px}
+
+/* Blockquote */
+blockquote.odl{border-left:2px solid var(--peach);padding:1rem 1.5rem;font-family:var(--font-serif);font-size:1.2rem;font-weight:300;font-style:italic;color:var(--ink-mid);line-height:1.65}
+
+/* Progress bar */
+.progress-demo{height:2px;background:var(--teal);width:60%;border-radius:1px;margin-bottom:.5rem}
+.progress-demo.tri{background:linear-gradient(90deg,var(--teal),var(--gold),var(--peach))}
+
+/* Lang switcher */
+.lang-sw-demo{display:flex;gap:.3rem}
+.lang-btn-demo{font-size:.62rem;font-weight:500;letter-spacing:.1em;padding:.3rem .6rem;border-radius:20px;color:var(--ink-light);border:none;background:transparent;cursor:pointer}
+.lang-btn-demo.active{background:var(--teal);color:#fff}
+
+/* ── STRUCTURES DE PAGES ── */
+.page-anatomy{display:grid;gap:.5rem}
+.anatomy-layer{padding:1rem 1.5rem;border-radius:6px;font-size:.75rem;display:flex;align-items:center;justify-content:space-between}
+.anatomy-layer strong{font-weight:500}
+.anatomy-layer code{font-size:.7rem}
+.al-progress{background:linear-gradient(90deg,rgba(46,139,139,0.15),rgba(184,151,90,0.15),rgba(200,96,58,0.15));border:1px solid rgba(46,139,139,0.2)}
+.al-nav{background:var(--bg-sand);border:1px solid rgba(28,28,26,0.08)}
+.al-hero{background:linear-gradient(135deg,rgba(46,139,139,0.08),rgba(200,96,58,0.05));border:1px dashed rgba(46,139,139,0.3);min-height:60px}
+.al-section-light{background:var(--bg);border:1px solid rgba(28,28,26,0.06)}
+.al-section-sand{background:var(--bg-sand);border:1px solid rgba(28,28,26,0.06)}
+.al-section-dark{background:var(--navy);border:none;color:#fff}
+.al-footer{background:#132237;border:none;color:rgba(255,255,255,0.5)}
+
+/* Espacement section */
+.spacing-demo{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1rem}
+.spacing-item{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.spacing-block{background:var(--teal);border-radius:3px;width:12px}
+.spacing-label{font-size:.62rem;color:var(--ink-light);letter-spacing:.1em;text-align:center}
+
+/* ── TEMPLATE PAGE VIERGE ── */
+.template-preview{background:var(--bg);border:2px solid rgba(28,28,26,0.08);border-radius:10px;overflow:hidden}
+.template-code{background:#1a1a18;color:#e8e4dc;padding:2.5rem;font-family:'Courier New',monospace;font-size:.72rem;line-height:1.8;overflow-x:auto;border-radius:8px}
+.tc-comment{color:#6b6b63}
+.tc-tag{color:#2e8b8b}
+.tc-attr{color:#b8975a}
+.tc-val{color:#c8603a}
+.tc-text{color:#e8e4dc}
+
+/* ── GRILLE RÈGLES ── */
+.rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem}
+.rule-card{padding:1.5rem;border-radius:8px;border:1px solid transparent}
+.rule-card.do{background:rgba(46,139,139,0.05);border-color:rgba(46,139,139,0.2)}
+.rule-card.dont{background:rgba(200,96,58,0.05);border-color:rgba(200,96,58,0.2)}
+.rule-card-label{font-size:.6rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:.8rem}
+.rule-card.do .rule-card-label{color:var(--teal)}
+.rule-card.dont .rule-card-label{color:var(--peach)}
+.rule-card ul{padding-left:0}
+.rule-card li{font-size:.8rem;color:var(--ink-mid);line-height:1.65;padding:.25rem 0;padding-left:1rem;position:relative}
+.rule-card li::before{position:absolute;left:0;font-size:.75rem}
+.rule-card.do li::before{content:'✓';color:var(--teal)}
+.rule-card.dont li::before{content:'✕';color:var(--peach)}
+
+/* ── HERO GRADIENT SPECIMEN ── */
+.hero-gradient-demo{border-radius:8px;padding:4rem 3rem;text-align:center;position:relative;overflow:hidden;
+  background:radial-gradient(ellipse 70% 55% at 25% 35%,rgba(46,139,139,0.13) 0%,transparent 70%),
+  radial-gradient(ellipse 55% 50% at 75% 70%,rgba(200,96,58,0.08) 0%,transparent 65%),
+  linear-gradient(160deg,#ffffff 0%,#f4ede4 55%,#ede8df 100%)}
+.hero-gradient-demo::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(46,139,139,0.04) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+.hero-gradient-demo-inner{position:relative;z-index:1}
+
+/* ── CHECKLIST ── */
+.checklist{display:flex;flex-direction:column;gap:.8rem;margin-top:1.5rem}
+.check-item{display:flex;align-items:flex-start;gap:.8rem;font-size:.82rem;color:var(--ink-mid);line-height:1.6}
+.check-icon{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;flex-shrink:0;margin-top:.1rem}
+.check-icon.ok{background:rgba(46,139,139,0.12);color:var(--teal)}
+.check-icon.warn{background:rgba(184,151,90,0.15);color:var(--gold)}
+
+/* ── TABLE VARIABLES CSS ── */
+.var-table{width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 4px 20px rgba(28,28,26,0.04)}
+.var-table th{background:var(--navy);color:#fff;font-size:.65rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;padding:1rem 1.2rem;text-align:left}
+.var-table td{padding:.9rem 1.2rem;border-bottom:1px solid rgba(28,28,26,0.06);font-size:.8rem;color:var(--ink-mid);vertical-align:middle}
+.var-table tr:last-child td{border-bottom:none}
+.var-table tr:hover td{background:rgba(242,237,230,0.4)}
+.var-swatch-inline{width:20px;height:20px;border-radius:4px;display:inline-block;vertical-align:middle;margin-right:.5rem;border:1px solid rgba(28,28,26,0.1)}
+
+@media(max-width:768px){
+  .bb-section{padding:3rem 1.5rem}
+  .bb-nav{padding:.8rem 1.5rem}
+  .color-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+  .rules-grid{grid-template-columns:1fr}
+  .comp-grid{grid-template-columns:1fr}
+  .bb-header{padding:3rem 1.5rem}
+  .typo-pairing{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     HEADER BRAND BOOK
+     ══════════════════════════════════════════════════════════════════ -->
+<header class="bb-header">
+  <div class="bb-header-inner">
+    <div class="bb-badge">Document de référence confidentiel</div>
+    <h1>Ocean Drift <em>Lodge</em></h1>
+    <p class="bb-header-sub">Brand Book · Guide de marque officiel · Dakhla, Maroc</p>
+    <div class="bb-header-meta">
+      <div class="bb-meta-item">
+        <span class="bb-meta-label">Version</span>
+        <span class="bb-meta-value">1.1 · Juin 2026</span>
+      </div>
+      <div class="bb-meta-item">
+        <span class="bb-meta-label">Sources référentes</span>
+        <span class="bb-meta-value">index.html · guide-du-voyageur.html · livret-accueil.html · odl-styles.css</span>
+      </div>
+      <div class="bb-meta-item">
+        <span class="bb-meta-label">Usage</span>
+        <span class="bb-meta-value">Tous fichiers HTML du projet Ocean Drift Lodge</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     NAVIGATION INTERNE
+     ══════════════════════════════════════════════════════════════════ -->
+<nav class="bb-nav">
+  <div class="bb-nav-inner">
+    <span class="bb-nav-logo">ODL <em>Brand</em></span>
+    <a href="#couleurs">Couleurs</a>
+    <a href="#typographie">Typographie</a>
+    <a href="#variables">Variables CSS</a>
+    <a href="#composants">Composants</a>
+    <a href="#structure">Structures de pages</a>
+    <a href="#regles">Règles d'usage</a>
+    <a href="#template">Template vierge</a>
+    <a href="#odl-styles">odl-styles.css</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     §1 · COULEURS
+     ══════════════════════════════════════════════════════════════════ -->
+<section class="bb-section" id="couleurs">
+  <div class="bb-section-inner">
+    <div class="bb-section-num">§ 01</div>
+    <h2 class="bb-section-title">Palette <em>Couleurs</em></h2>
+    <p class="bb-section-lead">Extraite des 3 fichiers référents. Chaque couleur est une variable CSS <code>:root</code> à copier telle quelle. Aucune approximation tolérée.</p>
+
+    <h3 style="font-family:var(--font-serif);font-size:1.3rem;font-weight:300;color:var(--navy);margin-bottom:1.5rem">Couleurs primaires</h3>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#1a2e4a"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Navy</div>
+          <div class="swatch-var">--navy</div>
+          <div class="swatch-hex">#1a2e4a</div>
+          <div class="swatch-usage">Navbar, footer, cards dark, titres institutionnels</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#2e8b8b"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Teal — Signature</div>
+          <div class="swatch-var">--teal</div>
+          <div class="swatch-hex">#2e8b8b</div>
+          <div class="swatch-usage">Couleur principale de marque. Accents, liens actifs, italiques hero, section-tags</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#c8603a"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Peach — CTA</div>
+          <div class="swatch-var">--peach</div>
+          <div class="swatch-hex">#c8603a</div>
+          <div class="swatch-usage">Boutons primaires, badges haute saison, accents chauds, progress bar livret</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#b8975a"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Gold — Luxe</div>
+          <div class="swatch-var">--gold</div>
+          <div class="swatch-hex">#b8975a</div>
+          <div class="swatch-usage">Accent luxe ponctuel. Progress bar index.html. Ne pas surexploiter</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-serif);font-size:1.3rem;font-weight:300;color:var(--navy);margin-bottom:1.5rem">Fonds & Neutres</h3>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#faf9f7;border:1px solid #e8e4dc"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Fond principal</div>
+          <div class="swatch-var">--bg</div>
+          <div class="swatch-hex">#faf9f7</div>
+          <div class="swatch-usage">Fond body, sections lumineuses alternées</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#f2ede6"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Fond Sable</div>
+          <div class="swatch-var">--bg-sand</div>
+          <div class="swatch-hex">#f2ede6</div>
+          <div class="swatch-usage">Navbar, sections alternées, fonds cards</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#ece4d8"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Fond Sable Medium</div>
+          <div class="swatch-var">--bg-sand-md</div>
+          <div class="swatch-hex">#ece4d8</div>
+          <div class="swatch-usage">Utilisé dans livret-accueil. Sections intermédiaires</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#1a3d4a"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Fond Ocean</div>
+          <div class="swatch-var">--bg-ocean</div>
+          <div class="swatch-hex">#1a3d4a</div>
+          <div class="swatch-usage">Fond section plateformes dark (annonces.html)</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#132237"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Fond Nuit</div>
+          <div class="swatch-var">--bg-night</div>
+          <div class="swatch-hex">#132237</div>
+          <div class="swatch-usage">Footer global. Écran login dashboard</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#1c1c1a"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Fond Dark</div>
+          <div class="swatch-var">--bg-dark</div>
+          <div class="swatch-hex">#1c1c1a</div>
+          <div class="swatch-usage">Doublon de --ink (#1c1c1a). Non utilisée dans le site. Conservée comme alias ; préférer --ink.</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-serif);font-size:1.3rem;font-weight:300;color:var(--navy);margin-bottom:1.5rem">Encres & Textes</h3>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#1c1c1a"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Ink — Principal</div>
+          <div class="swatch-var">--ink</div>
+          <div class="swatch-hex">#1c1c1a</div>
+          <div class="swatch-usage">Texte principal, titres dark, fond bandeau QR</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#3d3d38"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Ink Mid</div>
+          <div class="swatch-var">--ink-mid</div>
+          <div class="swatch-hex">#3d3d38</div>
+          <div class="swatch-usage">Texte corps, descriptions, nav links</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#6b6b63"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Ink Light</div>
+          <div class="swatch-var">--ink-light</div>
+          <div class="swatch-hex">#6b6b63</div>
+          <div class="swatch-usage">Captions, meta, sous-titres, section-lead</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#236868"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Teal Dark</div>
+          <div class="swatch-var">--teal-dk</div>
+          <div class="swatch-hex">#236868</div>
+          <div class="swatch-usage">Hover état sur teal. Boutons teal au survol</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-serif);font-size:1.3rem;font-weight:300;color:var(--navy);margin:2rem 0 1.5rem">Footer — couleur spécifique</h3>
+    <div class="color-grid" style="max-width:220px">
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#132237"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Footer Dark Navy</div>
+          <div class="swatch-var">background inline</div>
+          <div class="swatch-hex">#132237</div>
+          <div class="swatch-usage">Fond footer uniquement. Plus sombre que --navy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     §2 · TYPOGRAPHIE
+     ══════════════════════════════════════════════════════════════════ -->
+<section class="bb-section" id="typographie">
+  <div class="bb-section-inner">
+    <div class="bb-section-num">§ 02</div>
+    <h2 class="bb-section-title">Typographie</h2>
+    <p class="bb-section-lead">Deux familles, rôles distincts, hiérarchie stricte. Import Google Fonts obligatoire dans chaque fichier.</p>
+
+    <div class="bb-rule">
+      <strong>Import obligatoire</strong> — à coller dans chaque <code>&lt;head&gt;</code> :<br>
+      <code style="display:block;margin-top:.5rem;font-size:.75rem;word-break:break-all">&lt;link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"&gt;</code>
+    </div>
+
+    <div class="typo-pairing" style="margin-bottom:2rem">
+      <div class="font-specimen">
+        <div class="font-name">Cormorant Garamond · Serif · Display</div>
+        <div class="font-alpha" style="font-family:var(--font-serif);font-size:1.8rem;font-weight:300;line-height:1.3">
+          ABCDEFGHIJKLM<br>NOPQRSTUVWXYZ<br>
+          <em>abcdefghijklm</em><br><em>nopqrstuvwxyz</em><br>
+          <span style="font-size:1rem">0123456789</span>
+        </div>
+      </div>
+      <div class="font-specimen">
+        <div class="font-name">Jost · Sans-serif · Corps</div>
+        <div class="font-alpha" style="font-family:var(--font-sans);font-size:1rem;font-weight:400;line-height:2">
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+          abcdefghijklmnopqrstuvwxyz<br>
+          0123456789<br>
+          <span style="font-weight:500">500 Medium</span> · <span style="font-weight:300">300 Light</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hiérarchie -->
+    <div class="typo-block">
+      <div class="typo-label">
+        H1 · Hero Title
+        <span class="typo-spec">Cormorant Garamond · weight 300 · clamp(3.8rem,10vw,7.5rem) · letter-spacing -.01em</span>
+      </div>
+      <div class="typo-display">Ocean Drift <em>Lodge</em></div>
+    </div>
+
+    <div class="typo-block">
+      <div class="typo-label">
+        H2 · Section Title
+        <span class="typo-spec">Cormorant Garamond · weight 300 · clamp(2rem,4.5vw,3rem) · line-height 1.2</span>
+      </div>
+      <div class="typo-h2">Votre séjour face à l'<em style="font-style:italic;color:var(--teal)">Atlantique</em></div>
+    </div>
+
+    <div class="typo-block">
+      <div class="typo-label">
+        H3 · Card Title / Panel Title
+        <span class="typo-spec">Cormorant Garamond · weight 300-400 · 1.15–1.35rem</span>
+      </div>
+      <div class="typo-h3">Kitesurf & Wingfoil · Dakhla</div>
+    </div>
+
+    <div class="typo-block">
+      <div class="typo-label">
+        Eyebrow · Sur-titre hero
+        <span class="typo-spec">Jost · weight 400 · 0.72rem · letter-spacing .38em · uppercase</span>
+      </div>
+      <div class="typo-eyebrow">Résidence West Point · Foum El Bouir</div>
+    </div>
+
+    <div class="typo-block">
+      <div class="typo-label">
+        Section Tag · Libellé de section
+        <span class="typo-spec">Jost · weight 500 · 0.65rem · letter-spacing .28em · uppercase · color: --teal</span>
+      </div>
+      <div class="typo-section-tag">Services & Expériences</div>
+    </div>
+
+    <div class="typo-block">
+      <div class="typo-label">
+        Body · Texte courant
+        <span class="typo-spec">Jost · weight 400 · 0.88–0.95rem · line-height 1.75</span>
+      </div>
+      <div class="typo-body">Dakhla, péninsule sauvage entre désert et Atlantique, concentre les meilleurs spots de glisse au monde. L'Ocean Drift Lodge vous ouvre les portes de ce territoire unique, avec un accès direct au lagon de Foum El Bouir.</div>
+    </div>
+
+    <div class="typo-block">
+      <div class="typo-label">
+        Caption / Meta
+        <span class="typo-spec">Jost · weight 400 · 0.62–0.72rem · letter-spacing .1–.2em · color: --ink-light</span>
+      </div>
+      <div class="typo-caption" style="letter-spacing:.15em;text-transform:uppercase">Saison optimale des alizés constants · 15 nov. — 31 mars</div>
+    </div>
+
+    <div class="typo-block">
+      <div class="typo-label">
+        Nav Links
+        <span class="typo-spec">Jost · weight 500 · 0.68rem · letter-spacing .14em · uppercase</span>
+      </div>
+      <div class="typo-nav" style="display:flex;gap:2rem">
+        <span>L'Appartement</span>
+        <span>Services</span>
+        <span style="color:var(--teal);border-bottom:1px solid var(--teal);padding-bottom:2px">Expériences</span>
+        <span>Tarifs</span>
+        <span>Réserver</span>
+      </div>
+    </div>
+
+    <div class="bb-rule" style="margin-top:2rem">
+      <strong>Règle clé :</strong> La partie italique en <span style="color:var(--teal);font-family:var(--font-serif);font-style:italic">teal</span> dans les titres hero est la signature visuelle centrale de la marque. Le mot ou groupe mis en italique doit toujours être le concept fort (Lodge, Atlantique, Local, Accueil…). Jamais un mot fonctionnel.
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     §3 · VARIABLES CSS COMPLÈTES
+     ══════════════════════════════════════════════════════════════════ -->
+<section class="bb-section" id="variables">
+  <div class="bb-section-inner">
+    <div class="bb-section-num">§ 03</div>
+    <h2 class="bb-section-title">Variables <em>CSS</em> — Source unique</h2>
+    <p class="bb-section-lead">Ce bloc <code>:root</code> est la seule source de vérité. À copier intégralement dans le <code>&lt;style&gt;</code> de chaque fichier HTML. Ne jamais coder une couleur en dur si la variable existe.</p>
+
+    <div class="template-code" style="margin-bottom:2rem">
+<span class="tc-tag">:root</span> {
+  <span class="tc-comment">/* ── COULEURS MARQUE ── */</span>
+  <span class="tc-attr">--navy</span>:       <span class="tc-val">#1a2e4a</span>;   <span class="tc-comment">/* Navbar, cards dark, titres institutionnels */</span>
+  <span class="tc-attr">--bg</span>:          <span class="tc-val">#faf9f7</span>;   <span class="tc-comment">/* Fond page principal */</span>
+  <span class="tc-attr">--bg-sand</span>:     <span class="tc-val">#f2ede6</span>;   <span class="tc-comment">/* Fond sections alternées */</span>
+  <span class="tc-attr">--bg-sand-md</span>:  <span class="tc-val">#ece4d8</span>;   <span class="tc-comment">/* Fond sable medium */</span>
+  <span class="tc-attr">--bg-ocean</span>:    <span class="tc-val">#1a3d4a</span>;   <span class="tc-comment">/* Fond section plateformes dark (annonces.html) */</span>
+  <span class="tc-attr">--bg-night</span>:    <span class="tc-val">#132237</span>;   <span class="tc-comment">/* Fond footer, login dashboard */</span>
+  <span class="tc-attr">--bg-dark</span>:     <span class="tc-val">#1c1c1a</span>;   <span class="tc-comment">/* Doublon de --ink. Non utilisée. Préférer --ink. */</span>
+  <span class="tc-attr">--bg-teal-lt</span>:  <span class="tc-val">rgba(46,139,139,0.06)</span>;
+  <span class="tc-attr">--ink</span>:         <span class="tc-val">#1c1c1a</span>;   <span class="tc-comment">/* Texte principal */</span>
+  <span class="tc-attr">--ink-mid</span>:     <span class="tc-val">#3d3d38</span>;   <span class="tc-comment">/* Texte secondaire */</span>
+  <span class="tc-attr">--ink-light</span>:   <span class="tc-val">#6b6b63</span>;   <span class="tc-comment">/* Captions, meta */</span>
+  <span class="tc-attr">--teal</span>:        <span class="tc-val">#2e8b8b</span>;   <span class="tc-comment">/* Couleur signature — accent principal */</span>
+  <span class="tc-attr">--teal-dk</span>:     <span class="tc-val">#236868</span>;   <span class="tc-comment">/* Teal hover */</span>
+  <span class="tc-attr">--teal-lt</span>:     <span class="tc-val">rgba(46,139,139,0.12)</span>;
+  <span class="tc-attr">--peach</span>:       <span class="tc-val">#c8603a</span>;   <span class="tc-comment">/* CTA, badges, accents chauds */</span>
+  <span class="tc-attr">--peach-lt</span>:    <span class="tc-val">rgba(200,96,58,0.08)</span>;
+  <span class="tc-attr">--gold</span>:        <span class="tc-val">#b8975a</span>;   <span class="tc-comment">/* Accent luxe — usage ponctuel */</span>
+  <span class="tc-attr">--terra</span>:       <span class="tc-val">#c8603a</span>;   <span class="tc-comment">/* Alias de --peach (livret) */</span>
+  <span class="tc-attr">--terra-lt</span>:    <span class="tc-val">rgba(200,96,58,0.10)</span>;
+
+  <span class="tc-comment">/* ── TYPOGRAPHIE ── */</span>
+  <span class="tc-attr">--font-serif</span>:  <span class="tc-val">'Cormorant Garamond','Palatino Linotype','Book Antiqua',Palatino,Georgia,serif</span>;
+  <span class="tc-attr">--font-sans</span>:   <span class="tc-val">'Jost','Gill Sans','Optima',Candara,'Segoe UI',sans-serif</span>;
+
+  <span class="tc-comment">/* ── TOKENS GLOBAUX ── */</span>
+  <span class="tc-attr">--radius</span>:      <span class="tc-val">4px</span>;         <span class="tc-comment">/* Border-radius global */</span>
+  <span class="tc-attr">--trans</span>:       <span class="tc-val">0.3s ease</span>;   <span class="tc-comment">/* Transition globale */</span>
+}
+    </div>
+
+    <table class="var-table">
+      <thead>
+        <tr>
+          <th>Variable</th>
+          <th>Valeur</th>
+          <th>Aperçu</th>
+          <th>Usage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>--navy</code></td><td><code>#1a2e4a</code></td><td><span class="var-swatch-inline" style="background:#1a2e4a"></span></td><td>Navbar, cards dark, titres institutionnels</td></tr>
+        <tr><td><code>--teal</code></td><td><code>#2e8b8b</code></td><td><span class="var-swatch-inline" style="background:#2e8b8b"></span></td><td>Couleur signature principale</td></tr>
+        <tr><td><code>--peach</code></td><td><code>#c8603a</code></td><td><span class="var-swatch-inline" style="background:#c8603a"></span></td><td>CTA, badges, accents chauds</td></tr>
+        <tr><td><code>--gold</code></td><td><code>#b8975a</code></td><td><span class="var-swatch-inline" style="background:#b8975a"></span></td><td>Accent luxe ponctuel</td></tr>
+        <tr><td><code>--bg</code></td><td><code>#faf9f7</code></td><td><span class="var-swatch-inline" style="background:#faf9f7;border-color:#ccc"></span></td><td>Fond page principal</td></tr>
+        <tr><td><code>--bg-sand</code></td><td><code>#f2ede6</code></td><td><span class="var-swatch-inline" style="background:#f2ede6"></span></td><td>Sections alternées, navbar</td></tr>
+        <tr><td><code>--bg-ocean</code></td><td><code>#1a3d4a</code></td><td><span class="var-swatch-inline" style="background:#1a3d4a"></span></td><td>Fond section plateformes dark (annonces.html)</td></tr>
+        <tr><td><code>--bg-night</code></td><td><code>#132237</code></td><td><span class="var-swatch-inline" style="background:#132237"></span></td><td>Footer, écran login dashboard</td></tr>
+        <tr><td><code>--bg-dark</code></td><td><code>#1c1c1a</code></td><td><span class="var-swatch-inline" style="background:#1c1c1a"></span></td><td>Doublon de --ink (#1c1c1a). Non utilisée dans le site. Conservée comme alias ; préférer --ink.</td></tr>
+        <tr><td><code>--ink</code></td><td><code>#1c1c1a</code></td><td><span class="var-swatch-inline" style="background:#1c1c1a"></span></td><td>Texte principal</td></tr>
+        <tr><td><code>--ink-mid</code></td><td><code>#3d3d38</code></td><td><span class="var-swatch-inline" style="background:#3d3d38"></span></td><td>Texte corps</td></tr>
+        <tr><td><code>--ink-light</code></td><td><code>#6b6b63</code></td><td><span class="var-swatch-inline" style="background:#6b6b63"></span></td><td>Captions, meta</td></tr>
+        <tr><td><code>--radius</code></td><td><code>4px</code></td><td>—</td><td>Border-radius global</td></tr>
+        <tr><td><code>--trans</code></td><td><code>0.3s ease</code></td><td>—</td><td>Transition globale</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     §4 · COMPOSANTS
+     ══════════════════════════════════════════════════════════════════ -->
+<section class="bb-section" id="composants">
+  <div class="bb-section-inner">
+    <div class="bb-section-num">§ 04</div>
+    <h2 class="bb-section-title"><em>Composants</em> UI</h2>
+    <p class="bb-section-lead">Bibliothèque complète des éléments réutilisables. Chaque composant est reproduit en code exact ci-dessous.</p>
+
+    <!-- LOGO -->
+    <h3 style="font-family:var(--font-serif);font-size:1.5rem;font-weight:300;color:var(--navy);margin:2.5rem 0 1.2rem">Logo Texte</h3>
+    <div class="comp-block" style="margin-bottom:2rem">
+      <div class="comp-label">Logotype — 3 variantes de contexte</div>
+      <div style="display:flex;gap:3rem;flex-wrap:wrap;align-items:center;margin-bottom:1.5rem">
+        <div>
+          <div style="font-size:.6rem;color:var(--ink-light);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem">Sur fond clair</div>
+          <span style="font-family:var(--font-serif);font-size:1.4rem;font-weight:400;color:var(--ink);letter-spacing:.03em">Ocean Drift <em style="font-style:italic;color:var(--teal)">Lodge</em></span>
+        </div>
+        <div style="background:var(--navy);padding:.8rem 1.5rem;border-radius:6px">
+          <div style="font-size:.6rem;color:rgba(255,255,255,0.4);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem">Sur fond navy</div>
+          <span style="font-family:var(--font-serif);font-size:1.4rem;font-weight:400;color:#fff;letter-spacing:.03em">Ocean Drift <em style="font-style:italic;color:var(--teal)">Lodge</em></span>
+        </div>
+        <div style="background:var(--bg-sand);padding:.8rem 1.5rem;border-radius:6px">
+          <div style="font-size:.6rem;color:var(--ink-light);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem">Sur fond sable (nav)</div>
+          <span style="font-family:var(--font-serif);font-size:1.25rem;font-weight:400;color:var(--navy);letter-spacing:.03em">Ocean Drift <em style="font-style:italic;color:var(--teal)">Lodge</em></span>
+        </div>
+      </div>
+      <div class="comp-specs">
+        <strong style="color:var(--navy)">Règle :</strong> Toujours "Ocean Drift" en roman (non italique) + "Lodge" en <em style="color:var(--teal)">italique teal</em>.<br>
+        <strong style="color:var(--navy)">Font :</strong> Cormorant Garamond · weight 300-400 · letter-spacing .03em<br>
+        <strong style="color:var(--navy)">Abréviation :</strong> <code>ODL</code> en teal pour usage compact (QR code, favicon)
+      </div>
+    </div>
+
+    <!-- BARRE DE PROGRESSION -->
+    <h3 style="font-family:var(--font-serif);font-size:1.5rem;font-weight:300;color:var(--navy);margin:2.5rem 0 1.2rem">Barre de progression</h3>
+    <div class="comp-block" style="margin-bottom:2rem">
+      <div class="comp-label">Progress bar — 2 variantes</div>
+      <div style="margin-bottom:1rem">
+        <div style="font-size:.6rem;color:var(--ink-light);margin-bottom:.4rem;letter-spacing:.1em;text-transform:uppercase">Index.html — Tricolore (teal → gold → peach)</div>
+        <div class="progress-demo tri" style="width:70%"></div>
+      </div>
+      <div>
+        <div style="font-size:.6rem;color:var(--ink-light);margin-bottom:.4rem;letter-spacing:.1em;text-transform:uppercase">Guide & Livret — Teal uni / Peach uni</div>
+        <div class="progress-demo" style="width:50%;background:var(--teal)"></div>
+        <div class="progress-demo" style="width:50%;background:var(--peach);margin-top:.3rem"></div>
+      </div>
+      <div class="comp-specs">
+        <code>height: 2px (guide/livret) · 3px (index)</code>
+        <code>position: fixed; top: 0; left: 0; z-index: 200</code>
+        <code>transition: width .1s linear</code>
+      </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <h3 style="font-family:var(--font-serif);font-size:1.5rem;font-weight:300;color:var(--navy);margin:2.5rem 0 1.2rem">Navigation</h3>
+    <div class="comp-block" style="margin-bottom:2rem">
+      <div class="comp-label">Nav standard — tous fichiers</div>
+      <div class="nav-demo" style="margin-bottom:1.5rem">
+        <span class="nav-logo-demo">Ocean Drift <em>Lodge</em></span>
+        <div class="nav-links-demo">
+          <span class="nav-link-demo">L'Appartement</span>
+          <span class="nav-link-demo active">Services</span>
+          <span class="nav-link-demo">Tarifs</span>
+        </div>
+        <div style="display:flex;gap:.6rem;align-items:center">
+          <div class="lang-sw-demo">
+            <button class="lang-btn-demo active">FR</button>
+            <button class="lang-btn-demo">EN</button>
+            <button class="lang-btn-demo">ES</button>
+          </div>
+          <span class="btn-nav-cta">Réserver</span>
+        </div>
+      </div>
+      <div class="comp-specs">
+        <code>position: fixed; top: 3px (index) / top: 0 (autres); z-index: 100</code>
+        <code>background: rgba(250,249,247,0.95); backdrop-filter: blur(16px)</code>
+        <code>border-bottom: 1px solid rgba(28,28,26,0.08)</code>
+        <code>padding: .6rem 3.5rem → réduit à .4rem au scroll (classe .scrolled)</code>
+        <code>Logo: Cormorant Garamond 1.25rem · Links: Jost 500 .68rem uppercase</code>
+        <code>Lien actif: color --teal + border-bottom 1px --teal</code>
+      </div>
+    </div>
+
+    <!-- BOUTONS -->
+    <h3 style="font-family:var(--font-serif);font-size:1.5rem;font-weight:300;color:var(--navy);margin:2.5rem 0 1.2rem">Boutons</h3>
+    <div class="comp-block" style="margin-bottom:2rem">
+      <div class="comp-label">3 variantes officielles</div>
+      <div class="btn-row" style="margin-bottom:1.5rem">
+        <button class="btn-primary">Réserver maintenant</button>
+        <button class="btn-outline">En savoir plus</button>
+        <button class="btn-teal">Confirmer</button>
+        <span class="btn-nav-cta">Réserver</span>
+      </div>
+      <div class="comp-specs">
+        <strong style="color:var(--navy)">Primaire (peach)</strong> — CTA principal, réservation, action forte<br>
+        <code>background: --peach · color: #fff · padding: .85rem 2.2rem · border-radius: --radius</code>
+        <code>font: Jost 500 .72rem uppercase letter-spacing .16em</code>
+        <code>hover: filter brightness(.9) + translateY(-1px) + shadow peach</code><br>
+        <strong style="color:var(--navy)">Outline (ink)</strong> — Action secondaire, découverte<br>
+        <code>border: 2px solid --ink · hover: background --ink color #fff</code><br>
+        <strong style="color:var(--navy)">Teal</strong> — Confirmation, modal, lang actif<br>
+        <code>background: --teal · hover: background --teal-dk</code><br>
+        <strong style="color:var(--navy)">Nav CTA</strong> — Bouton réservation dans navbar<br>
+        <code>background: --peach · padding: .6rem 1.5rem · border-radius: --radius</code>
+      </div>
+    </div>
+
+    <!-- BADGES -->
+    <h3 style="font-family:var(--font-serif);font-size:1.5rem;font-weight:300;color:var(--navy);margin:2.5rem 0 1.2rem">Badges & Pills</h3>
+    <div class="comp-block" style="margin-bottom:2rem">
+      <div class="comp-label">4 variantes</div>
+      <div class="badge-row" style="margin-bottom:1.5rem">
+        <span class="badge-teal">Disponible</span>
+        <span class="badge-peach">Haute Saison</span>
+        <span class="badge-gold">Moyenne Saison</span>
+        <span class="badge-ink">Check-in 15h</span>
+      </div>
+      <div class="comp-specs">
+        <code>font: Jost 500 .62-.65rem · letter-spacing .14em · uppercase · border-radius: 20px</code>
+        <code>Teal outline: border 1px rgba(46,139,139,0.3) · color --teal</code>
+        <code>Peach solid: background --peach · color #fff</code>
+        <code>Gold light: background rgba(184,151,90,0.15) · color --gold</code>
+        <code>Ink light: background rgba(28,28,26,0.08) · color --ink-mid</code>
+      </div>
+    </div>
+
+    <!-- HERO GRADIENT -->
+    <h3 style="font-family:var(--font-serif);font-size:1.5rem;font-weight:300;color:var(--navy);margin:2.5rem 0 1.2rem">Gradient Hero</h3>
+    <div class="comp-block" style="margin-bottom:2rem">
+      <div class="comp-label">Fond hero — tous fichiers</div>
+      <div class="hero-gradient-demo">
+        <div class="hero-gradient-demo-inner">
+          <div style="font-size:.72rem;letter-spacing:.38em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:.8rem">Résidence West Point · Foum El Bouir</div>
+          <div style="font-family:var(--font-serif);font-size:clamp(2.5rem,8vw,5rem);font-weight:300;line-height:1;color:var(--ink)">Ocean Drift <em style="display:block;font-style:italic;color:var(--teal)">Lodge</em></div>
+          <div style="font-size:.85rem;color:var(--ink-light);letter-spacing:.15em;text-transform:uppercase;margin-top:1rem">Dakhla, Maroc</div>
+        </div>
+      </div>
+      <div class="comp-specs" style="margin-top:1.2rem">
+        <code>background: radial-gradient(ellipse 70% 55% at 25% 35%, rgba(46,139,139,0.13) 0%, transparent 70%),</code>
+        <code>            radial-gradient(ellipse 55% 50% at 75% 70%, rgba(200,96,58,0.08) 0%, transparent 65%),</code>
+        <code>            linear-gradient(160deg, #ffffff 0%, #f4ede4 55%, #ede8df 100%)</code>
+        <code>Texture optionnelle (index.html): ::before { background-image: radial-gradient(circle, rgba(46,139,139,0.04) 1px, transparent 1px); background-size: 32px 32px }</code>
+      </div>
+    </div>
+
+    <!-- CARDS -->
+    <h3 style="font-family:var(--font-serif);font-size:1.5rem;font-weight:300;color:var(--navy);margin:2.5rem 0 1.2rem">Cards</h3>
+    <div class="comp-grid" style="margin-bottom:1rem">
+      <div class="card-white">
+        <div class="card-section-tag">Services</div>
+        <div class="card-title">Wi-Fi Fibre 200 Mb/s</div>
+        <div class="card-desc">Connexion haut débit pour nomades digitaux, streamers et télétravailleurs exigeants.</div>
+      </div>
+      <div class="card-sand">
+        <div class="card-section-tag">Expériences</div>
+        <div class="card-title">Kitesurf · Wingfoil</div>
+        <div class="card-desc">Spot Foum El Bouir à 0 mètre. Alizés constants de novembre à mars.</div>
+      </div>
+      <div class="card-highlight">
+        <div class="card-section-tag">Mise en avant</div>
+        <div class="card-title" style="font-family:var(--font-serif);font-size:1.35rem;font-weight:300;font-style:italic;color:var(--teal)">Card Highlight Teal</div>
+        <div class="card-desc">Gradient teal très léger. Pour les encarts d'information premium ou les conseils de bienvenue.</div>
+      </div>
+      <div class="card-teal-border">
+        <div class="card-section-tag">Haute Saison</div>
+        <div class="card-title">Tarif Kite</div>
+        <div class="card-desc">Bordure teal + box-shadow teal. Pour les éléments à mettre en valeur dans les grilles tarifaires.</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem">
+      <div class="card-navy">
+        <div style="font-size:.65rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:.8rem">Réservation directe</div>
+        <div style="font-family:var(--font-serif);font-size:1.8rem;font-weight:300;color:#fff">30% d'acompte</div>
+        <div style="font-size:.82rem;color:rgba(250,249,247,0.7);margin-top:.8rem;line-height:1.6">Card Navy — fond --navy, texte blanc, accent teal. Pour config/canaux de vente.</div>
+      </div>
+      <div class="card-peach">
+        <div style="font-size:.65rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,0.8);margin-bottom:.8rem">Distribution OTAs</div>
+        <div style="font-family:var(--font-serif);font-size:1.8rem;font-weight:300;color:#fff">+15% Airbnb</div>
+        <div style="font-size:.82rem;color:rgba(255,255,255,0.85);margin-top:.8rem;line-height:1.6">Card Peach — fond --peach, tout blanc. Usage stratégique, max 1-2 par page.</div>
+      </div>
+    </div>
+
+    <!-- BLOCKQUOTE -->
+    <h3 style="font-family:var(--font-serif);font-size:1.5rem;font-weight:300;color:var(--navy);margin:2.5rem 0 1.2rem">Citation / Blockquote</h3>
+    <div class="comp-block" style="margin-bottom:2rem">
+      <div class="comp-label">Blockquote ODL standard</div>
+      <blockquote class="odl">"À Dakhla, chaque levier de vent raconte une histoire différente. Laissez-vous porter par les alizés de l'Atlantique."</blockquote>
+      <div class="comp-specs" style="margin-top:1rem">
+        <code>border-left: 2px solid --peach (livret) / --terra (livret alias)</code>
+        <code>font: Cormorant Garamond 300 italic 1.2rem · line-height 1.65 · color --ink-mid</code>
+        <code>padding: 1rem 1.5rem</code>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <h3 style="font-family:var(--font-serif);font-size:1.5rem;font-weight:300;color:var(--navy);margin:2.5rem 0 1.2rem">Footer</h3>
+    <div class="comp-block" style="margin-bottom:2rem">
+      <div class="comp-label">Footer standard — tous fichiers</div>
+      <div class="footer-demo">
+        <div class="footer-logo-demo">Ocean Drift <em>Lodge</em></div>
+        <nav class="footer-links-demo">
+          <span class="footer-link-demo">Tableau de bord</span>
+          <span class="footer-link-demo">Conditions Générales</span>
+          <span class="footer-link-demo">Mentions Légales</span>
+        </nav>
+        <div class="footer-credits-demo">© 2026 Ocean Drift Lodge · Dakhla, Maroc · Résidence West Point</div>
+      </div>
+      <div class="comp-specs" style="margin-top:1rem">
+        <code>background: #132237 · border-top: 4px solid --teal (optionnel)</code>
+        <code>Logo: Cormorant Garamond 300 1.4-1.6rem · "Lodge" italic teal</code>
+        <code>Links: Jost 500 .65-.7rem uppercase · color rgba(250,249,247,0.4)</code>
+        <code>Credits: .6rem · color rgba(255,255,255,0.2)</code>
+      </div>
+    </div>
+
+    <!-- SECTION TAG + TITRE PATTERN -->
+    <h3 style="font-family:var(--font-serif);font-size:1.5rem;font-weight:300;color:var(--navy);margin:2.5rem 0 1.2rem">Pattern Section — Structure type</h3>
+    <div class="comp-block" style="margin-bottom:2rem">
+      <div class="comp-label">Bloc section standard — à reproduire à l'identique</div>
+      <div class="stb-demo">
+        <div style="font-size:.65rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--teal);margin-bottom:.8rem">Services & Équipements</div>
+        <div style="font-family:var(--font-serif);font-size:clamp(2rem,4.5vw,3rem);font-weight:300;line-height:1.2;color:var(--ink);margin-bottom:.8rem">Tout le confort d'un <em style="font-style:italic;color:var(--teal)">appartement premium</em></div>
+        <div style="font-size:.9rem;color:var(--ink-light);max-width:500px;line-height:1.75">Cuisine équipée, terrasse Atlantique, Wi-Fi fibre, parking sécurisé. Tous les équipements pensés pour un séjour sans friction.</div>
+      </div>
+      <div class="comp-specs" style="margin-top:1rem">
+        <code>section-tag: Jost 500 .65rem uppercase letter-spacing .28em color --teal</code>
+        <code>section-title: Cormorant 300 clamp(2rem,4.5vw,3rem) · em italic color --teal</code>
+        <code>section-lead: Jost 400 .88-.95rem color --ink-light line-height 1.75 max-width 500-540px</code>
+        <code>Section padding: 6rem 3.5rem (desktop) → 4.5rem 2rem (mobile)</code>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     §5 · STRUCTURES DE PAGES
+     ══════════════════════════════════════════════════════════════════ -->
+<section class="bb-section" id="structure">
+  <div class="bb-section-inner">
+    <div class="bb-section-num">§ 05</div>
+    <h2 class="bb-section-title">Structures <em>de Pages</em></h2>
+    <p class="bb-section-lead">Anatomie des 3 types de pages du projet. Chaque nouveau fichier doit s'aligner sur l'un de ces patterns.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;margin-bottom:3rem">
+
+      <!-- Type A : Page publique (index) -->
+      <div>
+        <div style="font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--peach);margin-bottom:1rem">Type A · Page publique</div>
+        <div style="font-size:.75rem;color:var(--ink-light);margin-bottom:1rem">Modèle : index.html</div>
+        <div class="page-anatomy">
+          <div class="anatomy-layer al-progress"><strong>Progress bar tricolore</strong> <code>3px fixed top:0</code></div>
+          <div class="anatomy-layer al-nav"><strong>Nav fixed</strong> <code>top:3px bg-sand blur</code></div>
+          <div class="anatomy-layer al-hero" style="min-height:80px;display:flex;align-items:center;padding:1rem 1.5rem"><strong>Hero 100vh</strong> <code>gradient + dot texture</code></div>
+          <div class="anatomy-layer al-section-light"><strong>Section bg</strong> <code>--bg</code></div>
+          <div class="anatomy-layer al-section-sand"><strong>Section bg-sand</strong> <code>alternée</code></div>
+          <div class="anatomy-layer al-section-light"><strong>Section bg</strong></div>
+          <div class="anatomy-layer al-section-dark"><strong>Bandeau dark</strong> <code>--ink / --bg-ocean</code></div>
+          <div class="anatomy-layer al-footer"><strong>Footer</strong> <code>#132237</code></div>
+        </div>
+      </div>
+
+      <!-- Type B : Guide/Livret -->
+      <div>
+        <div style="font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem">Type B · Guide / Livret</div>
+        <div style="font-size:.75rem;color:var(--ink-light);margin-bottom:1rem">Modèle : guide-du-voyageur.html · livret-accueil.html</div>
+        <div class="page-anatomy">
+          <div class="anatomy-layer al-progress" style="background:rgba(46,139,139,0.1)"><strong>Progress bar uni</strong> <code>2px teal ou peach</code></div>
+          <div class="anatomy-layer al-nav"><strong>Nav fixed</strong> <code>top:0 bg 95% blur</code></div>
+          <div class="anatomy-layer al-hero" style="min-height:80px;display:flex;align-items:center;padding:1rem 1.5rem"><strong>Hero 100vh</strong> <code>gradient sans texture</code></div>
+          <div class="anatomy-layer al-section-light"><strong>Section bg</strong></div>
+          <div class="anatomy-layer al-section-sand"><strong>Section bg-sand</strong></div>
+          <div class="anatomy-layer al-section-light"><strong>Section bg</strong></div>
+          <div class="anatomy-layer al-section-sand"><strong>Section bg-sand</strong></div>
+          <div class="anatomy-layer al-footer"><strong>Footer</strong> <code>#132237</code></div>
+        </div>
+      </div>
+
+      <!-- Type C : Page admin/interne -->
+      <div>
+        <div style="font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem">Type C · Page interne</div>
+        <div style="font-size:.75rem;color:var(--ink-light);margin-bottom:1rem">Modèle : grille-tarifaire.html, dashboard</div>
+        <div class="page-anatomy">
+          <div class="anatomy-layer al-nav" style="position:static"><strong>Header transparent</strong> <code>absolute top:0</code></div>
+          <div class="anatomy-layer al-hero" style="min-height:60px;display:flex;align-items:center;padding:1rem 1.5rem;background:linear-gradient(180deg,var(--bg-sand),var(--bg))"><strong>Hero section</strong> <code>gradient simple</code></div>
+          <div class="anatomy-layer al-section-light"><strong>Container main</strong> <code>max-width 1140px</code></div>
+          <div class="anatomy-layer al-footer" style="min-height:30px"><strong>Footer</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Espacements -->
+    <h3 style="font-family:var(--font-serif);font-size:1.5rem;font-weight:300;color:var(--navy);margin:2rem 0 1.2rem">Espacements standards</h3>
+    <div class="comp-block">
+      <div class="comp-label">Valeurs d'espacement — à respecter</div>
+      <div class="spacing-demo">
+        <div class="spacing-item"><div class="spacing-block" style="height:4px"></div><div class="spacing-label">--radius<br>4px</div></div>
+        <div class="spacing-item"><div class="spacing-block" style="height:8px"></div><div class="spacing-label">Cards gap<br>sm · 8px</div></div>
+        <div class="spacing-item"><div class="spacing-block" style="height:16px"></div><div class="spacing-label">1rem<br>16px</div></div>
+        <div class="spacing-item"><div class="spacing-block" style="height:24px"></div><div class="spacing-label">1.5rem<br>24px</div></div>
+        <div class="spacing-item"><div class="spacing-block" style="height:32px"></div><div class="spacing-label">2rem<br>32px</div></div>
+        <div class="spacing-item"><div class="spacing-block" style="height:48px"></div><div class="spacing-block" style="height:0"></div><div class="spacing-label">3rem<br>48px</div></div>
+        <div class="spacing-item"><div class="spacing-block" style="height:64px"></div><div class="spacing-label">Section padding<br>top/bottom · 6rem</div></div>
+        <div class="spacing-item"><div class="spacing-block" style="height:80px;background:var(--peach)"></div><div class="spacing-label">Hero padding<br>top · 8rem</div></div>
+      </div>
+      <div class="comp-specs" style="margin-top:1.5rem">
+        <code>Section padding desktop: 6rem 3.5rem · mobile: 4.5rem 2rem · small: 3.5rem 1.5rem</code>
+        <code>Container max-width: 1100px (sections) · 1140px (page interne) · 900px (tarifs centré)</code>
+        <code>Gaps cards grille: 1.5rem standard · 2rem-2.5rem pour cards larges</code>
+        <code>Nav padding desktop: .6rem 3.5rem → .4rem au scroll</code>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     §6 · RÈGLES D'USAGE
+     ══════════════════════════════════════════════════════════════════ -->
+<section class="bb-section" id="regles">
+  <div class="bb-section-inner">
+    <div class="bb-section-num">§ 06</div>
+    <h2 class="bb-section-title">Règles <em>d'Usage</em></h2>
+    <p class="bb-section-lead">Ce que chaque fichier annexe DOIT faire et DOIT éviter pour conserver la cohérence de marque.</p>
+
+    <div class="rules-grid">
+      <div class="rule-card do">
+        <div class="rule-card-label">✓ À faire</div>
+        <ul>
+          <li>Importer les 2 Google Fonts dans chaque <code>&lt;head&gt;</code></li>
+          <li>Copier le bloc <code>:root</code> complet en entête du CSS</li>
+          <li>Utiliser <code>var(--teal)</code> pour tous les accents actifs</li>
+          <li>Alterner les fonds <code>--bg</code> et <code>--bg-sand</code> entre sections</li>
+          <li>Mettre un mot clé en <em>italique teal</em> dans chaque titre hero</li>
+          <li>Utiliser Cormorant Garamond poids 300 pour tous les titres</li>
+          <li>Appliquer <code>-webkit-font-smoothing: antialiased</code> sur body</li>
+          <li>Inclure progress bar fixe en haut de page</li>
+          <li>Terminer chaque page par footer <code>#132237</code></li>
+          <li>Utiliser <code>--radius: 4px</code> pour tous les éléments arrondis</li>
+          <li>Respecter <code>--trans: 0.3s ease</code> sur toutes les transitions</li>
+          <li>Ajouter la classe <code>.reveal</code> + IntersectionObserver pour les entrées en scroll</li>
+          <li>Charger <code>odl-styles.css</code> via <code>&lt;link&gt;</code> avant tout <code>&lt;style&gt;</code> local</li>
+          <li>Logo nav : <code>mix-blend-mode: multiply</code> (fond clair) · Logo footer : <code>mix-blend-mode: screen</code> (fond sombre)</li>
+          <li>Protéger le logo avec les classes <code>no-translate</code> et <code>logo-stable</code></li>
+        </ul>
+      </div>
+      <div class="rule-card dont">
+        <div class="rule-card-label">✕ À ne pas faire</div>
+        <ul>
+          <li>Coder une couleur en dur si une variable CSS existe déjà</li>
+          <li>Utiliser d'autres polices que Cormorant Garamond + Jost</li>
+          <li>Créer une couleur d'accentuation hors de la palette officielle</li>
+          <li>Utiliser <code>font-weight: bold/700</code> sur les titres serif</li>
+          <li>Appliquer <code>--peach</code> comme fond de section étendu</li>
+          <li>Utiliser <code>--gold</code> comme couleur principale de section</li>
+          <li>Changer <code>--radius</code> arbitrairement (certains éléments utilisent 6px, 8px, 10px documentés)</li>
+          <li>Mettre le logo en gras ou changer la casse (toujours : "Ocean Drift Lodge")</li>
+          <li>Utiliser un background footer autre que <code>#132237</code></li>
+          <li>Ajouter des animations non prévues (pas de keyframes arbitraires)</li>
+          <li>Utiliser Inter, Roboto, ou toute autre police système générique</li>
+          <li>Créer des gradients hors du pattern hero documenté</li>
+          <li>Ajouter <code>class="reveal"</code> ou <code>animation: floatLogo</code> sur les logos</li>
+          <li>Redéfinir les variables <code>:root</code> en local si <code>odl-styles.css</code> est chargé</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Règles spécifiques -->
+    <h3 style="font-family:var(--font-serif);font-size:1.5rem;font-weight:300;color:var(--navy);margin:2rem 0 1.2rem">Règles spécifiques par contexte</h3>
+
+    <div class="bb-rule"><strong>Logo :</strong> Toujours "Ocean Drift" + <em style="font-style:italic;color:var(--teal)">Lodge</em> en italique teal. Sur fond sombre : "Ocean Drift" blanc + "Lodge" italic teal. Abréviation autorisée : <code>ODL</code> en teal uniquement pour QR / favicon / usage ultra-compact.</div>
+
+    <div class="bb-rule"><strong>Titres H1 :</strong> Jamais de majuscules forcées (text-transform:uppercase interdit sur les titres Cormorant). Le poids 300 est obligatoire. La taille minimum est <code>clamp(3rem, 7vw, 6rem)</code>.</div>
+
+    <div class="bb-rule"><strong>Section-tag :</strong> Toujours en Jost, uppercase, letter-spacing .28em, color --teal. Jamais en --peach ou --navy pour ce rôle.</div>
+
+    <div class="bb-rule"><strong>Bouton CTA principal :</strong> Toujours --peach. Le bouton teal est réservé aux confirmations / modales / états actifs. Jamais de bouton --navy en CTA front.</div>
+
+    <div class="bb-rule danger"><strong>Interdit absolu :</strong> Ne jamais utiliser Arial, Helvetica, System-UI, ou toute police fallback comme police affichée. L'import Google Fonts doit toujours précéder le CSS.</div>
+
+    <div class="bb-rule danger"><strong>Interdit absolu :</strong> Ne jamais créer un fond hero en couleur unie (bleu, teal, etc.). Le hero utilise TOUJOURS le gradient tri-couche documenté en §4.</div>
+
+    <!-- Checklist conformité -->
+    <h3 style="font-family:var(--font-serif);font-size:1.5rem;font-weight:300;color:var(--navy);margin:2rem 0 1.2rem">Checklist conformité — avant livraison</h3>
+    <div class="checklist">
+      <div class="check-item"><span class="check-icon ok">✓</span><span>Google Fonts importées dans le <code>&lt;head&gt;</code></span></div>
+      <div class="check-item"><span class="check-icon ok">✓</span><span>Bloc <code>:root</code> complet présent en début de <code>&lt;style&gt;</code></span></div>
+      <div class="check-item"><span class="check-icon ok">✓</span><span>Aucune couleur en dur hors de la palette (sauf <code>#132237</code> footer et <code>#ffffff</code>)</span></div>
+      <div class="check-item"><span class="check-icon ok">✓</span><span>Barre de progression fixe présente</span></div>
+      <div class="check-item"><span class="check-icon ok">✓</span><span>Nav fixe avec logo, liens, lang switcher</span></div>
+      <div class="check-item"><span class="check-icon ok">✓</span><span>Hero avec gradient tri-couche + texte "Ocean Drift <em style="font-style:italic;color:var(--teal)">Lodge</em>"</span></div>
+      <div class="check-item"><span class="check-icon ok">✓</span><span>Alternance <code>--bg</code> / <code>--bg-sand</code> entre les sections</span></div>
+      <div class="check-item"><span class="check-icon ok">✓</span><span>Footer <code>#132237</code> avec logo + liens + copyright</span></div>
+      <div class="check-item"><span class="check-icon ok">✓</span><span>Body : <code>font-family: var(--font-sans)</code> + <code>-webkit-font-smoothing: antialiased</code></span></div>
+      <div class="check-item"><span class="check-icon ok">✓</span><span>Toutes les transitions utilisent <code>var(--trans)</code></span></div>
+      <div class="check-item"><span class="check-icon warn">⚠</span><span>Responsive vérifié : section padding réduit sous 768px, grilles en colonne unique sous 620px</span></div>
+      <div class="check-item"><span class="check-icon warn">⚠</span><span>IntersectionObserver pour les classes <code>.reveal</code> (animations d'entrée)</span></div>
+      <div class="check-item"><span class="check-icon ok">✓</span><span><code>odl-styles.css</code> chargé dans <code>&lt;head&gt;</code> — après fonts Google, avant <code>&lt;style&gt;</code> local</span></div>
+      <div class="check-item"><span class="check-icon ok">✓</span><span>Logo sans classe <code>reveal</code>, sans animation <code>floatLogo</code></span></div>
+      <div class="check-item"><span class="check-icon ok">✓</span><span>Footer logo : <code>mix-blend-mode: screen</code> sur fond <code>#132237</code></span></div>
+      <div class="check-item"><span class="check-icon ok">✓</span><span>Navigation reliée — liens coherents selon profil (public / client / interne)</span></div>
+      <div class="check-item"><span class="check-icon ok">✓</span><span>Traductions <code>data-lang</code> spans présentes pour FR / EN / ES / PT / IT</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     §7 · TEMPLATE PAGE VIERGE
+     ══════════════════════════════════════════════════════════════════ -->
+<section class="bb-section" id="template">
+  <div class="bb-section-inner">
+    <div class="bb-section-num">§ 07</div>
+    <h2 class="bb-section-title">Template <em>Page Vierge</em></h2>
+    <p class="bb-section-lead">Structure HTML complète prête à copier pour tout nouveau fichier annexe. Remplacer les <code>[TITRE]</code>, <code>[DESCRIPTION]</code> et sections.</p>
+
+    <div class="template-code">
+<span class="tc-comment">&lt;!-- ════════════════════════════════════════════════════════════</span>
+<span class="tc-comment">     OCEAN DRIFT LODGE · [NOM DE LA PAGE]</span>
+<span class="tc-comment">     Conforme Brand Book v1.0</span>
+<span class="tc-comment">     ════════════════════════════════════════════════════════════ --&gt;</span>
+<span class="tc-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tc-tag">&lt;html</span> <span class="tc-attr">lang</span>=<span class="tc-val">"fr"</span><span class="tc-tag">&gt;</span>
+<span class="tc-tag">&lt;head&gt;</span>
+<span class="tc-tag">&lt;meta</span> <span class="tc-attr">charset</span>=<span class="tc-val">"UTF-8"</span><span class="tc-tag">&gt;</span>
+<span class="tc-tag">&lt;meta</span> <span class="tc-attr">name</span>=<span class="tc-val">"viewport"</span> <span class="tc-attr">content</span>=<span class="tc-val">"width=device-width, initial-scale=1.0"</span><span class="tc-tag">&gt;</span>
+<span class="tc-tag">&lt;title&gt;</span>Ocean Drift Lodge · [TITRE PAGE]<span class="tc-tag">&lt;/title&gt;</span>
+<span class="tc-tag">&lt;meta</span> <span class="tc-attr">name</span>=<span class="tc-val">"description"</span> <span class="tc-attr">content</span>=<span class="tc-val">"[DESCRIPTION]"</span><span class="tc-tag">&gt;</span>
+
+<span class="tc-comment">&lt;!-- ① FONTS — obligatoires --&gt;</span>
+<span class="tc-tag">&lt;link</span> <span class="tc-attr">rel</span>=<span class="tc-val">"preconnect"</span> <span class="tc-attr">href</span>=<span class="tc-val">"https://fonts.googleapis.com"</span><span class="tc-tag">&gt;</span>
+<span class="tc-tag">&lt;link</span> <span class="tc-attr">rel</span>=<span class="tc-val">"preconnect"</span> <span class="tc-attr">href</span>=<span class="tc-val">"https://fonts.gstatic.com"</span> <span class="tc-attr">crossorigin</span><span class="tc-tag">&gt;</span>
+<span class="tc-tag">&lt;link</span> <span class="tc-attr">href</span>=<span class="tc-val">"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap"</span> <span class="tc-attr">rel</span>=<span class="tc-val">"stylesheet"</span><span class="tc-tag">&gt;</span>
+
+<span class="tc-tag">&lt;style&gt;</span>
+<span class="tc-comment">/* ② VARIABLES CSS — source unique de vérité */</span>
+:root {
+  --navy:       #1a2e4a;
+  --bg:         #faf9f7;
+  --bg-sand:    #f2ede6;
+  --bg-sand-md: #ece4d8;
+  --bg-ocean:   #1a3d4a;
+  --bg-teal-lt: rgba(46,139,139,0.06);
+  --ink:        #1c1c1a;
+  --ink-mid:    #3d3d38;
+  --ink-light:  #6b6b63;
+  --teal:       #2e8b8b;
+  --teal-dk:    #236868;
+  --teal-lt:    rgba(46,139,139,0.12);
+  --peach:      #c8603a;
+  --peach-lt:   rgba(200,96,58,0.08);
+  --gold:       #b8975a;
+  --radius:     4px;
+  --trans:      0.3s ease;
+  --font-serif: 'Cormorant Garamond','Palatino Linotype',Palatino,Georgia,serif;
+  --font-sans:  'Jost','Gill Sans','Optima',Candara,'Segoe UI',sans-serif;
+}
+
+<span class="tc-comment">/* ③ RESET */</span>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{cursor:pointer;font-family:var(--font-sans);border:none;background:none}
+
+<span class="tc-comment">/* ④ PROGRESS BAR */</span>
+#progress{position:fixed;top:0;left:0;height:2px;background:var(--teal);z-index:300;width:0%;transition:width .1s linear}
+
+<span class="tc-comment">/* ⑤ NAV */</span>
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.6rem 3.5rem;background:rgba(250,249,247,0.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(28,28,26,0.08);transition:padding var(--trans),box-shadow var(--trans)}
+#nav.scrolled{padding:.4rem 3.5rem;box-shadow:0 2px 24px rgba(28,28,26,0.07)}
+.nav-logo{font-family:var(--font-serif);font-size:1.25rem;font-weight:400;color:var(--ink);letter-spacing:.03em}
+.nav-logo em{font-style:italic;color:var(--teal)}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mid);transition:color var(--trans);padding:.3rem 0;border-bottom:1px solid transparent}
+.nav-links a:hover,.nav-links a.active{color:var(--teal);border-bottom-color:var(--teal)}
+
+<span class="tc-comment">/* ⑥ HERO */</span>
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;position:relative;overflow:hidden;
+  background:radial-gradient(ellipse 70% 55% at 25% 35%,rgba(46,139,139,0.13) 0%,transparent 70%),
+  radial-gradient(ellipse 55% 50% at 75% 70%,rgba(200,96,58,0.08) 0%,transparent 65%),
+  linear-gradient(160deg,#ffffff 0%,#f4ede4 55%,#ede8df 100%)}
+.hero-inner{position:relative;z-index:1;max-width:780px;width:100%;display:flex;flex-direction:column;align-items:center}
+.hero-eyebrow{font-size:.72rem;font-weight:400;letter-spacing:.38em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:2rem}
+.hero-title{font-family:var(--font-serif);font-size:clamp(3.5rem,9vw,7rem);font-weight:300;line-height:1;color:var(--ink);letter-spacing:-.01em}
+.hero-title em{display:block;font-style:italic;color:var(--teal)}
+.hero-sub{font-size:.85rem;font-weight:400;color:var(--ink-light);letter-spacing:.15em;text-transform:uppercase;margin-top:1.5rem}
+
+<span class="tc-comment">/* ⑦ SECTIONS */</span>
+section{padding:6rem 3.5rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-tag{font-size:.65rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem}
+.section-title{font-family:var(--font-serif);font-size:clamp(2rem,4.5vw,3rem);font-weight:300;line-height:1.2;color:var(--ink);margin-bottom:1rem}
+.section-title em{font-style:italic;color:var(--teal)}
+.section-lead{font-size:.9rem;color:var(--ink-light);max-width:500px;line-height:1.75}
+
+<span class="tc-comment">/* ⑧ REVEAL ANIMATION */</span>
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+<span class="tc-comment">/* ⑨ FOOTER */</span>
+.site-footer{background:#132237;color:#fff;padding:4rem 3.5rem 3rem;text-align:center}
+.footer-logo{font-family:var(--font-serif);font-size:1.4rem;font-weight:300;color:#fff;letter-spacing:.04em;margin-bottom:1.5rem}
+.footer-logo em{font-style:italic;color:var(--teal)}
+.footer-links{display:flex;justify-content:center;gap:2.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.footer-links a{font-size:.65rem;color:rgba(250,249,247,0.4);letter-spacing:.15em;text-transform:uppercase;font-weight:500;transition:color var(--trans)}
+.footer-links a:hover{color:#fff}
+.footer-credits{font-size:.6rem;color:rgba(255,255,255,0.2);letter-spacing:.05em;border-top:1px solid rgba(255,255,255,0.04);padding-top:1.5rem;margin-top:1.5rem}
+
+<span class="tc-comment">/* ⑩ RESPONSIVE */</span>
+@media(max-width:768px){
+  section{padding:4.5rem 2rem}
+  #nav{padding:.6rem 1.5rem}
+  #nav.scrolled{padding:.4rem 1.5rem}
+}
+@media(max-width:620px){
+  section{padding:3.5rem 1.5rem}
+  .hero-title{font-size:clamp(2.8rem,12vw,4rem)}
+}
+<span class="tc-tag">&lt;/style&gt;</span>
+<span class="tc-tag">&lt;/head&gt;</span>
+<span class="tc-tag">&lt;body&gt;</span>
+
+<span class="tc-comment">&lt;!-- PROGRESS BAR --&gt;</span>
+<span class="tc-tag">&lt;div</span> <span class="tc-attr">id</span>=<span class="tc-val">"progress"</span><span class="tc-tag">&gt;&lt;/div&gt;</span>
+
+<span class="tc-comment">&lt;!-- NAVIGATION --&gt;</span>
+<span class="tc-tag">&lt;nav</span> <span class="tc-attr">id</span>=<span class="tc-val">"nav"</span><span class="tc-tag">&gt;</span>
+  <span class="tc-tag">&lt;a</span> <span class="tc-attr">href</span>=<span class="tc-val">"/index.html"</span> <span class="tc-attr">class</span>=<span class="tc-val">"nav-logo"</span><span class="tc-tag">&gt;</span>Ocean Drift <span class="tc-tag">&lt;em&gt;</span>Lodge<span class="tc-tag">&lt;/em&gt;&lt;/a&gt;</span>
+  <span class="tc-tag">&lt;div</span> <span class="tc-attr">class</span>=<span class="tc-val">"nav-links"</span><span class="tc-tag">&gt;</span>
+    <span class="tc-comment">&lt;!-- liens spécifiques à la page --&gt;</span>
+  <span class="tc-tag">&lt;/div&gt;</span>
+<span class="tc-tag">&lt;/nav&gt;</span>
+
+<span class="tc-comment">&lt;!-- HERO --&gt;</span>
+<span class="tc-tag">&lt;section</span> <span class="tc-attr">class</span>=<span class="tc-val">"hero"</span><span class="tc-tag">&gt;</span>
+  <span class="tc-tag">&lt;div</span> <span class="tc-attr">class</span>=<span class="tc-val">"hero-inner"</span><span class="tc-tag">&gt;</span>
+    <span class="tc-tag">&lt;div</span> <span class="tc-attr">class</span>=<span class="tc-val">"hero-eyebrow"</span><span class="tc-tag">&gt;</span>[Sur-titre · contexte page]<span class="tc-tag">&lt;/div&gt;</span>
+    <span class="tc-tag">&lt;h1</span> <span class="tc-attr">class</span>=<span class="tc-val">"hero-title"</span><span class="tc-tag">&gt;</span>[Titre] <span class="tc-tag">&lt;em&gt;</span>[Mot clé italique]<span class="tc-tag">&lt;/em&gt;&lt;/h1&gt;</span>
+    <span class="tc-tag">&lt;p</span> <span class="tc-attr">class</span>=<span class="tc-val">"hero-sub"</span><span class="tc-tag">&gt;</span>[Sous-titre · Résidence West Point · Dakhla]<span class="tc-tag">&lt;/p&gt;</span>
+  <span class="tc-tag">&lt;/div&gt;</span>
+<span class="tc-tag">&lt;/section&gt;</span>
+
+<span class="tc-comment">&lt;!-- SECTION 1 (fond --bg) --&gt;</span>
+<span class="tc-tag">&lt;section</span> <span class="tc-attr">id</span>=<span class="tc-val">"section-1"</span> <span class="tc-attr">style</span>=<span class="tc-val">"background:var(--bg)"</span><span class="tc-tag">&gt;</span>
+  <span class="tc-tag">&lt;div</span> <span class="tc-attr">class</span>=<span class="tc-val">"section-inner"</span><span class="tc-tag">&gt;</span>
+    <span class="tc-tag">&lt;div</span> <span class="tc-attr">class</span>=<span class="tc-val">"section-tag reveal"</span><span class="tc-tag">&gt;</span>[Tag]<span class="tc-tag">&lt;/div&gt;</span>
+    <span class="tc-tag">&lt;h2</span> <span class="tc-attr">class</span>=<span class="tc-val">"section-title reveal"</span><span class="tc-tag">&gt;</span>[Titre] <span class="tc-tag">&lt;em&gt;</span>[italic]<span class="tc-tag">&lt;/em&gt;&lt;/h2&gt;</span>
+    <span class="tc-tag">&lt;p</span> <span class="tc-attr">class</span>=<span class="tc-val">"section-lead reveal"</span><span class="tc-tag">&gt;</span>[Accroche]<span class="tc-tag">&lt;/p&gt;</span>
+    <span class="tc-comment">&lt;!-- Contenu --&gt;</span>
+  <span class="tc-tag">&lt;/div&gt;</span>
+<span class="tc-tag">&lt;/section&gt;</span>
+
+<span class="tc-comment">&lt;!-- SECTION 2 (fond --bg-sand alternée) --&gt;</span>
+<span class="tc-tag">&lt;section</span> <span class="tc-attr">id</span>=<span class="tc-val">"section-2"</span> <span class="tc-attr">style</span>=<span class="tc-val">"background:var(--bg-sand)"</span><span class="tc-tag">&gt;</span>
+  <span class="tc-tag">&lt;div</span> <span class="tc-attr">class</span>=<span class="tc-val">"section-inner"</span><span class="tc-tag">&gt;</span>
+    <span class="tc-comment">&lt;!-- Contenu --&gt;</span>
+  <span class="tc-tag">&lt;/div&gt;</span>
+<span class="tc-tag">&lt;/section&gt;</span>
+
+<span class="tc-comment">&lt;!-- FOOTER --&gt;</span>
+<span class="tc-tag">&lt;footer</span> <span class="tc-attr">class</span>=<span class="tc-val">"site-footer"</span><span class="tc-tag">&gt;</span>
+  <span class="tc-tag">&lt;div</span> <span class="tc-attr">class</span>=<span class="tc-val">"footer-logo"</span><span class="tc-tag">&gt;</span>Ocean Drift <span class="tc-tag">&lt;em&gt;</span>Lodge<span class="tc-tag">&lt;/em&gt;&lt;/div&gt;</span>
+  <span class="tc-tag">&lt;nav</span> <span class="tc-attr">class</span>=<span class="tc-val">"footer-links"</span><span class="tc-tag">&gt;</span>
+    <span class="tc-tag">&lt;a</span> <span class="tc-attr">href</span>=<span class="tc-val">"/index.html"</span><span class="tc-tag">&gt;</span>Accueil<span class="tc-tag">&lt;/a&gt;</span>
+    <span class="tc-comment">&lt;!-- autres liens --&gt;</span>
+  <span class="tc-tag">&lt;/nav&gt;</span>
+  <span class="tc-tag">&lt;div</span> <span class="tc-attr">class</span>=<span class="tc-val">"footer-credits"</span><span class="tc-tag">&gt;</span>© 2026 Ocean Drift Lodge · Dakhla, Maroc · Résidence West Point<span class="tc-tag">&lt;/div&gt;</span>
+<span class="tc-tag">&lt;/footer&gt;</span>
+
+<span class="tc-tag">&lt;script&gt;</span>
+<span class="tc-comment">/* PROGRESS BAR */</span>
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement;
+  document.getElementById('progress').style.width=((s.scrollTop/(s.scrollHeight-s.clientHeight))*100)+'%';
+},{passive:true});
+
+<span class="tc-comment">/* NAV SCROLL */</span>
+(function(){
+  const nav=document.getElementById('nav');let tick=false;
+  function u(){nav.classList.toggle('scrolled',window.scrollY>60);tick=false}
+  window.addEventListener('scroll',()=>{if(!tick){requestAnimationFrame(u);tick=true}},{passive:true});
+})();
+
+<span class="tc-comment">/* REVEAL */</span>
+(function(){
+  if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));return;}
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+  }),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+<span class="tc-tag">&lt;/script&gt;</span>
+<span class="tc-tag">&lt;/body&gt;</span>
+<span class="tc-tag">&lt;/html&gt;</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     §8 · ODL-STYLES.CSS
+     ══════════════════════════════════════════════════════════════════ -->
+<section class="bb-section" id="odl-styles">
+  <div class="bb-section-inner">
+    <div class="bb-section-num">§ 08</div>
+    <h2 class="bb-section-title"><em>odl-styles.css</em> — CSS commun</h2>
+    <p class="bb-section-lead">Feuille de style partagée chargée par les 15 fichiers HTML du projet. Source unique de vérité pour tous les composants communs : reset, nav, footer, boutons, traduction, logo, animations.</p>
+
+    <div class="bb-rule"><strong>Chargement obligatoire :</strong> <code>&lt;link rel="stylesheet" href="odl-styles.css"&gt;</code> dans le <code>&lt;head&gt;</code>, après les fonts Google, avant tout <code>&lt;style&gt;</code> local. Les styles locaux ne couvrent que les composants propres à la page.</div>
+
+    <div class="bb-rule"><strong>Contenu de odl-styles.css :</strong> § Variables <code>:root</code> · § Reset · § Progress bar · § Navigation (nav, burger, mobile menu) · § Logo (nav / hero / footer) · § Sections communes · § Boutons · § Footer · § Système de traduction multilingue · § Animations (reveal, pulse, panelIn) · § Utilitaires · § Responsive.</div>
+
+    <div class="bb-rule danger"><strong>Interdit absolu :</strong> Ne jamais redéfinir <code>:root</code> ni les composants communs dans un <code>&lt;style&gt;</code> local si <code>odl-styles.css</code> est chargé. Toute redéfinition crée des conflits de spécificité.</div>
+
+    <h3 style="font-family:var(--font-serif);font-size:1.5rem;font-weight:300;color:var(--navy);margin:2.5rem 0 1.2rem">Règles logo</h3>
+
+    <div class="bb-rule"><strong>Logo hero :</strong> Jamais de classe <code>reveal</code> ni d'animation <code>floatLogo</code> sur l'élément logo. Structure obligatoire :
+      <code style="display:block;margin-top:.6rem;line-height:1.9">&lt;div class="hero-logo-wrap"&gt;<br>&nbsp;&nbsp;&lt;picture class="no-translate"&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;source srcset="logo.webp" type="image/webp"&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;img class="hero-logo no-translate" src="logo.png" style="mix-blend-mode:multiply;animation:none"&gt;<br>&nbsp;&nbsp;&lt;/picture&gt;<br>&lt;/div&gt;</code>
+    </div>
+
+    <div class="bb-rule"><strong>Logo footer :</strong> Toujours <code>mix-blend-mode: screen</code> sur fond sombre <code>#132237</code>. Classe <code>.footer-logo-img</code>. Structure : <code>&lt;picture class="logo-stable footer-logo-wrap"&gt;</code></div>
+
+    <div class="bb-rule"><strong>Logo nav :</strong> Toujours <code>mix-blend-mode: multiply</code> sur fond clair. Classe <code>.nav-logo-img</code>. Protéger avec <code>class="logo-stable"</code> sur le <code>&lt;picture&gt;</code>, <code>class="no-translate"</code> sur le <code>&lt;img&gt;</code>.</div>
+
+    <h3 style="font-family:var(--font-serif);font-size:1.5rem;font-weight:300;color:var(--navy);margin:2.5rem 0 1.2rem">Système de traduction multilingue</h3>
+
+    <div class="bb-rule"><strong>Principe :</strong> Chaque texte est dupliqué en 5 <code>&lt;span data-lang="xx"&gt;</code>. Sans JS, le français est visible par défaut (CSS <code>display:none</code> sur EN/ES/PT/IT). Avec JS, la classe <code>js-lang</code> est posée sur <code>&lt;html&gt;</code> et <code>setLang()</code> contrôle la visibilité via <code>.lang-visible</code>.</div>
+
+    <div class="bb-rule"><strong>Protection logo :</strong> Les classes <code>no-translate</code> et <code>logo-stable</code> exemptent le logo du système de masquage. Ne jamais oublier ces classes sur les <code>&lt;img&gt;</code> et <code>&lt;picture&gt;</code> logo.</div>
+  </div>
+</section>
+
+<!-- FOOTER BRAND BOOK -->
+<footer style="background:var(--navy);padding:3rem 4rem;text-align:center">
+  <div style="font-family:var(--font-serif);font-size:1.2rem;font-weight:300;color:#fff;letter-spacing:.04em;margin-bottom:1rem">Ocean Drift <em style="font-style:italic;color:var(--teal)">Lodge</em> · Brand Book</div>
+  <div style="font-size:.62rem;color:rgba(255,255,255,0.3);letter-spacing:.1em;text-transform:uppercase">Version 1.1 · Juin 2026 · Document confidentiel · Référence absolue pour tous fichiers du projet</div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement;
+  const pct=(s.scrollTop/(s.scrollHeight-s.clientHeight))*100;
+  const bar=document.getElementById('bb-progress');
+  if(bar)bar.style.width=pct+'%';
+},{passive:true});
+</script>
+</body>
+</html>

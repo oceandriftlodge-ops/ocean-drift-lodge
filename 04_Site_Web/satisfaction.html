@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Questionnaire de Satisfaction — Ocean Drift Lodge · Dakhla</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="odl-styles.css">
+<style>
+
+
+
+/* ── HERO ── */
+.page-hero { padding: 4rem 3rem 3rem; text-align: center; background: radial-gradient(ellipse 70% 55% at 25% 35%,rgba(46,139,139,0.13) 0%,transparent 70%),radial-gradient(ellipse 55% 50% at 75% 70%,rgba(200,96,58,0.08) 0%,transparent 65%),linear-gradient(160deg,#ffffff 0%,#f4ede4 55%,#ede8df 100%); }
+.page-tag { display: block; font-size: .62rem; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: var(--teal); margin-bottom: 1rem; }
+.page-hero-title { font-family: var(--font-serif); font-size: clamp(2.2rem,5vw,3.5rem); font-weight: 300; color: var(--navy); letter-spacing: -.01em; margin-bottom: .8rem; }
+.page-hero-sub { font-size: .78rem; color: var(--ink-light); letter-spacing: .15em; text-transform: uppercase; }
+
+/* ── FORMULAIRE ── */
+.form-wrap { background: var(--bg); padding: 4rem 3rem; }
+.form-inner { max-width: 720px; margin: 0 auto; }
+
+.form-section-title {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 1.4rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid rgba(28,28,26,0.1);
+}
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 2.5rem; }
+.form-group { display: flex; flex-direction: column; gap: .4rem; }
+.form-group.span2 { grid-column: span 2; }
+.form-group label { font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-light); }
+.form-group textarea {
+  background: #fff;
+  border: 1px solid #c5bdb3;
+  color: var(--ink);
+  padding: .65rem .9rem;
+  border-radius: var(--radius);
+  font-family: var(--font-sans);
+  font-size: .9rem;
+  outline: none;
+  transition: border var(--trans), background var(--trans);
+}
+.form-group textarea::placeholder { color: #b0a89e; }
+.form-group textarea:focus { border-color: var(--teal); background: #fff; }
+.form-group textarea { resize: vertical; min-height: 110px; }
+
+/* ── ÉTOILES ── */
+.stars-block { margin-bottom: 2.5rem; }
+.star-row { display: flex; align-items: center; justify-content: space-between; padding: .9rem 0; border-bottom: 1px solid rgba(28,28,26,0.07); }
+.star-row:first-child { border-top: 1px solid rgba(28,28,26,0.07); }
+.star-label { font-size: .85rem; color: var(--ink-mid); flex: 1; }
+.stars { display: flex; gap: .3rem; flex-direction: row-reverse; justify-content: flex-end; }
+.stars input { display: none; }
+.stars label {
+  font-size: 1.4rem;
+  color: #d5cec5;
+  cursor: pointer;
+  transition: color var(--trans), transform var(--trans);
+  line-height: 1;
+}
+.stars input:checked ~ label { color: var(--gold); }
+.stars label:hover { transform: scale(1.15); }
+
+/* ── NPS ── */
+.nps-block { margin-bottom: 2.5rem; }
+.nps-label { font-size: .85rem; color: var(--ink-mid); margin-bottom: .9rem; }
+.nps-options { display: flex; gap: .8rem; flex-wrap: wrap; }
+.nps-opt input { display: none; }
+.nps-opt label {
+  display: block;
+  padding: .6rem 1.4rem;
+  border: 1px solid #c5bdb3;
+  border-radius: var(--radius);
+  font-size: .82rem;
+  color: var(--ink-light);
+  cursor: pointer;
+  transition: all var(--trans);
+}
+.nps-opt input:checked + label { background: var(--teal); border-color: var(--teal); color: #fff; }
+.nps-opt label:hover { border-color: var(--teal); color: var(--teal); }
+
+/* ── BOUTON ── */
+.form-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: .5rem; }
+.btn-generate {
+  background: var(--teal);
+  color: #fff;
+  border: none;
+  padding: .9rem 2.2rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: .8rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transition: opacity var(--trans);
+}
+.btn-generate:hover { opacity: .85; }
+.btn-reset {
+  background: transparent;
+  color: var(--ink-light);
+  border: 1px solid #c5bdb3;
+  padding: .9rem 1.6rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: .8rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  transition: all var(--trans);
+}
+.btn-reset:hover { color: var(--ink); border-color: var(--ink-light); }
+
+/* ── DOCUMENT ── */
+.doc-wrap { background: var(--bg-sand); padding: 4rem 3rem; display: none; }
+.doc-inner { max-width: 720px; margin: 0 auto; }
+.doc-box {
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+  padding: 3.5rem;
+}
+
+.doc-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--bg-sand); padding-bottom: 2rem; margin-bottom: 2.5rem; }
+.doc-logo { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 300; color: var(--teal); letter-spacing: .03em; }
+.doc-logo em { font-style: italic; }
+.doc-meta { text-align: right; font-size: .8rem; color: var(--ink-light); line-height: 1.7; }
+
+.doc-title { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 300; color: var(--ink); margin-bottom: .4rem; }
+.doc-subtitle { font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--teal); margin-bottom: 2rem; }
+
+.doc-client { background: var(--bg); padding: 1.2rem 1.4rem; border-radius: var(--radius); margin-bottom: 2rem; font-size: .88rem; color: var(--ink-mid); }
+
+.doc-scores { width: 100%; border-collapse: collapse; margin-bottom: 2rem; }
+.doc-scores th { text-align: left; font-size: .68rem; letter-spacing: .15em; text-transform: uppercase; color: var(--teal); padding: .8rem 1rem; border-bottom: 2px solid var(--teal); }
+.doc-scores td { padding: .9rem 1rem; border-bottom: 1px solid var(--bg-sand); font-size: .9rem; color: var(--ink-mid); }
+.doc-scores tr.total-row td { background: var(--bg-sand); font-family: var(--font-serif); font-size: 1.2rem; color: var(--ink); border-bottom: none; }
+.score-stars { color: var(--gold); letter-spacing: .05em; }
+.score-num   { color: var(--ink-light); font-size: .82rem; margin-left: .4rem; }
+
+.doc-nps { margin-bottom: 1.8rem; }
+.doc-nps-label { font-size: .68rem; letter-spacing: .15em; text-transform: uppercase; color: var(--teal); margin-bottom: .4rem; }
+.doc-nps-val { font-size: .9rem; color: var(--ink-mid); }
+
+.doc-comment { margin-bottom: 2rem; }
+.doc-comment-label { font-size: .68rem; letter-spacing: .15em; text-transform: uppercase; color: var(--teal); margin-bottom: .6rem; }
+.doc-comment-body { font-size: .9rem; color: var(--ink-mid); line-height: 1.8; padding: 1.1rem; background: var(--bg); border-radius: var(--radius); min-height: 4rem; }
+
+.doc-footer-note { font-size: .75rem; color: var(--ink-light); border-top: 1px solid var(--bg-sand); padding-top: 1.2rem; line-height: 1.7; }
+
+.btn-print {
+  display: block;
+  margin: 2rem auto 0;
+  background: var(--teal);
+  color: #fff;
+  border: none;
+  padding: 1rem 2.2rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: .82rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transition: opacity var(--trans);
+}
+.btn-print:hover { opacity: .85; }
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; padding-top: 0; }
+  .doc-wrap { display: block !important; background: #fff; padding: 0; }
+  .doc-box { box-shadow: none; padding: 2rem; }
+  .form-wrap { display: none; }
+}
+@media(max-width:768px){
+  .page-hero   { padding: 3rem 1.5rem 2.5rem; }
+  .form-wrap   { padding: 3rem 1.5rem; }
+  .doc-wrap    { padding: 3rem 1.5rem; }
+  .doc-box     { padding: 2rem 1.5rem; }
+  .form-grid   { grid-template-columns: 1fr; }
+  .form-group.span2 { grid-column: span 1; }
+}
+@media(max-width:480px){
+  .form-wrap   { padding: 2rem 1rem; }
+  .doc-wrap    { padding: 2rem 1rem; }
+  .doc-box     { padding: 1.5rem 1rem; }
+  .footer-legal-links { gap: 1.2rem; }
+}
+
+</style>
+</head>
+<body>
+
+<div id="progress" class="no-print"></div>
+<div class="mobile-menu no-print" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <button class="mobile-close" onclick="closeMobile()" aria-label="Fermer">✕</button>
+  <a href="index.html" onclick="closeMobile()"><span data-lang="fr">Accueil</span><span data-lang="en">Home</span><span data-lang="es">Inicio</span><span data-lang="pt">Início</span><span data-lang="it">Home</span></a>
+  <a href="index.html#reservation" onclick="closeMobile()" style="color:var(--teal)"><span data-lang="fr">Réserver</span><span data-lang="en">Book</span><span data-lang="es">Reservar</span><span data-lang="pt">Reservar</span><span data-lang="it">Prenota</span></a>
+  <div class="mobile-lang">
+    <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
+    <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
+  </div>
+</div>
+<header class="no-print">
+<nav id="nav" aria-label="Navigation principale">
+  <a href="index.html" class="nav-logo"><picture class="logo-stable"><source srcset="logo.webp" type="image/webp"><img class="no-translate nav-logo-img" src="logo.png" alt="" style="mix-blend-mode:multiply" onerror="this.style.display='none'"></picture>Ocean Drift <em>Lodge</em></a>
+    <div class="nav-center">
+    <a href="index.html"><span data-lang="fr">Accueil</span><span data-lang="en">Home</span><span data-lang="es">Inicio</span><span data-lang="pt">Início</span><span data-lang="it">Home</span></a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-sw" role="group" aria-label="Langue">
+      <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
+      <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
+    </div>
+    <a href="index.html#reservation" class="nav-cta"><span data-lang="fr">Réserver</span><span data-lang="en">Book</span><span data-lang="es">Reservar</span><span data-lang="pt">Reservar</span><span data-lang="it">Prenota</span></a>
+    <button class="burger" id="burger" onclick="toggleMobile()" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+</header>
+
+<div class="page-hero no-print">
+  <div class="hero-logo-wrap">
+    <picture class="no-translate">
+      <source srcset="logo.webp" type="image/webp">
+      <img src="logo.png" alt="Ocean Drift Lodge" class="hero-logo no-translate" style="mix-blend-mode:multiply;display:block;margin:0 auto;width:140px;height:auto;animation:none">
+    </picture>
+  </div>
+  <span class="page-tag"><span data-lang="fr">Votre avis compte</span><span data-lang="en">Your opinion matters</span><span data-lang="es">Su opinión importa</span><span data-lang="pt">A sua opinião conta</span><span data-lang="it">La sua opinione conta</span></span>
+  <h1 class="page-hero-title"><span data-lang="fr">Questionnaire de</span><span data-lang="en">Satisfaction</span><span data-lang="es">Encuesta de</span><span data-lang="pt">Questionário de</span><span data-lang="it">Questionario di</span> <em><span data-lang="fr">Satisfaction</span><span data-lang="en">Survey</span><span data-lang="es">Satisfacción</span><span data-lang="pt">Satisfação</span><span data-lang="it">Soddisfazione</span></em></h1>
+  <p class="page-hero-sub">Ocean Drift Lodge · Dakhla, Maroc</p>
+</div>
+
+<!-- ══ FORMULAIRE ══ -->
+<div class="form-wrap no-print" id="form-section">
+  <div class="form-inner">
+
+    <h2 class="form-section-title reveal"><span data-lang="fr">Vos informations</span><span data-lang="en">Your information</span><span data-lang="es">Sus datos</span><span data-lang="pt">Os seus dados</span><span data-lang="it">Le sue informazioni</span></h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label><span data-lang="fr">Prénom &amp; Nom</span><span data-lang="en">First &amp; Last name</span><span data-lang="es">Nombre y apellidos</span><span data-lang="pt">Nome e apelido</span><span data-lang="it">Nome e cognome</span></label>
+        <input type="text" id="f-nom" placeholder="Jean Dupont">
+      </div>
+      <div class="form-group">
+        <label><span data-lang="fr">Email (optionnel)</span><span data-lang="en">Email (optional)</span><span data-lang="es">Correo electrónico (opcional)</span><span data-lang="pt">Email (opcional)</span><span data-lang="it">Email (facoltativo)</span></label>
+        <input type="email" id="f-email" placeholder="jean@email.com">
+      </div>
+      <div class="form-group">
+        <label><span data-lang="fr">Date d'arrivée</span><span data-lang="en">Arrival date</span><span data-lang="es">Fecha de llegada</span><span data-lang="pt">Data de chegada</span><span data-lang="it">Data di arrivo</span></label>
+        <input type="date" id="f-arrivee">
+      </div>
+      <div class="form-group">
+        <label><span data-lang="fr">Date de départ</span><span data-lang="en">Departure date</span><span data-lang="es">Fecha de salida</span><span data-lang="pt">Data de saída</span><span data-lang="it">Data di partenza</span></label>
+        <input type="date" id="f-depart">
+      </div>
+    </div>
+
+    <h2 class="form-section-title reveal"><span data-lang="fr">Votre évaluation</span><span data-lang="en">Your rating</span><span data-lang="es">Su evaluación</span><span data-lang="pt">A sua avaliação</span><span data-lang="it">La sua valutazione</span></h2>
+    <div class="stars-block">
+
+      <div class="star-row">
+        <span class="star-label"><span data-lang="fr">Propreté</span><span data-lang="en">Cleanliness</span><span data-lang="es">Limpieza</span><span data-lang="pt">Limpeza</span><span data-lang="it">Pulizia</span></span>
+        <div class="stars" id="stars-proprete">
+          <input type="radio" name="proprete" id="p5" value="5"><label for="p5" title="5">★</label>
+          <input type="radio" name="proprete" id="p4" value="4"><label for="p4" title="4">★</label>
+          <input type="radio" name="proprete" id="p3" value="3"><label for="p3" title="3">★</label>
+          <input type="radio" name="proprete" id="p2" value="2"><label for="p2" title="2">★</label>
+          <input type="radio" name="proprete" id="p1" value="1"><label for="p1" title="1">★</label>
+        </div>
+      </div>
+
+      <div class="star-row">
+        <span class="star-label"><span data-lang="fr">Équipements</span><span data-lang="en">Facilities</span><span data-lang="es">Equipamiento</span><span data-lang="pt">Equipamentos</span><span data-lang="it">Dotazioni</span></span>
+        <div class="stars" id="stars-equipements">
+          <input type="radio" name="equipements" id="e5" value="5"><label for="e5">★</label>
+          <input type="radio" name="equipements" id="e4" value="4"><label for="e4">★</label>
+          <input type="radio" name="equipements" id="e3" value="3"><label for="e3">★</label>
+          <input type="radio" name="equipements" id="e2" value="2"><label for="e2">★</label>
+          <input type="radio" name="equipements" id="e1" value="1"><label for="e1">★</label>
+        </div>
+      </div>
+
+      <div class="star-row">
+        <span class="star-label"><span data-lang="fr">Localisation</span><span data-lang="en">Location</span><span data-lang="es">Ubicación</span><span data-lang="pt">Localização</span><span data-lang="it">Posizione</span></span>
+        <div class="stars" id="stars-localisation">
+          <input type="radio" name="localisation" id="l5" value="5"><label for="l5">★</label>
+          <input type="radio" name="localisation" id="l4" value="4"><label for="l4">★</label>
+          <input type="radio" name="localisation" id="l3" value="3"><label for="l3">★</label>
+          <input type="radio" name="localisation" id="l2" value="2"><label for="l2">★</label>
+          <input type="radio" name="localisation" id="l1" value="1"><label for="l1">★</label>
+        </div>
+      </div>
+
+      <div class="star-row">
+        <span class="star-label"><span data-lang="fr">Accueil</span><span data-lang="en">Welcome</span><span data-lang="es">Acogida</span><span data-lang="pt">Acolhimento</span><span data-lang="it">Accoglienza</span></span>
+        <div class="stars" id="stars-accueil">
+          <input type="radio" name="accueil" id="a5" value="5"><label for="a5">★</label>
+          <input type="radio" name="accueil" id="a4" value="4"><label for="a4">★</label>
+          <input type="radio" name="accueil" id="a3" value="3"><label for="a3">★</label>
+          <input type="radio" name="accueil" id="a2" value="2"><label for="a2">★</label>
+          <input type="radio" name="accueil" id="a1" value="1"><label for="a1">★</label>
+        </div>
+      </div>
+
+      <div class="star-row">
+        <span class="star-label"><span data-lang="fr">Rapport qualité / prix</span><span data-lang="en">Value for money</span><span data-lang="es">Relación calidad/precio</span><span data-lang="pt">Relação qualidade/preço</span><span data-lang="it">Rapporto qualità/prezzo</span></span>
+        <div class="stars" id="stars-qualiteprix">
+          <input type="radio" name="qualiteprix" id="q5" value="5"><label for="q5">★</label>
+          <input type="radio" name="qualiteprix" id="q4" value="4"><label for="q4">★</label>
+          <input type="radio" name="qualiteprix" id="q3" value="3"><label for="q3">★</label>
+          <input type="radio" name="qualiteprix" id="q2" value="2"><label for="q2">★</label>
+          <input type="radio" name="qualiteprix" id="q1" value="1"><label for="q1">★</label>
+        </div>
+      </div>
+
+    </div>
+
+    <h2 class="form-section-title reveal"><span data-lang="fr">Recommandation</span><span data-lang="en">Recommendation</span><span data-lang="es">Recomendación</span><span data-lang="pt">Recomendação</span><span data-lang="it">Raccomandazione</span></h2>
+    <div class="nps-block">
+      <p class="nps-label"><span data-lang="fr">Recommanderiez-vous Ocean Drift Lodge ?</span><span data-lang="en">Would you recommend Ocean Drift Lodge?</span><span data-lang="es">¿Recomendaría Ocean Drift Lodge?</span><span data-lang="pt">Recomendaria o Ocean Drift Lodge?</span><span data-lang="it">Consiglierebbe Ocean Drift Lodge?</span></p>
+      <div class="nps-options">
+        <div class="nps-opt"><input type="radio" name="nps" id="nps-oui" value="Oui"><label for="nps-oui"><span data-lang="fr">Oui, sans hésiter</span><span data-lang="en">Yes, definitely</span><span data-lang="es">Sí, sin dudarlo</span><span data-lang="pt">Sim, com certeza</span><span data-lang="it">Sì, senza dubbi</span></label></div>
+        <div class="nps-opt"><input type="radio" name="nps" id="nps-peut" value="Peut-être"><label for="nps-peut"><span data-lang="fr">Peut-être</span><span data-lang="en">Perhaps</span><span data-lang="es">Quizás</span><span data-lang="pt">Talvez</span><span data-lang="it">Forse</span></label></div>
+        <div class="nps-opt"><input type="radio" name="nps" id="nps-non" value="Non"><label for="nps-non"><span data-lang="fr">Non</span><span data-lang="en">No</span><span data-lang="es">No</span><span data-lang="pt">Não</span><span data-lang="it">No</span></label></div>
+      </div>
+    </div>
+
+    <h2 class="form-section-title reveal"><span data-lang="fr">Commentaire libre</span><span data-lang="en">Open comment</span><span data-lang="es">Comentario libre</span><span data-lang="pt">Comentário livre</span><span data-lang="it">Commento libero</span></h2>
+    <div class="form-grid" style="margin-bottom:2rem;">
+      <div class="form-group span2">
+        <label><span data-lang="fr">Ce que vous avez aimé, ce que nous pourrions améliorer…</span><span data-lang="en">What you liked, what we could improve…</span><span data-lang="es">Lo que le gustó, lo que podríamos mejorar…</span><span data-lang="pt">O que gostou, o que podemos melhorar…</span><span data-lang="it">Cosa le è piaciuto, cosa potremmo migliorare…</span></label>
+        <textarea id="f-commentaire" placeholder="Votre retour est précieux pour nous permettre de nous améliorer."></textarea>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-generate" onclick="genererBilan()"><span data-lang="fr">✦ Générer le bilan</span><span data-lang="en">✦ Generate report</span><span data-lang="es">✦ Generar informe</span><span data-lang="pt">✦ Gerar relatório</span><span data-lang="it">✦ Genera il riepilogo</span></button>
+      <button class="btn-reset" onclick="reinitialiser()"><span data-lang="fr">Réinitialiser</span><span data-lang="en">Reset</span><span data-lang="es">Restablecer</span><span data-lang="pt">Reiniciar</span><span data-lang="it">Reimposta</span></button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ DOCUMENT ══ -->
+<div class="doc-wrap" id="doc-section">
+  <div class="doc-inner">
+    <div class="doc-box">
+
+      <div class="doc-header">
+        <div class="doc-logo">Ocean Drift <em>Lodge</em></div>
+        <div class="doc-meta">
+          <strong><span data-lang="fr">N°</span><span data-lang="en">No.</span><span data-lang="es">N.°</span><span data-lang="pt">N.°</span><span data-lang="it">N°</span> <span id="var-num">—</span></strong><br>
+          <span id="var-date">—</span><br>
+          Dakhla, Maroc
+        </div>
+      </div>
+
+      <h1 class="doc-title"><span data-lang="fr">Bilan de</span><span data-lang="en">Satisfaction</span><span data-lang="es">Informe de</span><span data-lang="pt">Relatório de</span><span data-lang="it">Riepilogo di</span> <em><span data-lang="fr">Satisfaction</span><span data-lang="en">Report</span><span data-lang="es">Satisfacción</span><span data-lang="pt">Satisfação</span><span data-lang="it">Soddisfazione</span></em></h1>
+      <p class="doc-subtitle"><span data-lang="fr">Évaluation post-séjour</span><span data-lang="en">Post-stay review</span><span data-lang="es">Evaluación post-estancia</span><span data-lang="pt">Avaliação pós-estadia</span><span data-lang="it">Valutazione post-soggiorno</span></p>
+
+      <div class="doc-client">
+        <strong><span data-lang="fr">Hôte :</span><span data-lang="en">Guest:</span><span data-lang="es">Huésped:</span><span data-lang="pt">Hóspede:</span><span data-lang="it">Ospite:</span></strong> <span id="var-nom">—</span>
+        <span id="var-email-wrap"> · <span id="var-email">—</span></span><br>
+        <strong><span data-lang="fr">Séjour :</span><span data-lang="en">Stay:</span><span data-lang="es">Estancia:</span><span data-lang="pt">Estadia:</span><span data-lang="it">Soggiorno:</span></strong> <span id="var-periode">—</span>
+      </div>
+
+      <table class="doc-scores">
+        <thead>
+          <tr>
+            <th><span data-lang="fr">Critère</span><span data-lang="en">Criterion</span><span data-lang="es">Criterio</span><span data-lang="pt">Critério</span><span data-lang="it">Criterio</span></th>
+            <th><span data-lang="fr">Note</span><span data-lang="en">Rating</span><span data-lang="es">Nota</span><span data-lang="pt">Nota</span><span data-lang="it">Voto</span></th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><span data-lang="fr">Propreté</span><span data-lang="en">Cleanliness</span><span data-lang="es">Limpieza</span><span data-lang="pt">Limpeza</span><span data-lang="it">Pulizia</span></td>            <td id="s-proprete-stars">—</td><td id="s-proprete-num">—</td></tr>
+          <tr><td><span data-lang="fr">Équipements</span><span data-lang="en">Facilities</span><span data-lang="es">Equipamiento</span><span data-lang="pt">Equipamentos</span><span data-lang="it">Dotazioni</span></td>         <td id="s-equipements-stars">—</td><td id="s-equipements-num">—</td></tr>
+          <tr><td><span data-lang="fr">Localisation</span><span data-lang="en">Location</span><span data-lang="es">Ubicación</span><span data-lang="pt">Localização</span><span data-lang="it">Posizione</span></td>        <td id="s-localisation-stars">—</td><td id="s-localisation-num">—</td></tr>
+          <tr><td><span data-lang="fr">Accueil</span><span data-lang="en">Welcome</span><span data-lang="es">Acogida</span><span data-lang="pt">Acolhimento</span><span data-lang="it">Accoglienza</span></td>             <td id="s-accueil-stars">—</td><td id="s-accueil-num">—</td></tr>
+          <tr><td><span data-lang="fr">Rapport qualité/prix</span><span data-lang="en">Value for money</span><span data-lang="es">Calidad/precio</span><span data-lang="pt">Qualidade/preço</span><span data-lang="it">Qualità/prezzo</span></td><td id="s-qualiteprix-stars">—</td><td id="s-qualiteprix-num">—</td></tr>
+          <tr class="total-row">
+            <td><strong><span data-lang="fr">Moyenne générale</span><span data-lang="en">Overall average</span><span data-lang="es">Media general</span><span data-lang="pt">Média geral</span><span data-lang="it">Media generale</span></strong></td>
+            <td id="s-moy-stars">—</td>
+            <td id="s-moy-num">—</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="doc-nps">
+        <div class="doc-nps-label"><span data-lang="fr">Recommandation</span><span data-lang="en">Recommendation</span><span data-lang="es">Recomendación</span><span data-lang="pt">Recomendação</span><span data-lang="it">Raccomandazione</span></div>
+        <div class="doc-nps-val" id="var-nps">—</div>
+      </div>
+
+      <div class="doc-comment">
+        <div class="doc-comment-label"><span data-lang="fr">Commentaire</span><span data-lang="en">Comment</span><span data-lang="es">Comentario</span><span data-lang="pt">Comentário</span><span data-lang="it">Commento</span></div>
+        <div class="doc-comment-body" id="var-commentaire">—</div>
+      </div>
+
+      <div class="doc-footer-note">
+        <span data-lang="fr">Bilan généré le</span><span data-lang="en">Report generated on</span><span data-lang="es">Informe generado el</span><span data-lang="pt">Relatório gerado em</span><span data-lang="it">Riepilogo generato il</span> <span id="var-date2">—</span> · Ocean Drift Lodge, Dakhla, Maroc<br>
+        <span data-lang="fr">Données traitées conformément à notre <a href="/confidentialite.html">politique de confidentialité</a>. Conservation : 3 ans.</span><span data-lang="en">Data processed in accordance with our <a href="/confidentialite.html">privacy policy</a>. Retention: 3 years.</span><span data-lang="es">Datos tratados conforme a nuestra <a href="/confidentialite.html">política de privacidad</a>. Conservación: 3 años.</span><span data-lang="pt">Dados tratados de acordo com a nossa <a href="/confidentialite.html">política de privacidade</a>. Conservação: 3 anos.</span><span data-lang="it">Dati trattati in conformità con la nostra <a href="/confidentialite.html">informativa sulla privacy</a>. Conservazione: 3 anni.</span>
+      </div>
+
+    </div>
+
+    <button class="btn-print no-print" onclick="window.print()"><span data-lang="fr">⬇ Télécharger / Imprimer PDF</span><span data-lang="en">⬇ Download / Print PDF</span><span data-lang="es">⬇ Descargar / Imprimir PDF</span><span data-lang="pt">⬇ Descarregar / Imprimir PDF</span><span data-lang="it">⬇ Scarica / Stampa PDF</span></button>
+    <div style="text-align:center;margin-top:1.2rem;" class="no-print">
+      <button class="btn-reset" onclick="retourFormulaire()" style="font-size:.75rem;"><span data-lang="fr">← Modifier les réponses</span><span data-lang="en">← Edit answers</span><span data-lang="es">← Editar respuestas</span><span data-lang="pt">← Editar respostas</span><span data-lang="it">← Modifica le risposte</span></button>
+    </div>
+  </div>
+</div>
+
+<footer class="no-print">
+  <picture class="logo-stable footer-logo-wrap"><source srcset="logo.webp" type="image/webp"><img class="no-translate footer-logo-img" src="logo.png" alt="Ocean Drift Lodge" onerror="this.style.display='none'"></picture>
+  <span class="footer-logo-txt">Ocean Drift <em>Lodge</em></span>
+  <nav class="footer-links">
+    <a href="index.html"><span data-lang="fr">Accueil</span><span data-lang="en">Home</span><span data-lang="es">Inicio</span><span data-lang="pt">Início</span><span data-lang="it">Home</span></a>
+    <a href="livret-accueil.html"><span data-lang="fr">Livret d'accueil</span><span data-lang="en">Welcome guide</span><span data-lang="es">Guía de bienvenida</span><span data-lang="pt">Guia de boas-vindas</span><span data-lang="it">Guida di benvenuto</span></a>
+  </nav>
+  <nav class="footer-links" aria-label="Liens légaux">
+    <a href="cgv.html"><span data-lang="fr">CGV</span><span data-lang="en">GTC</span><span data-lang="es">CGV</span><span data-lang="pt">CGV</span><span data-lang="it">CGV</span></a>
+    <a href="mentions-legales.html"><span data-lang="fr">Mentions légales</span><span data-lang="en">Legal notice</span><span data-lang="es">Aviso legal</span><span data-lang="pt">Aviso legal</span><span data-lang="it">Note legali</span></a>
+    <a href="confidentialite.html"><span data-lang="fr">Confidentialité</span><span data-lang="en">Privacy</span><span data-lang="es">Privacidad</span><span data-lang="pt">Privacidade</span><span data-lang="it">Privacy</span></a>
+  </nav>
+  <span>© 2026 Ocean Drift Lodge · Dakhla, Maroc</span>
+</footer>
+
+<script>
+const criteres = ['proprete','equipements','localisation','accueil','qualiteprix'];
+
+function getScore(name) {
+  const checked = document.querySelector(`input[name="${name}"]:checked`);
+  return checked ? parseInt(checked.value) : null;
+}
+
+function starsHTML(n) {
+  if (n === null) return '—';
+  return '★'.repeat(n) + '☆'.repeat(5 - n);
+}
+
+function formatDate(str) {
+  if (!str) return null;
+  const [y,m,d] = str.split('-');
+  const months = {
+    fr: ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'],
+    en: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+    es: ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],
+    pt: ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'],
+    it: ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre']
+  };
+  const lang = typeof currentLang !== 'undefined' ? currentLang : 'fr';
+  const mois = months[lang] || months.fr;
+  return `${parseInt(d)} ${mois[parseInt(m)-1]} ${y}`;
+}
+
+function genNumero() {
+  const yr = new Date().getFullYear();
+  const seq = String(Math.floor(Math.random() * 900) + 100);
+  return `BSAT-${yr}-${seq}`;
+}
+
+function genererBilan() {
+  const nom       = document.getElementById('f-nom').value.trim();
+  const email     = document.getElementById('f-email').value.trim();
+  const arrivee   = document.getElementById('f-arrivee').value;
+  const depart    = document.getElementById('f-depart').value;
+  const commentaire = document.getElementById('f-commentaire').value.trim();
+  const npsEl     = document.querySelector('input[name="nps"]:checked');
+
+  const lang = typeof currentLang !== 'undefined' ? currentLang : 'fr';
+  const alertMsg = {fr:'Merci de renseigner votre nom.',en:'Please enter your name.',es:'Por favor, introduzca su nombre.',pt:'Por favor, indique o seu nome.',it:'Per favore, inserisca il suo nome.'};
+  if (!nom) { alert(alertMsg[lang] || alertMsg.fr); return; }
+
+  const scores = {};
+  for (const c of criteres) {
+    scores[c] = getScore(c);
+  }
+
+  const valides = Object.values(scores).filter(v => v !== null);
+  const moyenne = valides.length > 0
+    ? (valides.reduce((a,b) => a+b, 0) / valides.length)
+    : null;
+
+  // Remplir le document
+  const now = new Date().toLocaleDateString('fr-FR');
+  document.getElementById('var-num').textContent  = genNumero();
+  document.getElementById('var-date').textContent = now;
+  document.getElementById('var-date2').textContent = now;
+  document.getElementById('var-nom').textContent  = nom;
+
+  const emailWrap = document.getElementById('var-email-wrap');
+  if (email) {
+    document.getElementById('var-email').textContent = email;
+    emailWrap.style.display = 'inline';
+  } else {
+    emailWrap.style.display = 'none';
+  }
+
+  const fa = formatDate(arrivee), fd = formatDate(depart);
+  const periodeLabels = {
+    fr: (a,d) => a && d ? `du ${a} au ${d}` : a ? `Arrivée ${a}` : 'Non renseignée',
+    en: (a,d) => a && d ? `${a} – ${d}` : a ? `Arrival ${a}` : 'Not provided',
+    es: (a,d) => a && d ? `del ${a} al ${d}` : a ? `Llegada ${a}` : 'No indicada',
+    pt: (a,d) => a && d ? `de ${a} a ${d}` : a ? `Chegada ${a}` : 'Não indicada',
+    it: (a,d) => a && d ? `dal ${a} al ${d}` : a ? `Arrivo ${a}` : 'Non indicato'
+  };
+  document.getElementById('var-periode').textContent =
+    (periodeLabels[lang] || periodeLabels.fr)(fa, fd);
+
+  for (const c of criteres) {
+    const v = scores[c];
+    document.getElementById(`s-${c}-stars`).innerHTML =
+      v !== null ? `<span class="score-stars">${starsHTML(v)}</span>` : '<span style="color:var(--ink-light)">—</span>';
+    document.getElementById(`s-${c}-num`).innerHTML =
+      v !== null ? `<span class="score-num">${v}/5</span>` : '<span style="color:var(--ink-light)">—</span>';
+  }
+
+  if (moyenne !== null) {
+    const mArr = Math.round(moyenne);
+    document.getElementById('s-moy-stars').innerHTML =
+      `<span class="score-stars">${starsHTML(mArr)}</span>`;
+    document.getElementById('s-moy-num').innerHTML =
+      `<span class="score-num">${moyenne.toFixed(1)}/5</span>`;
+  } else {
+    document.getElementById('s-moy-stars').innerHTML = '—';
+    document.getElementById('s-moy-num').innerHTML   = '—';
+  }
+
+  const npsLabels = {fr:{oui:'Oui, sans hésiter',peut:'Peut-être',non:'Non',nr:'Non renseigné'},en:{oui:'Yes, definitely',peut:'Perhaps',non:'No',nr:'Not provided'},es:{oui:'Sí, sin dudarlo',peut:'Quizás',non:'No',nr:'No indicado'},pt:{oui:'Sim, com certeza',peut:'Talvez',non:'Não',nr:'Não indicado'},it:{oui:'Sì, senza dubbi',peut:'Forse',non:'No',nr:'Non indicato'}};
+  const npsMap = {'Oui':'oui','Peut-être':'peut','Non':'non'};
+  const npsLang = npsLabels[lang] || npsLabels.fr;
+  document.getElementById('var-nps').textContent =
+    npsEl ? (npsLang[npsMap[npsEl.value]] || npsEl.value) : npsLang.nr;
+
+  const noComment = {fr:'Aucun commentaire.',en:'No comment.',es:'Sin comentarios.',pt:'Sem comentários.',it:'Nessun commento.'};
+  document.getElementById('var-commentaire').textContent =
+    commentaire || (noComment[lang] || noComment.fr);
+
+  document.getElementById('form-section').style.display = 'none';
+  document.getElementById('doc-section').style.display  = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function retourFormulaire() {
+  document.getElementById('doc-section').style.display  = 'none';
+  document.getElementById('form-section').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function reinitialiser() {
+  ['f-nom','f-email','f-arrivee','f-depart','f-commentaire'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+  document.getElementById('doc-section').style.display  = 'none';
+  document.getElementById('form-section').style.display = 'block';
+}
+
+const prog=document.getElementById('progress');
+window.addEventListener('scroll',()=>{const s=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;if(prog)prog.style.width=Math.min(s,100)+'%';document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);});
+function toggleMobile(){const m=document.getElementById('mobileMenu');const b=document.getElementById('burger');const o=m.classList.toggle('open');b.classList.toggle('open');b.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';}
+function closeMobile(){const m=document.getElementById('mobileMenu');if(m)m.classList.remove('open');const b=document.getElementById('burger');if(b){b.classList.remove('open');b.setAttribute('aria-expanded','false');}document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMobile();});
+let currentLang='fr';
+function setLang(lang){document.documentElement.classList.add('js-lang');currentLang=lang;document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('active');if(b.dataset.lang===lang)b.classList.add('active');});document.querySelectorAll('[data-lang]').forEach(el=>el.classList.remove('lang-visible'));document.querySelectorAll('[data-lang="'+lang+'"]').forEach(el=>el.classList.add('lang-visible'));document.documentElement.lang=lang;const _fn=document.getElementById('f-nom');if(_fn)_fn.placeholder={fr:'Jean Dupont',en:'John Doe',es:'Juan García',pt:'João Silva',it:'Mario Rossi'}[lang]||'Jean Dupont';const _fe=document.getElementById('f-email');if(_fe)_fe.placeholder={fr:'jean@email.com',en:'john@email.com',es:'juan@email.com',pt:'joao@email.com',it:'mario@email.com'}[lang]||'jean@email.com';const _fc=document.getElementById('f-commentaire');if(_fc)_fc.placeholder={fr:'Votre retour est précieux pour nous permettre de nous améliorer.',en:'Your feedback helps us to continuously improve.',es:'Sus comentarios nos ayudan a mejorar continuamente.',pt:'O seu feedback ajuda-nos a melhorar continuamente.',it:'Il vostro feedback ci aiuta a migliorare continuamente.'}[lang]||'Votre retour est précieux pour nous permettre de nous améliorer.';}
+document.addEventListener('DOMContentLoaded',()=>setLang('fr'));
+</script>
+
+<script>
+(function(){
+  if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));return;}
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Ocean Drift Lodge - Attestation de Caution</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="odl-styles.css">
+    
+    <style>/* ── FORMULAIRE DE SAISIE ── */
+        .form-panel {
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+            background: var(--teal);
+            color: white;
+            padding: 2.5rem 3rem;
+            border-radius: 8px;
+        }
+        .form-panel-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 300;
+            margin: 0 0 .3rem 0;
+            color: #fff;
+        }
+        .form-panel-sub {
+            font-size: .72rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.55);
+            margin-bottom: 2rem;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+        .form-grid.full { grid-template-columns: 1fr; }
+        .form-group { display: flex; flex-direction: column; gap: .4rem; }
+        .form-group label {
+            font-size: .68rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.65);
+        }
+        .form-group select {
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.2);
+            color: white;
+            padding: .65rem .9rem;
+            border-radius: var(--radius);
+            font-family: 'Jost', sans-serif;
+            font-size: .9rem;
+            outline: none;
+            transition: border .2s, background .2s;
+        }
+        .form-group input::placeholder { color: rgba(255,255,255,.35); }
+        .form-group select:focus {
+            border-color: rgba(255,255,255,.6);
+            background: rgba(255,255,255,.15);
+        }
+        .form-group select option { color: var(--ink); background: white; }
+        .form-actions {
+            margin-top: 1.8rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn-generate {
+            background: var(--peach);
+            color: white;
+            border: none;
+            padding: .85rem 2rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-family: 'Jost', sans-serif;
+            font-weight: 500;
+            font-size: .8rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            transition: opacity .2s;
+        }
+        .btn-generate:hover { opacity: .85; }
+        .btn-reset {
+            background: transparent;
+            color: rgba(255,255,255,.6);
+            border: 1px solid rgba(255,255,255,.2);
+            padding: .85rem 1.5rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-family: 'Jost', sans-serif;
+            font-size: .8rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            transition: all .2s;
+        }
+        .btn-reset:hover { color: white; border-color: rgba(255,255,255,.5); }
+
+        /* ── DOCUMENT ── */
+        body { font-family: 'Jost', sans-serif; line-height: 1.6; color: var(--ink-mid); background-color: var(--bg); margin: 0; padding: 80px 2rem 4rem; }
+        .doc-box { max-width: 800px; margin: 0 auto; padding: 3.5rem; background: #ffffff; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+        .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--bg-sand); padding-bottom: 2rem; margin-bottom: 2.5rem; }
+        .meta { text-align: right; font-size: 0.8rem; color: var(--ink-light); }
+        .ch-tag { font-size: .65rem; font-weight: 500; letter-spacing: .25em; text-transform: uppercase; color: var(--peach); margin-bottom: .5rem; }
+        .ch-title { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: var(--teal); margin: 0 0 2rem 0; }
+        .info-card { background: var(--bg-sand); padding: 1.5rem; border-radius: var(--radius); margin-bottom: 2.5rem; font-size: 0.95rem; }
+        table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        th { text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; padding: 1rem; border-bottom: 2px solid var(--teal); color: var(--teal); }
+        td { padding: 1.2rem 1rem; border-bottom: 1px solid var(--bg-sand); font-size: 0.95rem; }
+        .total-row { background: var(--bg-sand); font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 500; }
+        .alert-card { border-left: 3px solid var(--peach); background: var(--bg-sand); padding: 1.2rem; border-radius: var(--radius); font-size: 0.85rem; color: var(--ink-mid); margin: 2rem 0; line-height: 1.5; }
+        .footer-note { text-align: center; color: var(--teal); font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; margin-top: 3rem; }
+        .btn-print { background: var(--teal); color: white; border: none; padding: 1rem 2rem; border-radius: 4px; cursor: pointer; font-family: 'Jost'; font-weight: 500; }
+
+        /* ── NUMÉRO AUTO ── */
+        .num-badge {
+            display: inline-block;
+            background: rgba(43,76,89,.08);
+            color: var(--teal);
+            font-size: .7rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            padding: .25rem .7rem;
+            border-radius: 20px;
+            margin-left: .5rem;
+            vertical-align: middle;
+        }
+
+        /* ── MODE SELECTOR ── */
+        .mode-selector { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: .4rem; }
+        .mode-opt { cursor: pointer; }
+        .mode-opt input { display: none; }
+        .mode-opt span {
+            display: block;
+            padding: .5rem 1.2rem;
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: var(--radius);
+            font-family: 'Jost', sans-serif;
+            font-size: .8rem;
+            color: rgba(255,255,255,.55);
+            transition: all var(--trans);
+            user-select: none;
+        }
+        .mode-opt input:checked + span { background: rgba(255,255,255,.15); border-color: rgba(255,255,255,.55); color: #fff; }
+        .mode-opt span:hover { border-color: rgba(255,255,255,.4); color: rgba(255,255,255,.85); }
+        .fields-sep { grid-column: span 2; height: 1px; background: rgba(255,255,255,.15); margin: .2rem 0; }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { padding: 0; background: white; }
+            .doc-box { box-shadow: none; border: none; }
+        }
+        @media (max-width: 600px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .doc-box { padding: 2rem 1.5rem; }
+            .form-panel { padding: 1.8rem; }
+        }
+</style>
+
+<style>
+
+
+
+</style>
+</head>
+<body>
+
+<div id="progress" class="no-print"></div>
+<nav id="nav" class="no-print">
+  <a href="index.html" class="nav-logo"><picture class="logo-stable"><source srcset="logo.webp" type="image/webp"><img class="no-translate nav-logo-img" src="logo.png" alt="" style="mix-blend-mode:multiply" onerror="this.style.display='none'"></picture>Ocean Drift <em>Lodge</em></a>
+    <div class="nav-center">
+    <a href="index.html"><span data-lang="fr">Accueil</span><span data-lang="en">Home</span><span data-lang="es">Inicio</span><span data-lang="pt">Início</span><span data-lang="it">Home</span></a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-sw">
+      <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
+      <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
+    </div>
+    <a href="index.html#reservation" class="nav-cta"><span data-lang="fr">Accueil</span><span data-lang="en">Home</span><span data-lang="es">Inicio</span><span data-lang="pt">Início</span><span data-lang="it">Home</span></a>
+  </div>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" onclick="toggleMobile()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu no-print" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMobile()" aria-label="Fermer">✕</button>
+  <a href="index.html" onclick="closeMobile()"><span data-lang="fr">Accueil</span><span data-lang="en">Home</span><span data-lang="es">Inicio</span><span data-lang="pt">Início</span><span data-lang="it">Home</span></a>
+  <a href="index.html#reservation" onclick="closeMobile()" style="color:var(--teal)"><span data-lang="fr">Réserver</span><span data-lang="en">Book</span><span data-lang="es">Reservar</span><span data-lang="pt">Reservar</span><span data-lang="it">Prenota</span></a>
+  <div class="mobile-lang">
+    <button class="lang-btn active" data-lang="fr" onclick="setLang('fr');closeMobile()">FR</button>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en');closeMobile()">EN</button>
+    <button class="lang-btn" data-lang="es" onclick="setLang('es');closeMobile()">ES</button>
+    <button class="lang-btn" data-lang="pt" onclick="setLang('pt');closeMobile()">PT</button>
+    <button class="lang-btn" data-lang="it" onclick="setLang('it');closeMobile()">IT</button>
+  </div>
+</div>
+
+    <!-- ══ FORMULAIRE DE SAISIE ══ -->
+    <div class="form-panel no-print">
+        <p class="form-panel-title"><span data-lang="fr">Générer une attestation</span><span data-lang="en">Generate an attestation</span><span data-lang="es">Generar una certificación</span><span data-lang="pt">Gerar um comprovativo</span><span data-lang="it">Genera un attestato</span></p>
+        <p class="form-panel-sub"><span data-lang="fr">Remplissez les champs — le document se met à jour instantanément</span><span data-lang="en">Fill in the fields — the document updates instantly</span><span data-lang="es">Rellene los campos — el documento se actualiza al instante</span><span data-lang="pt">Preencha os campos — o documento é atualizado instantaneamente</span><span data-lang="it">Compila i campi — il documento si aggiorna istantaneamente</span></p>
+
+        <div class="form-grid">
+            <div class="form-group" style="grid-column:span 2;">
+                <label><span data-lang="fr">Mode du document</span><span data-lang="en">Document type</span><span data-lang="es">Tipo de documento</span><span data-lang="pt">Tipo de documento</span><span data-lang="it">Tipo di documento</span></label>
+                <div class="mode-selector">
+                    <label class="mode-opt">
+                        <input type="radio" name="f-mode" value="depot" checked onchange="updateMode(this.value)">
+                        <span><span data-lang="fr">Attestation de dépôt</span><span data-lang="en">Deposit attestation</span><span data-lang="es">Certificado de depósito</span><span data-lang="pt">Comprovativo de depósito</span><span data-lang="it">Attestato di deposito</span></span>
+                    </label>
+                    <label class="mode-opt">
+                        <input type="radio" name="f-mode" value="mainlevee" onchange="updateMode(this.value)">
+                        <span><span data-lang="fr">Mainlevée de caution</span><span data-lang="en">Security release</span><span data-lang="es">Liberación de garantía</span><span data-lang="pt">Liberação de caução</span><span data-lang="it">Svincolo della cauzione</span></span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Civilité</span><span data-lang="en">Title</span><span data-lang="es">Tratamiento</span><span data-lang="pt">Título</span><span data-lang="it">Titolo</span></label>
+                <select id="f-civilite">
+                    <option value="M.">M.</option>
+                    <option value="Mme">Mme</option>
+                    <option value="M. et Mme">M. et Mme</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Prénom</span><span data-lang="en">First name</span><span data-lang="es">Nombre</span><span data-lang="pt">Nome</span><span data-lang="it">Nome</span></label>
+                <input type="text" id="f-prenom" placeholder="Jean">
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Nom</span><span data-lang="en">Last name</span><span data-lang="es">Apellido</span><span data-lang="pt">Apelido</span><span data-lang="it">Cognome</span></label>
+                <input type="text" id="f-nom" placeholder="Dupont">
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Montant caution (€)</span><span data-lang="en">Security deposit amount (€)</span><span data-lang="es">Importe de la fianza (€)</span><span data-lang="pt">Montante da caução (€)</span><span data-lang="it">Importo cauzione (€)</span></label>
+                <input type="number" id="f-montant" placeholder="500" min="0" step="50">
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Date d'arrivée</span><span data-lang="en">Arrival date</span><span data-lang="es">Fecha de llegada</span><span data-lang="pt">Data de chegada</span><span data-lang="it">Data di arrivo</span></label>
+                <input type="date" id="f-arrivee">
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Date de départ</span><span data-lang="en">Departure date</span><span data-lang="es">Fecha de salida</span><span data-lang="pt">Data de saída</span><span data-lang="it">Data di partenza</span></label>
+                <input type="date" id="f-depart">
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Méthode de garantie</span><span data-lang="en">Guarantee method</span><span data-lang="es">Método de garantía</span><span data-lang="pt">Método de garantia</span><span data-lang="it">Metodo di garanzia</span></label>
+                <select id="f-methode">
+                    <option value="Empreinte bancaire (PLBS)">Empreinte bancaire (PLBS)</option>
+                    <option value="Virement bancaire">Virement bancaire</option>
+                    <option value="Chèque de caution">Chèque de caution</option>
+                    <option value="Espèces">Espèces</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label><span data-lang="fr">Hébergement</span><span data-lang="en">Accommodation</span><span data-lang="es">Alojamiento</span><span data-lang="pt">Alojamento</span><span data-lang="it">Alloggio</span></label>
+                <select id="f-logement">
+                    <option value="Appartement Rez de Jardin — Résidence West Point">Appartement Rez de Jardin — Résidence West Point</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Champs Mainlevée -->
+        <div id="mainlevee-fields" style="display:none;">
+            <div class="form-grid" style="margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.15);">
+                <div class="form-group" style="grid-column:span 2;">
+                    <label><span data-lang="fr">Statut de restitution</span><span data-lang="en">Refund status</span><span data-lang="es">Estado de devolución</span><span data-lang="pt">Estado de devolução</span><span data-lang="it">Stato di restituzione</span></label>
+                    <select id="f-statut" onchange="updateStatut(this.value)">
+                        <option value="integrale">Libérée intégralement</option>
+                        <option value="partielle">Retenue partielle</option>
+                        <option value="totale">Retenue intégralement</option>
+                    </select>
+                </div>
+                <div class="form-group" id="field-montant-retenu" style="display:none;">
+                    <label><span data-lang="fr">Montant retenu (€)</span><span data-lang="en">Amount withheld (€)</span><span data-lang="es">Importe retenido (€)</span><span data-lang="pt">Montante retido (€)</span><span data-lang="it">Importo trattenuto (€)</span></label>
+                    <input type="number" id="f-montant-retenu" placeholder="0" min="0" step="10">
+                </div>
+                <div class="form-group" id="field-motif" style="display:none;">
+                    <label><span data-lang="fr">Motif de retenue</span><span data-lang="en">Reason for withholding</span><span data-lang="es">Motivo de retención</span><span data-lang="pt">Motivo de retenção</span><span data-lang="it">Motivo del trattenimento</span></label>
+                    <input type="text" id="f-motif" placeholder="Ex. : dégradation mobilier, nettoyage exceptionnel…">
+                </div>
+                <div class="form-group">
+                    <label><span data-lang="fr">Date de libération</span><span data-lang="en">Release date</span><span data-lang="es">Fecha de liberación</span><span data-lang="pt">Data de liberação</span><span data-lang="it">Data di svincolo</span></label>
+                    <input type="date" id="f-date-liberation">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn-generate" onclick="genererDoc()"><span data-lang="fr">✦ Générer le document</span><span data-lang="en">✦ Generate document</span><span data-lang="es">✦ Generar documento</span><span data-lang="pt">✦ Gerar documento</span><span data-lang="it">✦ Genera documento</span></button>
+            <button class="btn-reset" onclick="reinitialiser()"><span data-lang="fr">Réinitialiser</span><span data-lang="en">Reset</span><span data-lang="es">Restablecer</span><span data-lang="pt">Redefinir</span><span data-lang="it">Ripristina</span></button>
+        </div>
+    </div>
+
+    <!-- ══ DOCUMENT ══ -->
+    <div class="doc-box" id="doc-output" style="display:none;">
+        <div class="header">
+            <div class="logo-side">
+                <div class="logo-area"><img src="logo.png" alt="Ocean Drift Lodge" style="width:80px;height:auto;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--teal)">Ocean Drift <em>Lodge</em></span></div>
+            </div>
+            <div class="meta">
+                <strong><span data-lang="fr">Attestation N°</span><span data-lang="en">Attestation No.</span><span data-lang="es">Certificado N°</span><span data-lang="pt">Comprovativo N°</span><span data-lang="it">Attestato N°</span> <span id="var-num">---</span></strong><br>
+                <span data-lang="fr">Date :</span><span data-lang="en">Date:</span><span data-lang="es">Fecha:</span><span data-lang="pt">Data:</span><span data-lang="it">Data:</span> <span id="var-date">---</span><br>
+                Dakhla, Maroc
+            </div>
+        </div>
+
+        <div class="ch-tag" id="var-doc-tag">Garantie de Séjour</div>
+        <h1 class="ch-title" id="var-doc-title">Dépôt de <em>Caution</em></h1>
+
+        <div class="info-card" style="margin-bottom:1rem;font-size:0.85rem;">
+            <strong><span data-lang="fr">Bailleur :</span><span data-lang="en">Landlord:</span><span data-lang="es">Arrendador:</span><span data-lang="pt">Senhorio:</span><span data-lang="it">Locatore:</span></strong> Ocean Drift Lodge · Résidence West Point, Foum El Bouir, Dakhla, Maroc · oceandriftlodge@gmail.com
+        </div>
+
+        <div class="info-card">
+            <strong><span data-lang="fr">Client :</span><span data-lang="en">Client:</span><span data-lang="es">Cliente:</span><span data-lang="pt">Cliente:</span><span data-lang="it">Cliente:</span></strong> <span id="var-client">---</span><br>
+            <strong><span data-lang="fr">Hébergement :</span><span data-lang="en">Accommodation:</span><span data-lang="es">Alojamiento:</span><span data-lang="pt">Alojamento:</span><span data-lang="it">Alloggio:</span></strong> <span id="var-details">---</span><br>
+            <strong><span data-lang="fr">Période :</span><span data-lang="en">Period:</span><span data-lang="es">Período:</span><span data-lang="pt">Período:</span><span data-lang="it">Periodo:</span></strong> <span id="var-periode">---</span>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th><span data-lang="fr">Désignation</span><span data-lang="en">Description</span><span data-lang="es">Descripción</span><span data-lang="pt">Designação</span><span data-lang="it">Descrizione</span></th>
+                    <th><span data-lang="fr">Méthode</span><span data-lang="en">Method</span><span data-lang="es">Método</span><span data-lang="pt">Método</span><span data-lang="it">Metodo</span></th>
+                    <th style="text-align: right;"><span data-lang="fr">Montant</span><span data-lang="en">Amount</span><span data-lang="es">Importe</span><span data-lang="pt">Montante</span><span data-lang="it">Importo</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="var-row-label">Garantie pour dommages &amp; dégradations</td>
+                    <td id="var-methode">---</td>
+                    <td style="text-align: right; font-weight: 500;" id="var-montant">---</td>
+                </tr>
+                <tr id="row-retenu" style="display:none;">
+                    <td><span data-lang="fr">Dont retenu</span><span data-lang="en">Of which withheld</span><span data-lang="es">Del cual retenido</span><span data-lang="pt">Do qual retido</span><span data-lang="it">Di cui trattenuto</span></td>
+                    <td id="var-motif-doc">—</td>
+                    <td style="text-align: right; font-weight: 500; color: var(--peach);" id="var-montant-retenu">—</td>
+                </tr>
+                <tr id="row-libere" style="display:none;">
+                    <td><strong><span data-lang="fr">Montant libéré</span><span data-lang="en">Amount released</span><span data-lang="es">Importe liberado</span><span data-lang="pt">Montante liberado</span><span data-lang="it">Importo svincolato</span></strong></td>
+                    <td id="var-date-lib-doc">—</td>
+                    <td style="text-align: right; font-weight: 500; color: var(--teal);" id="var-montant-libere">—</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="alert-card" id="alert-depot">
+            <strong><span data-lang="fr">Note importante :</span><span data-lang="en">Important note:</span><span data-lang="es">Nota importante:</span><span data-lang="pt">Nota importante:</span><span data-lang="it">Nota importante:</span></strong> <span data-lang="fr">Ce dépôt n'est pas un débit immédiat mais une pré-autorisation bancaire. La mainlevée (libération des fonds) sera effectuée sous un délai de 7 jours après votre départ, sous réserve de la validation de l'état des lieux de sortie et de l'absence de frais impayés.</span><span data-lang="en">This deposit is not an immediate debit but a bank pre-authorisation. The release of funds will be processed within 7 days of your departure, subject to the validation of the check-out inspection and the absence of any unpaid charges.</span><span data-lang="es">Este depósito no es un débito inmediato sino una pre-autorización bancaria. La liberación de los fondos se realizará en un plazo de 7 días tras su salida, sujeto a la validación del inventario de salida y a la ausencia de cargos impagados.</span><span data-lang="pt">Este depósito não é um débito imediato, mas uma pré-autorização bancária. A liberação dos fundos será efetuada no prazo de 7 dias após a sua saída, sujeita à validação da vistoria de saída e à ausência de encargos por liquidar.</span><span data-lang="it">Questo deposito non è un addebito immediato ma una pre-autorizzazione bancaria. Lo svincolo dei fondi sarà effettuato entro 7 giorni dalla partenza, previa validazione dell'inventario di uscita e assenza di spese non pagate.</span>
+        </div>
+        <div class="alert-card" id="alert-mainlevee" style="display:none;">
+            <strong><span data-lang="fr">Libération de la garantie :</span><span data-lang="en">Guarantee release:</span><span data-lang="es">Liberación de la garantía:</span><span data-lang="pt">Liberação da garantia:</span><span data-lang="it">Svincolo della garanzia:</span></strong> <span id="var-alert-mainlevee">—</span><br>
+            <span style="font-size:.8em;color:var(--ink-light);"><span data-lang="fr">Réf. : Article 260 D.O.C. (Dahir des Obligations et Contrats, Maroc) — restitution du dépôt de garantie.</span><span data-lang="en">Ref.: Article 260 D.O.C. (Dahir des Obligations et Contrats, Morocco) — return of security deposit.</span><span data-lang="es">Ref.: Artículo 260 D.O.C. (Dahir de Obligaciones y Contratos, Marruecos) — restitución del depósito de garantía.</span><span data-lang="pt">Ref.: Artigo 260 D.O.C. (Dahir das Obrigações e Contratos, Marrocos) — restituição do depósito de garantia.</span><span data-lang="it">Rif.: Articolo 260 D.O.C. (Dahir delle Obbligazioni e Contratti, Marocco) — restituzione del deposito cauzionale.</span></span>
+        </div>
+
+        <p class="footer-note"><span data-lang="fr">Nous vous souhaitons un séjour mémorable face à l'océan.</span><span data-lang="en">We wish you a memorable stay overlooking the ocean.</span><span data-lang="es">Le deseamos una estancia memorable frente al océano.</span><span data-lang="pt">Desejamos-lhe uma estadia memorável com vista para o oceano.</span><span data-lang="it">Vi auguriamo un soggiorno memorabile affacciato sull'oceano.</span></p>
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem; display:none;" class="no-print" id="btn-print-wrap">
+        <button class="btn-print" onclick="window.print()"><span data-lang="fr">⬇ Télécharger / Imprimer PDF</span><span data-lang="en">⬇ Download / Print PDF</span><span data-lang="es">⬇ Descargar / Imprimir PDF</span><span data-lang="pt">⬇ Descarregar / Imprimir PDF</span><span data-lang="it">⬇ Scarica / Stampa PDF</span></button>
+    </div>
+
+    <script>
+        function genNumero() {
+            const yr = new Date().getFullYear();
+            return `CAU-${yr}-${String(Math.floor(Math.random() * 900) + 100)}`;
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return '—';
+            const [y, m, d] = dateStr.split('-');
+            const lang = typeof currentLang !== 'undefined' ? currentLang : 'fr';
+            const months = {
+                fr: ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'],
+                en: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+                es: ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],
+                pt: ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'],
+                it: ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre']
+            };
+            return `${parseInt(d)} ${(months[lang]||months.fr)[parseInt(m)-1]} ${y}`;
+        }
+
+        function fmt(n) {
+            return n.toFixed(2).replace('.', ',') + ' €';
+        }
+
+        function updateMode(val) {
+            const mf = document.getElementById('mainlevee-fields');
+            mf.style.display = val === 'mainlevee' ? 'block' : 'none';
+            if (val === 'mainlevee') updateStatut(document.getElementById('f-statut').value);
+        }
+
+        function updateStatut(val) {
+            const fieldRetenu = document.getElementById('field-montant-retenu');
+            const fieldMotif  = document.getElementById('field-motif');
+            const showRetenu  = val === 'partielle';
+            const showMotif   = val === 'partielle' || val === 'totale';
+            fieldRetenu.style.display = showRetenu ? 'flex' : 'none';
+            fieldMotif.style.display  = showMotif  ? 'flex' : 'none';
+        }
+
+        function genererDoc() {
+            const lang     = typeof currentLang !== 'undefined' ? currentLang : 'fr';
+            const locales  = {fr:'fr-FR',en:'en-GB',es:'es-ES',pt:'pt-PT',it:'it-IT'};
+            const mode     = document.querySelector('input[name="f-mode"]:checked').value;
+            const civilite = document.getElementById('f-civilite').value;
+            const prenom   = document.getElementById('f-prenom').value.trim();
+            const nom      = document.getElementById('f-nom').value.trim();
+            const montant  = parseFloat(document.getElementById('f-montant').value) || 500;
+            const arrivee  = document.getElementById('f-arrivee').value;
+            const depart   = document.getElementById('f-depart').value;
+            const methode  = document.getElementById('f-methode').value;
+            const logement = document.getElementById('f-logement').value;
+
+            if (!prenom || !nom) {
+                const msg = {fr:'Merci de saisir le prénom et le nom du client.',en:"Please enter the client's first and last name.",es:'Por favor, introduzca el nombre y apellido del cliente.',pt:'Por favor, insira o nome próprio e o apelido do cliente.',it:'Inserire il nome e il cognome del cliente.'};
+                alert(msg[lang]||msg.fr); return;
+            }
+            if (!arrivee || !depart) {
+                const msg = {fr:"Merci de saisir les dates d'arrivée et de départ.",en:'Please enter the arrival and departure dates.',es:'Por favor, introduzca las fechas de llegada y salida.',pt:'Por favor, insira as datas de chegada e de saída.',it:'Inserire le date di arrivo e di partenza.'};
+                alert(msg[lang]||msg.fr); return;
+            }
+
+            const nomComplet  = `${civilite} ${prenom} ${nom}`;
+            const fromWord    = {fr:'Du',en:'From',es:'Del',pt:'De',it:'Dal'};
+            const toWord      = {fr:'au',en:'to',es:'al',pt:'a',it:'al'};
+            const periode     = `${fromWord[lang]||fromWord.fr} ${formatDate(arrivee)} ${toWord[lang]||toWord.fr} ${formatDate(depart)}`;
+            const isMainlevee = mode === 'mainlevee';
+
+            // Titre & tag dynamiques
+            const docTagTexts = {
+                fr: isMainlevee ? 'Libération de Garantie' : 'Garantie de Séjour',
+                en: isMainlevee ? 'Guarantee Release'      : 'Stay Guarantee',
+                es: isMainlevee ? 'Liberación de Garantía' : 'Garantía de Estancia',
+                pt: isMainlevee ? 'Liberação de Garantia'  : 'Garantia de Estadia',
+                it: isMainlevee ? 'Svincolo di Garanzia'   : 'Garanzia di Soggiorno'
+            };
+            document.getElementById('var-doc-tag').textContent = docTagTexts[lang]||docTagTexts.fr;
+
+            const docTitleTexts = {
+                fr: isMainlevee ? 'Mainlevée de <em>Caution</em>'       : 'Dépôt de <em>Caution</em>',
+                en: isMainlevee ? 'Security <em>Release</em>'           : 'Security <em>Deposit</em>',
+                es: isMainlevee ? 'Liberación de <em>Fianza</em>'       : 'Depósito de <em>Garantía</em>',
+                pt: isMainlevee ? 'Liberação de <em>Caução</em>'        : 'Depósito de <em>Caução</em>',
+                it: isMainlevee ? 'Svincolo della <em>Cauzione</em>'    : 'Deposito <em>Cauzionale</em>'
+            };
+            document.getElementById('var-doc-title').innerHTML = docTitleTexts[lang]||docTitleTexts.fr;
+
+            const rowLabelTexts = {
+                fr: isMainlevee ? 'Montant de la caution'          : 'Garantie pour dommages & dégradations',
+                en: isMainlevee ? 'Security deposit amount'        : 'Guarantee for damages & deterioration',
+                es: isMainlevee ? 'Importe de la fianza'           : 'Garantía por daños y desperfectos',
+                pt: isMainlevee ? 'Montante da caução'             : 'Garantia por danos e deteriorações',
+                it: isMainlevee ? 'Importo della cauzione'         : 'Garanzia per danni e deterioramenti'
+            };
+            document.getElementById('var-row-label').textContent = rowLabelTexts[lang]||rowLabelTexts.fr;
+
+            // Champs communs
+            document.getElementById('var-num').textContent     = genNumero();
+            document.getElementById('var-date').textContent    = new Date().toLocaleDateString(locales[lang]||'fr-FR');
+            document.getElementById('var-client').textContent  = nomComplet;
+            document.getElementById('var-details').textContent = logement;
+            document.getElementById('var-periode').textContent = periode;
+            document.getElementById('var-montant').textContent = fmt(montant);
+            document.getElementById('var-methode').textContent = methode;
+
+            // Lignes et alertes conditionnelles
+            document.getElementById('alert-depot').style.display     = isMainlevee ? 'none' : 'block';
+            document.getElementById('alert-mainlevee').style.display = isMainlevee ? 'block' : 'none';
+            document.getElementById('row-retenu').style.display      = 'none';
+            document.getElementById('row-libere').style.display      = 'none';
+
+            if (isMainlevee) {
+                const statut        = document.getElementById('f-statut').value;
+                const motif         = document.getElementById('f-motif').value.trim() || '—';
+                const montantRetenu = parseFloat(document.getElementById('f-montant-retenu').value) || 0;
+                const dateLib       = document.getElementById('f-date-liberation').value;
+                const dateFmtDefault = {fr:'sous 7 jours ouvrés',en:'within 7 business days',es:'en 7 días hábiles',pt:'em 7 dias úteis',it:'entro 7 giorni lavorativi'};
+                const dateFmt       = dateLib ? formatDate(dateLib) : (dateFmtDefault[lang]||dateFmtDefault.fr);
+
+                if (statut === 'integrale') {
+                    document.getElementById('var-montant-libere').textContent = fmt(montant);
+                    document.getElementById('var-date-lib-doc').textContent   = dateFmt;
+                    document.getElementById('row-libere').style.display       = 'table-row';
+                    const alertTexts = {
+                        fr: `La caution de ${fmt(montant)} est libérée intégralement. La mainlevée sera effective ${dateFmt}.`,
+                        en: `The security deposit of ${fmt(montant)} is fully released. The release will take effect ${dateFmt}.`,
+                        es: `La fianza de ${fmt(montant)} se libera íntegramente. La liberación será efectiva ${dateFmt}.`,
+                        pt: `A caução de ${fmt(montant)} é libertada integralmente. A liberação será efetiva ${dateFmt}.`,
+                        it: `La cauzione di ${fmt(montant)} è svincolata integralmente. Lo svincolo sarà effettivo ${dateFmt}.`
+                    };
+                    document.getElementById('var-alert-mainlevee').textContent = alertTexts[lang]||alertTexts.fr;
+                } else if (statut === 'partielle') {
+                    const libere = montant - montantRetenu;
+                    document.getElementById('var-montant-retenu').textContent  = fmt(montantRetenu);
+                    document.getElementById('var-motif-doc').textContent       = motif;
+                    document.getElementById('var-montant-libere').textContent  = fmt(Math.max(libere, 0));
+                    document.getElementById('var-date-lib-doc').textContent    = dateFmt;
+                    document.getElementById('row-retenu').style.display        = 'table-row';
+                    document.getElementById('row-libere').style.display        = 'table-row';
+                    const alertTexts = {
+                        fr: `Un montant de ${fmt(montantRetenu)} est retenu (${motif}). Le solde de ${fmt(Math.max(libere,0))} sera restitué ${dateFmt}.`,
+                        en: `An amount of ${fmt(montantRetenu)} is withheld (${motif}). The balance of ${fmt(Math.max(libere,0))} will be returned ${dateFmt}.`,
+                        es: `Se retiene un importe de ${fmt(montantRetenu)} (${motif}). El saldo de ${fmt(Math.max(libere,0))} será restituido ${dateFmt}.`,
+                        pt: `Um montante de ${fmt(montantRetenu)} é retido (${motif}). O saldo de ${fmt(Math.max(libere,0))} será restituído ${dateFmt}.`,
+                        it: `Un importo di ${fmt(montantRetenu)} è trattenuto (${motif}). Il saldo di ${fmt(Math.max(libere,0))} sarà restituito ${dateFmt}.`
+                    };
+                    document.getElementById('var-alert-mainlevee').textContent = alertTexts[lang]||alertTexts.fr;
+                } else {
+                    document.getElementById('var-montant-retenu').textContent  = fmt(montant);
+                    document.getElementById('var-motif-doc').textContent       = motif;
+                    document.getElementById('row-retenu').style.display        = 'table-row';
+                    const alertTexts = {
+                        fr: `La caution de ${fmt(montant)} est intégralement retenue pour le motif suivant : ${motif}.`,
+                        en: `The security deposit of ${fmt(montant)} has been fully withheld for the following reason: ${motif}.`,
+                        es: `La fianza de ${fmt(montant)} es íntegramente retenida por el siguiente motivo: ${motif}.`,
+                        pt: `A caução de ${fmt(montant)} é integralmente retida pelo seguinte motivo: ${motif}.`,
+                        it: `La cauzione di ${fmt(montant)} è integralmente trattenuta per il seguente motivo: ${motif}.`
+                    };
+                    document.getElementById('var-alert-mainlevee').textContent = alertTexts[lang]||alertTexts.fr;
+                }
+            }
+
+            document.getElementById('doc-output').style.display     = 'block';
+            document.getElementById('btn-print-wrap').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('doc-output').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        function reinitialiser() {
+            ['f-prenom','f-nom','f-montant','f-arrivee','f-depart','f-motif','f-montant-retenu','f-date-liberation']
+                .forEach(id => document.getElementById(id).value = '');
+            document.getElementById('f-civilite').value = 'M.';
+            document.getElementById('f-methode').value  = 'Empreinte bancaire (PLBS)';
+            document.getElementById('f-statut').value   = 'integrale';
+            document.querySelector('input[name="f-mode"][value="depot"]').checked = true;
+            updateMode('depot');
+            document.getElementById('doc-output').style.display     = 'none';
+            document.getElementById('btn-print-wrap').style.display = 'none';
+        }
+
+        const prog=document.getElementById('progress');
+        window.addEventListener('scroll',()=>{const s=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;if(prog)prog.style.width=Math.min(s,100)+'%';document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);});
+        function toggleMobile(){const m=document.getElementById('mobileMenu');const b=document.getElementById('burger');const o=m.classList.toggle('open');b.classList.toggle('open');b.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';}
+        function closeMobile(){const m=document.getElementById('mobileMenu');if(m)m.classList.remove('open');const b=document.getElementById('burger');if(b){b.classList.remove('open');b.setAttribute('aria-expanded','false');}document.body.style.overflow='';}
+        document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMobile();});
+        let currentLang='fr';
+        function setLang(lang){document.documentElement.classList.add('js-lang');currentLang=lang;document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('active');if(b.dataset.lang===lang)b.classList.add('active');});document.querySelectorAll('[data-lang]').forEach(el=>el.classList.remove('lang-visible'));document.querySelectorAll('[data-lang="'+lang+'"]').forEach(el=>el.classList.add('lang-visible'));document.documentElement.lang=lang;const _sl=(id,langs)=>{const s=document.getElementById(id);if(!s)return;const lb=langs[lang]||langs.fr;Array.from(s.options).forEach((o,i)=>{if(lb[i]!==undefined)o.textContent=lb[i];});};_sl("f-civilite",{fr:["M.","Mme","M. et Mme"],en:["Mr.","Mrs.","Mr. & Mrs."],es:["Sr.","Sra.","Sr. y Sra."],pt:["Sr.","Sra.","Sr. e Sra."],it:["Sig.","Sig.ra","Sig. e Sig.ra"]});_sl("f-methode",{fr:["Empreinte bancaire (PLBS)","Virement bancaire","Chèque de caution","Espèces"],en:["Bank pre-authorisation (PLBS)","Bank transfer","Security cheque","Cash"],es:["Preautorización bancaria (PLBS)","Transferencia bancaria","Cheque de garantía","Efectivo"],pt:["Pré-autorização bancária (PLBS)","Transferência bancária","Cheque de caução","Numerário"],it:["Pre-autorizzazione bancaria (PLBS)","Bonifico bancario","Assegno di cauzione","Contanti"]});_sl("f-statut",{fr:["Libérée intégralement","Retenue partielle","Retenue intégralement"],en:["Released in full","Partially withheld","Fully withheld"],es:["Liberada íntegramente","Retención parcial","Retenida íntegramente"],pt:["Libertada integralmente","Retenção parcial","Retida integralmente"],it:["Svincolata integralmente","Trattenuta parzialmente","Trattenuta integralmente"]});}
+        document.addEventListener('DOMContentLoaded',()=>setLang('fr'));
+    </script>
+
+<footer class="no-print">
+  <picture class="logo-stable footer-logo-wrap"><source srcset="logo.webp" type="image/webp"><img class="no-translate footer-logo-img" src="logo.png" alt="Ocean Drift Lodge" onerror="this.style.display='none'"></picture>
+  <span class="footer-logo-txt">Ocean Drift <em>Lodge</em></span>
+  <nav class="footer-links">
+    <a href="index.html"><span data-lang="fr">Accueil</span><span data-lang="en">Home</span><span data-lang="es">Inicio</span><span data-lang="pt">Início</span><span data-lang="it">Home</span></a>
+    <a href="livret-accueil.html"><span data-lang="fr">Livret d'accueil</span><span data-lang="en">Welcome guide</span><span data-lang="es">Guía de bienvenida</span><span data-lang="pt">Guia de boas-vindas</span><span data-lang="it">Guida di benvenuto</span></a>
+  </nav>
+  <nav class="footer-links" aria-label="Liens légaux">
+    <a href="cgv.html"><span data-lang="fr">CGV</span><span data-lang="en">GTC</span><span data-lang="es">CGV</span><span data-lang="pt">CGV</span><span data-lang="it">CGV</span></a>
+    <a href="mentions-legales.html"><span data-lang="fr">Mentions légales</span><span data-lang="en">Legal notice</span><span data-lang="es">Aviso legal</span><span data-lang="pt">Aviso legal</span><span data-lang="it">Note legali</span></a>
+    <a href="confidentialite.html"><span data-lang="fr">Confidentialité</span><span data-lang="en">Privacy</span><span data-lang="es">Privacidad</span><span data-lang="pt">Privacidade</span><span data-lang="it">Privacy</span></a>
+  </nav>
+  <span>© 2026 Ocean Drift Lodge · Dakhla, Maroc</span>
+</footer>
+<script>
+(function(){
+  if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));return;}
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ocean Drift Lodge · Livret d'Accueil — Dakhla</title>
+<meta name="description" content="Votre livret d'accueil Ocean Drift Lodge — Wi-Fi, check-in, services et contacts. Résidence West Point, Dakhla, Maroc.">
+<meta name="theme-color" content="#2e8b8b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="odl-styles.css">
+<style>body{font-family:'Jost',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;position:relative;overflow:hidden;
+  background:radial-gradient(ellipse 70% 55% at 25% 35%,rgba(46,139,139,0.13) 0%,transparent 70%),
+  radial-gradient(ellipse 55% 50% at 75% 70%,rgba(200,96,58,0.10) 0%,transparent 65%),
+  linear-gradient(160deg,#ffffff 0%,#f4ede4 55%,#ede8df 100%)}
+.hero-inner{position:relative;z-index:1;max-width:780px;width:100%;display:flex;flex-direction:column;align-items:center}
+.hero-eyebrow{font-size:.72rem;font-weight:400;letter-spacing:.38em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:2rem}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,9vw,7rem);font-weight:300;line-height:1;color:var(--ink);letter-spacing:-.01em}
+.hero-title em{display:block;font-style:italic;color:var(--teal)}
+.hero-sub{font-size:.85rem;font-weight:400;color:var(--ink-light);letter-spacing:.15em;text-transform:uppercase;margin-top:1.5rem}
+.hero-pills{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-top:2.5rem}
+.hero-pill{font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(46,139,139,0.3);color:var(--teal);padding:.3rem .85rem;border-radius:20px}
+.scroll-hint{margin-top:3rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--ink-light);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase}
+.scroll-arrow{width:1px;height:36px;background:var(--terra);animation:scrolldown 1.6s ease infinite}
+@keyframes scrolldown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ── SECTIONS ── */
+section{padding:6rem 3.5rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-tag{font-size:.65rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:300;line-height:1.2;color:var(--ink);margin-bottom:1rem}
+.section-title em{font-style:italic;color:var(--teal)}
+.section-lead{font-size:.9rem;color:var(--ink-light);max-width:500px;line-height:1.75}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1100px;margin:0 auto}
+
+/* ── DAKHLA ── */
+#dakhla{background:var(--bg)}
+.dakhla-img::after{content:'23°N · 16°W';position:absolute;bottom:1rem;right:1rem;font-family:'Jost',sans-serif;font-size:.62rem;letter-spacing:.2em;color:rgba(255,255,255,0.7);background:rgba(28,28,26,0.4);padding:.3rem .7rem;border-radius:20px}
+blockquote{margin-top:2rem;border-left:2px solid var(--terra);padding:1rem 1.5rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;font-style:italic;color:var(--ink-mid);line-height:1.65}
+
+/* ── CHECK-IN ── */
+#checkin{background:var(--bg-sand)}
+.checkin-times{display:flex;align-items:center;gap:2rem;margin:2.5rem 0}
+.time-item{text-align:center}
+.time-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--terra);line-height:1}
+.time-lbl{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-light);margin-top:.3rem}
+.time-sep{color:var(--ink-light);font-size:1.5rem}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+.info-card{background:#fff;border:1px solid rgba(28,28,26,0.07);border-radius:6px;padding:2rem 1.8rem}
+.info-card-title{font-size:.62rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);margin-bottom:1.2rem;padding-bottom:.8rem;border-bottom:1px solid rgba(200,96,58,0.15)}
+.info-row{display:flex;flex-direction:column;gap:.2rem;margin-bottom:1rem}
+.info-row:last-child{margin-bottom:0}
+.info-lbl{font-size:.65rem;font-weight:500;color:var(--ink-light);letter-spacing:.1em;text-transform:uppercase}
+.info-val{font-size:.88rem;color:var(--ink)}
+
+/* WiFi dans check-in */
+.wifi-inline{margin-top:1.5rem;background:var(--bg-sand);border-radius:6px;padding:1.5rem;border:1px solid rgba(28,28,26,0.07);display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.wifi-block{display:flex;flex-direction:column;gap:.3rem}
+.wifi-lbl{font-size:.62rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-light)}
+.wifi-val{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--ink)}
+.wifi-val.accent{color:var(--teal)}
+
+/* ── PRESTATIONS ── */
+#prestations{background:var(--bg)}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;margin-top:3rem}
+.svc-card{background:var(--bg-sand);border:1px solid rgba(28,28,26,0.07);border-radius:6px;overflow:hidden;transition:transform var(--trans),box-shadow var(--trans)}
+.svc-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(28,28,26,0.10)}
+.svc-body{padding:1.2rem}
+.svc-icon{font-size:1.4rem;margin-bottom:.5rem}
+.svc-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.3rem}
+.svc-desc{font-size:.8rem;color:var(--ink-light);line-height:1.6}
+
+/* Discount badge */
+.discount-banner{margin-top:2.5rem;background:var(--terra);border-radius:6px;padding:1.8rem 2.5rem;display:flex;align-items:center;gap:2rem;max-width:680px}
+.discount-pct{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:#fff;line-height:1;flex-shrink:0}
+.discount-text{color:rgba(255,255,255,0.92)}
+.discount-title{font-size:.95rem;font-weight:500;margin-bottom:.3rem}
+.discount-desc{font-size:.82rem;line-height:1.6;opacity:.85}
+
+/* ── PESCADOR ── */
+#pescador{background:var(--bg-sand)}
+.pescador-poem{margin:2rem 0;border-left:2px solid var(--terra);padding:1rem 1.5rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;font-style:italic;color:var(--ink-mid);line-height:2}
+.tip-card{background:#fff;border:1px solid rgba(28,28,26,0.07);border-left:3px solid var(--terra);border-radius:var(--radius);padding:1.2rem 1.5rem;margin-top:1.5rem}
+.tip-lbl{font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);margin-bottom:.4rem}
+.tip-text{font-size:.86rem;color:var(--ink-mid);line-height:1.7}
+
+/* ── HOTEL SERVICE ── */
+#hotelservice{background:var(--bg)}
+.hs-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:3rem}
+.hs-item{display:flex;align-items:center;gap:.8rem;padding:1rem 1.2rem;background:var(--bg-sand);border-radius:var(--radius);border:1px solid rgba(28,28,26,0.06);transition:border-color var(--trans)}
+.hs-item:hover{border-color:rgba(46,139,139,0.25)}
+.hs-icon{font-size:.85rem;color:var(--teal);flex-shrink:0;width:1.2rem;text-align:center;line-height:1}
+.hs-text{font-size:.86rem;color:var(--ink-mid)}
+
+/* ── CULTURE ── */
+#culture{background:var(--bg-sand)}
+.culture-cards{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+.culture-card{background:#fff;border-radius:6px;padding:1.5rem;border-left:3px solid var(--terra)}
+.culture-card-title{font-weight:500;font-size:.9rem;color:var(--ink);margin-bottom:.3rem}
+.culture-card-text{font-size:.84rem;color:var(--ink-light);line-height:1.65}
+
+/* ── CONSEILS ── */
+#conseils{background:var(--bg)}
+.conseils-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin-top:3rem}
+.conseil-card{background:var(--bg-sand);border-radius:6px;padding:1.8rem;border-left:3px solid var(--teal);transition:transform var(--trans)}
+.conseil-card:hover{transform:translateY(-2px)}
+.conseil-title{font-weight:500;font-size:.9rem;color:var(--ink);margin-bottom:.5rem}
+.conseil-text{font-size:.83rem;color:var(--ink-light);line-height:1.7}
+
+/* ── CONTACTS ── */
+#contacts{background:var(--bg-sand)}
+.contacts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;margin-top:3rem}
+.contact-card{background:#fff;border-radius:6px;padding:2rem;border:1px solid rgba(28,28,26,0.07);transition:transform var(--trans),box-shadow var(--trans)}
+.contact-card:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(28,28,26,0.09)}
+.contact-card-title{font-size:.6rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);margin-bottom:1rem;padding-bottom:.7rem;border-bottom:1px solid rgba(200,96,58,0.15)}
+.contact-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;margin-bottom:.8rem;color:var(--ink)}
+.contact-detail{font-size:.82rem;color:var(--ink-light);margin-bottom:.3rem;line-height:1.5}
+.contact-detail a:hover{opacity:.7}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .82rem;
+  color: var(--teal);
+  border-bottom: 1px solid rgba(46,139,139,0.25);
+  transition: border-color var(--trans);
+}
+.contact-link:hover { border-color: var(--teal); }
+
+/* ── LANG ── */
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  
+  section{padding:4.5rem 2rem}
+  .two-col{grid-template-columns:1fr;gap:3rem}
+  .info-grid,.hs-grid{grid-template-columns:1fr}
+  .wifi-inline{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  
+  section{padding:3.5rem 1.5rem}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .contacts-grid{grid-template-columns:1fr}
+  .discount-banner{flex-direction:column;gap:1rem;text-align:center}
+  .checkin-times{gap:1.2rem}
+}
+
+/* ── BOTTOM NAV ── */
+#bottom-nav {
+  display: none;
+}
+@media(max-width: 768px) {
+  #bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 150;
+    background: rgba(250,249,247,0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(28,28,26,0.08);
+    padding: .5rem 0 calc(.5rem + env(safe-area-inset-bottom));
+  }
+  .bnav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .2rem;
+    font-size: .55rem;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    padding: .4rem .2rem;
+    transition: color var(--trans);
+    text-decoration: none;
+  }
+  .bnav-item.active {
+    color: var(--teal);
+  }
+  body { padding-bottom: 70px; }
+}
+
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link"><span data-lang="fr" class="lang-visible">Aller au contenu</span><span data-lang="en">Skip to content</span><span data-lang="es">Ir al contenido</span><span data-lang="pt">Ir para o conteúdo</span><span data-lang="it">Vai al contenuto</span></a>
+<div id="progress" role="progressbar" aria-label="Progression"></div>
+
+<header>
+  <nav id="nav" aria-label="Navigation livret">
+    <a href="index.html" class="nav-logo"><picture class="logo-stable"><source srcset="logo.webp" type="image/webp"><img class="no-translate nav-logo-img" src="logo.png" alt="" style="mix-blend-mode:multiply" onerror="this.style.display='none'"></picture>Ocean Drift <em>Lodge</em></a>
+    <ul class="nav-links" role="list">
+      <li><a href="#dakhla" data-nav="dakhla">Dakhla</a></li>
+      <li><a href="#checkin" data-nav="checkin">Check-in</a></li>
+      <li><a href="#prestations" data-nav="prestations"><span data-lang="fr" class="lang-visible">Prestations</span><span data-lang="en">Amenities</span><span data-lang="es">Servicios</span><span data-lang="pt">Serviços</span><span data-lang="it">Servizi</span></a></li>
+      <li><a href="#pescador" data-nav="pescador"><span data-lang="fr" class="lang-visible">Restaurant</span><span data-lang="en">Restaurant</span><span data-lang="es">Restaurante</span><span data-lang="pt">Restaurante</span><span data-lang="it">Ristorante</span></a></li>
+      <li><a href="#culture" data-nav="culture"><span data-lang="fr" class="lang-visible">Culture</span><span data-lang="en">Culture</span><span data-lang="es">Cultura</span><span data-lang="pt">Cultura</span><span data-lang="it">Cultura</span></a></li>
+      <li><a href="#contacts" data-nav="contacts">Contact</a></li>
+    </ul>
+    <div class="lang-sw" role="group" aria-label="Langue">
+      <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" onclick="setLang('pt')">PT</button>
+      <button class="lang-btn" onclick="setLang('it')">IT</button>
+    </div>
+  </nav>
+</header>
+
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut">↑</button>
+
+<main id="main">
+
+<!-- ── HERO ── -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-img" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-logo-wrap">
+      <picture class="no-translate">
+        <source srcset="logo.webp" type="image/webp">
+        <img src="logo.png" alt="Ocean Drift Lodge" class="hero-logo no-translate" style="mix-blend-mode:multiply;display:block;margin:0 auto;width:140px;height:auto;animation:none">
+      </picture>
+    </div>
+    <p class="hero-eyebrow reveal">
+      <span data-lang="fr" class="lang-visible">Dakhla, Maroc · Résidence West Point</span>
+      <span data-lang="en">Dakhla, Morocco · West Point Residence</span>
+      <span data-lang="es">Dakhla, Marruecos · Residencia West Point</span>
+      <span data-lang="pt">Dakhla, Marrocos · Residência West Point</span>
+      <span data-lang="it">Dakhla, Marocco · Residenza West Point</span>
+    </p>
+    <h1 class="hero-title reveal" id="hero-title" style="transition-delay:.1s">
+      Ocean Drift <em>Lodge</em>
+    </h1>
+    <p class="hero-sub reveal" style="transition-delay:.2s">
+      <span data-lang="fr" class="lang-visible">Un havre entre mer et désert</span>
+      <span data-lang="en">A haven between sea and desert</span>
+      <span data-lang="es">Un refugio entre el mar y el desierto</span>
+      <span data-lang="pt">Um refúgio entre o mar e o deserto</span>
+      <span data-lang="it">Un rifugio tra il mare e il deserto</span>
+    </p>
+    <div class="reveal" style="transition-delay:.3s;margin-top:2.5rem;text-align:center">
+      <p style="font-size:.82rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-mid)"><span data-lang="fr" class="lang-visible">Glisse &nbsp;·&nbsp; Désert &nbsp;·&nbsp; Gastronomie</span><span data-lang="en">Gliding &nbsp;·&nbsp; Desert &nbsp;·&nbsp; Gastronomy</span><span data-lang="es">Deslizamiento &nbsp;·&nbsp; Desierto &nbsp;·&nbsp; Gastronomía</span><span data-lang="pt">Deslize &nbsp;·&nbsp; Deserto &nbsp;·&nbsp; Gastronomia</span><span data-lang="it">Scivolo &nbsp;·&nbsp; Deserto &nbsp;·&nbsp; Gastronomia</span></p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;font-style:italic;color:var(--teal);margin-top:.6rem"><span data-lang="fr" class="lang-visible">Là où l'Atlantique rencontre le Sahara.</span><span data-lang="en">Where the Atlantic meets the Sahara.</span><span data-lang="es">Donde el Atlántico se encuentra con el Sáhara.</span><span data-lang="pt">Onde o Atlântico encontra o Saara.</span><span data-lang="it">Dove l'Atlantico incontra il Sahara.</span></p>
+    </div>
+    <div class="scroll-hint reveal" style="transition-delay:.4s" aria-hidden="true">
+      <span data-lang="fr" class="lang-visible">Découvrir</span>
+      <span data-lang="en">Discover</span>
+      <span data-lang="es">Descubrir</span>
+      <span data-lang="pt">Descobrir</span>
+      <span data-lang="it">Scoprire</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DAKHLA ── -->
+<section id="dakhla" aria-labelledby="dakhla-title">
+  <div class="two-col">
+    <div>
+      <p class="section-tag reveal">
+        <span data-lang="fr" class="lang-visible">Découverte</span>
+        <span data-lang="en">Discovery</span>
+        <span data-lang="es">Descubrimiento</span>
+        <span data-lang="pt">Descoberta</span>
+        <span data-lang="it">Scoperta</span>
+      </p>
+      <h2 class="section-title reveal" id="dakhla-title" style="transition-delay:.05s">
+        <span data-lang="fr" class="lang-visible">Découvrez <em>Dakhla</em></span>
+        <span data-lang="en">Discover <em>Dakhla</em></span>
+        <span data-lang="es">Descubre <em>Dakhla</em></span>
+        <span data-lang="pt">Descubra <em>Dakhla</em></span>
+        <span data-lang="it">Scopri <em>Dakhla</em></span>
+      </h2>
+      <p class="section-lead reveal" style="transition-delay:.1s">
+        <span data-lang="fr" class="lang-visible">Joyau niché entre l'Atlantique et le Sahara. Paradis des sports nautiques et de l'aventure saharienne — océan turquoise et dunes dorées.</span>
+        <span data-lang="en">A gem nestled between the Atlantic and the Sahara. Paradise for water sports and Saharan adventure — turquoise ocean and golden dunes.</span>
+        <span data-lang="es">Joya enclavada entre el Atlántico y el Sáhara. Paraíso de los deportes acuáticos y la aventura sahariana.</span>
+        <span data-lang="pt">Joia encravada entre o Atlântico e o Saara. Paraíso dos desportos aquáticos e da aventura sahariana.</span>
+        <span data-lang="it">Gioiello incastonato tra l'Atlantico e il Sahara. Paradiso degli sport acquatici e dell'avventura sahariana.</span>
+      </p>
+      <blockquote class="reveal" style="transition-delay:.15s">
+        <span data-lang="fr" class="lang-visible">"Entre le souffle du vent sur les dunes et le murmure des vagues, Dakhla révèle son âme."</span>
+        <span data-lang="en">"Between the breath of wind on the dunes and the murmur of the waves, Dakhla reveals its soul."</span>
+        <span data-lang="es">"Entre el soplo del viento sobre las dunas y el murmullo de las olas, Dakhla revela su alma."</span>
+        <span data-lang="pt">"Entre o sopro do vento nas dunas e o murmúrio das ondas, Dakhla revela a sua alma."</span>
+        <span data-lang="it">"Tra il soffio del vento sulle dune e il mormorio delle onde, Dakhla rivela la sua anima."</span>
+      </blockquote>
+    </div>
+    <div class="dakhla-img reveal" style="transition-delay:.1s" role="img" aria-label="Vue aérienne de Dakhla"></div>
+  </div>
+</section>
+
+<!-- ── CHECK-IN ── -->
+<section id="checkin" aria-labelledby="checkin-title">
+  <div class="section-inner">
+    <p class="section-tag reveal">Westpoint</p>
+    <h2 class="section-title reveal" id="checkin-title" style="transition-delay:.05s"><em>Check-in</em></h2>
+    <div class="checkin-times reveal" style="transition-delay:.1s">
+      <div class="time-item">
+        <div class="time-num">15<span style="font-size:1.2rem">h</span></div>
+        <div class="time-lbl">
+          <span data-lang="fr" class="lang-visible">Arrivée</span>
+          <span data-lang="en">Arrival</span>
+          <span data-lang="es">Llegada</span>
+          <span data-lang="pt">Chegada</span>
+          <span data-lang="it">Arrivo</span>
+        </div>
+      </div>
+      <span class="time-sep" aria-hidden="true">→</span>
+      <div class="time-item">
+        <div class="time-num">11<span style="font-size:1.2rem">h</span></div>
+        <div class="time-lbl">
+          <span data-lang="fr" class="lang-visible">Départ</span>
+          <span data-lang="en">Departure</span>
+          <span data-lang="es">Salida</span>
+          <span data-lang="pt">Partida</span>
+          <span data-lang="it">Partenza</span>
+        </div>
+      </div>
+    </div>
+    <div class="info-grid">
+      <div class="info-card reveal" style="transition-delay:.15s">
+        <div class="info-card-title">
+          <span data-lang="fr" class="lang-visible">Accès à l'appartement</span>
+          <span data-lang="en">Apartment Access</span>
+          <span data-lang="es">Acceso al apartamento</span>
+          <span data-lang="pt">Acesso ao apartamento</span>
+          <span data-lang="it">Accesso all'appartamento</span>
+        </div>
+        <div class="info-row">
+          <span class="info-lbl">
+            <span data-lang="fr" class="lang-visible">Boîte à clés</span>
+            <span data-lang="en">Key Box</span>
+            <span data-lang="es">Caja de llaves</span>
+            <span data-lang="pt">Caixa de chaves</span>
+            <span data-lang="it">Cassetta delle chiavi</span>
+          </span>
+          <span class="info-val">
+            <span data-lang="fr" class="lang-visible">Sécurisée à l'entrée de la résidence</span>
+            <span data-lang="en">Secured at the residence entrance</span>
+            <span data-lang="es">Segura en la entrada de la residencia</span>
+            <span data-lang="pt">Segura na entrada da residência</span>
+            <span data-lang="it">Sicura all'ingresso della residenza</span>
+          </span>
+        </div>
+        <div class="info-row">
+          <span class="info-lbl">
+            <span data-lang="fr" class="lang-visible">Code d'accès</span>
+            <span data-lang="en">Access Code</span>
+            <span data-lang="es">Código de acceso</span>
+            <span data-lang="pt">Código de acesso</span>
+            <span data-lang="it">Codice di accesso</span>
+          </span>
+          <span class="info-val">SMS / WhatsApp</span>
+        </div>
+        <div class="wifi-inline">
+          <div class="wifi-block">
+            <span class="wifi-lbl">WiFi</span>
+            <span class="wifi-val">OceanDrift_Guest</span>
+          </div>
+          <div class="wifi-block">
+            <span class="wifi-lbl">
+              <span data-lang="fr" class="lang-visible">Mot de passe</span>
+              <span data-lang="en">Password</span>
+              <span data-lang="es">Contraseña</span>
+              <span data-lang="pt">Palavra-passe</span>
+              <span data-lang="it">Password</span>
+            </span>
+            <span class="wifi-val accent">Dakhla2024</span>
+          </div>
+        </div>
+      </div>
+      <div class="info-card reveal" style="transition-delay:.2s">
+        <div class="info-card-title">
+          <span data-lang="fr" class="lang-visible">Transferts & Pratique</span>
+          <span data-lang="en">Transfers & Practical</span>
+          <span data-lang="es">Traslados & Práctico</span>
+          <span data-lang="pt">Transferes & Prático</span>
+          <span data-lang="it">Trasferimenti & Pratico</span>
+        </div>
+        <div class="info-row">
+          <span class="info-lbl">
+            <span data-lang="fr" class="lang-visible">Transfert aéroport</span>
+            <span data-lang="en">Airport Transfer</span>
+            <span data-lang="es">Traslado aeropuerto</span>
+            <span data-lang="pt">Transfere aeroporto</span>
+            <span data-lang="it">Trasferimento aeroporto</span>
+          </span>
+          <span class="info-val">
+            <span data-lang="fr" class="lang-visible">Sur réservation — conciergerie 24h avant</span>
+            <span data-lang="en">On reservation — concierge 24h before</span>
+            <span data-lang="es">Bajo reserva — conserjería 24h antes</span>
+            <span data-lang="pt">Mediante reserva — concierge 24h antes</span>
+            <span data-lang="it">Su prenotazione — concierge 24h prima</span>
+          </span>
+        </div>
+        <div class="info-row">
+          <span class="info-lbl">Parking</span>
+          <span class="info-val">
+            <span data-lang="fr" class="lang-visible">Place privée sécurisée incluse</span>
+            <span data-lang="en">Secure private space included</span>
+            <span data-lang="es">Plaza privada segura incluida</span>
+            <span data-lang="pt">Lugar privativo seguro incluído</span>
+            <span data-lang="it">Posto privato sicuro incluso</span>
+          </span>
+        </div>
+        <div class="info-row">
+          <span class="info-lbl">
+            <span data-lang="fr" class="lang-visible">Électricité</span>
+            <span data-lang="en">Electricity</span>
+            <span data-lang="es">Electricidad</span>
+            <span data-lang="pt">Eletricidade</span>
+            <span data-lang="it">Elettricità</span>
+          </span>
+          <span class="info-val">
+            <span data-lang="fr" class="lang-visible">Prises type C/E — adaptateur en réception</span>
+            <span data-lang="en">Type C/E sockets — adapter at reception</span>
+            <span data-lang="es">Enchufes tipo C/E — adaptador en recepción</span>
+            <span data-lang="pt">Tomadas tipo C/E — adaptador na receção</span>
+            <span data-lang="it">Prese tipo C/E — adattatore in reception</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRESTATIONS ── -->
+<section id="prestations" aria-labelledby="prest-title">
+  <div class="section-inner">
+    <p class="section-tag reveal">Westpoint Résidence</p>
+    <h2 class="section-title reveal" id="prest-title" style="transition-delay:.05s">
+      <span data-lang="fr" class="lang-visible">Vos <em>Prestations</em></span>
+      <span data-lang="en">Your <em>Services</em></span>
+      <span data-lang="es">Sus <em>Servicios</em></span>
+      <span data-lang="pt">Os seus <em>Serviços</em></span>
+      <span data-lang="it">I vostri <em>Servizi</em></span>
+    </h2>
+    <p class="section-lead reveal" style="transition-delay:.1s">
+      <span data-lang="fr" class="lang-visible">Accès complet aux infrastructures de l'hôtel Westpoint.</span>
+      <span data-lang="en">Full access to Westpoint hotel infrastructure.</span>
+      <span data-lang="es">Acceso completo a las infraestructuras del hotel Westpoint.</span>
+      <span data-lang="pt">Acesso completo às infraestruturas do hotel Westpoint.</span>
+      <span data-lang="it">Accesso completo alle infrastrutture dell'hotel Westpoint.</span>
+    </p>
+    <ul class="svc-grid reveal" style="transition-delay:.15s" role="list">
+      <li class="svc-card">
+        <!-- TODO: remplacer par photo ODL réelle depuis iCloud Photos Dakhla -->
+        <div class="svc-img" style="background-image:url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&q=70')"></div>
+        <div class="svc-body">
+          <div class="svc-icon">🏊</div>
+          <div class="svc-name">
+            <span data-lang="fr" class="lang-visible">Piscines</span>
+            <span data-lang="en">Swimming Pools</span>
+            <span data-lang="es">Piscinas</span>
+            <span data-lang="pt">Piscinas</span>
+            <span data-lang="it">Piscine</span>
+          </div>
+          <p class="svc-desc">
+            <span data-lang="fr" class="lang-visible">Face à l'océan · Vue Atlantique · Espace enfants</span>
+            <span data-lang="en">Facing the ocean · Atlantic view · Kids area</span>
+            <span data-lang="es">Frente al océano · Vista Atlántico · Zona niños</span>
+            <span data-lang="pt">De frente para o oceano · Vista Atlântico</span>
+            <span data-lang="it">Di fronte all'oceano · Vista Atlantico</span>
+          </p>
+        </div>
+      </li>
+      <li class="svc-card">
+        <!-- TODO: remplacer par photo ODL réelle depuis iCloud Photos Dakhla -->
+        <div class="svc-img" style="background-image:url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&q=70')"></div>
+        <div class="svc-body">
+          <div class="svc-icon">🧖</div>
+          <div class="svc-name">SPA</div>
+          <p class="svc-desc">Hammam · Jacuzzi · Sauna · Massages · Fitness</p>
+        </div>
+      </li>
+      <li class="svc-card">
+        <!-- TODO: remplacer par photo ODL réelle depuis iCloud Photos Dakhla -->
+        <div class="svc-img" style="background-image:url('https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=400&q=70')"></div>
+        <div class="svc-body">
+          <div class="svc-icon">🏄</div>
+          <div class="svc-name">
+            <span data-lang="fr" class="lang-visible">Surf & Glisse</span>
+            <span data-lang="en">Surf & Water Sports</span>
+            <span data-lang="es">Surf & Deportes</span>
+            <span data-lang="pt">Surf & Desportos</span>
+            <span data-lang="it">Surf & Sport Acquatici</span>
+          </div>
+          <p class="svc-desc">
+            <span data-lang="fr" class="lang-visible">Kite · Wingfoil · SUP — tous niveaux · Surf Foum El Bouir — riders confirmés</span>
+            <span data-lang="en">Kite · Wingfoil · SUP — all levels · Surf Foum El Bouir — experienced riders</span>
+            <span data-lang="es">Kite · Wingfoil · SUP — todos niveles · Surf Foum El Bouir — riders confirmados</span>
+            <span data-lang="pt">Kite · Wingfoil · SUP — todos os níveis · Surf Foum El Bouir — riders experientes</span>
+            <span data-lang="it">Kite · Wingfoil · SUP — tutti i livelli · Surf Foum El Bouir — rider confermati</span>
+          </p>
+        </div>
+      </li>
+      <li class="svc-card">
+        <!-- TODO: remplacer par photo ODL réelle depuis iCloud Photos Dakhla -->
+        <div class="svc-img" style="background-image:url('https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=400&q=70')"></div>
+        <div class="svc-body">
+          <div class="svc-icon">🛒</div>
+          <div class="svc-name">
+            <span data-lang="fr" class="lang-visible">Supérette</span>
+            <span data-lang="en">Mini Market</span>
+            <span data-lang="es">Supermercado</span>
+            <span data-lang="pt">Minimercado</span>
+            <span data-lang="it">Minimarket</span>
+          </div>
+          <p class="svc-desc">
+            <span data-lang="fr" class="lang-visible">Au pied de la résidence · Livraison disponible</span>
+            <span data-lang="en">At the residence · Home delivery available</span>
+            <span data-lang="es">Al pie de la residencia · Entrega disponible</span>
+            <span data-lang="pt">Ao pé da residência · Entrega disponível</span>
+            <span data-lang="it">Ai piedi della residenza · Consegna disponibile</span>
+          </p>
+        </div>
+      </li>
+      <li class="svc-card">
+        <!-- TODO: remplacer par photo ODL réelle depuis iCloud Photos Dakhla -->
+        <div class="svc-img" style="background-image:url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=400&q=70')"></div>
+        <div class="svc-body">
+          <div class="svc-icon">👕</div>
+          <div class="svc-name">
+            <span data-lang="fr" class="lang-visible">Blanchisserie</span>
+            <span data-lang="en">Laundry</span>
+            <span data-lang="es">Lavandería</span>
+            <span data-lang="pt">Lavandaria</span>
+            <span data-lang="it">Lavanderia</span>
+          </div>
+          <p class="svc-desc">
+            <span data-lang="fr" class="lang-visible">Lavage · Repassage · Pliage</span>
+            <span data-lang="en">Washing · Ironing · Folding</span>
+            <span data-lang="es">Lavado · Planchado · Doblado</span>
+            <span data-lang="pt">Lavagem · Engomagem · Dobagem</span>
+            <span data-lang="it">Lavaggio · Stiratura · Piegatura</span>
+          </p>
+        </div>
+      </li>
+      <li class="svc-card">
+        <!-- TODO: remplacer par photo ODL réelle depuis iCloud Photos Dakhla -->
+        <div class="svc-img" style="background-image:url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&q=70')"></div>
+        <div class="svc-body">
+          <div class="svc-icon">🎨</div>
+          <div class="svc-name">Kids Club</div>
+          <p class="svc-desc">
+            <span data-lang="fr" class="lang-visible">4–12 ans · Jeux · Ateliers · Sport</span>
+            <span data-lang="en">4–12 years · Games · Workshops · Sport</span>
+            <span data-lang="es">4–12 años · Juegos · Talleres · Deporte</span>
+            <span data-lang="pt">4–12 anos · Jogos · Ateliers · Desporto</span>
+            <span data-lang="it">4–12 anni · Giochi · Laboratori · Sport</span>
+          </p>
+        </div>
+      </li>
+    </ul>
+
+    <div class="discount-banner reveal" style="transition-delay:.3s">
+      <div class="discount-pct">−10%</div>
+      <div class="discount-text">
+        <p class="discount-title">
+          <span data-lang="fr" class="lang-visible">Avantage exclusif résidents Ocean Drift Lodge</span>
+          <span data-lang="en">Exclusive benefit for Ocean Drift Lodge residents</span>
+          <span data-lang="es">Ventaja exclusiva residentes Ocean Drift Lodge</span>
+          <span data-lang="pt">Vantagem exclusiva residentes Ocean Drift Lodge</span>
+          <span data-lang="it">Vantaggio esclusivo residenti Ocean Drift Lodge</span>
+        </p>
+        <p class="discount-desc">
+          <span data-lang="fr" class="lang-visible">Sur toutes les prestations de l'Hôtel West Point · Sur présentation de ce livret</span>
+          <span data-lang="en">On all West Point Hotel services · Upon presentation of this booklet</span>
+          <span data-lang="es">En todos los servicios del Hotel West Point · Presentando este livret</span>
+          <span data-lang="pt">Em todos os serviços do Hotel West Point · Mediante apresentação deste livret</span>
+          <span data-lang="it">Su tutti i servizi dell'Hotel West Point · Presentando questo libretto</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PESCADOR ── -->
+<section id="pescador" aria-labelledby="pescador-title">
+  <div class="two-col">
+    <div>
+      <p class="section-tag reveal">Westpoint · Restaurant</p>
+      <h2 class="section-title reveal" id="pescador-title" style="transition-delay:.05s">Le <em>Pescador</em></h2>
+      <p class="section-lead reveal" style="transition-delay:.1s">
+        <span data-lang="fr" class="lang-visible">L'une des meilleures tables de Dakhla.</span>
+        <span data-lang="en">One of Dakhla's finest tables.</span>
+        <span data-lang="es">Una de las mejores mesas de Dakhla.</span>
+        <span data-lang="pt">Uma das melhores mesas de Dakhla.</span>
+        <span data-lang="it">Una delle migliori tavole di Dakhla.</span>
+      </p>
+      <blockquote class="pescador-poem reveal" style="transition-delay:.15s">
+        <span data-lang="fr" class="lang-visible">Des poissons pêchés ce matin même.<br>Une vue sur l'océan à couper le souffle.<br>Des langoustes grillées.<br>Des huîtres de Dakhla.<br>Le soleil qui descend sur l'Atlantique.</span>
+        <span data-lang="en">Fish caught this very morning.<br>A breathtaking ocean view.<br>Grilled lobsters.<br>Dakhla oysters.<br>The sun setting over the Atlantic.</span>
+        <span data-lang="es">Pescado capturado esta mañana.<br>Una vista al océano impresionante.<br>Langostas a la plancha.<br>Ostras de Dakhla.<br>El sol descendiendo sobre el Atlántico.</span>
+        <span data-lang="pt">Peixe pescado esta manhã.<br>Uma vista para o oceano deslumbrante.<br>Lagostas grelhadas.<br>Ostras de Dakhla.<br>O sol a descer sobre o Atlântico.</span>
+        <span data-lang="it">Pesce pescato stamani.<br>Una vista sull'oceano mozzafiato.<br>Aragoste alla griglia.<br>Ostriche di Dakhla.<br>Il sole che tramonta sull'Atlantico.</span>
+      </blockquote>
+      <div class="tip-card reveal" style="transition-delay:.2s">
+        <div class="tip-lbl">
+          <span data-lang="fr" class="lang-visible">Conseil</span>
+          <span data-lang="en">Tip</span>
+          <span data-lang="es">Consejo</span>
+          <span data-lang="pt">Dica</span>
+          <span data-lang="it">Consiglio</span>
+        </div>
+        <p class="tip-text">
+          <span data-lang="fr" class="lang-visible">Réservez à l'avance — les couchers de soleil sont pris d'assaut.</span>
+          <span data-lang="en">Book in advance — sunset spots are always taken.</span>
+          <span data-lang="es">Reserve con antelación — los atardeceres son muy solicitados.</span>
+          <span data-lang="pt">Reserve com antecedência — os pores do sol são muito procurados.</span>
+          <span data-lang="it">Prenotate in anticipo — i tramonti sono molto richiesti.</span>
+        </p>
+      </div>
+    </div>
+    <div class="pescador-img reveal" style="transition-delay:.1s" role="img" aria-label="Restaurant Le Pescador"></div>
+  </div>
+</section>
+
+<!-- ── HOTEL SERVICE ── -->
+<section id="hotelservice" aria-labelledby="hs-title">
+  <div class="section-inner">
+    <p class="section-tag reveal" style="text-align:center"><span data-lang="fr" class="lang-visible">Nos Services</span><span data-lang="en">Hotel Services</span><span data-lang="es">Servicios del Hotel</span><span data-lang="pt">Serviços do Hotel</span><span data-lang="it">Servizi dell'Hotel</span></p>
+    <h2 class="section-title reveal" id="hs-title" style="text-align:center;transition-delay:.05s">Ocean Drift <em>Lodge</em></h2>
+    <ul class="hs-grid reveal" style="transition-delay:.1s" role="list">
+      <li class="hs-item"><span class="hs-icon">⌚</span><span class="hs-text"><span data-lang="fr" class="lang-visible">Réception 24h/24</span><span data-lang="en">24/7 Reception</span><span data-lang="es">Recepción 24h/24</span><span data-lang="pt">Receção 24h/24</span><span data-lang="it">Ricevimento 24h/24</span></span></li>
+      <li class="hs-item"><span class="hs-icon">⟳</span><span class="hs-text"><span data-lang="fr" class="lang-visible">Service de blanchisserie</span><span data-lang="en">Laundry service</span><span data-lang="es">Servicio de lavandería</span><span data-lang="pt">Serviço de lavandaria</span><span data-lang="it">Servizio lavanderia</span></span></li>
+      <li class="hs-item"><span class="hs-icon">◈</span><span class="hs-text"><span data-lang="fr" class="lang-visible">Conciergerie personnalisée</span><span data-lang="en">Personal concierge</span><span data-lang="es">Conserjería personalizada</span><span data-lang="pt">Concierge personalizada</span><span data-lang="it">Concierge personalizzata</span></span></li>
+      <li class="hs-item"><span class="hs-icon">✦</span><span class="hs-text"><span data-lang="fr" class="lang-visible">Ménage & petit-déjeuner</span><span data-lang="en">Cleaning & breakfast</span><span data-lang="es">Limpieza & desayuno</span><span data-lang="pt">Limpeza & pequeno-almoço</span><span data-lang="it">Pulizie & colazione</span></span></li>
+      <li class="hs-item"><span class="hs-icon">☕</span><span class="hs-text"><span data-lang="fr" class="lang-visible">Room service petit-déjeuner</span><span data-lang="en">Breakfast room service</span><span data-lang="es">Room service desayuno</span><span data-lang="pt">Room service pequeno-almoço</span><span data-lang="it">Room service colazione</span></span></li>
+      <li class="hs-item"><span class="hs-icon">◎</span><span class="hs-text"><span data-lang="fr" class="lang-visible">Assistance multilingue</span><span data-lang="en">Multilingual assistance</span><span data-lang="es">Asistencia multilingüe</span><span data-lang="pt">Assistência multilingue</span><span data-lang="it">Assistenza multilingue</span></span></li>
+      <li class="hs-item"><span class="hs-icon">➜</span><span class="hs-text"><span data-lang="fr" class="lang-visible">Service de transfert</span><span data-lang="en">Transfer service</span><span data-lang="es">Servicio de traslado</span><span data-lang="pt">Serviço de transfere</span><span data-lang="it">Servizio trasferimento</span></span></li>
+      <li class="hs-item"><span class="hs-icon">✧</span><span class="hs-text"><span data-lang="fr" class="lang-visible">Minibar & rafraîchissements</span><span data-lang="en">Minibar & refreshments</span><span data-lang="es">Minibar & refrigerios</span><span data-lang="pt">Minibar & refrescos</span><span data-lang="it">Minibar & rinfreschi</span></span></li>
+      <li class="hs-item"><span class="hs-icon">⬡</span><span class="hs-text"><span data-lang="fr" class="lang-visible">Coffre-fort en chambre</span><span data-lang="en">In-room safe</span><span data-lang="es">Caja fuerte en habitación</span><span data-lang="pt">Cofre no quarto</span><span data-lang="it">Cassaforte in camera</span></span></li>
+      <li class="hs-item"><span class="hs-icon">◇</span><span class="hs-text"><span data-lang="fr" class="lang-visible">Organisation d'événements privés</span><span data-lang="en">Private event organization</span><span data-lang="es">Organización de eventos privados</span><span data-lang="pt">Organização de eventos privados</span><span data-lang="it">Organizzazione eventi privati</span></span></li>
+      <li class="hs-item"><span class="hs-icon">◉</span><span class="hs-text"><span data-lang="fr" class="lang-visible">Service de réveil</span><span data-lang="en">Wake-up service</span><span data-lang="es">Servicio de despertador</span><span data-lang="pt">Serviço de despertar</span><span data-lang="it">Servizio sveglia</span></span></li>
+      <li class="hs-item"><span class="hs-icon">✦</span><span class="hs-text"><span data-lang="fr" class="lang-visible">Service de rafraîchissements</span><span data-lang="en">Refreshment service</span><span data-lang="es">Servicio de refrigerios</span><span data-lang="pt">Serviço de refrescos</span><span data-lang="it">Servizio rinfreschi</span></span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── CULTURE ── -->
+<section id="culture" aria-labelledby="culture-title">
+  <div class="two-col">
+    <div class="culture-img reveal" role="img" aria-label="Culture sahraoui"></div>
+    <div>
+      <p class="section-tag reveal">
+        <span data-lang="fr" class="lang-visible">Découverte</span>
+        <span data-lang="en">Discovery</span>
+        <span data-lang="es">Descubrimiento</span>
+        <span data-lang="pt">Descoberta</span>
+        <span data-lang="it">Scoperta</span>
+      </p>
+      <h2 class="section-title reveal" id="culture-title" style="transition-delay:.05s">
+        <span data-lang="fr" class="lang-visible">Désert <em>& Océan</em></span>
+        <span data-lang="en">Desert <em>& Ocean</em></span>
+        <span data-lang="es">Desierto <em>& Océano</em></span>
+        <span data-lang="pt">Deserto <em>& Oceano</em></span>
+        <span data-lang="it">Deserto <em>& Oceano</em></span>
+      </h2>
+      <div class="culture-cards reveal" style="transition-delay:.1s">
+        <div class="culture-card">
+          <div class="culture-card-title">
+            🏺 <span data-lang="fr" class="lang-visible">Visites guidées</span>
+            <span data-lang="en">Guided Tours</span>
+            <span data-lang="es">Visitas guiadas</span>
+            <span data-lang="pt">Visitas guiadas</span>
+            <span data-lang="it">Visite guidate</span>
+          </div>
+          <p class="culture-card-text">
+            <span data-lang="fr" class="lang-visible">Villages authentiques, artisanat et coutumes sahraouies. Via la conciergerie.</span>
+            <span data-lang="en">Authentic villages, Sahrawi crafts and customs. Through concierge.</span>
+            <span data-lang="es">Pueblos auténticos, artesanía y costumbres saharauis. A través de conserjería.</span>
+            <span data-lang="pt">Aldeias autênticas, artesanato e costumes saharauis. Através da concierge.</span>
+            <span data-lang="it">Villaggi autentici, artigianato e usanze saharawi. Tramite concierge.</span>
+          </p>
+        </div>
+        <div class="culture-card">
+          <div class="culture-card-title">
+            🐪 <span data-lang="fr" class="lang-visible">Excursions désert</span>
+            <span data-lang="en">Desert Excursions</span>
+            <span data-lang="es">Excursiones al desierto</span>
+            <span data-lang="pt">Excursões ao deserto</span>
+            <span data-lang="it">Escursioni nel deserto</span>
+          </div>
+          <p class="culture-card-text">
+            <span data-lang="fr" class="lang-visible">4x4, quad, bivouac sous les étoiles. Dunes à 30 min de la résidence.</span>
+            <span data-lang="en">4x4, quad, stargazing bivouac. Dunes 30 min from the residence.</span>
+            <span data-lang="es">4x4, quad, bivouac bajo las estrellas. Dunas a 30 min de la residencia.</span>
+            <span data-lang="pt">4x4, quad, bivouac sob as estrelas. Dunas a 30 min da residência.</span>
+            <span data-lang="it">4x4, quad, bivacco sotto le stelle. Dune a 30 min dalla residenza.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONSEILS ── -->
+<section id="conseils" aria-labelledby="conseils-title">
+  <div class="section-inner">
+    <p class="section-tag reveal">
+      <span data-lang="fr" class="lang-visible">Avant de partir</span>
+      <span data-lang="en">Before You Go</span>
+      <span data-lang="es">Antes de Salir</span>
+      <span data-lang="pt">Antes de Partir</span>
+      <span data-lang="it">Prima di Partire</span>
+    </p>
+    <h2 class="section-title reveal" id="conseils-title" style="transition-delay:.05s">
+      <span data-lang="fr" class="lang-visible">Conseils <em>pratiques</em></span>
+      <span data-lang="en">Practical <em>Tips</em></span>
+      <span data-lang="es">Consejos <em>prácticos</em></span>
+      <span data-lang="pt">Dicas <em>práticas</em></span>
+      <span data-lang="it">Consigli <em>pratici</em></span>
+    </h2>
+    <ul class="conseils-grid reveal" style="transition-delay:.1s" role="list">
+      <li class="conseil-card">
+        <div class="conseil-title">🌤️ <span data-lang="fr" class="lang-visible">Meilleure saison</span><span data-lang="en">Best Season</span><span data-lang="es">Mejor temporada</span><span data-lang="pt">Melhor época</span><span data-lang="it">Stagione migliore</span></div>
+        <p class="conseil-text"><span data-lang="fr" class="lang-visible">Octobre à mai. Entre 20°C et 30°C toute l'année.</span><span data-lang="en">October to May. Between 20°C and 30°C year-round.</span><span data-lang="es">Octubre a mayo. Entre 20°C y 30°C todo el año.</span><span data-lang="pt">Outubro a maio. Entre 20°C e 30°C todo o ano.</span><span data-lang="it">Ottobre a maggio. Tra 20°C e 30°C tutto l'anno.</span></p>
+      </li>
+      <li class="conseil-card">
+        <div class="conseil-title">🎒 <span data-lang="fr" class="lang-visible">Équipement</span><span data-lang="en">Equipment</span><span data-lang="es">Equipamiento</span><span data-lang="pt">Equipamento</span><span data-lang="it">Equipaggiamento</span></div>
+        <p class="conseil-text"><span data-lang="fr" class="lang-visible">Crème solaire, lunettes, vêtements légers et coupe-vent.</span><span data-lang="en">Sunscreen, sunglasses, light clothing and windbreaker.</span><span data-lang="es">Protector solar, gafas, ropa ligera y cortavientos.</span><span data-lang="pt">Protetor solar, óculos, roupa leve e corta-vento.</span><span data-lang="it">Crema solare, occhiali, abbigliamento leggero e giacca a vento.</span></p>
+      </li>
+      <li class="conseil-card">
+        <div class="conseil-title">🌊 <span data-lang="fr" class="lang-visible">Sécurité nautique</span><span data-lang="en">Water Safety</span><span data-lang="es">Seguridad náutica</span><span data-lang="pt">Segurança náutica</span><span data-lang="it">Sicurezza nautica</span></div>
+        <p class="conseil-text"><span data-lang="fr" class="lang-visible">Gilet de sauvetage obligatoire. Suivez les moniteurs.</span><span data-lang="en">Life jacket mandatory. Follow instructor guidelines.</span><span data-lang="es">Chaleco salvavidas obligatorio. Siga a los monitores.</span><span data-lang="pt">Colete salva-vidas obrigatório. Siga os monitores.</span><span data-lang="it">Giubbotto di salvataggio obbligatorio. Seguite gli istruttori.</span></p>
+      </li>
+      <li class="conseil-card">
+        <div class="conseil-title">🌿 <span data-lang="fr" class="lang-visible">Environnement</span><span data-lang="en">Environment</span><span data-lang="es">Medioambiente</span><span data-lang="pt">Ambiente</span><span data-lang="it">Ambiente</span></div>
+        <p class="conseil-text"><span data-lang="fr" class="lang-visible">Zéro déchet. Respectez la faune et les zones protégées.</span><span data-lang="en">Zero waste. Respect wildlife and protected areas.</span><span data-lang="es">Cero residuos. Respete la fauna y zonas protegidas.</span><span data-lang="pt">Zero resíduos. Respeite a fauna e zonas protegidas.</span><span data-lang="it">Zero rifiuti. Rispettate la fauna e le zone protette.</span></p>
+      </li>
+      <li class="conseil-card">
+        <div class="conseil-title">💧 <span data-lang="fr" class="lang-visible">Hydratation</span><span data-lang="en">Hydration</span><span data-lang="es">Hidratación</span><span data-lang="pt">Hidratação</span><span data-lang="it">Idratazione</span></div>
+        <p class="conseil-text"><span data-lang="fr" class="lang-visible">Toujours de l'eau en excursion. Le désert est trompeur.</span><span data-lang="en">Always bring water. Desert climate is deceptive.</span><span data-lang="es">Siempre agua en excursión. El desierto es engañoso.</span><span data-lang="pt">Sempre água nas excursões. O deserto é enganoso.</span><span data-lang="it">Sempre acqua nelle escursioni. Il deserto è ingannevole.</span></p>
+      </li>
+      <li class="conseil-card">
+        <div class="conseil-title">🛒 <span data-lang="fr" class="lang-visible">Courses</span><span data-lang="en">Shopping</span><span data-lang="es">Compras</span><span data-lang="pt">Compras</span><span data-lang="it">Spesa</span></div>
+        <p class="conseil-text"><span data-lang="fr" class="lang-visible">Supermarché à 5 min. Livraison via conciergerie.</span><span data-lang="en">Supermarket 5 min away. Delivery through concierge.</span><span data-lang="es">Supermercado a 5 min. Entrega a través de conserjería.</span><span data-lang="pt">Supermercado a 5 min. Entrega através da concierge.</span><span data-lang="it">Supermercato a 5 min. Consegna tramite concierge.</span></p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── CONTACTS ── -->
+<section id="contacts" aria-labelledby="contacts-title">
+  <div class="section-inner">
+    <p class="section-tag reveal">
+      <span data-lang="fr" class="lang-visible">Réservations & Contact</span>
+      <span data-lang="en">Reservations & Contact</span>
+      <span data-lang="es">Reservas & Contacto</span>
+      <span data-lang="pt">Reservas & Contato</span>
+      <span data-lang="it">Prenotazioni & Contatto</span>
+    </p>
+    <h2 class="section-title reveal" id="contacts-title" style="transition-delay:.05s">
+      <span data-lang="fr" class="lang-visible">Nous <em>contacter</em></span>
+      <span data-lang="en">Contact <em>us</em></span>
+      <span data-lang="es">Contáctenos</span>
+      <span data-lang="pt">Contacte-<em>nos</em></span>
+      <span data-lang="it">Contattateci</span>
+    </h2>
+    <ul class="contacts-grid reveal" style="transition-delay:.1s" role="list">
+      <li class="contact-card">
+        <div class="contact-card-title"><span data-lang="fr" class="lang-visible">Accueil · 24h/24</span><span data-lang="en">Reception · 24/7</span><span data-lang="es">Recepción · 24h/24</span><span data-lang="pt">Receção · 24h/24</span><span data-lang="it">Ricevimento · 24h/24</span></div>
+        <div class="contact-name">Ocean Drift Lodge</div>
+        <p class="contact-detail">📍 <a href="https://www.google.com/maps?q=23.72,-15.95" class="contact-link" target="_blank" rel="noopener">Résidence West Point, Foum El Bouir, Dakhla</a></p>
+        <p class="contact-detail">📞 <a href="tel:+212600000000">+212 6 00 00 00 00</a></p>
+        <p class="contact-detail">🌐 <a href="http://www.oceandriftlodge.com">oceandriftlodge.com</a></p>
+      </li>
+      <li class="contact-card">
+        <div class="contact-card-title"><span data-lang="fr" class="lang-visible">Réservations</span><span data-lang="en">Reservations</span><span data-lang="es">Reservas</span><span data-lang="pt">Reservas</span><span data-lang="it">Prenotazioni</span></div>
+        <div class="contact-name"><span data-lang="fr" class="lang-visible">Activités & Excursions</span><span data-lang="en">Activities & Excursions</span><span data-lang="es">Actividades & Excursiones</span><span data-lang="pt">Atividades & Excursões</span><span data-lang="it">Attività & Escursioni</span></div>
+        <p class="contact-detail">✉️ <a href="mailto:reservations@oceandriftlodge.com">reservations@oceandriftlodge.com</a></p>
+        <p class="contact-detail">📞 <a href="tel:+212600000001">+212 6 00 00 00 01</a></p>
+        <p class="contact-detail">💬 <a href="https://wa.me/212600000001" class="contact-link" target="_blank" rel="noopener">WhatsApp</a></p>
+      </li>
+      <li class="contact-card">
+        <div class="contact-card-title"><span data-lang="fr" class="lang-visible">Conciergerie</span><span data-lang="en">Concierge</span><span data-lang="es">Conserjería</span><span data-lang="pt">Concierge</span><span data-lang="it">Concierge</span></div>
+        <div class="contact-name"><span data-lang="fr" class="lang-visible">Services personnalisés</span><span data-lang="en">Personalized services</span><span data-lang="es">Servicios personalizados</span><span data-lang="pt">Serviços personalizados</span><span data-lang="it">Servizi personalizzati</span></div>
+        <p class="contact-detail">📞 <a href="tel:+212600000002">+212 6 00 00 00 02</a></p>
+        <p class="contact-detail">✉️ <a href="mailto:concierge@oceandriftlodge.com">concierge@oceandriftlodge.com</a></p>
+      </li>
+      <li class="contact-card">
+        <div class="contact-card-title"><span data-lang="fr" class="lang-visible">Urgences · 24h/24</span><span data-lang="en">Emergencies · 24/7</span><span data-lang="es">Emergencias · 24h/24</span><span data-lang="pt">Emergências · 24h/24</span><span data-lang="it">Emergenze · 24h/24</span></div>
+        <div class="contact-name"><span data-lang="fr" class="lang-visible">Assistance urgente</span><span data-lang="en">Urgent assistance</span><span data-lang="es">Asistencia urgente</span><span data-lang="pt">Assistência urgente</span><span data-lang="it">Assistenza urgente</span></div>
+        <p class="contact-detail">📞 <a href="tel:+212600000003">+212 6 00 00 00 03</a></p>
+        <p class="contact-detail">🌐 <a href="http://www.oceandriftlodge.com/urgences">oceandriftlodge.com/urgences</a></p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <picture class="logo-stable footer-logo-wrap"><source srcset="logo.webp" type="image/webp"><img class="no-translate footer-logo-img" src="logo.png" alt="Ocean Drift Lodge" onerror="this.style.display='none'"></picture>
+  <span class="footer-logo-txt">Ocean Drift <em>Lodge</em></span>
+  <nav class="footer-links">
+    <a href="index.html"><span data-lang="fr">L'appartement</span><span data-lang="en">The apartment</span><span data-lang="es">El apartamento</span><span data-lang="pt">O apartamento</span><span data-lang="it">L'appartamento</span></a>
+    <a href="livret-accueil.html"><span data-lang="fr">Livret d'accueil</span><span data-lang="en">Welcome guide</span><span data-lang="es">Guía de bienvenida</span><span data-lang="pt">Guia de boas-vindas</span><span data-lang="it">Guida di benvenuto</span></a>
+    <a href="guide-du-voyageur.html"><span data-lang="fr">Guide local</span><span data-lang="en">Local guide</span><span data-lang="es">Guía local</span><span data-lang="pt">Guia local</span><span data-lang="it">Guida locale</span></a>
+  </nav>
+  <nav class="footer-links" aria-label="Liens légaux">
+    <a href="cgv.html"><span data-lang="fr">CGV</span><span data-lang="en">GTC</span><span data-lang="es">CGV</span><span data-lang="pt">CGV</span><span data-lang="it">CGV</span></a>
+    <a href="mentions-legales.html"><span data-lang="fr">Mentions légales</span><span data-lang="en">Legal notice</span><span data-lang="es">Aviso legal</span><span data-lang="pt">Aviso legal</span><span data-lang="it">Note legali</span></a>
+    <a href="confidentialite.html"><span data-lang="fr">Confidentialité</span><span data-lang="en">Privacy</span><span data-lang="es">Privacidad</span><span data-lang="pt">Privacidade</span><span data-lang="it">Privacy</span></a>
+  </nav>
+  <span>© 2026 Ocean Drift Lodge · Dakhla, Maroc</span>
+</footer>
+
+<script>
+/* ── PROGRESS ── */
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement;
+  document.getElementById('progress').style.width=((s.scrollTop/(s.scrollHeight-s.clientHeight))*100)+'%';
+},{passive:true});
+
+/* ── NAV SCROLL ── */
+(function(){
+  const nav=document.getElementById('nav');let tick=false;
+  function u(){nav.classList.toggle('scrolled',window.scrollY>60);tick=false}
+  window.addEventListener('scroll',()=>{if(!tick){requestAnimationFrame(u);tick=true}},{passive:true});
+})();
+
+/* ── BACK TO TOP ── */
+window.addEventListener('scroll',()=>{
+  document.getElementById('back-top').classList.toggle('visible',window.scrollY>400);
+},{passive:true});
+
+/* ── ACTIVE NAV ── */
+(function(){
+  const ids=['dakhla','checkin','prestations','pescador','culture','conseils','contacts'];
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        document.querySelectorAll('[data-nav]').forEach(a=>a.classList.remove('active'));
+        const a=document.querySelector('[data-nav="'+e.target.id+'"]');
+        if(a)a.classList.add('active');
+      }
+    });
+  },{threshold:.3});
+  ids.forEach(id=>{const el=document.getElementById(id);if(el)obs.observe(el);});
+})();
+
+/* ── SMOOTH SCROLL ── */
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
+  link.addEventListener('click',e=>{
+    const t=document.querySelector(link.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+
+/* ── REVEAL ── */
+(function(){
+  if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));return;}
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+  }),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+
+/* ── LANG ── */
+function setLang(lang){document.documentElement.classList.add('js-lang');
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.trim().toLowerCase()===lang));
+  document.querySelectorAll('[data-lang]').forEach(el=>el.classList.toggle('lang-visible',el.dataset.lang===lang));
+}
+document.addEventListener('DOMContentLoaded',()=>setLang('fr'));
+
+/* ── BOTTOM NAV ACTIVE ── */
+(function(){
+  const items = document.querySelectorAll('.bnav-item');
+  const sections = ['checkin','prestations','pescador','contacts'];
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if(el && window.scrollY >= el.offsetTop - 120) current = id;
+    });
+    items.forEach(item => {
+      item.classList.toggle('active', item.getAttribute('href') === '#' + current);
+    });
+  }, { passive: true });
+})();
+</script>
+<nav id="bottom-nav" aria-label="Navigation rapide">
+  <a href="#checkin" class="bnav-item">
+    🔑 <span data-lang="fr">Arrivée</span><span data-lang="en">Check-in</span>
+       <span data-lang="es">Llegada</span><span data-lang="pt">Chegada</span>
+       <span data-lang="it">Arrivo</span>
+  </a>
+  <a href="#prestations" class="bnav-item">
+    🏊 <span data-lang="fr">Services</span><span data-lang="en">Services</span>
+       <span data-lang="es">Servicios</span><span data-lang="pt">Serviços</span>
+       <span data-lang="it">Servizi</span>
+  </a>
+  <a href="#pescador" class="bnav-item">
+    🍽️ <span data-lang="fr">Restaurant</span><span data-lang="en">Restaurant</span>
+        <span data-lang="es">Restaurante</span><span data-lang="pt">Restaurante</span>
+        <span data-lang="it">Ristorante</span>
+  </a>
+  <a href="#contacts" class="bnav-item">
+    📞 <span data-lang="fr">Contacts</span><span data-lang="en">Contacts</span>
+        <span data-lang="es">Contactos</span><span data-lang="pt">Contactos</span>
+        <span data-lang="it">Contatti</span>
+  </a>
+</nav>
+</body>
+</html>
