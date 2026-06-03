@@ -195,29 +195,13 @@ section{padding:6rem 3.5rem}
       <span data-lang="it">Qual è il tuo profilo?</span>
     </p>
     <div class="profiles reveal" style="transition-delay:.35s" role="group" aria-label="Sélection de profil">
-      <button class="profile-btn" data-profile="surfer" onclick="setProfile(this,'surfer')">
-        <span class="p-icon">🏄</span>
-        <span data-lang="fr" class="lang-visible">Surfeur</span>
-        <span data-lang="en">Surfer</span>
-        <span data-lang="es">Surfista</span>
-        <span data-lang="pt">Surfista</span>
-        <span data-lang="it">Surfista</span>
-      </button>
       <button class="profile-btn" data-profile="kiter" onclick="setProfile(this,'kiter')">
         <span class="p-icon">🪁</span>
-        <span data-lang="fr" class="lang-visible">Kiteur</span>
-        <span data-lang="en">Kiter</span>
-        <span data-lang="es">Kitero</span>
+        <span data-lang="fr" class="lang-visible">Kitesurfeur</span>
+        <span data-lang="en">Kitesurfer</span>
+        <span data-lang="es">Kitesurfista</span>
         <span data-lang="pt">Kitesurfista</span>
         <span data-lang="it">Kitesurfista</span>
-      </button>
-      <button class="profile-btn" data-profile="aventurier" onclick="setProfile(this,'aventurier')">
-        <span class="p-icon">🐪</span>
-        <span data-lang="fr" class="lang-visible">Aventurier</span>
-        <span data-lang="en">Adventurer</span>
-        <span data-lang="es">Aventurero</span>
-        <span data-lang="pt">Aventureiro</span>
-        <span data-lang="it">Avventuriero</span>
       </button>
       <button class="profile-btn" data-profile="famille" onclick="setProfile(this,'famille')">
         <span class="p-icon">👨‍👩‍👧</span>
@@ -234,6 +218,22 @@ section{padding:6rem 3.5rem}
         <span data-lang="es">Pareja</span>
         <span data-lang="pt">Casal</span>
         <span data-lang="it">Coppia</span>
+      </button>
+      <button class="profile-btn" data-profile="nomade" onclick="setProfile(this,'nomade')">
+        <span class="p-icon">💻</span>
+        <span data-lang="fr" class="lang-visible">Nomade digital</span>
+        <span data-lang="en">Digital nomad</span>
+        <span data-lang="es">Nómada digital</span>
+        <span data-lang="pt">Nómada digital</span>
+        <span data-lang="it">Nomade digitale</span>
+      </button>
+      <button class="profile-btn" data-profile="nature" onclick="setProfile(this,'nature')">
+        <span class="p-icon">🌿</span>
+        <span data-lang="fr" class="lang-visible">Nature & Culture</span>
+        <span data-lang="en">Nature & Culture</span>
+        <span data-lang="es">Naturaleza & Cultura</span>
+        <span data-lang="pt">Natureza & Cultura</span>
+        <span data-lang="it">Natura & Cultura</span>
       </button>
     </div>
 
@@ -301,17 +301,9 @@ section{padding:6rem 3.5rem}
     </div>
 
     <!-- Recommandations par profil -->
-    <div class="profile-reco" id="reco-surfer">
-      <p class="reco-label"><span data-lang="fr" class="lang-visible">🏄 Pour vous, surfeur</span><span data-lang="en">🏄 For you, surfer</span><span data-lang="es">🏄 Para ti, surfista</span><span data-lang="pt">🏄 Para si, surfista</span><span data-lang="it">🏄 Per voi, surfista</span></p>
-      <p class="reco-text"><span data-lang="fr" class="lang-visible">Foum El Bouir est votre spot de base — accès direct depuis la résidence. La droite fonctionne de septembre à avril. Complétez avec une session wing à la lagune si le swell est plat.</span><span data-lang="en">Foum El Bouir is your home spot — direct access from the residence. The right-hander runs September to April. Add a wing session at the lagoon when the swell is flat.</span><span data-lang="es">Foum El Bouir es tu spot base — acceso directo desde la residencia. La derecha funciona de septiembre a abril. Añade una sesión de wing en la laguna si el swell está plano.</span><span data-lang="pt">Foum El Bouir é o seu spot de base — acesso direto desde a residência. A direita funciona de setembro a abril. Complete com uma sessão de wing na lagoa se o swell estiver plano.</span><span data-lang="it">Foum El Bouir è il vostro spot di base — accesso diretto dalla residenza. Il diritto funziona da settembre ad aprile. Aggiungete una sessione wing alla laguna se il swell è piatto.</span></p>
-    </div>
     <div class="profile-reco" id="reco-kiter">
-      <p class="reco-label"><span data-lang="fr" class="lang-visible">🪁 Pour vous, kiteur</span><span data-lang="en">🪁 For you, kiter</span><span data-lang="es">🪁 Para ti, kitero</span><span data-lang="pt">🪁 Para si, kitesurfista</span><span data-lang="it">🪁 Per voi, kitesurfista</span></p>
+      <p class="reco-label"><span data-lang="fr" class="lang-visible">🪁 Pour vous, kitesurfeur</span><span data-lang="en">🪁 For you, kitesurfer</span><span data-lang="es">🪁 Para ti, kitesurfista</span><span data-lang="pt">🪁 Para si, kitesurfista</span><span data-lang="it">🪁 Per voi, kitesurfista</span></p>
       <p class="reco-text"><span data-lang="fr" class="lang-visible">La Lagune PK 25 est votre terrain de jeu principal. Foum El Bouir pour les sessions wing en vagues quand vous aurez le niveau. Comptez 15 min en taxi depuis la résidence.</span><span data-lang="en">Lagoon PK 25 is your main playground. Foum El Bouir for wing-in-waves sessions when you're ready. 15 minutes by taxi from the residence.</span><span data-lang="es">La Laguna PK 25 es tu campo de juego principal. Foum El Bouir para las sesiones de wing en olas cuando tengas el nivel. 15 min en taxi desde la residencia.</span><span data-lang="pt">A Lagoa PK 25 é o seu terreno de jogo principal. Foum El Bouir para sessões de wing em ondas quando tiver o nível. 15 minutos de táxi desde a residência.</span><span data-lang="it">La Laguna PK 25 è il vostro campo da gioco principale. Foum El Bouir per le sessioni wing-in-waves quando avrete il livello. 15 minuti in taxi dalla residenza.</span></p>
-    </div>
-    <div class="profile-reco" id="reco-aventurier">
-      <p class="reco-label"><span data-lang="fr" class="lang-visible">🐪 Pour vous, aventurier</span><span data-lang="en">🐪 For you, adventurer</span><span data-lang="es">🐪 Para ti, aventurero</span><span data-lang="pt">🐪 Para si, aventureiro</span><span data-lang="it">🐪 Per voi, avventuriero</span></p>
-      <p class="reco-text"><span data-lang="fr" class="lang-visible">Foum El Bouir le matin pour le surf ou l'observation, la Dune Blanche l'après-midi en quad, bivouac dans le désert le soir. Le programme parfait.</span><span data-lang="en">Foum El Bouir in the morning for surf or watching, the White Dune in the afternoon by quad, bivouac in the desert at night. The perfect itinerary.</span><span data-lang="es">Foum El Bouir por la mañana para surf o avistar, la Duna Blanca por la tarde en quad, bivouac en el desierto por la noche. El programa perfecto.</span><span data-lang="pt">Foum El Bouir de manhã para surf ou observação, Duna Branca à tarde em quad, bivaque no deserto à noite. O programa perfeito.</span><span data-lang="it">Foum El Bouir la mattina per il surf o l'osservazione, la Duna Bianca nel pomeriggio in quad, bivacco nel deserto la sera. Il programma perfetto.</span></p>
     </div>
     <div class="profile-reco" id="reco-famille">
       <p class="reco-label"><span data-lang="fr" class="lang-visible">👨‍👩‍👧 Pour vous, en famille</span><span data-lang="en">👨‍👩‍👧 For you, as a family</span><span data-lang="es">👨‍👩‍👧 Para vosotros, en familia</span><span data-lang="pt">👨‍👩‍👧 Para vós, em família</span><span data-lang="it">👨‍👩‍👧 Per voi, in famiglia</span></p>
@@ -320,6 +312,14 @@ section{padding:6rem 3.5rem}
     <div class="profile-reco" id="reco-couple">
       <p class="reco-label"><span data-lang="fr" class="lang-visible">💫 Pour vous, en couple</span><span data-lang="en">💫 For you, as a couple</span><span data-lang="es">💫 Para vosotros, en pareja</span><span data-lang="pt">💫 Para vós, em casal</span><span data-lang="it">💫 Per voi, in coppia</span></p>
       <p class="reco-text"><span data-lang="fr" class="lang-visible">Yoga au lever du soleil sur la plage, source Asma en milieu de journée, coucher de soleil au Pescador. Ajoutez une nuit de bivouac dans le désert — inoubliable.</span><span data-lang="en">Sunrise yoga on the beach, Source Asma at midday, sunset at Pescador. Add a night's bivouac in the desert — unforgettable.</span><span data-lang="es">Yoga al amanecer en la playa, fuente Asma a mediodía, puesta de sol en el Pescador. Añade una noche de bivouac en el desierto — inolvidable.</span><span data-lang="pt">Yoga ao nascer do sol na praia, nascente Asma ao meio-dia, pôr do sol no Pescador. Acrescente uma noite de bivaque no deserto — inesquecível.</span><span data-lang="it">Yoga all'alba sulla spiaggia, sorgente Asma a mezzogiorno, tramonto al Pescador. Aggiungete una notte di bivacco nel deserto — indimenticabile.</span></p>
+    </div>
+    <div class="profile-reco" id="reco-nomade">
+      <p class="reco-label"><span data-lang="fr" class="lang-visible">💻 Pour vous, nomade digital</span><span data-lang="en">💻 For you, digital nomad</span><span data-lang="es">💻 Para ti, nómada digital</span><span data-lang="pt">💻 Para si, nómada digital</span><span data-lang="it">💻 Per voi, nomade digitale</span></p>
+      <p class="reco-text"><span data-lang="fr" class="lang-visible">Matin de travail depuis la résidence (fibre + silence), après-midi kite ou paddle à la lagune. Le Pescador pour les calls clients avec vue sur l'Atlantique. Dakhla, bureau avec vue sur l'infini.</span><span data-lang="en">Morning work from the residence (fibre + quiet), afternoon kite or paddle at the lagoon. Pescador for client calls with Atlantic views. Dakhla, office with a view of infinity.</span><span data-lang="es">Mañana de trabajo desde la residencia (fibra + silencio), tarde de kite o paddle en la laguna. Pescador para llamadas de clientes con vistas al Atlántico. Dakhla, oficina con vistas al infinito.</span><span data-lang="pt">Manhã de trabalho desde a residência (fibra + silêncio), tarde de kite ou paddle na lagoa. Pescador para chamadas de clientes com vista para o Atlântico. Dakhla, escritório com vista para o infinito.</span><span data-lang="it">Mattina di lavoro dalla residenza (fibra + silenzio), pomeriggio kite o paddle alla laguna. Pescador per le chiamate clienti con vista sull'Atlantico. Dakhla, ufficio con vista sull'infinito.</span></p>
+    </div>
+    <div class="profile-reco" id="reco-nature">
+      <p class="reco-label"><span data-lang="fr" class="lang-visible">🌿 Pour vous, nature & culture</span><span data-lang="en">🌿 For you, nature & culture</span><span data-lang="es">🌿 Para ti, naturaleza & cultura</span><span data-lang="pt">🌿 Para si, natureza & cultura</span><span data-lang="it">🌿 Per voi, natura & cultura</span></p>
+      <p class="reco-text"><span data-lang="fr" class="lang-visible">Observation des flamants roses à la source Asma, randonnée sur la Dune Blanche, marché artisanal de Dakhla ville. Bivouac au coucher du soleil pour finir en beauté.</span><span data-lang="en">Flamingo watching at Source Asma, hike on the White Dune, artisan market in Dakhla town. Desert bivouac at sunset for a perfect finish.</span><span data-lang="es">Observación de flamencos en la fuente Asma, senderismo en la Duna Blanca, mercado artesanal de Dakhla ciudad. Bivouac al atardecer para terminar en belleza.</span><span data-lang="pt">Observação de flamingos na nascente Asma, caminhada na Duna Branca, mercado artesanal de Dakhla cidade. Bivaque ao pôr do sol para um final perfeito.</span><span data-lang="it">Osservazione dei fenicotteri alla sorgente Asma, escursione sulla Duna Bianca, mercato artigianale di Dakhla città. Bivacco al tramonto per un finale perfetto.</span></p>
     </div>
   </div>
 </section>
