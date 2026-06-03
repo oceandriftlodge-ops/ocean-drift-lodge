@@ -378,11 +378,39 @@
   border-top: 1px solid rgba(28,28,26,.07);
 }
 
+/* Size pill */
+.card-size {
+  display: flex; align-items: center; gap: .35rem;
+  flex-wrap: wrap;
+}
+.card-size-orig {
+  font-size: .58rem; letter-spacing: .06em;
+  color: var(--ink-light); text-decoration: line-through;
+}
+.card-size-new {
+  font-size: .58rem; letter-spacing: .06em; color: var(--teal);
+}
+.card-size-arrow {
+  font-size: .58rem; color: var(--ink-light);
+}
+
 /* Error card state */
 .card-error {
-  padding: 1rem;
   font-size: .72rem; color: var(--peach);
-  text-align: center;
+  line-height: 1.5;
+}
+.card-error-type {
+  font-size: .58rem; letter-spacing: .1em;
+  text-transform: uppercase; font-weight: 500;
+  color: var(--ink-light); margin-top: .3rem; display: block;
+}
+
+/* Status step label */
+.status-step {
+  font-size: .6rem; letter-spacing: .12em; text-transform: uppercase;
+  font-weight: 500; color: var(--ink-light); white-space: nowrap;
+  padding: .2rem .6rem; border-radius: 10px;
+  background: rgba(28,28,26,.06);
 }
 
 /* ── EMPTY STATE ── */
@@ -575,6 +603,7 @@
     <div class="status-bar" id="status-bar">
       <div class="status-spinner"></div>
       <span class="status-text" id="status-text">Analyse en cours…</span>
+      <span class="status-step" id="status-step"></span>
       <div class="progress-bar-wrap">
         <div class="progress-bar-fill" id="progress-fill"></div>
       </div>
@@ -648,6 +677,7 @@ const fileInput   = document.getElementById('file-input');
 const btnBrowse   = document.getElementById('btn-browse');
 const statusBar   = document.getElementById('status-bar');
 const statusText  = document.getElementById('status-text');
+const statusStep  = document.getElementById('status-step');
 const statusCount = document.getElementById('status-count');
 const progressFill = document.getElementById('progress-fill');
 const toolbar     = document.getElementById('toolbar');
@@ -714,23 +744,35 @@ async function handleFiles(files) {
     const id = ++idCounter;
     const item = {
       id, filename: file.name, dataUrl: null,
-      mediaType: file.type || 'image/jpeg',
-      status: 'loading',
+      base64: null, mediaType: 'image/jpeg',
+      sizeOriginal: file.size, sizeCompressed: null,
+      status: 'loading', step: 'Chargement…',
       category: null, page: null, score: null,
-      description: null, alt_text: null, error: null
+      description: null, alt_text: null,
+      error: null, errorType: null
     };
     results.unshift(item);
     renderGrid();
 
     try {
-      item.dataUrl = await fileToDataUrl(file);
+      analyseTotal++;
+      item.step = 'Compression…';
+      renderCard(item);
+      setStatusStep(item.filename, 'Compression', 10);
+      const compressed = await resizeAndCompress(file);
+      item.dataUrl = compressed.dataUrl;
+      item.base64 = compressed.base64;
+      item.sizeCompressed = compressed.sizeCompressed;
       item.status = 'analysing';
+      item.step = 'Envoi à l\'API…';
       renderCard(item);
       await analyseImage(item);
     } catch (err) {
       item.status = 'error';
       item.error = err.message || 'Erreur inconnue';
+      item.errorType = err.type || 'unknown';
     }
+    analyseDone++;
     renderCard(item);
     updateCounts();
   }
@@ -739,25 +781,35 @@ async function handleFiles(files) {
   toolbar.style.display = results.length ? 'flex' : 'none';
 }
 
-function fileToDataUrl(file) {
+// ── RESIZE & COMPRESS ──
+function resizeAndCompress(file) {
   return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = e => resolve(e.target.result);
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
+    const img = new Image();
+    const blobUrl = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(blobUrl);
+      const MAX = 1024;
+      let w = img.naturalWidth, h = img.naturalHeight;
+      if (w > MAX || h > MAX) {
+        if (w >= h) { h = Math.round(h * MAX / w); w = MAX; }
+        else        { w = Math.round(w * MAX / h); h = MAX; }
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+      const base64 = dataUrl.split(',')[1];
+      // base64 → approx bytes: each char = 6 bits → 3/4 bytes
+      const sizeCompressed = Math.round(base64.length * 0.75);
+      resolve({ dataUrl, base64, sizeCompressed });
+    };
+    img.onerror = () => { URL.revokeObjectURL(blobUrl); reject(new Error('Impossible de lire l\'image')); };
+    img.src = blobUrl;
   });
 }
 
 // ── ANTHROPIC CALL ──
 async function analyseImage(item) {
-  const base64 = item.dataUrl.split(',')[1];
-  const mediaType = item.mediaType.includes('webp') ? 'image/webp'
-                  : item.mediaType.includes('png')  ? 'image/png'
-                  : item.mediaType.includes('gif')  ? 'image/gif'
-                  : 'image/jpeg';
-
-  showStatusBar(item.filename);
-
   const prompt = `Tu es un expert en marketing visuel pour Ocean Drift Lodge (ODL), un appartement de surf et kitesurf haut de gamme à Dakhla, Maroc.
 
 Analyse cette photo et retourne UNIQUEMENT un objet JSON valide (aucun texte avant ou après) avec cette structure exacte :
@@ -785,62 +837,118 @@ Pour "rejeter" : score toujours ≤ 4.`;
     messages: [{
       role: 'user',
       content: [
-        { type: 'image', source: { type: 'base64', media_type: mediaType, data: base64 } },
+        { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: item.base64 } },
         { type: 'text', text: prompt }
       ]
     }]
   };
 
-  const response = await fetch(API_URL, {
-    method: 'POST',
-    headers: {
-      'x-api-key': API_KEY,
-      'anthropic-version': '2023-06-01',
-      'content-type': 'application/json',
-      'anthropic-dangerous-allow-browser': 'true'
-    },
-    body: JSON.stringify(body)
-  });
+  // ── Envoi avec timeout 60s ──
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 60000);
 
+  setStatusStep(item.filename, 'Envoi API', 40);
+  item.step = 'Envoi à l\'API…';
+  renderCard(item);
+
+  let response;
+  try {
+    response = await fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'x-api-key': API_KEY,
+        'anthropic-version': '2023-06-01',
+        'content-type': 'application/json',
+        'anthropic-dangerous-allow-browser': 'true'
+      },
+      body: JSON.stringify(body),
+      signal: controller.signal
+    });
+  } catch (fetchErr) {
+    clearTimeout(timer);
+    if (fetchErr.name === 'AbortError') {
+      const e = new Error('Timeout — l\'API n\'a pas répondu en 60 s. Vérifiez votre connexion.');
+      e.type = 'timeout';
+      throw e;
+    }
+    const e = new Error('Erreur réseau — impossible de joindre l\'API Anthropic.');
+    e.type = 'network';
+    throw e;
+  }
+  clearTimeout(timer);
+
+  // ── Erreurs HTTP classifiées ──
   if (!response.ok) {
-    const err = await response.json().catch(() => ({}));
-    throw new Error(err.error?.message || `HTTP ${response.status}`);
+    const errData = await response.json().catch(() => ({}));
+    const apiMsg  = errData.error?.message || '';
+    let e;
+    if (response.status === 401) {
+      e = new Error('Clé API invalide ou expirée. Vérifiez votre clé dans la console Anthropic.');
+      e.type = 'auth';
+    } else if (response.status === 429) {
+      e = new Error('Limite de requêtes atteinte. Attendez quelques secondes puis réessayez.');
+      e.type = 'rate';
+    } else if (response.status === 413 || /too large|size|image/i.test(apiMsg)) {
+      e = new Error('Image trop volumineuse pour l\'API, même après compression.');
+      e.type = 'size';
+    } else if (response.status >= 500) {
+      e = new Error(`Erreur serveur Anthropic (${response.status}). Réessayez dans un moment.`);
+      e.type = 'server';
+    } else {
+      e = new Error(`Erreur API ${response.status}${apiMsg ? ' : ' + apiMsg : ''}`);
+      e.type = 'api';
+    }
+    throw e;
   }
 
-  const data = await response.json();
-  const raw = data.content?.[0]?.text || '';
+  setStatusStep(item.filename, 'Analyse IA', 75);
+  item.step = 'Analyse IA…';
+  renderCard(item);
 
-  // Extract JSON — handle possible markdown fences
+  const data = await response.json();
+  const raw  = data.content?.[0]?.text || '';
+
+  // Extraire le JSON (gère les blocs ```json``` éventuels)
   const jsonMatch = raw.match(/\{[\s\S]*\}/);
-  if (!jsonMatch) throw new Error('Réponse JSON invalide');
+  if (!jsonMatch) {
+    const e = new Error('Réponse inattendue de l\'API — aucun JSON trouvé.');
+    e.type = 'parse';
+    throw e;
+  }
 
   const parsed = JSON.parse(jsonMatch[0]);
-
   item.category    = parsed.categorie   || 'rejeter';
   item.page        = parsed.page        || '—';
   item.score       = parseInt(parsed.score) || 0;
   item.description = parsed.description || '';
   item.alt_text    = parsed.alt_text    || '';
   item.status      = 'done';
+  item.step        = '';
 }
 
 // ── STATUS BAR ──
 let analyseTotal = 0, analyseDone = 0;
 
-function showStatusBar(filename) {
-  analyseTotal++;
+// pct : progression locale de l'image courante (0-100)
+function setStatusStep(filename, stepLabel, pct) {
+  analyseTotal = Math.max(analyseTotal, 1);
   statusBar.classList.add('visible');
-  statusText.textContent = `Analyse de ${filename}…`;
-  const pct = analyseTotal > 1 ? Math.round(analyseDone / analyseTotal * 100) : 20;
-  progressFill.style.width = pct + '%';
-  statusCount.textContent = `${analyseDone}/${analyseTotal}`;
+  // nom de fichier tronqué
+  const short = filename.length > 28 ? filename.slice(0, 25) + '…' : filename;
+  statusText.textContent = short;
+  statusStep.textContent = stepLabel;
+  // barre = (done / total) + fraction de l'image courante
+  const globalPct = Math.round((analyseDone / analyseTotal) * 100 + (pct / analyseTotal));
+  progressFill.style.width = Math.min(globalPct, 98) + '%';
+  statusCount.textContent = `${analyseDone + 1} / ${analyseTotal}`;
 }
 
 function hideStatusBar() {
   analyseDone = analyseTotal;
   progressFill.style.width = '100%';
-  statusCount.textContent = `${analyseTotal}/${analyseTotal}`;
   statusText.textContent = 'Analyse terminée ✓';
+  statusStep.textContent = '';
+  statusCount.textContent = `${analyseTotal} / ${analyseTotal}`;
   setTimeout(() => {
     statusBar.classList.remove('visible');
     analyseTotal = 0; analyseDone = 0;
@@ -922,23 +1030,35 @@ function updateCardHTML(card, item) {
         <img src="${thumbSrc}" alt="${esc(item.filename)}" loading="lazy">
         <div class="card-overlay">
           <div class="overlay-spinner"></div>
-          <span>Analyse IA…</span>
+          <span>${esc(item.step || 'Analyse IA…')}</span>
+          ${item.sizeCompressed ? `<span style="font-size:.58rem;opacity:.65;">${formatBytes(item.sizeCompressed)}</span>` : ''}
         </div>
       </div>
       <div class="card-body">
         <p class="card-filename">${esc(item.filename)}</p>
+        ${item.sizeOriginal && item.sizeCompressed ? `
+        <div class="card-size">
+          <span class="card-size-orig">${formatBytes(item.sizeOriginal)}</span>
+          <span class="card-size-arrow">→</span>
+          <span class="card-size-new">${formatBytes(item.sizeCompressed)}</span>
+        </div>` : ''}
       </div>`;
     return;
   }
 
   if (item.status === 'error') {
+    const errIcon = { auth: '🔑', size: '📦', timeout: '⏱', network: '📡', rate: '🚦', server: '🛠', parse: '📄' }[item.errorType] || '⚠';
+    const errTypeLabel = { auth: 'Clé invalide', size: 'Image trop lourde', timeout: 'Timeout', network: 'Réseau', rate: 'Rate limit', server: 'Erreur serveur', parse: 'Parsing' }[item.errorType] || 'Erreur';
     card.innerHTML = `
-      <div class="card-thumb">
-        ${thumbSrc ? `<img src="${thumbSrc}" alt="" loading="lazy">` : ''}
+      <div class="card-thumb" style="background:var(--bg-sand-md);">
+        ${thumbSrc ? `<img src="${thumbSrc}" alt="" loading="lazy" style="opacity:.4;">` : ''}
+        <div class="card-overlay" style="background:rgba(200,96,58,.18);">
+          <span style="font-size:1.8rem;">${errIcon}</span>
+        </div>
       </div>
       <div class="card-body">
         <p class="card-filename">${esc(item.filename)}</p>
-        <p class="card-error">⚠ ${esc(item.error)}</p>
+        <p class="card-error">${esc(item.error)}<span class="card-error-type">${errTypeLabel}</span></p>
       </div>`;
     return;
   }
@@ -949,13 +1069,19 @@ function updateCardHTML(card, item) {
       <img src="${thumbSrc}" alt="${esc(item.alt_text || item.filename)}" loading="lazy">
       <div class="card-overlay hidden"></div>
       ${item.category ? `<span class="card-badge ${badgeClass}">${badgeLabel}</span>` : ''}
-      ${item.score ? `<span class="card-score ${scoreClass}">${item.score}</span>` : ''}
+      ${item.score    ? `<span class="card-score ${scoreClass}">${item.score}</span>` : ''}
     </div>
     <div class="card-body">
       <p class="card-filename">${esc(item.filename)}</p>
+      ${item.sizeOriginal && item.sizeCompressed ? `
+      <div class="card-size">
+        <span class="card-size-orig">${formatBytes(item.sizeOriginal)}</span>
+        <span class="card-size-arrow">→</span>
+        <span class="card-size-new">${formatBytes(item.sizeCompressed)}</span>
+      </div>` : ''}
       ${item.description ? `<p class="card-desc">${esc(item.description)}</p>` : ''}
-      ${item.page ? `<p class="card-page">→ ${esc(item.page)}</p>` : ''}
-      ${item.alt_text ? `<p class="card-alt">${esc(item.alt_text)}</p>` : ''}
+      ${item.page        ? `<p class="card-page">→ ${esc(item.page)}</p>` : ''}
+      ${item.alt_text    ? `<p class="card-alt">${esc(item.alt_text)}</p>` : ''}
     </div>`;
 
   card.dataset.category = item.category || '';
@@ -1080,6 +1206,13 @@ document.getElementById('btn-copy-table').addEventListener('click', () => {
 });
 
 // ── UTILS ──
+function formatBytes(bytes) {
+  if (!bytes || bytes <= 0) return '—';
+  if (bytes < 1024)        return bytes + ' o';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(0) + ' Ko';
+  return (bytes / (1024 * 1024)).toFixed(1) + ' Mo';
+}
+
 function esc(str) {
   if (!str) return '';
   return String(str)
