@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Photos IA · Ocean Drift Lodge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="odl-styles.css">
+<style>
+
+/* ═══════════════════════════════════════════════
+   AGENT PHOTOS — styles spécifiques
+   ═══════════════════════════════════════════════ */
+
+/* ── API KEY SCREEN ── */
+#key-screen {
+  position: fixed; inset: 0;
+  background: var(--bg-night);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 500; padding: 2rem;
+}
+#key-screen.hidden { display: none; }
+
+.key-box {
+  width: 100%; max-width: 420px; text-align: center;
+}
+.key-logo {
+  font-family: var(--font-serif);
+  font-size: 2.2rem; font-weight: 300;
+  color: #faf9f7; letter-spacing: .04em;
+  margin-bottom: .4rem;
+}
+.key-logo em { font-style: italic; color: var(--gold); }
+.key-tag {
+  font-size: .58rem; letter-spacing: .3em;
+  text-transform: uppercase; color: var(--teal);
+  font-weight: 500; display: block; margin-bottom: 2.5rem;
+}
+.key-label {
+  font-size: .68rem; letter-spacing: .14em;
+  text-transform: uppercase; color: rgba(250,249,247,.45);
+  font-weight: 500; margin-bottom: .6rem; display: block;
+  text-align: left;
+}
+.key-input-wrap { position: relative; margin-bottom: 1.2rem; }
+.key-input-wrap input {
+  width: 100%; background: rgba(255,255,255,.06);
+  border: 1px solid rgba(46,139,139,.4);
+  border-radius: var(--radius);
+  color: #faf9f7; font-family: var(--font-sans);
+  font-size: .95rem; font-weight: 300;
+  padding: .85rem 2.8rem .85rem 1rem;
+  outline: none; letter-spacing: .08em;
+  transition: border-color var(--trans);
+}
+.key-input-wrap input::placeholder { color: rgba(250,249,247,.25); letter-spacing: .05em; }
+.key-input-wrap input:focus { border-color: var(--teal); }
+.key-toggle {
+  position: absolute; right: .8rem; top: 50%; transform: translateY(-50%);
+  background: none; border: none; cursor: pointer;
+  color: rgba(250,249,247,.4); font-size: 1rem;
+  transition: color var(--trans);
+}
+.key-toggle:hover { color: var(--teal); }
+.key-btn {
+  width: 100%; background: var(--teal); color: #fff;
+  border: none; padding: .9rem 2rem;
+  border-radius: var(--radius); font-family: var(--font-sans);
+  font-weight: 500; font-size: .75rem;
+  letter-spacing: .18em; text-transform: uppercase;
+  cursor: pointer; transition: background var(--trans);
+  margin-bottom: 1.2rem;
+}
+.key-btn:hover { background: var(--teal-dk); }
+.key-note {
+  font-size: .65rem; color: rgba(250,249,247,.3);
+  line-height: 1.6; letter-spacing: .04em;
+}
+.key-note a { color: var(--teal); text-decoration: underline; }
+.key-error {
+  font-size: .72rem; color: var(--peach);
+  min-height: 1.1rem; margin-bottom: .8rem;
+  letter-spacing: .04em;
+}
+
+/* ── APP ── */
+#app { display: none; }
+#app.visible { display: block; }
+
+/* ── TOPBAR ── */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 2.5rem;
+  background: var(--bg-sand);
+  border-bottom: 1px solid rgba(28,28,26,.1);
+  gap: 1rem;
+}
+.topbar-logo {
+  font-family: var(--font-serif);
+  font-size: 1.2rem; font-weight: 400;
+  color: var(--navy); letter-spacing: .03em;
+  white-space: nowrap;
+}
+.topbar-logo em { font-style: italic; color: var(--teal); }
+.topbar-title {
+  font-size: .6rem; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--ink-light);
+  font-weight: 500;
+}
+.topbar-right { display: flex; align-items: center; gap: .8rem; }
+.btn-logout {
+  font-size: .62rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--ink-light);
+  background: none; border: 1px solid rgba(28,28,26,.15);
+  padding: .45rem 1rem; border-radius: var(--radius);
+  cursor: pointer; transition: all var(--trans);
+}
+.btn-logout:hover { color: var(--peach); border-color: var(--peach); }
+
+/* ── MAIN ── */
+.agent-main { padding: 6rem 2rem 4rem; max-width: 1200px; margin: 0 auto; }
+
+/* ── HERO BAND ── */
+.agent-hero {
+  text-align: center; margin-bottom: 3rem;
+}
+.agent-eyebrow {
+  font-size: .58rem; letter-spacing: .3em;
+  text-transform: uppercase; color: var(--teal);
+  font-weight: 500; margin-bottom: 1rem; display: block;
+}
+.agent-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300; color: var(--ink);
+  letter-spacing: .02em; margin-bottom: .8rem;
+}
+.agent-title em { font-style: italic; color: var(--teal); }
+.agent-sub {
+  font-size: .75rem; letter-spacing: .1em;
+  color: var(--ink-light); font-weight: 400;
+}
+
+/* ── DROP ZONE ── */
+.drop-zone {
+  border: 2px dashed rgba(46,139,139,.35);
+  border-radius: 8px;
+  background: var(--bg-teal-lt);
+  padding: 3.5rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--trans);
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+.drop-zone:hover,
+.drop-zone.dragover {
+  border-color: var(--teal);
+  background: rgba(46,139,139,.1);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(46,139,139,.15);
+}
+.drop-zone.dragover { background: rgba(46,139,139,.14); }
+.drop-icon {
+  font-size: 2.5rem; margin-bottom: 1rem;
+  display: block; opacity: .6;
+}
+.drop-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem; font-weight: 300;
+  color: var(--ink); margin-bottom: .5rem;
+}
+.drop-sub {
+  font-size: .72rem; letter-spacing: .1em;
+  color: var(--ink-light); margin-bottom: 1.5rem;
+}
+.btn-browse {
+  display: inline-block;
+  background: var(--teal); color: #fff;
+  border: none; padding: .7rem 2rem;
+  border-radius: var(--radius); font-family: var(--font-sans);
+  font-weight: 500; font-size: .72rem;
+  letter-spacing: .16em; text-transform: uppercase;
+  cursor: pointer; transition: background var(--trans);
+}
+.btn-browse:hover { background: var(--teal-dk); }
+#file-input { display: none; }
+.drop-formats {
+  font-size: .6rem; letter-spacing: .08em;
+  color: var(--ink-light); margin-top: 1rem;
+  opacity: .7;
+}
+
+/* ── STATUS BAR ── */
+.status-bar {
+  display: none;
+  background: var(--bg-sand);
+  border: 1px solid rgba(28,28,26,.1);
+  border-radius: 6px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  align-items: center; gap: 1rem;
+}
+.status-bar.visible { display: flex; }
+.status-spinner {
+  width: 20px; height: 20px;
+  border: 2px solid rgba(46,139,139,.2);
+  border-top-color: var(--teal);
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.status-text { font-size: .78rem; color: var(--ink-mid); flex: 1; }
+.status-count {
+  font-size: .68rem; letter-spacing: .1em;
+  color: var(--teal); font-weight: 500;
+  white-space: nowrap;
+}
+.progress-bar-wrap {
+  height: 3px; background: rgba(46,139,139,.15);
+  border-radius: 2px; overflow: hidden;
+  width: 120px; flex-shrink: 0;
+}
+.progress-bar-fill {
+  height: 100%; background: var(--teal);
+  border-radius: 2px; transition: width .3s ease;
+  width: 0%;
+}
+
+/* ── TOOLBAR ── */
+.toolbar {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+  margin-bottom: 1.8rem;
+}
+.filter-tabs { display: flex; gap: .4rem; flex-wrap: wrap; }
+.filter-tab {
+  font-size: .65rem; letter-spacing: .12em;
+  text-transform: uppercase; font-weight: 500;
+  padding: .4rem .9rem; border-radius: 20px;
+  cursor: pointer; transition: all var(--trans);
+  border: 1px solid rgba(28,28,26,.15);
+  background: none; color: var(--ink-light);
+}
+.filter-tab.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+.filter-tab:hover:not(.active) { border-color: var(--teal); color: var(--teal); }
+.filter-tab .tab-count {
+  display: inline-block;
+  background: rgba(255,255,255,.3);
+  border-radius: 10px; padding: 0 .4rem;
+  font-size: .6rem; margin-left: .3rem;
+}
+.filter-tab:not(.active) .tab-count { background: rgba(46,139,139,.12); }
+
+.toolbar-right { display: flex; gap: .6rem; }
+.btn-export, .btn-clear {
+  font-size: .68rem; letter-spacing: .14em;
+  text-transform: uppercase; font-weight: 500;
+  padding: .55rem 1.2rem; border-radius: var(--radius);
+  cursor: pointer; transition: all var(--trans);
+  border: 1px solid;
+}
+.btn-export {
+  background: var(--peach); color: #fff;
+  border-color: var(--peach);
+}
+.btn-export:hover { filter: brightness(.9); }
+.btn-clear {
+  background: none; color: var(--ink-light);
+  border-color: rgba(28,28,26,.15);
+}
+.btn-clear:hover { color: var(--peach); border-color: var(--peach); }
+
+/* ── RESULTS GRID ── */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.4rem;
+}
+
+/* ── PHOTO CARD ── */
+.photo-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(28,28,26,.08);
+  box-shadow: 0 2px 12px rgba(28,28,26,.05);
+  transition: box-shadow var(--trans), transform var(--trans);
+  display: flex; flex-direction: column;
+}
+.photo-card:hover {
+  box-shadow: 0 8px 32px rgba(28,28,26,.12);
+  transform: translateY(-2px);
+}
+.photo-card.hidden { display: none; }
+
+.card-thumb {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--bg-sand);
+}
+.card-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+.photo-card:hover .card-thumb img { transform: scale(1.04); }
+
+/* Analysing overlay */
+.card-overlay {
+  position: absolute; inset: 0;
+  background: rgba(26,61,74,.7);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: .8rem;
+  color: #fff; font-size: .72rem;
+  letter-spacing: .1em;
+}
+.card-overlay.hidden { display: none; }
+.overlay-spinner {
+  width: 28px; height: 28px;
+  border: 2px solid rgba(255,255,255,.2);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+
+.card-badge {
+  position: absolute; top: .7rem; left: .7rem;
+  font-size: .58rem; letter-spacing: .14em;
+  text-transform: uppercase; font-weight: 500;
+  padding: .3rem .7rem; border-radius: 12px;
+  backdrop-filter: blur(8px);
+}
+.badge-hero    { background: rgba(184,151,90,.9);  color: #fff; }
+.badge-spots   { background: rgba(46,139,139,.9);  color: #fff; }
+.badge-ambiance { background: rgba(200,96,58,.85);  color: #fff; }
+.badge-rejeter { background: rgba(28,28,26,.75);   color: rgba(255,255,255,.8); }
+
+.card-score {
+  position: absolute; top: .7rem; right: .7rem;
+  width: 32px; height: 32px;
+  background: rgba(26,61,74,.85);
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .72rem; font-weight: 500; color: #fff;
+}
+.score-high   { background: rgba(46,139,139,.9); }
+.score-medium { background: rgba(184,151,90,.9); }
+.score-low    { background: rgba(200,96,58,.85); }
+
+.card-body { padding: 1rem 1.1rem; flex: 1; display: flex; flex-direction: column; gap: .5rem; }
+.card-filename {
+  font-size: .62rem; letter-spacing: .06em;
+  color: var(--ink-light); overflow: hidden;
+  text-overflow: ellipsis; white-space: nowrap;
+}
+.card-desc {
+  font-size: .8rem; color: var(--ink-mid);
+  line-height: 1.5; flex: 1;
+}
+.card-page {
+  font-size: .65rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--teal);
+  font-weight: 500;
+}
+.card-alt {
+  font-size: .65rem; color: var(--ink-light);
+  font-style: italic; line-height: 1.4;
+  padding-top: .4rem;
+  border-top: 1px solid rgba(28,28,26,.07);
+}
+
+/* Error card state */
+.card-error {
+  padding: 1rem;
+  font-size: .72rem; color: var(--peach);
+  text-align: center;
+}
+
+/* ── EMPTY STATE ── */
+.empty-state {
+  text-align: center; padding: 4rem 2rem;
+  color: var(--ink-light);
+}
+.empty-state .empty-icon { font-size: 3rem; margin-bottom: 1rem; opacity: .4; }
+.empty-state p { font-size: .8rem; letter-spacing: .05em; }
+
+/* ── PRINT STYLES ── */
+@media print {
+  #key-screen, .topbar, .drop-zone, .status-bar,
+  .toolbar, .btn-export, .btn-clear, .btn-logout { display: none !important; }
+  #app { display: block !important; }
+  .agent-main { padding: 0; max-width: 100%; }
+  body { background: #fff; }
+  .photo-card { break-inside: avoid; }
+  .results-grid { grid-template-columns: repeat(3, 1fr); gap: .8rem; }
+  .card-thumb { aspect-ratio: unset; height: 120px; }
+}
+
+/* ── RAPPORT EXPORT (popup) ── */
+.export-modal {
+  position: fixed; inset: 0; z-index: 600;
+  background: rgba(28,28,26,.6);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 2rem;
+}
+.export-modal.hidden { display: none; }
+.export-box {
+  background: #fff; border-radius: 8px;
+  max-width: 900px; width: 100%;
+  max-height: 85vh; overflow-y: auto;
+  box-shadow: 0 24px 64px rgba(28,28,26,.2);
+}
+.export-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(28,28,26,.1);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.export-header h2 {
+  font-family: var(--font-serif);
+  font-size: 1.4rem; font-weight: 300; color: var(--ink);
+}
+.btn-close-modal {
+  background: none; border: none; font-size: 1.4rem;
+  color: var(--ink-light); cursor: pointer;
+  transition: color var(--trans);
+}
+.btn-close-modal:hover { color: var(--ink); }
+.export-content { padding: 1.5rem 2rem; }
+.export-actions {
+  padding: 1rem 2rem 1.5rem;
+  display: flex; gap: .8rem; justify-content: flex-end;
+  border-top: 1px solid rgba(28,28,26,.08);
+}
+.btn-print-report, .btn-copy-table {
+  font-size: .68rem; letter-spacing: .14em;
+  text-transform: uppercase; font-weight: 500;
+  padding: .6rem 1.4rem; border-radius: var(--radius);
+  cursor: pointer; transition: all var(--trans);
+}
+.btn-print-report {
+  background: var(--teal); color: #fff; border: none;
+}
+.btn-print-report:hover { background: var(--teal-dk); }
+.btn-copy-table {
+  background: none; color: var(--ink-light);
+  border: 1px solid rgba(28,28,26,.2);
+}
+.btn-copy-table:hover { border-color: var(--teal); color: var(--teal); }
+
+/* ── RAPPORT TABLE ── */
+.rapport-table {
+  width: 100%; border-collapse: collapse;
+  font-size: .78rem;
+}
+.rapport-table th {
+  text-align: left; padding: .7rem .8rem;
+  font-size: .58rem; letter-spacing: .18em;
+  text-transform: uppercase; font-weight: 500;
+  color: var(--ink-light);
+  border-bottom: 2px solid rgba(28,28,26,.1);
+}
+.rapport-table td {
+  padding: .7rem .8rem;
+  border-bottom: 1px solid rgba(28,28,26,.07);
+  vertical-align: top;
+  color: var(--ink-mid);
+}
+.rapport-table tr:last-child td { border-bottom: none; }
+.rapport-table tr:hover td { background: var(--bg-teal-lt); }
+.rt-badge {
+  display: inline-block;
+  font-size: .58rem; letter-spacing: .1em;
+  text-transform: uppercase; font-weight: 500;
+  padding: .2rem .6rem; border-radius: 10px;
+  white-space: nowrap;
+}
+.rt-score {
+  font-weight: 500; color: var(--ink);
+  text-align: center;
+}
+.rt-desc { max-width: 200px; line-height: 1.4; }
+.rt-alt  { max-width: 200px; line-height: 1.4; font-style: italic; color: var(--ink-light); }
+
+/* Résumé export */
+.rapport-summary {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: .8rem; margin-bottom: 1.5rem;
+}
+.rs-card {
+  text-align: center; padding: 1rem;
+  border-radius: 6px; background: var(--bg-sand);
+}
+.rs-num {
+  font-family: var(--font-serif);
+  font-size: 2rem; font-weight: 300; color: var(--ink);
+}
+.rs-label {
+  font-size: .6rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--ink-light);
+  font-weight: 500;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ API KEY SCREEN ═══════════════ -->
+<div id="key-screen">
+  <div class="key-box">
+    <p class="key-logo">Ocean Drift <em>Lodge</em></p>
+    <span class="key-tag">Agent Photos IA · Analyse &amp; Classement</span>
+
+    <label class="key-label">Clé API Anthropic</label>
+    <div class="key-input-wrap">
+      <input type="password" id="api-key-input"
+        placeholder="sk-ant-api03-…"
+        autocomplete="off" spellcheck="false">
+      <button class="key-toggle" id="key-toggle-btn" title="Afficher / masquer">👁</button>
+    </div>
+    <p class="key-error" id="key-error"></p>
+    <button class="key-btn" id="key-submit-btn">Démarrer l'agent →</button>
+    <p class="key-note">
+      Votre clé reste dans la mémoire de cet onglet, elle n'est jamais transmise ailleurs qu'à l'API Anthropic.<br>
+      <a href="https://console.anthropic.com/account/keys" target="_blank" rel="noopener">Obtenir une clé →</a>
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════ APP ═══════════════ -->
+<div id="app">
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div style="display:flex;align-items:center;gap:1.2rem;">
+      <span class="topbar-logo">Ocean Drift <em>Lodge</em></span>
+      <span class="topbar-title">Agent Photos IA</span>
+    </div>
+    <div class="topbar-right">
+      <span id="model-badge" style="font-size:.6rem;letter-spacing:.1em;color:var(--teal);padding:.3rem .7rem;border:1px solid rgba(46,139,139,.25);border-radius:12px;">claude-sonnet-4-6</span>
+      <button class="btn-logout" id="btn-logout">Déconnexion</button>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="agent-main">
+
+    <!-- Hero band -->
+    <div class="agent-hero">
+      <span class="agent-eyebrow">Intelligence Artificielle · ODL Workflow</span>
+      <h1 class="agent-title">Tri &amp; positionnement<br><em>automatique des photos</em></h1>
+      <p class="agent-sub">Déposez vos photos · L'IA les analyse, classe et rédige les textes alt SEO</p>
+    </div>
+
+    <!-- Drop zone -->
+    <div class="drop-zone" id="drop-zone">
+      <span class="drop-icon">📸</span>
+      <p class="drop-title">Déposez vos photos ici</p>
+      <p class="drop-sub">ou cliquez pour parcourir vos fichiers</p>
+      <button class="btn-browse" id="btn-browse">Choisir des photos</button>
+      <input type="file" id="file-input" multiple accept="image/jpeg,image/jpg,image/png,image/webp,image/gif">
+      <p class="drop-formats">JPG · PNG · WebP · GIF — plusieurs fichiers acceptés</p>
+    </div>
+
+    <!-- Status bar -->
+    <div class="status-bar" id="status-bar">
+      <div class="status-spinner"></div>
+      <span class="status-text" id="status-text">Analyse en cours…</span>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="progress-fill"></div>
+      </div>
+      <span class="status-count" id="status-count"></span>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="toolbar" id="toolbar" style="display:none;">
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all">Toutes <span class="tab-count" id="cnt-all">0</span></button>
+        <button class="filter-tab" data-filter="hero">Hero <span class="tab-count" id="cnt-hero">0</span></button>
+        <button class="filter-tab" data-filter="spots">Spots <span class="tab-count" id="cnt-spots">0</span></button>
+        <button class="filter-tab" data-filter="ambiance">Ambiance <span class="tab-count" id="cnt-ambiance">0</span></button>
+        <button class="filter-tab" data-filter="rejeter">Rejetées <span class="tab-count" id="cnt-rejeter">0</span></button>
+      </div>
+      <div class="toolbar-right">
+        <button class="btn-clear" id="btn-clear">Tout effacer</button>
+        <button class="btn-export" id="btn-export">Exporter rapport</button>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="results-grid" id="results-grid">
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">🌊</div>
+        <p>Aucune photo analysée — déposez vos images ci-dessus</p>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ═══════════════ EXPORT MODAL ═══════════════ -->
+<div class="export-modal hidden" id="export-modal">
+  <div class="export-box">
+    <div class="export-header">
+      <h2>Rapport photos · Ocean Drift Lodge</h2>
+      <button class="btn-close-modal" id="btn-close-modal">✕</button>
+    </div>
+    <div class="export-content" id="export-content"></div>
+    <div class="export-actions">
+      <button class="btn-copy-table" id="btn-copy-table">Copier le tableau</button>
+      <button class="btn-print-report" onclick="window.print()">Imprimer le rapport</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+/* ═══════════════════════════════════════════════
+   AGENT PHOTOS IA — Ocean Drift Lodge
+   ═══════════════════════════════════════════════ */
+
+const MODEL = 'claude-sonnet-4-6';
+const API_URL = 'https://api.anthropic.com/v1/messages';
+
+// ── State ──
+let API_KEY = '';
+let results = []; // {id, filename, dataUrl, mediaType, status, category, page, score, description, alt_text, error}
+let idCounter = 0;
+
+// ── DOM refs ──
+const keyScreen   = document.getElementById('key-screen');
+const keyInput    = document.getElementById('api-key-input');
+const keyError    = document.getElementById('key-error');
+const keySubmit   = document.getElementById('key-submit-btn');
+const keyToggle   = document.getElementById('key-toggle-btn');
+const app         = document.getElementById('app');
+const dropZone    = document.getElementById('drop-zone');
+const fileInput   = document.getElementById('file-input');
+const btnBrowse   = document.getElementById('btn-browse');
+const statusBar   = document.getElementById('status-bar');
+const statusText  = document.getElementById('status-text');
+const statusCount = document.getElementById('status-count');
+const progressFill = document.getElementById('progress-fill');
+const toolbar     = document.getElementById('toolbar');
+const resultsGrid = document.getElementById('results-grid');
+const emptyState  = document.getElementById('empty-state');
+const exportModal = document.getElementById('export-modal');
+const exportContent = document.getElementById('export-content');
+
+// ── API KEY SCREEN ──
+keyToggle.addEventListener('click', () => {
+  const isPassword = keyInput.type === 'password';
+  keyInput.type = isPassword ? 'text' : 'password';
+  keyToggle.textContent = isPassword ? '🙈' : '👁';
+});
+
+keyInput.addEventListener('keydown', e => { if (e.key === 'Enter') keySubmit.click(); });
+
+keySubmit.addEventListener('click', () => {
+  const val = keyInput.value.trim();
+  if (!val.startsWith('sk-ant-')) {
+    keyError.textContent = 'Format invalide — la clé doit commencer par sk-ant-';
+    return;
+  }
+  API_KEY = val;
+  keyScreen.classList.add('hidden');
+  app.classList.add('visible');
+});
+
+document.getElementById('btn-logout').addEventListener('click', () => {
+  if (!confirm('Effacer la clé et vider les résultats ?')) return;
+  API_KEY = '';
+  results = [];
+  renderGrid();
+  keyInput.value = '';
+  keyError.textContent = '';
+  keyScreen.classList.remove('hidden');
+  app.classList.remove('visible');
+});
+
+// ── DROP ZONE ──
+btnBrowse.addEventListener('click', () => fileInput.click());
+dropZone.addEventListener('click', e => { if (e.target !== btnBrowse) fileInput.click(); });
+
+fileInput.addEventListener('change', e => {
+  if (e.target.files.length) handleFiles(Array.from(e.target.files));
+  fileInput.value = '';
+});
+
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropZone.classList.remove('dragover');
+  const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
+  if (files.length) handleFiles(files);
+});
+
+// ── FILE PROCESSING ──
+async function handleFiles(files) {
+  const imageFiles = files.filter(f => f.type.startsWith('image/'));
+  if (!imageFiles.length) return;
+
+  for (const file of imageFiles) {
+    const id = ++idCounter;
+    const item = {
+      id, filename: file.name, dataUrl: null,
+      mediaType: file.type || 'image/jpeg',
+      status: 'loading',
+      category: null, page: null, score: null,
+      description: null, alt_text: null, error: null
+    };
+    results.unshift(item);
+    renderGrid();
+
+    try {
+      item.dataUrl = await fileToDataUrl(file);
+      item.status = 'analysing';
+      renderCard(item);
+      await analyseImage(item);
+    } catch (err) {
+      item.status = 'error';
+      item.error = err.message || 'Erreur inconnue';
+    }
+    renderCard(item);
+    updateCounts();
+  }
+
+  hideStatusBar();
+  toolbar.style.display = results.length ? 'flex' : 'none';
+}
+
+function fileToDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = e => resolve(e.target.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+// ── ANTHROPIC CALL ──
+async function analyseImage(item) {
+  const base64 = item.dataUrl.split(',')[1];
+  const mediaType = item.mediaType.includes('webp') ? 'image/webp'
+                  : item.mediaType.includes('png')  ? 'image/png'
+                  : item.mediaType.includes('gif')  ? 'image/gif'
+                  : 'image/jpeg';
+
+  showStatusBar(item.filename);
+
+  const prompt = `Tu es un expert en marketing visuel pour Ocean Drift Lodge (ODL), un appartement de surf et kitesurf haut de gamme à Dakhla, Maroc.
+
+Analyse cette photo et retourne UNIQUEMENT un objet JSON valide (aucun texte avant ou après) avec cette structure exacte :
+
+{
+  "categorie": "hero" | "spots" | "ambiance" | "rejeter",
+  "page": "nom de la page recommandée",
+  "score": 1-10,
+  "description": "description courte en français (1-2 phrases max)",
+  "alt_text": "texte alt SEO en français, précis et descriptif"
+}
+
+Critères de classification :
+- hero : vue panoramique exceptionnelle, Dakhla / Atlantique / désert, impact visuel fort, qualité photo irréprochable → page : index.html
+- spots : kite, surf, activités nautiques, vagues, action sportive, plage → page : index.html#spots
+- ambiance : coucher de soleil, lifestyle, portraits, atmosphère, logement, terrasse → page : guide-du-voyageur.html
+- rejeter : floue, surexposée, sous-exposée, mal cadrée, inutilisable pour un site pro → page : aucune
+
+Score qualité (1-10) : 10 = photo exceptionnelle, 5 = correcte, 1 = inutilisable.
+Pour "rejeter" : score toujours ≤ 4.`;
+
+  const body = {
+    model: MODEL,
+    max_tokens: 512,
+    messages: [{
+      role: 'user',
+      content: [
+        { type: 'image', source: { type: 'base64', media_type: mediaType, data: base64 } },
+        { type: 'text', text: prompt }
+      ]
+    }]
+  };
+
+  const response = await fetch(API_URL, {
+    method: 'POST',
+    headers: {
+      'x-api-key': API_KEY,
+      'anthropic-version': '2023-06-01',
+      'content-type': 'application/json',
+      'anthropic-dangerous-allow-browser': 'true'
+    },
+    body: JSON.stringify(body)
+  });
+
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.error?.message || `HTTP ${response.status}`);
+  }
+
+  const data = await response.json();
+  const raw = data.content?.[0]?.text || '';
+
+  // Extract JSON — handle possible markdown fences
+  const jsonMatch = raw.match(/\{[\s\S]*\}/);
+  if (!jsonMatch) throw new Error('Réponse JSON invalide');
+
+  const parsed = JSON.parse(jsonMatch[0]);
+
+  item.category    = parsed.categorie   || 'rejeter';
+  item.page        = parsed.page        || '—';
+  item.score       = parseInt(parsed.score) || 0;
+  item.description = parsed.description || '';
+  item.alt_text    = parsed.alt_text    || '';
+  item.status      = 'done';
+}
+
+// ── STATUS BAR ──
+let analyseTotal = 0, analyseDone = 0;
+
+function showStatusBar(filename) {
+  analyseTotal++;
+  statusBar.classList.add('visible');
+  statusText.textContent = `Analyse de ${filename}…`;
+  const pct = analyseTotal > 1 ? Math.round(analyseDone / analyseTotal * 100) : 20;
+  progressFill.style.width = pct + '%';
+  statusCount.textContent = `${analyseDone}/${analyseTotal}`;
+}
+
+function hideStatusBar() {
+  analyseDone = analyseTotal;
+  progressFill.style.width = '100%';
+  statusCount.textContent = `${analyseTotal}/${analyseTotal}`;
+  statusText.textContent = 'Analyse terminée ✓';
+  setTimeout(() => {
+    statusBar.classList.remove('visible');
+    analyseTotal = 0; analyseDone = 0;
+    progressFill.style.width = '0%';
+  }, 2500);
+}
+
+// ── RENDER ──
+let activeFilter = 'all';
+
+function renderGrid() {
+  emptyState.style.display = results.length ? 'none' : 'block';
+  toolbar.style.display = results.length ? 'flex' : 'none';
+
+  // Clear existing cards (keep empty state)
+  [...resultsGrid.querySelectorAll('.photo-card')].forEach(el => el.remove());
+
+  results.forEach(item => {
+    let card = document.getElementById(`card-${item.id}`);
+    if (!card) {
+      card = document.createElement('div');
+      card.className = 'photo-card';
+      card.id = `card-${item.id}`;
+      resultsGrid.appendChild(card);
+    }
+    updateCardHTML(card, item);
+    applyFilter(card, item);
+  });
+  updateCounts();
+}
+
+function renderCard(item) {
+  let card = document.getElementById(`card-${item.id}`);
+  if (!card) {
+    card = document.createElement('div');
+    card.className = 'photo-card';
+    card.id = `card-${item.id}`;
+    emptyState.insertAdjacentElement('afterend', card);
+  }
+  emptyState.style.display = 'none';
+  updateCardHTML(card, item);
+  applyFilter(card, item);
+}
+
+function updateCardHTML(card, item) {
+  const badgeClass = {
+    hero: 'badge-hero', spots: 'badge-spots',
+    ambiance: 'badge-ambiance', rejeter: 'badge-rejeter'
+  }[item.category] || '';
+
+  const badgeLabel = {
+    hero: '★ Hero', spots: '🏄 Spots',
+    ambiance: '🌅 Ambiance', rejeter: '✕ Rejeté'
+  }[item.category] || '';
+
+  const scoreClass = item.score >= 8 ? 'score-high'
+                   : item.score >= 5 ? 'score-medium'
+                   : 'score-low';
+
+  const thumbSrc = item.dataUrl || '';
+
+  if (item.status === 'loading') {
+    card.innerHTML = `
+      <div class="card-thumb" style="background:var(--bg-sand-md);">
+        <div class="card-overlay">
+          <div class="overlay-spinner"></div>
+          <span>Chargement…</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p class="card-filename">${esc(item.filename)}</p>
+      </div>`;
+    return;
+  }
+
+  if (item.status === 'analysing') {
+    card.innerHTML = `
+      <div class="card-thumb">
+        <img src="${thumbSrc}" alt="${esc(item.filename)}" loading="lazy">
+        <div class="card-overlay">
+          <div class="overlay-spinner"></div>
+          <span>Analyse IA…</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p class="card-filename">${esc(item.filename)}</p>
+      </div>`;
+    return;
+  }
+
+  if (item.status === 'error') {
+    card.innerHTML = `
+      <div class="card-thumb">
+        ${thumbSrc ? `<img src="${thumbSrc}" alt="" loading="lazy">` : ''}
+      </div>
+      <div class="card-body">
+        <p class="card-filename">${esc(item.filename)}</p>
+        <p class="card-error">⚠ ${esc(item.error)}</p>
+      </div>`;
+    return;
+  }
+
+  // Done
+  card.innerHTML = `
+    <div class="card-thumb">
+      <img src="${thumbSrc}" alt="${esc(item.alt_text || item.filename)}" loading="lazy">
+      <div class="card-overlay hidden"></div>
+      ${item.category ? `<span class="card-badge ${badgeClass}">${badgeLabel}</span>` : ''}
+      ${item.score ? `<span class="card-score ${scoreClass}">${item.score}</span>` : ''}
+    </div>
+    <div class="card-body">
+      <p class="card-filename">${esc(item.filename)}</p>
+      ${item.description ? `<p class="card-desc">${esc(item.description)}</p>` : ''}
+      ${item.page ? `<p class="card-page">→ ${esc(item.page)}</p>` : ''}
+      ${item.alt_text ? `<p class="card-alt">${esc(item.alt_text)}</p>` : ''}
+    </div>`;
+
+  card.dataset.category = item.category || '';
+}
+
+function applyFilter(card, item) {
+  const cat = item.category || '';
+  card.classList.toggle('hidden',
+    activeFilter !== 'all' && cat !== activeFilter
+  );
+}
+
+// ── FILTER TABS ──
+document.querySelectorAll('.filter-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.dataset.filter;
+    document.querySelectorAll('.photo-card').forEach(card => {
+      const item = results.find(r => `card-${r.id}` === card.id);
+      if (item) applyFilter(card, item);
+    });
+  });
+});
+
+// ── COUNTS ──
+function updateCounts() {
+  const done = results.filter(r => r.status === 'done');
+  const count = cat => done.filter(r => r.category === cat).length;
+  document.getElementById('cnt-all').textContent = done.length;
+  document.getElementById('cnt-hero').textContent = count('hero');
+  document.getElementById('cnt-spots').textContent = count('spots');
+  document.getElementById('cnt-ambiance').textContent = count('ambiance');
+  document.getElementById('cnt-rejeter').textContent = count('rejeter');
+}
+
+// ── CLEAR ──
+document.getElementById('btn-clear').addEventListener('click', () => {
+  if (!confirm('Effacer tous les résultats ?')) return;
+  results = []; idCounter = 0;
+  renderGrid();
+  toolbar.style.display = 'none';
+});
+
+// ── EXPORT MODAL ──
+document.getElementById('btn-export').addEventListener('click', buildReport);
+document.getElementById('btn-close-modal').addEventListener('click', () =>
+  exportModal.classList.add('hidden')
+);
+exportModal.addEventListener('click', e => {
+  if (e.target === exportModal) exportModal.classList.add('hidden');
+});
+
+function buildReport() {
+  const done = results.filter(r => r.status === 'done');
+  if (!done.length) return;
+
+  const count = cat => done.filter(r => r.category === cat).length;
+  const avgScore = done.length
+    ? (done.reduce((s, r) => s + (r.score || 0), 0) / done.length).toFixed(1)
+    : '—';
+
+  const badgeStyle = {
+    hero: 'background:#b8975a;color:#fff;',
+    spots: 'background:#2e8b8b;color:#fff;',
+    ambiance: 'background:#c8603a;color:#fff;',
+    rejeter: 'background:#3d3d38;color:rgba(255,255,255,.8);'
+  };
+  const badgeLabel = {
+    hero: '★ Hero', spots: '🏄 Spots',
+    ambiance: '🌅 Ambiance', rejeter: '✕ Rejeté'
+  };
+
+  const rows = done.map(r => `
+    <tr>
+      <td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.68rem;color:var(--ink-light);">${esc(r.filename)}</td>
+      <td><span class="rt-badge" style="${badgeStyle[r.category] || ''}">${badgeLabel[r.category] || r.category}</span></td>
+      <td class="rt-score">${r.score}/10</td>
+      <td class="rt-desc">${esc(r.description)}</td>
+      <td style="font-size:.68rem;color:var(--teal);">${esc(r.page)}</td>
+      <td class="rt-alt">${esc(r.alt_text)}</td>
+    </tr>`).join('');
+
+  exportContent.innerHTML = `
+    <div style="margin-bottom:1.2rem;">
+      <p style="font-size:.7rem;letter-spacing:.1em;color:var(--ink-light);margin-bottom:.3rem;">Généré le ${new Date().toLocaleDateString('fr-FR', {day:'numeric',month:'long',year:'numeric'})} · Modèle : ${MODEL}</p>
+    </div>
+    <div class="rapport-summary">
+      <div class="rs-card"><div class="rs-num">${done.length}</div><div class="rs-label">Photos analysées</div></div>
+      <div class="rs-card" style="background:rgba(184,151,90,.1)"><div class="rs-num" style="color:var(--gold);">${count('hero')}</div><div class="rs-label">Hero</div></div>
+      <div class="rs-card" style="background:rgba(46,139,139,.08)"><div class="rs-num" style="color:var(--teal);">${count('spots') + count('ambiance')}</div><div class="rs-label">Spots + Ambiance</div></div>
+      <div class="rs-card" style="background:rgba(200,96,58,.08)"><div class="rs-num" style="color:var(--peach);">${avgScore}</div><div class="rs-label">Score moyen</div></div>
+    </div>
+    <table class="rapport-table">
+      <thead>
+        <tr>
+          <th>Fichier</th>
+          <th>Catégorie</th>
+          <th>Score</th>
+          <th>Description</th>
+          <th>Page</th>
+          <th>Texte alt SEO</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+
+  exportModal.classList.remove('hidden');
+}
+
+document.getElementById('btn-copy-table').addEventListener('click', () => {
+  const done = results.filter(r => r.status === 'done');
+  const header = ['Fichier', 'Catégorie', 'Score', 'Description', 'Page', 'Texte alt SEO'].join('\t');
+  const rows = done.map(r =>
+    [r.filename, r.category, r.score, r.description, r.page, r.alt_text].join('\t')
+  ).join('\n');
+  navigator.clipboard.writeText(header + '\n' + rows).then(() => {
+    const btn = document.getElementById('btn-copy-table');
+    btn.textContent = 'Copié ✓';
+    setTimeout(() => { btn.textContent = 'Copier le tableau'; }, 2000);
+  });
+});
+
+// ── UTILS ──
+function esc(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+</script>
+</body>
+</html>
