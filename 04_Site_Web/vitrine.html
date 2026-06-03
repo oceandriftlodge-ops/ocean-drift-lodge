@@ -131,6 +131,10 @@
   .v-sec{padding:3.5rem 1.2rem}
   .btn-peach{padding:.85rem 1.8rem}
 }
+.photo-hero{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:0}
+.gal-cell picture{display:block;width:100%;height:100%}
+.gal-cell picture img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-credits{font-size:.65rem;color:var(--ink-light);letter-spacing:.08em;text-align:center;margin-top:.4rem;opacity:.7}
 </style>
 </head>
 <body>
@@ -157,6 +161,10 @@
 
 <!-- HERO -->
 <section class="hero" id="top">
+  <picture aria-hidden="true">
+    <source srcset="images/spots/6d4ff1c4-689b-4035-99b1-beb80fd62f22.webp" type="image/webp">
+    <img src="images/spots/6d4ff1c4-689b-4035-99b1-beb80fd62f22.webp" alt="" loading="eager" class="photo-hero">
+  </picture>
   <div class="hero-inner">
     <picture class="logo-stable">
       <source srcset="logo.webp" type="image/webp">
@@ -288,25 +296,22 @@
 
     <div class="gal-grid" aria-label="Galerie photos">
       <div class="gal-cell">
-        <span data-lang="fr">Photo principale</span>
-        <span data-lang="en">Main photo</span>
-        <span data-lang="es">Foto principal</span>
-        <span data-lang="pt">Foto principal</span>
-        <span data-lang="it">Foto principale</span>
+        <picture>
+          <source srcset="images/spots/ded82987-77a8-4018-887b-c1893b7e649f.webp" type="image/webp">
+          <img src="images/spots/ded82987-77a8-4018-887b-c1893b7e649f.webp" alt="Ocean Drift Lodge — vue principale" loading="lazy">
+        </picture>
       </div>
       <div class="gal-cell">
-        <span data-lang="fr">Terrasse</span>
-        <span data-lang="en">Terrace</span>
-        <span data-lang="es">Terraza</span>
-        <span data-lang="pt">Varanda</span>
-        <span data-lang="it">Terrazza</span>
+        <picture>
+          <source srcset="images/spots/pexels-esteban-zuluaga-2564348-18451793.webp" type="image/webp">
+          <img src="images/spots/pexels-esteban-zuluaga-2564348-18451793.webp" alt="Terrasse Ocean Drift Lodge" loading="lazy">
+        </picture>
       </div>
       <div class="gal-cell">
-        <span data-lang="fr">Chambre</span>
-        <span data-lang="en">Bedroom</span>
-        <span data-lang="es">Habitación</span>
-        <span data-lang="pt">Quarto</span>
-        <span data-lang="it">Camera</span>
+        <picture>
+          <source srcset="images/spots/pexels-mographe-30143183.webp" type="image/webp">
+          <img src="images/spots/pexels-mographe-30143183.webp" alt="Chambre Ocean Drift Lodge" loading="lazy">
+        </picture>
       </div>
     </div>
   </div>
@@ -664,6 +669,7 @@
     <a href="index.html"><span data-lang="fr">Site complet</span><span data-lang="en">Full site</span><span data-lang="es">Sitio completo</span><span data-lang="pt">Site completo</span><span data-lang="it">Sito completo</span></a>
   </div>
   <span>© 2026 Ocean Drift Lodge — Dakhla, Maroc</span>
+  <p class="photo-credits">Photos : Pexels · Ali Marwan · Anastasia Dvoryanova · Esteban Zuluaga · Lyon · Mographe</p>
 </footer>
 
 <!-- WhatsApp flottant -->
