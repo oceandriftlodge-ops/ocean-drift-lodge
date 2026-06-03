@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partenaires · Ocean Drift Lodge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="odl-styles.css">
+<style>
+body{font-family:var(--font-sans);background:var(--bg);color:var(--ink-mid);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* ── HERO ── */
+.hero{padding:9rem 2rem 4rem;text-align:center;background:linear-gradient(160deg,var(--navy) 0%,#1e3d54 40%,#236868 70%,#3d8080 90%,var(--bg) 100%);position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(46,139,139,0.15) 0%,transparent 60%);pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:760px;margin:0 auto}
+.hero-eyebrow{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(46,139,139,0.9);font-weight:500;margin-bottom:1rem}
+.hero-title{font-family:var(--font-serif);font-size:clamp(2.2rem,5vw,3.5rem);font-weight:300;color:#fff;letter-spacing:.02em;line-height:1.1;margin-bottom:1rem}
+.hero-title em{font-style:italic;color:rgba(46,139,139,0.9)}
+.hero-sub{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2.5rem}
+
+/* ── STATS HERO ── */
+.stats-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.stat-pill{display:flex;flex-direction:column;align-items:center;gap:.2rem;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:.8rem 1.4rem;min-width:80px}
+.stat-num{font-family:var(--font-serif);font-size:1.6rem;font-weight:300;color:#fff;line-height:1}
+.stat-label{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,0.45)}
+.stat-pill.stat-actif .stat-num{color:rgba(46,139,139,0.9)}
+.stat-pill.stat-discussion .stat-num{color:var(--gold)}
+.stat-pill.stat-contacter .stat-num{color:rgba(200,96,58,0.85)}
+
+/* ── TOOLBAR ── */
+.toolbar{background:var(--bg);border-bottom:1px solid rgba(28,28,26,0.08);position:sticky;top:60px;z-index:40;padding:.8rem 2rem}
+.toolbar-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.7rem;align-items:center}
+.filter-group{display:flex;gap:.3rem;flex-wrap:wrap}
+.filter-label{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-light);font-weight:500;margin-right:.3rem;align-self:center;white-space:nowrap}
+.filter-btn{font-size:.64rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .75rem;border-radius:20px;border:1px solid rgba(28,28,26,0.15);background:transparent;color:var(--ink-light);cursor:pointer;transition:all .2s;white-space:nowrap}
+.filter-btn:hover{border-color:var(--teal);color:var(--teal)}
+.filter-btn.active{background:var(--teal);border-color:var(--teal);color:#fff}
+.toolbar-spacer{flex:1}
+.btn-print{font-size:.64rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.35rem 1rem;border-radius:4px;border:1px solid rgba(28,28,26,0.2);background:transparent;color:var(--ink-light);cursor:pointer;transition:all .2s}
+.btn-print:hover{border-color:var(--teal);color:var(--teal)}
+
+/* ── MAIN TABLE ── */
+.main{padding:2.5rem 2rem 5rem;max-width:1100px;margin:0 auto}
+.table-header{display:grid;grid-template-columns:auto 1fr 130px 120px 200px 180px 44px;gap:1rem;align-items:center;padding:.5rem 1.2rem;font-size:.58rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-light);border-bottom:2px solid rgba(28,28,26,0.1);margin-bottom:.5rem}
+.row{display:grid;grid-template-columns:auto 1fr 130px 120px 200px 180px 44px;gap:1rem;align-items:start;background:#fff;border:1px solid rgba(28,28,26,.07);border-radius:6px;padding:1rem 1.2rem;margin-bottom:.5rem;transition:border-color .2s,box-shadow .2s}
+.row:hover{border-color:rgba(46,139,139,0.25);box-shadow:0 3px 12px rgba(46,139,139,0.07)}
+.row.hidden{display:none}
+
+/* Priorité badge */
+.badge-prio{font-size:.52rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.22rem .6rem;border-radius:20px;border:1px solid;white-space:nowrap;display:inline-block}
+.p1{background:rgba(200,96,58,0.1);color:var(--peach);border-color:rgba(200,96,58,0.3)}
+.p2{background:rgba(184,151,90,0.1);color:var(--gold);border-color:rgba(184,151,90,0.3)}
+.p3{background:rgba(107,107,99,0.08);color:var(--ink-light);border-color:rgba(107,107,99,0.2)}
+
+/* Partenaire nom */
+.row-nom{font-weight:500;font-size:.88rem;color:var(--ink);line-height:1.3;margin-bottom:.2rem}
+.row-adresse{font-size:.7rem;color:var(--ink-light);margin-bottom:.3rem}
+.row-desc{font-size:.72rem;color:var(--ink-light);line-height:1.45}
+.row-source{font-size:.58rem;font-family:monospace;color:rgba(107,107,99,0.45);margin-top:.3rem}
+.tag-identifier{display:inline-block;font-size:.52rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;background:rgba(200,96,58,0.08);color:var(--peach);border:1px solid rgba(200,96,58,0.2);padding:.15rem .5rem;border-radius:3px;margin-top:.3rem}
+
+/* Type badge */
+.badge-type{font-size:.6rem;font-weight:500;letter-spacing:.08em;padding:.25rem .6rem;border-radius:4px;background:rgba(46,139,139,0.08);color:var(--teal);border:1px solid rgba(46,139,139,0.2);white-space:nowrap;display:inline-block}
+
+/* Statut badge — cliquable */
+.badge-statut{font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .75rem;border-radius:20px;border:1px solid;cursor:pointer;user-select:none;transition:all .2s;display:inline-block;white-space:nowrap}
+.statut-contacter{background:rgba(200,96,58,0.08);color:var(--peach);border-color:rgba(200,96,58,0.3)}
+.statut-discussion{background:rgba(184,151,90,0.1);color:var(--gold);border-color:rgba(184,151,90,0.3)}
+.statut-actif{background:rgba(46,139,139,0.1);color:var(--teal);border-color:rgba(46,139,139,0.3)}
+
+/* Champs éditables */
+.field-edit{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(28,28,26,0.12);color:var(--ink-mid);font-family:var(--font-sans);font-size:.75rem;font-weight:300;padding:.2rem .1rem;outline:none;transition:border-color .2s;resize:none;line-height:1.4}
+.field-edit::placeholder{color:rgba(107,107,99,0.4);font-style:italic}
+.field-edit:focus{border-bottom-color:var(--teal)}
+.field-label{font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-light);font-weight:500;margin-bottom:.25rem;display:block}
+.field-wrap{display:flex;flex-direction:column;gap:.4rem}
+
+/* Notes bouton */
+.btn-notes{width:32px;height:32px;border-radius:50%;border:1px solid rgba(28,28,26,0.15);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--ink-light);transition:all .2s;flex-shrink:0}
+.btn-notes:hover,.btn-notes.has-note{border-color:var(--teal);color:var(--teal);background:rgba(46,139,139,0.06)}
+.row-notes{grid-column:1/-1;padding-top:.6rem;border-top:1px solid rgba(28,28,26,0.06);margin-top:.4rem;display:none}
+.row-notes.open{display:block}
+.notes-textarea{width:100%;background:rgba(28,28,26,0.02);border:1px solid rgba(28,28,26,0.1);border-radius:4px;color:var(--ink-mid);font-family:var(--font-sans);font-size:.78rem;font-weight:300;padding:.6rem .8rem;outline:none;resize:vertical;min-height:60px;transition:border-color .2s;line-height:1.5}
+.notes-textarea::placeholder{color:rgba(107,107,99,0.4);font-style:italic}
+.notes-textarea:focus{border-color:var(--teal)}
+
+/* Résultats vides */
+.empty-state{text-align:center;padding:4rem 2rem;color:var(--ink-light);font-size:.85rem}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .table-header{display:none}
+  .row{grid-template-columns:auto 1fr;grid-template-rows:auto;gap:.6rem}
+  .row-col-type,.row-col-statut,.row-col-contact,.row-col-partenariat{grid-column:2}
+  .row-col-notes-btn{grid-column:1;grid-row:1;align-self:start;margin-top:.1rem}
+  .row-col-nom{grid-column:2;grid-row:1}
+}
+@media(max-width:620px){
+  .toolbar-inner{flex-direction:column;align-items:flex-start}
+  .stats-row{gap:.6rem}
+  .stat-pill{padding:.6rem 1rem;min-width:64px}
+  .main{padding:1.5rem 1rem 4rem}
+}
+
+@media print{
+  body{background:#fff}
+  #nav,.toolbar,.btn-notes,.btn-print{display:none!important}
+  .hero{padding:2rem;background:#fff!important;color:var(--ink)!important}
+  .hero-title,.hero-eyebrow,.hero-sub,.stats-row{color:var(--ink)!important}
+  .stat-pill{border:1px solid #ddd!important}
+  .stat-num{color:var(--ink)!important}
+  .row{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="dashboard.html" class="nav-logo">Ocean Drift <em>Lodge</em></a>
+  <div class="nav-center">
+    <a href="dashboard.html">← Dashboard</a>
+    <a href="guide-du-voyageur.html" target="_blank" rel="noopener">Guide voyageur</a>
+    <a href="livret-accueil.html" target="_blank" rel="noopener">Livret accueil</a>
+  </div>
+  <div class="nav-right">
+    <span style="font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.45);padding:.4rem .8rem">Accès privé</span>
+  </div>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" onclick="document.getElementById('mobileMenu').classList.toggle('open');this.classList.toggle('open');this.setAttribute('aria-expanded',this.classList.contains('open'))">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')" aria-label="Fermer">✕</button>
+  <a href="dashboard.html" onclick="document.getElementById('mobileMenu').classList.remove('open')">← Dashboard</a>
+  <a href="guide-du-voyageur.html" target="_blank" rel="noopener" onclick="document.getElementById('mobileMenu').classList.remove('open')">Guide voyageur</a>
+  <a href="livret-accueil.html" target="_blank" rel="noopener" onclick="document.getElementById('mobileMenu').classList.remove('open')">Livret accueil</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Gestion interne · Accès privé</p>
+    <h1 class="hero-title">Réseau <em>partenaires</em></h1>
+    <p class="hero-sub">Ocean Drift Lodge · Dakhla · 2026</p>
+    <div class="stats-row" id="stats-row">
+      <div class="stat-pill"><span class="stat-num" id="stat-total">20</span><span class="stat-label">Total</span></div>
+      <div class="stat-pill stat-contacter"><span class="stat-num" id="stat-contacter">—</span><span class="stat-label">À contacter</span></div>
+      <div class="stat-pill stat-discussion"><span class="stat-num" id="stat-discussion">—</span><span class="stat-label">En discussion</span></div>
+      <div class="stat-pill stat-actif"><span class="stat-num" id="stat-actif">—</span><span class="stat-label">Actif</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TOOLBAR ══ -->
+<div class="toolbar">
+  <div class="toolbar-inner">
+    <span class="filter-label">Priorité</span>
+    <div class="filter-group" id="filter-prio">
+      <button class="filter-btn active" data-prio="all">Tous</button>
+      <button class="filter-btn" data-prio="1">P1 — Impact direct</button>
+      <button class="filter-btn" data-prio="2">P2 — Expérience</button>
+      <button class="filter-btn" data-prio="3">P3 — À développer</button>
+    </div>
+    <span class="filter-label" style="margin-left:.5rem">Type</span>
+    <div class="filter-group" id="filter-type">
+      <button class="filter-btn active" data-type="all">Tous</button>
+      <button class="filter-btn" data-type="restaurant">Restaurants</button>
+      <button class="filter-btn" data-type="ecole">Écoles</button>
+      <button class="filter-btn" data-type="activite">Activités</button>
+      <button class="filter-btn" data-type="bienetre">Bien-être</button>
+      <button class="filter-btn" data-type="commerce">Commerce</button>
+    </div>
+    <div class="toolbar-spacer"></div>
+    <button class="btn-print" onclick="window.print()">Imprimer ↗</button>
+  </div>
+</div>
+
+<!-- ══ TABLE ══ -->
+<main class="main">
+  <div class="table-header">
+    <div>Prio</div>
+    <div>Partenaire</div>
+    <div>Type</div>
+    <div>Statut</div>
+    <div>Contact</div>
+    <div>Type de partenariat</div>
+    <div></div>
+  </div>
+  <div id="partners-list"></div>
+  <div class="empty-state hidden" id="empty-state">Aucun partenaire ne correspond aux filtres sélectionnés.</div>
+</main>
+
+<footer>
+  <picture class="logo-stable footer-logo-wrap"><source srcset="logo.webp" type="image/webp"><img class="no-translate footer-logo-img" src="logo.png" alt="Ocean Drift Lodge" onerror="this.style.display='none'"></picture>
+  <span class="footer-logo-txt">Ocean Drift <em>Lodge</em></span>
+  <nav class="footer-links">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="index.html" target="_blank" rel="noopener">Site public</a>
+  </nav>
+  <span>© 2026 Ocean Drift Lodge · Réseau partenaires · Dakhla, Maroc</span>
+</footer>
+
+<script>
+/* ── SESSION ── */
+if (sessionStorage.getItem('odl-auth') !== '1') {
+  window.location.href = 'dashboard.html';
+}
+
+/* ── DONNÉES PARTENAIRES ── */
+const PARTNERS = [
+  /* ── Priorité 1 ── */
+  { id:'westpoint-pescador', nom:'Westpoint Pescador', type:'Restaurant', typeKey:'restaurant', icon:'🍽️', adresse:'Sur place · Résidence West Point',
+    desc:'Meilleure table de Foum El Bouir. Fruits de mer ultra-frais, coucher de soleil face au point break.',
+    partenariatDefaut:'Réduction hôtes ODL · Réservation via conciergerie', priorite:1,
+    source:'guide-du-voyageur · livret-accueil · index' },
+  { id:'el-bouir-restaurant', nom:'El Bouir Restaurant', type:'Restaurant', typeKey:'restaurant', icon:'🐟', adresse:'200 m · Foum El Bouir',
+    desc:'Poissons frais du jour, terrasse face à l\'Atlantique. Déjà cité comme restaurant partenaire.',
+    partenariatDefaut:'Restaurant partenaire 200 m · Panier bienvenue hôtes', priorite:1,
+    source:'guide-du-voyageur · livret-accueil' },
+  { id:'freestyle-academy', nom:'Freestyle Academy Dakhla', type:'École surf / kite', typeKey:'ecole', icon:'🏄', adresse:'Km 12 · Plage Foum El Bouir',
+    desc:'École locale de référence directement sur le spot. Surf, wing et kite face aux vagues atlantiques.',
+    partenariatDefaut:'Tarifs préférentiels hôtes · Package séjour + cours', priorite:1,
+    source:'guide-du-voyageur' },
+  /* ── Priorité 2 ── */
+  { id:'ocean-academy', nom:'Ocean Academy — La Tour d\'Éole', type:'École kite / foil', typeKey:'ecole', icon:'🪁', adresse:'PK 28 · Lagune de Dakhla',
+    desc:'Co-fondée avec Bruna Kajiya, triple championne du monde. Multispot, niveau pro, excursions Foum El Bouir.',
+    partenariatDefaut:'Tarifs préférentiels · Visibilité croisée · Clientèle premium', priorite:2,
+    source:'guide-du-voyageur' },
+  { id:'terres-nomades', nom:'Terres Nomades — Dakhla Surf', type:'Camp multi-sport', typeKey:'ecole', icon:'⚡', adresse:'Péninsule de Dakhla',
+    desc:'Séjours multisports : surf, kite, SUP, kayak, yoga. Excursions Dune Blanche & Île du Dragon.',
+    partenariatDefaut:'Package excursions · Cross-selling clientèle premium', priorite:2,
+    source:'guide-du-voyageur' },
+  { id:'palais-rhoul', nom:'Palais Rhoul · Table du Pêcheur', type:'Restaurant gastronomique', typeKey:'restaurant', icon:'✨', adresse:'Bord de lagune · Dakhla',
+    desc:'Poisson de leur propre bateau, charbon de bois, recettes raffinées. La grande table de Dakhla.',
+    partenariatDefaut:'Recommandation hôtes premium · Réservation conciergerie', priorite:2,
+    source:'guide-du-voyageur' },
+  { id:'dakhla-attitude', nom:'Dakhla Attitude Kite School', type:'École kite', typeKey:'ecole', icon:'🪁', adresse:'Av. al Moukawama · Dakhla',
+    desc:'Beach bar, sessions DJ, accès direct lagune. Ambiance surf décontractée, idéal voyageurs solo.',
+    partenariatDefaut:'Tarifs préférentiels hôtes · Cross-promotion', priorite:2,
+    source:'guide-du-voyageur' },
+  { id:'parc-huitres', nom:'Parc à Huîtres de Dakhla', type:'Ostréiculture', typeKey:'restaurant', icon:'🦪', adresse:'Lagune de Dakhla',
+    desc:'Huîtres remarquables élevées dans les eaux froides de la lagune. Institution locale.',
+    partenariatDefaut:'Dégustation hôtes · Intégration panier bienvenue', priorite:2,
+    source:'guide-du-voyageur' },
+  /* ── Priorité 3 — nommés ── */
+  { id:'bavaro-beach', nom:'Bavaro Beach Dakhla', type:'Restaurant de plage', typeKey:'restaurant', icon:'🏖️', adresse:'5 km du centre · Bord de plage',
+    desc:'Havre de paix en bord de plage. Poisson frais, terrasse lumière du soir.',
+    partenariatDefaut:'Recommandation hôtes guide voyageur', priorite:3,
+    source:'guide-du-voyageur' },
+  { id:'casa-luis', nom:'Casa Luis', type:'Restaurant local', typeKey:'restaurant', icon:'🇲🇦', adresse:'Centre Dakhla',
+    desc:'Menus dès 80 MAD, recettes traditionnelles. L\'adresse locale par excellence.',
+    partenariatDefaut:'Recommandation budget · Bon plan hôtes', priorite:3,
+    source:'guide-du-voyageur' },
+  { id:'cafe-du-lagon', nom:'Café du Lagon', type:'Café', typeKey:'restaurant', icon:'☕', adresse:'Dakhla-ville',
+    desc:'Tajines, thé à la menthe, vue panoramique sur la baie.',
+    partenariatDefaut:'Recommandation hôtes guide voyageur', priorite:3,
+    source:'guide-du-voyageur · livret-accueil' },
+  { id:'fennekite', nom:'Fennekite Dakhla', type:'École kite', typeKey:'ecole', icon:'🪁', adresse:'Quartier Moulay Rachid · Dakhla',
+    desc:'Petits groupes, moniteurs certifiés. Suivi personnalisé — idéal débutants absolus.',
+    partenariatDefaut:'Tarifs préférentiels hôtes débutants', priorite:3,
+    source:'guide-du-voyageur' },
+  { id:'salty-joy', nom:'Salty Joy Dakhla', type:'Club kite / surf', typeKey:'ecole', icon:'🏄', adresse:'Centre Dakhla',
+    desc:'Club mixte, ambiance inclusive. Idéal voyageuses solos ou groupes d\'amies.',
+    partenariatDefaut:'Recommandation · Cross-promotion', priorite:3,
+    source:'guide-du-voyageur' },
+  { id:'marche-artisanal', nom:'Marché Artisanal · Dakhla', type:'Commerce', typeKey:'commerce', icon:'🛍️', adresse:'15 min de la résidence',
+    desc:'Tissages, bijoux, épices sahraouies. Cœur de la culture locale.',
+    partenariatDefaut:'Recommandation culturelle hôtes', priorite:3,
+    source:'guide-du-voyageur' },
+  /* ── Priorité 3 — à identifier ── */
+  { id:'hammam', nom:'Hammam partenaire', type:'Hammam', typeKey:'bienetre', icon:'♨️', adresse:'~3 km de la résidence',
+    desc:'Mentionné dans les services wellness de la résidence. Prestataire à identifier et contractualiser.',
+    partenariatDefaut:'Tarifs préférentiels hôtes · Réservation conciergerie', priorite:3,
+    source:'guide-du-voyageur · livret-accueil', aIdentifier:true },
+  { id:'yoga', nom:'Yoga lever du soleil', type:'Yoga', typeKey:'bienetre', icon:'🧘', adresse:'Plage · Foum El Bouir',
+    desc:'Séances au lever du soleil face à l\'Atlantique. Prestataire à identifier et contractualiser.',
+    partenariatDefaut:'Package hôtes · Inclus séjour premium', priorite:3,
+    source:'guide-du-voyageur · livret-accueil', aIdentifier:true },
+  { id:'massage', nom:'Massage à domicile', type:'Massage', typeKey:'bienetre', icon:'💆', adresse:'Sur réservation · ODL',
+    desc:'Massage traditionnel à domicile sur réservation. Prestataire à identifier et contractualiser.',
+    partenariatDefaut:'Réservation via conciergerie · Commission', priorite:3,
+    source:'guide-du-voyageur · livret-accueil', aIdentifier:true },
+  { id:'equitation', nom:'Équitation bord de mer', type:'Activité', typeKey:'activite', icon:'🐴', adresse:'Foum El Bouir',
+    desc:'Randonnée équestre en bord de mer. Prestataire à identifier et contractualiser.',
+    partenariatDefaut:'Package famille · Recommandation hôtes', priorite:3,
+    source:'guide-du-voyageur', aIdentifier:true },
+  { id:'dromadaire', nom:'Balade en dromadaire', type:'Activité désert', typeKey:'activite', icon:'🐪', adresse:'Dunes · Foum El Bouir',
+    desc:'Au lever du soleil dans les dunes environnantes. Prestataire à identifier et contractualiser.',
+    partenariatDefaut:'Package désert · Excursion hôtes', priorite:3,
+    source:'guide-du-voyageur', aIdentifier:true },
+  { id:'quad', nom:'Location Quad / 4×4', type:'Activité', typeKey:'activite', icon:'🏎️', adresse:'Dakhla',
+    desc:'Excursions guidées dunes et côte. Organisé depuis la résidence. Prestataire à identifier.',
+    partenariatDefaut:'Réservation depuis résidence · Commission agence', priorite:3,
+    source:'guide-du-voyageur · livret-accueil', aIdentifier:true },
+];
+
+const STORAGE_KEY = 'odl-partenaires-v1';
+const STATUTS = ['À contacter', 'En discussion', 'Actif'];
+const STATUT_CLASSES = ['statut-contacter', 'statut-discussion', 'statut-actif'];
+
+/* ── STATE ── */
+let state = {};
+let filterPrio = 'all';
+let filterType = 'all';
+
+function loadState() {
+  try { state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { state = {}; }
+}
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+function getPartnerState(id) {
+  if (!state[id]) state[id] = { statut: 0, email: '', tel: '', partenariat: '', notes: '' };
+  return state[id];
+}
+
+/* ── RENDER ── */
+function render() {
+  const list = document.getElementById('partners-list');
+  list.innerHTML = '';
+  let visible = 0;
+
+  PARTNERS.forEach(p => {
+    const ps = getPartnerState(p.id);
+    const matchPrio = filterPrio === 'all' || String(p.priorite) === filterPrio;
+    const matchType = filterType === 'all' || p.typeKey === filterType;
+    if (!matchPrio || !matchType) { return; }
+    visible++;
+
+    const partenariatVal = ps.partenariat || p.partenariatDefaut;
+    const row = document.createElement('div');
+    row.className = 'row';
+    row.dataset.id = p.id;
+    row.innerHTML = `
+      <div class="row-col-notes-btn"><button class="btn-notes ${ps.notes ? 'has-note' : ''}" title="Notes" onclick="toggleNotes('${p.id}',this)">📝</button></div>
+      <div class="row-col-nom">
+        <div class="row-nom">${p.icon} ${p.nom}</div>
+        <div class="row-adresse">📍 ${p.adresse}</div>
+        <div class="row-desc">${p.desc}</div>
+        ${p.aIdentifier ? '<span class="tag-identifier">À identifier</span>' : ''}
+        <div class="row-source">${p.source}</div>
+      </div>
+      <div class="row-col-type"><span class="badge-type">${p.type}</span><br><span class="badge-prio p${p.priorite}" style="margin-top:.4rem">P${p.priorite}</span></div>
+      <div class="row-col-statut">
+        <span class="badge-statut ${STATUT_CLASSES[ps.statut]}" onclick="cycleStatut('${p.id}',this)">${STATUTS[ps.statut]}</span>
+      </div>
+      <div class="row-col-contact field-wrap">
+        <span class="field-label">Email</span>
+        <input class="field-edit" type="email" placeholder="contact@partenaire.ma" value="${ps.email || ''}" oninput="saveField('${p.id}','email',this.value)">
+        <span class="field-label" style="margin-top:.3rem">Téléphone</span>
+        <input class="field-edit" type="tel" placeholder="+212 6XX XXX XXX" value="${ps.tel || ''}" oninput="saveField('${p.id}','tel',this.value)">
+      </div>
+      <div class="row-col-partenariat field-wrap">
+        <span class="field-label">Type de partenariat</span>
+        <textarea class="field-edit" rows="3" placeholder="${p.partenariatDefaut}" oninput="saveField('${p.id}','partenariat',this.value)">${ps.partenariat || ''}</textarea>
+      </div>
+      <div class="row-notes ${ps.notes ? 'open' : ''}">
+        <span class="field-label">Notes internes</span>
+        <textarea class="notes-textarea" placeholder="Contact rencontré le… · Accord verbal le… · Rappeler le…" oninput="saveField('${p.id}','notes',this.value)">${ps.notes || ''}</textarea>
+      </div>
+    `;
+    list.appendChild(row);
+  });
+
+  document.getElementById('empty-state').classList.toggle('hidden', visible > 0);
+  updateStats();
+}
+
+function updateStats() {
+  const counts = [0, 0, 0];
+  PARTNERS.forEach(p => { counts[getPartnerState(p.id).statut]++; });
+  document.getElementById('stat-total').textContent = PARTNERS.length;
+  document.getElementById('stat-contacter').textContent = counts[0];
+  document.getElementById('stat-discussion').textContent = counts[1];
+  document.getElementById('stat-actif').textContent = counts[2];
+}
+
+function cycleStatut(id, el) {
+  const ps = getPartnerState(id);
+  ps.statut = (ps.statut + 1) % 3;
+  el.textContent = STATUTS[ps.statut];
+  el.className = 'badge-statut ' + STATUT_CLASSES[ps.statut];
+  saveState();
+  updateStats();
+}
+
+function saveField(id, field, value) {
+  getPartnerState(id)[field] = value;
+  saveState();
+  if (field === 'notes') {
+    const row = document.querySelector(`.row[data-id="${id}"]`);
+    if (row) row.querySelector('.btn-notes').classList.toggle('has-note', !!value.trim());
+  }
+}
+
+function toggleNotes(id, btn) {
+  const row = document.querySelector(`.row[data-id="${id}"]`);
+  if (!row) return;
+  const panel = row.querySelector('.row-notes');
+  panel.classList.toggle('open');
+  if (panel.classList.contains('open')) panel.querySelector('textarea').focus();
+}
+
+/* ── FILTRES ── */
+document.getElementById('filter-prio').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+  filterPrio = btn.dataset.prio;
+  document.querySelectorAll('#filter-prio .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+});
+
+document.getElementById('filter-type').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+  filterType = btn.dataset.type;
+  document.querySelectorAll('#filter-type .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+});
+
+/* ── SCROLL PROGRESS ── */
+const prog = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  const s = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  if (prog) prog.style.width = Math.min(s, 100) + '%';
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+/* ── INIT ── */
+loadState();
+render();
+</script>
+
+</body>
+</html>
