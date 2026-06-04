@@ -81,9 +81,12 @@ section{padding:6rem 3.5rem}
 .act-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.4rem}
 .act-desc{font-size:.82rem;color:var(--ink-light);line-height:1.6;flex:1}
 .act-profile-tag{margin-top:.8rem;font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+.card-photo{width:100%;height:200px;overflow:hidden;border-radius:var(--radius) var(--radius) 0 0;margin-bottom:0}
+.card-photo img{width:100%;height:100%;object-fit:cover;display:block}
 .card-body{display:none}
 .card-body.open{display:block}
-.accordion-btn{font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);cursor:pointer;background:none;border:none;padding:.5rem 0;margin-top:.5rem}
+.accordion-btn{font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);cursor:pointer;background:transparent;border:1px solid var(--teal);padding:.5rem 1.2rem;border-radius:var(--radius);margin-top:.8rem;transition:all var(--trans);display:inline-block}
+.accordion-btn:hover{background:var(--teal);color:#fff}
 
 /* ── ÉCOLES ── */
 #ecoles{background:var(--bg)}
@@ -332,7 +335,12 @@ section{padding:6rem 3.5rem}
     <div class="acts-grid reveal" style="transition-delay:.2s">
 
       <div class="act-card" data-cat="mer" data-profiles="surfer aventurier">
-        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=70')"></div>
+        <div class="card-photo">
+          <picture>
+            <source srcset="images/spots/pexels-mographe-30148201.webp" type="image/webp">
+            <img src="images/spots/pexels-mographe-30148201.webp" alt="Surf · Foum El Bouir" loading="lazy">
+          </picture>
+        </div>
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Surf · Foum El Bouir</span><span data-lang="en">Surf · Foum El Bouir</span><span data-lang="es">Surf · Foum El Bouir</span><span data-lang="pt">Surf · Foum El Bouir</span><span data-lang="it">Surf · Foum El Bouir</span></p>
@@ -345,7 +353,12 @@ section{padding:6rem 3.5rem}
       </div>
 
       <div class="act-card" data-cat="mer" data-profiles="kiter famille">
-        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=600&q=70')"></div>
+        <div class="card-photo">
+          <picture>
+            <source srcset="images/spots/IMG_0116.webp" type="image/webp">
+            <img src="images/spots/IMG_0116.webp" alt="Kitesurf · La Lagune" loading="lazy">
+          </picture>
+        </div>
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Kitesurf · La Lagune</span><span data-lang="en">Kitesurf · The Lagoon</span><span data-lang="es">Kitesurf · La Laguna</span><span data-lang="pt">Kitesurf · A Lagoa</span><span data-lang="it">Kitesurf · La Laguna</span></p>
@@ -358,7 +371,12 @@ section{padding:6rem 3.5rem}
       </div>
 
       <div class="act-card" data-cat="mer" data-profiles="couple aventurier">
-        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=70')"></div>
+        <div class="card-photo">
+          <picture>
+            <source srcset="images/spots/pexels-md-samiuzzaman-sakib_-499442624-28424620.webp" type="image/webp">
+            <img src="images/spots/pexels-md-samiuzzaman-sakib_-499442624-28424620.webp" alt="Kayak de mer" loading="lazy">
+          </picture>
+        </div>
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Kayak de mer</span><span data-lang="en">Sea kayak</span><span data-lang="es">Kayak de mar</span><span data-lang="pt">Kayak de mar</span><span data-lang="it">Kayak di mare</span></p>
@@ -371,7 +389,12 @@ section{padding:6rem 3.5rem}
       </div>
 
       <div class="act-card" data-cat="mer" data-profiles="tous">
-        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=70')"></div>
+        <div class="card-photo">
+          <picture>
+            <source srcset="images/spots/6b9a4d43-f100-4c82-8407-81bd11df2e2e.webp" type="image/webp">
+            <img src="images/spots/6b9a4d43-f100-4c82-8407-81bd11df2e2e.webp" alt="Île du Dragon" loading="lazy">
+          </picture>
+        </div>
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Île du Dragon</span><span data-lang="en">Dragon Island</span><span data-lang="es">Isla del Dragón</span><span data-lang="pt">Ilha do Dragão</span><span data-lang="it">Isola del Drago</span></p>
@@ -384,7 +407,12 @@ section{padding:6rem 3.5rem}
       </div>
 
       <div class="act-card" data-cat="mer" data-profiles="couple famille">
-        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=70')"></div>
+        <div class="card-photo">
+          <picture>
+            <source srcset="images/spots/c15010c5-e6e4-4665-9f45-2c241e1d23e2.webp" type="image/webp">
+            <img src="images/spots/c15010c5-e6e4-4665-9f45-2c241e1d23e2.webp" alt="Plage Porto Rico" loading="lazy">
+          </picture>
+        </div>
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Plage Porto Rico</span><span data-lang="en">Porto Rico Beach</span><span data-lang="es">Playa Porto Rico</span><span data-lang="pt">Praia Porto Rico</span><span data-lang="it">Spiaggia Porto Rico</span></p>
@@ -397,7 +425,12 @@ section{padding:6rem 3.5rem}
       </div>
 
       <div class="act-card" data-cat="mer" data-profiles="aventurier">
-        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=70')"></div>
+        <div class="card-photo">
+          <picture>
+            <source srcset="images/spots/ded82987-77a8-4018-887b-c1893b7e649f.webp" type="image/webp">
+            <img src="images/spots/ded82987-77a8-4018-887b-c1893b7e649f.webp" alt="Pêche traditionnelle" loading="lazy">
+          </picture>
+        </div>
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Pêche traditionnelle</span><span data-lang="en">Traditional fishing</span><span data-lang="es">Pesca tradicional</span><span data-lang="pt">Pesca tradicional</span><span data-lang="it">Pesca tradizionale</span></p>
@@ -410,7 +443,12 @@ section{padding:6rem 3.5rem}
       </div>
 
       <div class="act-card" data-cat="desert" data-profiles="aventurier couple">
-        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=600&q=70')"></div>
+        <div class="card-photo">
+          <picture>
+            <source srcset="images/spots/1a140d14-5808-43ed-af4f-ca0f2334cef3.webp" type="image/webp">
+            <img src="images/spots/1a140d14-5808-43ed-af4f-ca0f2334cef3.webp" alt="Quad · Dunes" loading="lazy">
+          </picture>
+        </div>
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🏜 Désert</span><span data-lang="en">🏜 Desert</span><span data-lang="es">🏜 Desierto</span><span data-lang="pt">🏜 Deserto</span><span data-lang="it">🏜 Deserto</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Quad · Dunes</span><span data-lang="en">Quad · Dunes</span><span data-lang="es">Quad · Dunas</span><span data-lang="pt">Quad · Dunas</span><span data-lang="it">Quad · Dune</span></p>
@@ -423,7 +461,12 @@ section{padding:6rem 3.5rem}
       </div>
 
       <div class="act-card" data-cat="desert" data-profiles="tous">
-        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1541698444083-023c97d3f4b6?w=600&q=70')"></div>
+        <div class="card-photo">
+          <picture>
+            <source srcset="images/spots/pexels-ali-marwan-1100809915-32798589.webp" type="image/webp">
+            <img src="images/spots/pexels-ali-marwan-1100809915-32798589.webp" alt="La Dune Blanche" loading="lazy">
+          </picture>
+        </div>
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🏜 Désert</span><span data-lang="en">🏜 Desert</span><span data-lang="es">🏜 Desierto</span><span data-lang="pt">🏜 Deserto</span><span data-lang="it">🏜 Deserto</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">La Dune Blanche</span><span data-lang="en">The White Dune</span><span data-lang="es">La Duna Blanca</span><span data-lang="pt">A Duna Branca</span><span data-lang="it">La Duna Bianca</span></p>
@@ -436,7 +479,12 @@ section{padding:6rem 3.5rem}
       </div>
 
       <div class="act-card" data-cat="desert" data-profiles="aventurier couple">
-        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1445991842772-097fea258e7b?w=600&q=70')"></div>
+        <div class="card-photo">
+          <picture>
+            <source srcset="images/spots/pexels-dajana-reci-289671698-15925680.webp" type="image/webp">
+            <img src="images/spots/pexels-dajana-reci-289671698-15925680.webp" alt="Bivouac · Désert" loading="lazy">
+          </picture>
+        </div>
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🏜 Désert</span><span data-lang="en">🏜 Desert</span><span data-lang="es">🏜 Desierto</span><span data-lang="pt">🏜 Deserto</span><span data-lang="it">🏜 Deserto</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Bivouac · Excursion désert</span><span data-lang="en">Bivouac · Desert excursion</span><span data-lang="es">Bivouac · Excursión desierto</span><span data-lang="pt">Bivaque · Excursão no deserto</span><span data-lang="it">Bivacco · Escursione nel deserto</span></p>
@@ -449,7 +497,12 @@ section{padding:6rem 3.5rem}
       </div>
 
       <div class="act-card" data-cat="nature" data-profiles="couple famille">
-        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=600&q=70')"></div>
+        <div class="card-photo">
+          <picture>
+            <source srcset="images/spots/2faeb466-6f6e-4368-b5a4-3c8aa0fdc422.webp" type="image/webp">
+            <img src="images/spots/2faeb466-6f6e-4368-b5a4-3c8aa0fdc422.webp" alt="Équitation bord de mer" loading="lazy">
+          </picture>
+        </div>
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🌿 Nature</span><span data-lang="en">🌿 Nature</span><span data-lang="es">🌿 Nature</span><span data-lang="pt">🌿 Nature</span><span data-lang="it">🌿 Nature</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Équitation bord de mer</span><span data-lang="en">Horse riding by the sea</span><span data-lang="es">Equitación a orillas del mar</span><span data-lang="pt">Equitação à beira-mar</span><span data-lang="it">Equitazione in riva al mare</span></p>
@@ -462,7 +515,12 @@ section{padding:6rem 3.5rem}
       </div>
 
       <div class="act-card" data-cat="nature" data-profiles="couple">
-        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=70')"></div>
+        <div class="card-photo">
+          <picture>
+            <source srcset="images/spots/3caf8d4d-abb6-4ebb-8d59-2f6efdd135cb.webp" type="image/webp">
+            <img src="images/spots/3caf8d4d-abb6-4ebb-8d59-2f6efdd135cb.webp" alt="Yoga · Lever du soleil" loading="lazy">
+          </picture>
+        </div>
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🌿 Nature</span><span data-lang="en">🌿 Nature</span><span data-lang="es">🌿 Nature</span><span data-lang="pt">🌿 Nature</span><span data-lang="it">🌿 Nature</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Yoga · Lever du soleil</span><span data-lang="en">Yoga · Sunrise</span><span data-lang="es">Yoga · Amanecer</span><span data-lang="pt">Yoga · Nascer do sol</span><span data-lang="it">Yoga · Alba</span></p>
@@ -475,7 +533,12 @@ section{padding:6rem 3.5rem}
       </div>
 
       <div class="act-card" data-cat="nature" data-profiles="aventurier couple">
-        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1497752531616-c3afd9760a11?w=600&q=70')"></div>
+        <div class="card-photo">
+          <picture>
+            <source srcset="images/spots/edb943ba-2e75-4658-b471-4a2de302f168.webp" type="image/webp">
+            <img src="images/spots/edb943ba-2e75-4658-b471-4a2de302f168.webp" alt="Source Asma" loading="lazy">
+          </picture>
+        </div>
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🌿 Nature</span><span data-lang="en">🌿 Nature</span><span data-lang="es">🌿 Nature</span><span data-lang="pt">🌿 Nature</span><span data-lang="it">🌿 Nature</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Source Asma</span><span data-lang="en">Source Asma</span><span data-lang="es">Fuente Asma</span><span data-lang="pt">Nascente Asma</span><span data-lang="it">Sorgente Asma</span></p>
@@ -488,7 +551,12 @@ section{padding:6rem 3.5rem}
       </div>
 
       <div class="act-card" data-cat="nature" data-profiles="famille">
-        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=600&q=70')"></div>
+        <div class="card-photo">
+          <picture>
+            <source srcset="images/spots/9a34804c-3b1e-41f0-bd1f-c8351e0a49eb.webp" type="image/webp">
+            <img src="images/spots/9a34804c-3b1e-41f0-bd1f-c8351e0a49eb.webp" alt="Flamants roses · Lagune" loading="lazy">
+          </picture>
+        </div>
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🌿 Nature</span><span data-lang="en">🌿 Nature</span><span data-lang="es">🌿 Nature</span><span data-lang="pt">🌿 Nature</span><span data-lang="it">🌿 Nature</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Flamants roses · Lagune</span><span data-lang="en">Pink flamingos · Lagoon</span><span data-lang="es">Flamencos rosas · Laguna</span><span data-lang="pt">Flamingos · Lagoa</span><span data-lang="it">Fenicotteri rosa · Laguna</span></p>
@@ -501,7 +569,12 @@ section{padding:6rem 3.5rem}
       </div>
 
       <div class="act-card" data-cat="nature" data-profiles="aventurier">
-        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=70')"></div>
+        <div class="card-photo">
+          <picture>
+            <source srcset="images/spots/df50f100-dd50-4d63-a871-67fac0369694.webp" type="image/webp">
+            <img src="images/spots/df50f100-dd50-4d63-a871-67fac0369694.webp" alt="Parapente · Dunes" loading="lazy">
+          </picture>
+        </div>
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🌿 Nature</span><span data-lang="en">🌿 Nature</span><span data-lang="es">🌿 Nature</span><span data-lang="pt">🌿 Nature</span><span data-lang="it">🌿 Nature</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Parapente · Dunes</span><span data-lang="en">Paragliding · Dunes</span><span data-lang="es">Parapente · Dunas</span><span data-lang="pt">Parapente · Dunas</span><span data-lang="it">Parapendio · Dune</span></p>
@@ -514,7 +587,12 @@ section{padding:6rem 3.5rem}
       </div>
 
       <div class="act-card" data-cat="culture" data-profiles="tous">
-        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=600&q=70')"></div>
+        <div class="card-photo">
+          <picture>
+            <source srcset="images/spots/pexels-esteban-zuluaga-2564348-18451793.webp" type="image/webp">
+            <img src="images/spots/pexels-esteban-zuluaga-2564348-18451793.webp" alt="Cérémonie du thé sahraoui" loading="lazy">
+          </picture>
+        </div>
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🏺 Culture</span><span data-lang="en">🏺 Culture</span><span data-lang="es">🏺 Culture</span><span data-lang="pt">🏺 Culture</span><span data-lang="it">🏺 Culture</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Cérémonie du thé sahraoui</span><span data-lang="en">Sahrawi tea ceremony</span><span data-lang="es">Ceremonia del té saharaui</span><span data-lang="pt">Cerimónia do chá saharawi</span><span data-lang="it">Cerimonia del tè saharawi</span></p>
@@ -527,7 +605,12 @@ section{padding:6rem 3.5rem}
       </div>
 
       <div class="act-card" data-cat="culture" data-profiles="famille">
-        <div class="act-img" style="background-image:url('https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=600&q=70')"></div>
+        <div class="card-photo">
+          <picture>
+            <source srcset="images/spots/becf9317-b3c1-4254-a215-5b6f76d40b6e.webp" type="image/webp">
+            <img src="images/spots/becf9317-b3c1-4254-a215-5b6f76d40b6e.webp" alt="Marché artisanal · Dakhla" loading="lazy">
+          </picture>
+        </div>
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🏺 Culture</span><span data-lang="en">🏺 Culture</span><span data-lang="es">🏺 Culture</span><span data-lang="pt">🏺 Culture</span><span data-lang="it">🏺 Culture</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Marché artisanal · Dakhla</span><span data-lang="en">Artisan market · Dakhla</span><span data-lang="es">Mercado artesanal · Dakhla</span><span data-lang="pt">Mercado artesanal · Dakhla</span><span data-lang="it">Mercato artigianale · Dakhla</span></p>
