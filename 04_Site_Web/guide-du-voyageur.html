@@ -156,6 +156,16 @@ section{padding:6rem 3.5rem}
 .lang-btn.switching{animation:lang-pop 0.3s ease}
 @keyframes lang-pop{0%{transform:scale(1)}50%{transform:scale(1.15)}100%{transform:scale(1)}}
 
+/* ── MÉTÉO ── */
+#weather-widget{background:var(--navy);padding:2.5rem 3.5rem}
+.weather-inner{max-width:1100px;margin:0 auto}
+.weather-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
+.weather-card{background:rgba(255,255,255,0.06);border-radius:8px;padding:1.5rem;text-align:center}
+.weather-icon{font-size:2rem;margin-bottom:.5rem}
+.weather-val{font-family:var(--font-serif);font-size:1.8rem;font-weight:300;color:#f5f0e8;margin-bottom:.2rem}
+.weather-lbl{font-size:.62rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,240,232,0.55)}
+#weather-update{margin-top:1rem;font-size:.72rem;color:rgba(245,240,232,0.45);letter-spacing:.08em;text-align:center}
+
 </style>
 </head>
 <body>
@@ -275,6 +285,33 @@ section{padding:6rem 3.5rem}
     </div>
   </div>
 </section>
+
+<!-- ── MÉTÉO ── -->
+<div id="weather-widget">
+  <div class="weather-inner">
+    <p class="section-tag" style="color:rgba(245,240,232,0.55);text-align:center">
+      <span data-lang="fr" class="lang-visible">Météo en direct · Dakhla</span><span data-lang="en">Live weather · Dakhla</span><span data-lang="es">Tiempo en directo · Dakhla</span><span data-lang="pt">Tempo em directo · Dakhla</span><span data-lang="it">Meteo in diretta · Dakhla</span>
+    </p>
+    <div class="weather-grid">
+      <div class="weather-card">
+        <div class="weather-icon" id="weather-icon">⏳</div>
+        <div class="weather-val" id="weather-temp">—</div>
+        <div class="weather-lbl"><span data-lang="fr" class="lang-visible">Température</span><span data-lang="en">Temperature</span><span data-lang="es">Temperatura</span><span data-lang="pt">Temperatura</span><span data-lang="it">Temperatura</span></div>
+      </div>
+      <div class="weather-card">
+        <div class="weather-icon">💨</div>
+        <div class="weather-val" id="weather-wind">—</div>
+        <div class="weather-lbl"><span data-lang="fr" class="lang-visible">Vent</span><span data-lang="en">Wind</span><span data-lang="es">Viento</span><span data-lang="pt">Vento</span><span data-lang="it">Vento</span></div>
+      </div>
+      <div class="weather-card">
+        <div class="weather-icon">💧</div>
+        <div class="weather-val" id="weather-humidity">—</div>
+        <div class="weather-lbl"><span data-lang="fr" class="lang-visible">Humidité</span><span data-lang="en">Humidity</span><span data-lang="es">Humedad</span><span data-lang="pt">Humidade</span><span data-lang="it">Umidità</span></div>
+      </div>
+    </div>
+    <p id="weather-update" style="margin-top:1rem;font-size:.72rem;color:rgba(245,240,232,0.45);letter-spacing:.08em;text-align:center">Chargement…</p>
+  </div>
+</div>
 
 <!-- ── SPOTS ── -->
 <section id="spots" aria-labelledby="spots-title">
@@ -1275,6 +1312,24 @@ document.addEventListener('DOMContentLoaded',()=>setLang('fr'));
       },50);
     });
   });
+  /* ── MÉTÉO TEMPS RÉEL ── */
+  async function fetchWeather() {
+    try {
+      const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=23.7136&longitude=-15.9355&current=temperature_2m,windspeed_10m,weathercode,relativehumidity_2m&wind_speed_unit=kn&timezone=Africa%2FCasablanca');
+      const data = await res.json();
+      const c = data.current;
+      const codes = {0:'☀️',1:'⛅',2:'⛅',3:'⛅',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌦️',55:'🌦️',61:'🌧️',63:'🌧️',65:'🌧️',80:'🌦️',81:'🌦️',82:'🌦️',95:'⛈️',96:'⛈️',99:'⛈️'};
+      const icon = codes[c.weathercode] || '🌤️';
+      document.getElementById('weather-temp').textContent = Math.round(c.temperature_2m) + '°C';
+      document.getElementById('weather-wind').textContent = Math.round(c.windspeed_10m) + ' kn';
+      document.getElementById('weather-humidity').textContent = c.relativehumidity_2m + '%';
+      document.getElementById('weather-icon').textContent = icon;
+      document.getElementById('weather-update').textContent = 'Mis à jour · ' + new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+    } catch(e) { console.error('Météo indisponible:', e); }
+  }
+  fetchWeather();
+  setInterval(fetchWeather, 1800000);
+
 })();
 </script>
 </body>
