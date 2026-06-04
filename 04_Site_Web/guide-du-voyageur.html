@@ -110,15 +110,15 @@ section{padding:6rem 3.5rem}
 
 /* ── GASTRONOMIE ── */
 #gastro{background:var(--bg-sand)}
-.gastro-list{margin-top:3rem;display:flex;flex-direction:column;gap:0}
-.gastro-item{display:grid;grid-template-columns:80px 1fr;gap:1.5rem;padding:1.8rem 0;border-bottom:1px solid rgba(28,28,26,0.07);align-items:center;transition:background var(--trans)}
-.gastro-item:first-child{border-top:1px solid rgba(28,28,26,0.07)}
-.gastro-item:hover{background:rgba(46,139,139,0.03);border-radius:4px;padding-left:.8rem;padding-right:.8rem;margin:0 -.8rem}
-.gastro-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:rgba(46,139,139,0.2);text-align:center;line-height:1}
-.gastro-content h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--ink);margin-bottom:.2rem}
-.gastro-meta{font-size:.72rem;color:var(--peach);font-weight:500;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.4rem}
-.gastro-desc{font-size:.84rem;color:var(--ink-light);line-height:1.6}
-.gastro-icons{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
+.resto-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3rem}
+.resto-card{background:#fff;border:1px solid rgba(28,28,26,.07);border-radius:var(--radius);overflow:hidden;display:grid;grid-template-columns:220px 1fr}
+.resto-photo{overflow:hidden;display:flex}
+.resto-photo img{width:100%;object-fit:cover;display:block}
+.resto-body{padding:1.2rem 1.5rem;display:flex;flex-direction:column}
+.resto-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--ink);margin:0 0 .25rem}
+.gastro-meta{font-size:.72rem;color:var(--peach);font-weight:500;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.3rem}
+.gastro-desc{font-size:.84rem;color:var(--ink-light);line-height:1.6;margin:.4rem 0}
+.gastro-icons{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.4rem}
 .g-pill{font-size:.65rem;color:var(--ink-light);padding:.18rem .55rem;background:var(--bg);border-radius:20px;border:1px solid rgba(28,28,26,0.08)}
 
 /* ── RESPONSIVE ── */
@@ -135,7 +135,9 @@ section{padding:6rem 3.5rem}
   .acts-grid,.ecoles-grid{grid-template-columns:1fr}
   .profiles{gap:.4rem}
   .profile-btn{padding:.5rem .8rem;font-size:.6rem}
-  .gastro-item{grid-template-columns:50px 1fr;gap:1rem}
+  .resto-grid{grid-template-columns:1fr}
+  .resto-card{grid-template-columns:1fr}
+  .resto-photo img{height:180px}
 }
 
 </style>
@@ -836,74 +838,135 @@ section{padding:6rem 3.5rem}
     </h2>
     <p class="section-lead reveal" style="transition-delay:.1s"><span data-lang="fr" class="lang-visible">Les adresses que les locaux se passent de bouche à oreille.</span><span data-lang="en">The addresses locals whisper to each other.</span><span data-lang="es">Los restaurantes que los locales se pasan de boca en boca.</span><span data-lang="pt">Os endereços que os locais passam de boca em boca.</span><span data-lang="it">Gli indirizzi che i locali si passano sottovoce.</span></p>
 
-    <ul class="gastro-list reveal" style="transition-delay:.15s" role="list">
-      <li class="gastro-item">
-        <div class="gastro-img" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=200&q=70')" role="img" aria-label="Westpoint Pescador"></div>
-        <div class="gastro-content">
-          <h3>Westpoint Pescador</h3>
+    <div class="resto-grid reveal" style="transition-delay:.15s" role="list">
+
+      <div class="resto-card">
+        <div class="resto-photo">
+          <picture>
+            <source srcset="images/spots/a8c7750e-a12d-4cb4-a84a-70b9153e6678.webp" type="image/webp">
+            <img src="images/spots/a8c7750e-a12d-4cb4-a84a-70b9153e6678.webp" alt="Westpoint Pescador" loading="lazy">
+          </picture>
+        </div>
+        <div class="resto-body">
+          <p class="resto-name">Westpoint Pescador</p>
           <p class="gastro-meta"><span data-lang="fr" class="lang-visible">🌅 Sur place · Résidence West Point</span><span data-lang="en">🌅 On site · West Point Residence</span><span data-lang="es">🌅 En el lugar · Residencia West Point</span><span data-lang="pt">🌅 No local · Residência West Point</span><span data-lang="it">🌅 In loco · Residenza West Point</span></p>
-          <p class="gastro-desc"><span data-lang="fr" class="lang-visible">La meilleure table de Foum El Bouir. Fruits de mer ultra-frais, coucher de soleil face au point break.</span><span data-lang="en">The finest table in Foum El Bouir. Ultra-fresh seafood, sunset facing the point break.</span><span data-lang="es">La mejor mesa de Foum El Bouir. Mariscos ultrafrescos, atardecer frente al point break.</span><span data-lang="pt">A melhor mesa de Foum El Bouir. Marisco ultrafesco, pôr do sol face ao point break.</span><span data-lang="it">La tavola più raffinata di Foum El Bouir. Frutti di mare freschissimi, tramonto sul point break.</span></p>
-          <div class="gastro-icons">
-            <span class="g-pill"><span data-lang="fr" class="lang-visible">🐚 Fruits de mer</span><span data-lang="en">🐚 Seafood</span><span data-lang="es">🐚 Mariscos</span><span data-lang="pt">🐚 Marisco</span><span data-lang="it">🐚 Frutti di mare</span></span><span class="g-pill"><span data-lang="fr" class="lang-visible">🌊 Vue océan</span><span data-lang="en">🌊 Ocean view</span><span data-lang="es">🌊 Vista océano</span><span data-lang="pt">🌊 Vista oceano</span><span data-lang="it">🌊 Vista oceano</span></span><span class="g-pill">🌅 Sunset</span>
+          <p class="card-accroche"><span data-lang="fr" class="lang-visible">La table suspendue entre vague et coucher de soleil.</span><span data-lang="en">The table suspended between wave and sunset.</span><span data-lang="es">La mesa suspendida entre ola y puesta de sol.</span><span data-lang="pt">A mesa suspensa entre onda e pôr do sol.</span><span data-lang="it">Il tavolo sospeso tra onda e tramonto.</span></p>
+          <button class="accordion-btn" onclick="toggleResto(this)">+ Découvrir</button>
+          <div class="card-body">
+            <p class="gastro-desc"><span data-lang="fr" class="lang-visible">La meilleure table de Foum El Bouir. Fruits de mer ultra-frais, coucher de soleil face au point break.</span><span data-lang="en">The finest table in Foum El Bouir. Ultra-fresh seafood, sunset facing the point break.</span><span data-lang="es">La mejor mesa de Foum El Bouir. Mariscos ultrafrescos, atardecer frente al point break.</span><span data-lang="pt">A melhor mesa de Foum El Bouir. Marisco ultrafesco, pôr do sol face ao point break.</span><span data-lang="it">La tavola più raffinata di Foum El Bouir. Frutti di mare freschissimi, tramonto sul point break.</span></p>
+            <div class="gastro-icons">
+              <span class="g-pill"><span data-lang="fr" class="lang-visible">🐚 Fruits de mer</span><span data-lang="en">🐚 Seafood</span><span data-lang="es">🐚 Mariscos</span><span data-lang="pt">🐚 Marisco</span><span data-lang="it">🐚 Frutti di mare</span></span><span class="g-pill"><span data-lang="fr" class="lang-visible">🌊 Vue océan</span><span data-lang="en">🌊 Ocean view</span><span data-lang="es">🌊 Vista océano</span><span data-lang="pt">🌊 Vista oceano</span><span data-lang="it">🌊 Vista oceano</span></span><span class="g-pill">🌅 Sunset</span>
+            </div>
           </div>
         </div>
-      </li>
-      <li class="gastro-item">
-        <div class="gastro-img" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=200&q=70')" role="img" aria-label="Bavaro Beach Dakhla"></div>
-        <div class="gastro-content">
-          <h3>Bavaro Beach Dakhla</h3>
+      </div>
+
+      <div class="resto-card">
+        <div class="resto-photo">
+          <picture>
+            <source srcset="images/spots/2ff68969-d8ee-45ec-a707-df6f7b19e5fd.webp" type="image/webp">
+            <img src="images/spots/2ff68969-d8ee-45ec-a707-df6f7b19e5fd.webp" alt="Bavaro Beach Dakhla" loading="lazy">
+          </picture>
+        </div>
+        <div class="resto-body">
+          <p class="resto-name">Bavaro Beach Dakhla</p>
           <p class="gastro-meta"><span data-lang="fr" class="lang-visible">🍽 Restaurant-plage · 5 km du centre</span><span data-lang="en">🍽 Beach restaurant · 5 km from centre</span><span data-lang="es">🍽 Restaurante playa · 5 km del centro</span><span data-lang="pt">🍽 Restaurante-praia · 5 km do centro</span><span data-lang="it">🍽 Ristorante-spiaggia · 5 km dal centro</span></p>
-          <p class="gastro-desc"><span data-lang="fr" class="lang-visible">Havre de paix en bord de plage. Poisson frais, terrasse lumière du soir.</span><span data-lang="en">A peaceful haven by the shore. Fresh fish, terrace in the evening light.</span><span data-lang="es">Refugio de paz a orillas de la playa. Pescado fresco, terraza en la luz del atardecer.</span><span data-lang="pt">Um refúgio de paz à beira da praia. Peixe fresco, esplanada com luz do entardecer.</span><span data-lang="it">Un rifugio di pace in riva alla spiaggia. Pesce fresco, terrazza nella luce della sera.</span></p>
-          <div class="gastro-icons">
-            <span class="g-pill"><span data-lang="fr" class="lang-visible">🐟 Poisson grillé</span><span data-lang="en">🐟 Grilled fish</span><span data-lang="es">🐟 Pescado a la brasa</span><span data-lang="pt">🐟 Peixe grelhado</span><span data-lang="it">🐟 Pesce alla griglia</span></span><span class="g-pill"><span data-lang="fr" class="lang-visible">🏖 Plage</span><span data-lang="en">🏖 Beach</span><span data-lang="es">🏖 Playa</span><span data-lang="pt">🏖 Praia</span><span data-lang="it">🏖 Spiaggia</span></span>
+          <p class="card-accroche"><span data-lang="fr" class="lang-visible">Les pieds dans le sable, l'horizon plein les yeux.</span><span data-lang="en">Feet in the sand, eyes full of horizon.</span><span data-lang="es">Los pies en la arena, los ojos llenos de horizonte.</span><span data-lang="pt">Os pés na areia, os olhos cheios de horizonte.</span><span data-lang="it">I piedi nella sabbia, gli occhi pieni d'orizzonte.</span></p>
+          <button class="accordion-btn" onclick="toggleResto(this)">+ Découvrir</button>
+          <div class="card-body">
+            <p class="gastro-desc"><span data-lang="fr" class="lang-visible">Havre de paix en bord de plage. Poisson frais, terrasse lumière du soir.</span><span data-lang="en">A peaceful haven by the shore. Fresh fish, terrace in the evening light.</span><span data-lang="es">Refugio de paz a orillas de la playa. Pescado fresco, terraza en la luz del atardecer.</span><span data-lang="pt">Um refúgio de paz à beira da praia. Peixe fresco, esplanada com luz do entardecer.</span><span data-lang="it">Un rifugio di pace in riva alla spiaggia. Pesce fresco, terrazza nella luce della sera.</span></p>
+            <div class="gastro-icons">
+              <span class="g-pill"><span data-lang="fr" class="lang-visible">🐟 Poisson grillé</span><span data-lang="en">🐟 Grilled fish</span><span data-lang="es">🐟 Pescado a la brasa</span><span data-lang="pt">🐟 Peixe grelhado</span><span data-lang="it">🐟 Pesce alla griglia</span></span><span class="g-pill"><span data-lang="fr" class="lang-visible">🏖 Plage</span><span data-lang="en">🏖 Beach</span><span data-lang="es">🏖 Playa</span><span data-lang="pt">🏖 Praia</span><span data-lang="it">🏖 Spiaggia</span></span>
+            </div>
           </div>
         </div>
-      </li>
-      <li class="gastro-item">
-        <div class="gastro-img" style="background-image:url('https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=200&q=70')" role="img" aria-label="Casa Luis"></div>
-        <div class="gastro-content">
-          <h3>Casa Luis</h3>
+      </div>
+
+      <div class="resto-card">
+        <div class="resto-photo">
+          <picture>
+            <source srcset="images/spots/bd2b7a7b-bf41-464f-9c53-a49929c15bca.webp" type="image/webp">
+            <img src="images/spots/bd2b7a7b-bf41-464f-9c53-a49929c15bca.webp" alt="Casa Luis" loading="lazy">
+          </picture>
+        </div>
+        <div class="resto-body">
+          <p class="resto-name">Casa Luis</p>
           <p class="gastro-meta"><span data-lang="fr" class="lang-visible">🍴 Local · Centre Dakhla · Budget maîtrisé</span><span data-lang="en">🍴 Local · Dakhla centre · Budget-friendly</span><span data-lang="es">🍴 Local · Centro Dakhla · Presupuesto ajustado</span><span data-lang="pt">🍴 Local · Centro de Dakhla · Orçamento controlado</span><span data-lang="it">🍴 Locale · Centro di Dakhla · Budget accessibile</span></p>
-          <p class="gastro-desc"><span data-lang="fr" class="lang-visible">L'adresse locale par excellence. Menus dès 80 MAD, recettes traditionnelles.</span><span data-lang="en">The local address par excellence. Set menus from 80 MAD, traditional recipes.</span><span data-lang="es">La dirección local por excelencia. Menús desde 80 MAD, recetas tradicionales.</span><span data-lang="pt">O endereço local por excelência. Menus a partir de 80 MAD, receitas tradicionais.</span><span data-lang="it">L'indirizzo locale per eccellenza. Menu da 80 MAD, ricette tradizionali.</span></p>
-          <div class="gastro-icons">
-            <span class="g-pill"><span data-lang="fr" class="lang-visible">💰 Petit budget</span><span data-lang="en">💰 Budget-friendly</span><span data-lang="es">💰 Económico</span><span data-lang="pt">💰 Económico</span><span data-lang="it">💰 Economico</span></span><span class="g-pill">🇲🇦 Local</span>
+          <p class="card-accroche"><span data-lang="fr" class="lang-visible">L'authenticité marocaine à prix doux, sans chichi.</span><span data-lang="en">Moroccan authenticity at an honest price, no fuss.</span><span data-lang="es">Autenticidad marroquí a precio justo, sin pretensiones.</span><span data-lang="pt">Autenticidade marroquina a preço honesto, sem complicações.</span><span data-lang="it">Autenticità marocchina a prezzo onesto, senza fronzoli.</span></p>
+          <button class="accordion-btn" onclick="toggleResto(this)">+ Découvrir</button>
+          <div class="card-body">
+            <p class="gastro-desc"><span data-lang="fr" class="lang-visible">L'adresse locale par excellence. Menus dès 80 MAD, recettes traditionnelles.</span><span data-lang="en">The local address par excellence. Set menus from 80 MAD, traditional recipes.</span><span data-lang="es">La dirección local por excelencia. Menús desde 80 MAD, recetas tradicionales.</span><span data-lang="pt">O endereço local por excelência. Menus a partir de 80 MAD, receitas tradicionais.</span><span data-lang="it">L'indirizzo locale per eccellenza. Menu da 80 MAD, ricette tradizionali.</span></p>
+            <div class="gastro-icons">
+              <span class="g-pill"><span data-lang="fr" class="lang-visible">💰 Petit budget</span><span data-lang="en">💰 Budget-friendly</span><span data-lang="es">💰 Económico</span><span data-lang="pt">💰 Económico</span><span data-lang="it">💰 Economico</span></span><span class="g-pill">🇲🇦 Local</span>
+            </div>
           </div>
         </div>
-      </li>
-      <li class="gastro-item">
-        <div class="gastro-img" style="background-image:url('https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=200&q=70')" role="img" aria-label="Beach Bar Dakhla Attitude"></div>
-        <div class="gastro-content">
-          <h3>Beach Bar · Dakhla Attitude</h3>
+      </div>
+
+      <div class="resto-card">
+        <div class="resto-photo">
+          <picture>
+            <source srcset="images/spots/fc68edac-7730-48bd-9241-d692e3726026.webp" type="image/webp">
+            <img src="images/spots/fc68edac-7730-48bd-9241-d692e3726026.webp" alt="Beach Bar · Dakhla Attitude" loading="lazy">
+          </picture>
+        </div>
+        <div class="resto-body">
+          <p class="resto-name">Beach Bar · Dakhla Attitude</p>
           <p class="gastro-meta"><span data-lang="fr" class="lang-visible">🍹 Bar plage · Côté lagune</span><span data-lang="en">🍹 Beach bar · Lagoon side</span><span data-lang="es">🍹 Bar playa · Lado laguna</span><span data-lang="pt">🍹 Bar de praia · Lado lagoa</span><span data-lang="it">🍹 Bar spiaggia · Lato laguna</span></p>
-          <p class="gastro-desc"><span data-lang="fr" class="lang-visible">Mojitos après session, DJ sunset deux fois par semaine. L'énergie surf-nomade.</span><span data-lang="en">Post-session mojitos, DJ sunset twice a week. The surf-nomad energy.</span><span data-lang="es">Mojitos post-sesión, DJ sunset dos veces por semana. La energía surf-nómada.</span><span data-lang="pt">Mojitos pós-sessão, DJ sunset duas vezes por semana. A energia surf-nómada.</span><span data-lang="it">Mojito dopo la sessione, DJ sunset due volte a settimana. L'energia surf-nomade.</span></p>
-          <div class="gastro-icons">
-            <span class="g-pill">🍹 Cocktails</span><span class="g-pill">🎵 DJ</span>
+          <p class="card-accroche"><span data-lang="fr" class="lang-visible">Le mojito rituel d'après session, face à la lagune.</span><span data-lang="en">The ritual post-session mojito, facing the lagoon.</span><span data-lang="es">El mojito ritual post-sesión, frente a la laguna.</span><span data-lang="pt">O mojito ritual pós-sessão, de frente para a lagoa.</span><span data-lang="it">Il mojito rituale post-sessione, di fronte alla laguna.</span></p>
+          <button class="accordion-btn" onclick="toggleResto(this)">+ Découvrir</button>
+          <div class="card-body">
+            <p class="gastro-desc"><span data-lang="fr" class="lang-visible">Mojitos après session, DJ sunset deux fois par semaine. L'énergie surf-nomade.</span><span data-lang="en">Post-session mojitos, DJ sunset twice a week. The surf-nomad energy.</span><span data-lang="es">Mojitos post-sesión, DJ sunset dos veces por semana. La energía surf-nómada.</span><span data-lang="pt">Mojitos pós-sessão, DJ sunset duas vezes por semana. A energia surf-nómada.</span><span data-lang="it">Mojito dopo la sessione, DJ sunset due volte a settimana. L'energia surf-nomade.</span></p>
+            <div class="gastro-icons">
+              <span class="g-pill">🍹 Cocktails</span><span class="g-pill">🎵 DJ</span>
+            </div>
           </div>
         </div>
-      </li>
-      <li class="gastro-item">
-        <div class="gastro-img" style="background-image:url('https://images.unsplash.com/photo-1544025162-d76694265947?w=200&q=70')" role="img" aria-label="Palais Rhoul"></div>
-        <div class="gastro-content">
-          <h3>Palais Rhoul · Table du Pêcheur</h3>
+      </div>
+
+      <div class="resto-card">
+        <div class="resto-photo">
+          <picture>
+            <source srcset="images/spots/9468c7c9-83b4-49af-a818-8f6a3ba0180a.webp" type="image/webp">
+            <img src="images/spots/9468c7c9-83b4-49af-a818-8f6a3ba0180a.webp" alt="Palais Rhoul · Table du Pêcheur" loading="lazy">
+          </picture>
+        </div>
+        <div class="resto-body">
+          <p class="resto-name">Palais Rhoul · Table du Pêcheur</p>
           <p class="gastro-meta"><span data-lang="fr" class="lang-visible">🍽 Gastronomique · Bord de lagune</span><span data-lang="en">🍽 Gastronomic · Lagoon-side</span><span data-lang="es">🍽 Gastronómico · Orilla de la laguna</span><span data-lang="pt">🍽 Gastronómico · Beira da lagoa</span><span data-lang="it">🍽 Gastronomico · Bordo laguna</span></p>
-          <p class="gastro-desc"><span data-lang="fr" class="lang-visible">Poisson de leur propre bateau, charbon de bois, recettes raffinées. La grande table de Dakhla.</span><span data-lang="en">Fish from their own boat, wood charcoal, refined recipes. The great table of Dakhla.</span><span data-lang="es">Pescado de su propio barco, carbón de madera, recetas refinadas. La gran mesa de Dakhla.</span><span data-lang="pt">Peixe do próprio barco, carvão de madeira, receitas refinadas. A grande mesa de Dakhla.</span><span data-lang="it">Pesce dalla propria barca, carbone di legna, ricette raffinate. La grande tavola di Dakhla.</span></p>
-          <div class="gastro-icons">
-            <span class="g-pill"><span data-lang="fr" class="lang-visible">✨ Gastronomique</span><span data-lang="en">✨ Gastronomic</span><span data-lang="es">✨ Gastronómico</span><span data-lang="pt">✨ Gastronómico</span><span data-lang="it">✨ Gastronomico</span></span><span class="g-pill"><span data-lang="fr" class="lang-visible">🔥 Charbon</span><span data-lang="en">🔥 Charcoal</span><span data-lang="es">🔥 Carbón</span><span data-lang="pt">🔥 Carvão</span><span data-lang="it">🔥 Carbone</span></span>
+          <p class="card-accroche"><span data-lang="fr" class="lang-visible">Du filet à l'assiette — la poésie des grandes tables.</span><span data-lang="en">From net to plate — the poetry of great tables.</span><span data-lang="es">De la red al plato — la poesía de las grandes mesas.</span><span data-lang="pt">Da rede ao prato — a poesia das grandes mesas.</span><span data-lang="it">Dalla rete al piatto — la poesia delle grandi tavole.</span></p>
+          <button class="accordion-btn" onclick="toggleResto(this)">+ Découvrir</button>
+          <div class="card-body">
+            <p class="gastro-desc"><span data-lang="fr" class="lang-visible">Poisson de leur propre bateau, charbon de bois, recettes raffinées. La grande table de Dakhla.</span><span data-lang="en">Fish from their own boat, wood charcoal, refined recipes. The great table of Dakhla.</span><span data-lang="es">Pescado de su propio barco, carbón de madera, recetas refinadas. La gran mesa de Dakhla.</span><span data-lang="pt">Peixe do próprio barco, carvão de madeira, receitas refinadas. A grande mesa de Dakhla.</span><span data-lang="it">Pesce dalla propria barca, carbone di legna, ricette raffinate. La grande tavola di Dakhla.</span></p>
+            <div class="gastro-icons">
+              <span class="g-pill"><span data-lang="fr" class="lang-visible">✨ Gastronomique</span><span data-lang="en">✨ Gastronomic</span><span data-lang="es">✨ Gastronómico</span><span data-lang="pt">✨ Gastronómico</span><span data-lang="it">✨ Gastronomico</span></span><span class="g-pill"><span data-lang="fr" class="lang-visible">🔥 Charbon</span><span data-lang="en">🔥 Charcoal</span><span data-lang="es">🔥 Carbón</span><span data-lang="pt">🔥 Carvão</span><span data-lang="it">🔥 Carbone</span></span>
+            </div>
           </div>
         </div>
-      </li>
-      <li class="gastro-item">
-        <div class="gastro-img" style="background-image:url('https://images.unsplash.com/photo-1516611317-fe33c8ee6dae?w=200&q=70')" role="img" aria-label="Parc à Huîtres"></div>
-        <div class="gastro-content">
-          <h3>Parc à Huîtres de Dakhla</h3>
+      </div>
+
+      <div class="resto-card">
+        <div class="resto-photo">
+          <picture>
+            <source srcset="images/spots/a8fa913b-6807-4977-8d8f-af57aeffc4f7.webp" type="image/webp">
+            <img src="images/spots/a8fa913b-6807-4977-8d8f-af57aeffc4f7.webp" alt="Parc à Huîtres de Dakhla" loading="lazy">
+          </picture>
+        </div>
+        <div class="resto-body">
+          <p class="resto-name">Parc à Huîtres de Dakhla</p>
           <p class="gastro-meta"><span data-lang="fr" class="lang-visible">🦪 Institution · Lagune de Dakhla</span><span data-lang="en">🦪 Institution · Dakhla Lagoon</span><span data-lang="es">🦪 Institución · Laguna de Dakhla</span><span data-lang="pt">🦪 Instituição · Lagoa de Dakhla</span><span data-lang="it">🦪 Istituzione · Laguna di Dakhla</span></p>
-          <p class="gastro-desc"><span data-lang="fr" class="lang-visible">Huîtres remarquables élevées dans les eaux froides de la lagune. À faire à chaque visite.</span><span data-lang="en">Remarkable oysters grown in the lagoon's cool waters. A must on every visit.</span><span data-lang="es">Ostras notables criadas en las aguas frías de la laguna. Imprescindible en cada visita.</span><span data-lang="pt">Ostras notáveis criadas nas águas frias da lagoa. A fazer em cada visita.</span><span data-lang="it">Ostriche straordinarie allevate nelle acque fredde della laguna. Da fare ad ogni visita.</span></p>
-          <div class="gastro-icons">
-            <span class="g-pill"><span data-lang="fr" class="lang-visible">🦪 Huîtres</span><span data-lang="en">🦪 Oysters</span><span data-lang="es">🦪 Ostras</span><span data-lang="pt">🦪 Ostras</span><span data-lang="it">🦪 Ostriche</span></span><span class="g-pill">⭐ Institution</span>
+          <p class="card-accroche"><span data-lang="fr" class="lang-visible">Dakhla dans une écaille — l'iode et l'Atlantique.</span><span data-lang="en">Dakhla in a shell — iodine and the Atlantic.</span><span data-lang="es">Dakhla en una concha — el yodo y el Atlántico.</span><span data-lang="pt">Dakhla numa concha — iodo e o Atlântico.</span><span data-lang="it">Dakhla in un guscio — iodio e Atlantico.</span></p>
+          <button class="accordion-btn" onclick="toggleResto(this)">+ Découvrir</button>
+          <div class="card-body">
+            <p class="gastro-desc"><span data-lang="fr" class="lang-visible">Huîtres remarquables élevées dans les eaux froides de la lagune. À faire à chaque visite.</span><span data-lang="en">Remarkable oysters grown in the lagoon's cool waters. A must on every visit.</span><span data-lang="es">Ostras notables criadas en las aguas frías de la laguna. Imprescindible en cada visita.</span><span data-lang="pt">Ostras notáveis criadas nas águas frias da lagoa. A fazer em cada visita.</span><span data-lang="it">Ostriche straordinarie allevate nelle acque fredde della laguna. Da fare ad ogni visita.</span></p>
+            <div class="gastro-icons">
+              <span class="g-pill"><span data-lang="fr" class="lang-visible">🦪 Huîtres</span><span data-lang="en">🦪 Oysters</span><span data-lang="es">🦪 Ostras</span><span data-lang="pt">🦪 Ostras</span><span data-lang="it">🦪 Ostriche</span></span><span class="g-pill">⭐ Institution</span>
+            </div>
           </div>
         </div>
-      </li>
-    </ul>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -986,6 +1049,11 @@ document.querySelectorAll('a[href^="#"]').forEach(link=>{
 /* ── ACCORDION CARDS ── */
 function toggleCard(btn){
   const body=btn.closest('.act-card').querySelector('.card-body');
+  body.classList.toggle('open');
+  btn.textContent=body.classList.contains('open')?'− Fermer':'+ Découvrir';
+}
+function toggleResto(btn){
+  const body=btn.closest('.resto-card').querySelector('.card-body');
   body.classList.toggle('open');
   btn.textContent=body.classList.contains('open')?'− Fermer':'+ Découvrir';
 }
