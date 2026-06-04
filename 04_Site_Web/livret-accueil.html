@@ -194,6 +194,12 @@ blockquote{margin-top:2rem;border-left:2px solid var(--terra);padding:1rem 1.5re
   body { padding-bottom: 70px; }
 }
 
+/* ── PHOTO BAND ── */
+.photo-band{width:100%;height:60vh;overflow:hidden;position:relative}
+.photo-band img{width:100%;height:100%;object-fit:cover;transform:scale(1.05);transition:transform 8s ease;display:block}
+.photo-band:hover img{transform:scale(1)}
+.photo-band-caption{position:absolute;bottom:2rem;left:3rem;font-family:var(--font-serif);font-size:1.1rem;font-weight:300;font-style:italic;color:rgba(255,255,255,0.85);text-shadow:0 2px 8px rgba(0,0,0,0.3)}
+
 </style>
 </head>
 <body>
@@ -300,9 +306,35 @@ blockquote{margin-top:2rem;border-left:2px solid var(--terra);padding:1rem 1.5re
         <span data-lang="it">"Tra il soffio del vento sulle dune e il mormorio delle onde, Dakhla rivela la sua anima."</span>
       </blockquote>
     </div>
-    <div class="dakhla-img reveal" style="transition-delay:.1s" role="img" aria-label="Vue aérienne de Dakhla"></div>
+    <div class="photo-band reveal" style="margin-top:3rem;transition-delay:.1s">
+      <picture>
+        <source srcset="images/spots/fc68edac-7730-48bd-9241-d692e3726026.webp" type="image/webp">
+        <img src="images/spots/fc68edac-7730-48bd-9241-d692e3726026.webp" alt="Méandre lagune Dakhla rayon soleil" loading="lazy">
+      </picture>
+      <div class="photo-band-caption">
+        <span data-lang="fr" class="lang-visible">Là où l'Atlantique rencontre le Sahara.</span>
+        <span data-lang="en">Where the Atlantic meets the Sahara.</span>
+        <span data-lang="es">Donde el Atlántico se encuentra con el Sáhara.</span>
+        <span data-lang="pt">Onde o Atlântico encontra o Saara.</span>
+        <span data-lang="it">Dove l'Atlantico incontra il Sahara.</span>
+      </div>
+    </div>
   </div>
 </section>
+
+<div class="photo-band">
+  <picture>
+    <source srcset="images/spots/1d292124-b32b-4ff3-b31c-568d9fdce151.webp" type="image/webp">
+    <img src="images/spots/1d292124-b32b-4ff3-b31c-568d9fdce151.webp" alt="Côte atlantique Dakhla vue aérienne" loading="lazy">
+  </picture>
+  <div class="photo-band-caption">
+    <span data-lang="fr" class="lang-visible">Foum El Bouir — la côte atlantique sauvage.</span>
+    <span data-lang="en">Foum El Bouir — the wild Atlantic coast.</span>
+    <span data-lang="es">Foum El Bouir — la costa atlántica salvaje.</span>
+    <span data-lang="pt">Foum El Bouir — a costa atlântica selvagem.</span>
+    <span data-lang="it">Foum El Bouir — la costa atlantica selvaggia.</span>
+  </div>
+</div>
 
 <!-- ── CHECK-IN ── -->
 <section id="checkin" aria-labelledby="checkin-title">
@@ -590,8 +622,35 @@ blockquote{margin-top:2rem;border-left:2px solid var(--terra);padding:1rem 1.5re
   </div>
 </section>
 
+<div class="photo-band">
+  <picture>
+    <source srcset="images/spots/3FA2D016-4AAB-4EF0-B3CF-7BA162207055.webp" type="image/webp">
+    <img src="images/spots/3FA2D016-4AAB-4EF0-B3CF-7BA162207055.webp" alt="Coucher soleil Atlantique Dakhla" loading="lazy">
+  </picture>
+  <div class="photo-band-caption">
+    <span data-lang="fr" class="lang-visible">Chaque soir, l'Atlantique offre ce spectacle.</span>
+    <span data-lang="en">Every evening, the Atlantic puts on this show.</span>
+    <span data-lang="es">Cada tarde, el Atlántico ofrece este espectáculo.</span>
+    <span data-lang="pt">Cada tarde, o Atlântico oferece este espetáculo.</span>
+    <span data-lang="it">Ogni sera, l'Atlantico offre questo spettacolo.</span>
+  </div>
+</div>
+
 <!-- ── PESCADOR ── -->
 <section id="pescador" aria-labelledby="pescador-title">
+  <div class="photo-band" style="height:45vh;border-radius:8px;overflow:hidden;margin-bottom:2rem">
+    <picture>
+      <source srcset="images/spots/a8c7750e-a12d-4cb4-a84a-70b9153e6678.webp" type="image/webp">
+      <img src="images/spots/a8c7750e-a12d-4cb4-a84a-70b9153e6678.webp" alt="Westpoint Pescador vue Atlantique" loading="lazy">
+    </picture>
+    <div class="photo-band-caption">
+      <span data-lang="fr" class="lang-visible">"La meilleure table de Foum El Bouir."</span>
+      <span data-lang="en">"The best table in Foum El Bouir."</span>
+      <span data-lang="es">"La mejor mesa de Foum El Bouir."</span>
+      <span data-lang="pt">"A melhor mesa de Foum El Bouir."</span>
+      <span data-lang="it">"Il miglior tavolo di Foum El Bouir."</span>
+    </div>
+  </div>
   <div class="two-col">
     <div>
       <p class="section-tag reveal">Westpoint · Restaurant</p>
@@ -709,6 +768,20 @@ blockquote{margin-top:2rem;border-left:2px solid var(--terra);padding:1rem 1.5re
     </div>
   </div>
 </section>
+
+<div class="photo-band">
+  <picture>
+    <source srcset="images/spots/df50f100-dd50-4d63-a871-67fac0369694.webp" type="image/webp">
+    <img src="images/spots/df50f100-dd50-4d63-a871-67fac0369694.webp" alt="Dunes blanches Dakhla" loading="lazy">
+  </picture>
+  <div class="photo-band-caption">
+    <span data-lang="fr" class="lang-visible">Le désert à portée — dunes blanches, silence absolu.</span>
+    <span data-lang="en">The desert within reach — white dunes, absolute silence.</span>
+    <span data-lang="es">El desierto al alcance — dunas blancas, silencio absoluto.</span>
+    <span data-lang="pt">O deserto ao alcance — dunas brancas, silêncio absoluto.</span>
+    <span data-lang="it">Il deserto a portata — dune bianche, silenzio assoluto.</span>
+  </div>
+</div>
 
 <!-- ── CONSEILS ── -->
 <section id="conseils" aria-labelledby="conseils-title">
