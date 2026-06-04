@@ -152,6 +152,10 @@ section{padding:6rem 3.5rem}
   .resto-photo img{height:180px}
 }
 
+/* ── LANG POP ── */
+.lang-btn.switching{animation:lang-pop 0.3s ease}
+@keyframes lang-pop{0%{transform:scale(1)}50%{transform:scale(1.15)}100%{transform:scale(1)}}
+
 </style>
 </head>
 <body>
@@ -1253,6 +1257,23 @@ document.addEventListener('DOMContentLoaded',()=>setLang('fr'));
         btn.textContent.toLowerCase().includes('book')) {
       btn.addEventListener('click', () => showToast('✅ Redirection vers la réservation…'));
     }
+  });
+
+  /* ── LANG SWITCH FEEDBACK ── */
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.add('switching');
+      btn.addEventListener('animationend', () => btn.classList.remove('switching'), {once:true});
+      const langMap = {fr:'🇫🇷 Français',en:'🇬🇧 English',es:'🇪🇸 Español',pt:'🇵🇹 Português',it:'🇮🇹 Italiano'};
+      setTimeout(() => {
+        const active = document.querySelector('.lang-btn.active');
+        if(active && window.showToast) {
+          const code = active.textContent.trim().toLowerCase().slice(0,2);
+          const label = langMap[code];
+          if(label) showToast(label);
+        }
+      },50);
+    });
   });
 })();
 </script>
