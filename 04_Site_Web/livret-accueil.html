@@ -200,6 +200,21 @@ blockquote{margin-top:2rem;border-left:2px solid var(--terra);padding:1rem 1.5re
 .photo-band:hover img{transform:scale(1)}
 .photo-band-caption{position:absolute;bottom:2rem;left:3rem;font-family:var(--font-serif);font-size:1.1rem;font-weight:300;font-style:italic;color:rgba(255,255,255,0.85);text-shadow:0 2px 8px rgba(0,0,0,0.3)}
 
+/* ── WIFI COPY ── */
+.wifi-val{cursor:pointer;position:relative;transition:color 0.2s ease}
+.wifi-val::after{content:'⎘';font-size:.7rem;opacity:0;margin-left:.4rem;color:var(--teal);transition:opacity 0.2s ease}
+.wifi-val:hover::after{opacity:1}
+.wifi-val.copied{color:var(--teal)}
+
+/* ── BNAV ACTIVE ── */
+.bnav-item{position:relative}
+.bnav-item::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%) scaleX(0);width:20px;height:2px;background:var(--teal);border-radius:2px;transition:transform 0.25s ease}
+.bnav-item.active::before{transform:translateX(-50%) scaleX(1)}
+
+/* ── LANG POP ── */
+.lang-btn.switching{animation:lang-pop 0.3s ease}
+@keyframes lang-pop{0%{transform:scale(1)}50%{transform:scale(1.15)}100%{transform:scale(1)}}
+
 </style>
 </head>
 <body>
@@ -1006,6 +1021,87 @@ document.addEventListener('DOMContentLoaded',()=>setLang('fr'));
     });
   }, { passive: true });
 })();
+
+/* ── WIFI TAP-TO-COPY ── */
+document.querySelectorAll('.wifi-val').forEach(el => {
+  el.setAttribute('title', 'Appuyer pour copier');
+  el.setAttribute('role', 'button');
+  el.setAttribute('tabindex', '0');
+  function doCopy() {
+    const text = el.textContent.trim();
+    if (!navigator.clipboard) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.cssText = 'position:fixed;opacity:0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      ta.remove();
+    } else {
+      navigator.clipboard.writeText(text).catch(()=>{});
+    }
+    el.classList.add('copied');
+    setTimeout(()=>el.classList.remove('copied'),1500);
+    const isPassword = el.closest('.wifi-block')
+      ?.querySelector('.wifi-lbl')
+      ?.textContent.toLowerCase().includes('mot');
+    if(window.showToast) showToast(isPassword ? '🔑 Mot de passe copié' : '📶 Réseau copié');
+  }
+  el.addEventListener('click', doCopy);
+  el.addEventListener('keydown', e => {
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();doCopy();}
+  });
+});
+
+/* ── CONTACTS TAP-TO-CALL ── */
+document.querySelectorAll('.contact-detail').forEach(el => {
+  if(el.querySelector('a[href^="tel"]')) return;
+  const phoneRegex = /(\+?[\d\s\-().]{8,})/g;
+  el.innerHTML = el.innerHTML.replace(phoneRegex, match => {
+    const clean = match.replace(/\s/g,'');
+    return '<a href="tel:'+clean+'">'+match+'</a>';
+  });
+});
+
+/* ── BOTTOM NAV ACTIVE AU SCROLL ── */
+const bnavItems = document.querySelectorAll('.bnav-item');
+if(bnavItems.length) {
+  const sectionIds = ['dakhla','checkin','prestations','pescador','culture','contacts'];
+  const sectionMap = {};
+  sectionIds.forEach(id => {
+    const el = document.getElementById(id);
+    if(el) sectionMap[id] = el;
+  });
+  const bnavObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(!entry.isIntersecting) return;
+      const id = entry.target.id;
+      bnavItems.forEach(btn => {
+        const href = btn.getAttribute('href')||'';
+        btn.classList.toggle('active', href.includes(id));
+      });
+    });
+  },{threshold:0.4});
+  Object.values(sectionMap).forEach(el => bnavObs.observe(el));
+}
+
+/* ── LANG SWITCH FEEDBACK ── */
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.classList.add('switching');
+    btn.addEventListener('animationend', () => btn.classList.remove('switching'), {once:true});
+    const langMap = {fr:'🇫🇷 Français',en:'🇬🇧 English',es:'🇪🇸 Español',pt:'🇵🇹 Português',it:'🇮🇹 Italiano'};
+    setTimeout(() => {
+      const active = document.querySelector('.lang-btn.active');
+      if(active && window.showToast) {
+        const code = active.textContent.trim().toLowerCase().slice(0,2);
+        const label = langMap[code];
+        if(label) showToast(label);
+      }
+    },50);
+  });
+});
+
 </script>
 <nav id="bottom-nav" aria-label="Navigation rapide">
   <a href="#checkin" class="bnav-item">
