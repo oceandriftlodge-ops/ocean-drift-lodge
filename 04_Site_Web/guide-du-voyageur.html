@@ -81,6 +81,9 @@ section{padding:6rem 3.5rem}
 .act-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.4rem}
 .act-desc{font-size:.82rem;color:var(--ink-light);line-height:1.6;flex:1}
 .act-profile-tag{margin-top:.8rem;font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+.card-body{display:none}
+.card-body.open{display:block}
+.accordion-btn{font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);cursor:pointer;background:none;border:none;padding:.5rem 0;margin-top:.5rem}
 
 /* ── ÉCOLES ── */
 #ecoles{background:var(--bg)}
@@ -333,8 +336,11 @@ section{padding:6rem 3.5rem}
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Surf · Foum El Bouir</span><span data-lang="en">Surf · Foum El Bouir</span><span data-lang="es">Surf · Foum El Bouir</span><span data-lang="pt">Surf · Foum El Bouir</span><span data-lang="it">Surf · Foum El Bouir</span></p>
-          <p class="act-desc"><span data-lang="fr" class="lang-visible">La droite mythique de l'Atlantique. Point break atlantique technique, riders confirmés. Barrels hivernaux de classe mondiale.</span><span data-lang="en">The mythical Atlantic right-hander. Technical Atlantic point break, experienced riders. World-class winter barrels.</span><span data-lang="es">La derecha mítica del Atlántico. Point break atlántico técnico, riders confirmados. Barrels invernales de clase mundial.</span><span data-lang="pt">A direita mítica do Atlântico. Point break atlântico técnico, riders experientes. Barrels de inverno de classe mundial.</span><span data-lang="it">Il mitico diritto dell'Atlantico. Point break atlantico tecnico, rider confermati. Barrel invernali di classe mondiale.</span></p>
+          <button class="accordion-btn" onclick="toggleCard(this)">+ Découvrir</button>
+          <div class="card-body">
+  <p class="act-desc"><span data-lang="fr" class="lang-visible">La droite mythique de l'Atlantique. Point break atlantique technique, riders confirmés. Barrels hivernaux de classe mondiale.</span><span data-lang="en">The mythical Atlantic right-hander. Technical Atlantic point break, experienced riders. World-class winter barrels.</span><span data-lang="es">La derecha mítica del Atlántico. Point break atlántico técnico, riders confirmados. Barrels invernales de clase mundial.</span><span data-lang="pt">A direita mítica do Atlântico. Point break atlântico técnico, riders experientes. Barrels de inverno de classe mundial.</span><span data-lang="it">Il mitico diritto dell'Atlantico. Point break atlantico tecnico, rider confermati. Barrel invernali di classe mondiale.</span></p>
           <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Surfeur · Aventurier</span><span data-lang="en">✓ Surfer · Adventurer</span><span data-lang="es">✓ Surfista · Aventurero</span><span data-lang="pt">✓ Surfista · Aventureiro</span><span data-lang="it">✓ Surfista · Avventuriero</span></p>
+          </div>
         </div>
       </div>
 
@@ -343,8 +349,11 @@ section{padding:6rem 3.5rem}
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Kitesurf · La Lagune</span><span data-lang="en">Kitesurf · The Lagoon</span><span data-lang="es">Kitesurf · La Laguna</span><span data-lang="pt">Kitesurf · A Lagoa</span><span data-lang="it">Kitesurf · La Laguna</span></p>
-          <p class="act-desc"><span data-lang="fr" class="lang-visible">300 jours de vent par an. Le spot kite référence mondial, PK 25.</span><span data-lang="en">300 days of wind a year. The world's benchmark kite spot, PK 25.</span><span data-lang="es">300 días de viento al año. El spot kite de referencia mundial, PK 25.</span><span data-lang="pt">300 dias de vento por ano. O spot kite de referência mundial, PK 25.</span><span data-lang="it">300 giorni di vento l'anno. Lo spot kite di riferimento mondiale, PK 25.</span></p>
+          <button class="accordion-btn" onclick="toggleCard(this)">+ Découvrir</button>
+          <div class="card-body">
+  <p class="act-desc"><span data-lang="fr" class="lang-visible">300 jours de vent par an. Le spot kite référence mondial, PK 25.</span><span data-lang="en">300 days of wind a year. The world's benchmark kite spot, PK 25.</span><span data-lang="es">300 días de viento al año. El spot kite de referencia mundial, PK 25.</span><span data-lang="pt">300 dias de vento por ano. O spot kite de referência mundial, PK 25.</span><span data-lang="it">300 giorni di vento l'anno. Lo spot kite di riferimento mondiale, PK 25.</span></p>
           <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Kiteur · Famille</span><span data-lang="en">✓ Kiter · Family</span><span data-lang="es">✓ Kitero · Familia</span><span data-lang="pt">✓ Kitesurfista · Família</span><span data-lang="it">✓ Kitesurfista · Famiglia</span></p>
+          </div>
         </div>
       </div>
 
@@ -353,8 +362,11 @@ section{padding:6rem 3.5rem}
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Kayak de mer</span><span data-lang="en">Sea kayak</span><span data-lang="es">Kayak de mar</span><span data-lang="pt">Kayak de mar</span><span data-lang="it">Kayak di mare</span></p>
-          <p class="act-desc"><span data-lang="fr" class="lang-visible">Exploration de la côte atlantique depuis Foum El Bouir. Faune marine exceptionnelle.</span><span data-lang="en">Exploring the Atlantic coast from Foum El Bouir. Exceptional marine wildlife.</span><span data-lang="es">Exploración de la costa atlántica desde Foum El Bouir. Fauna marina excepcional.</span><span data-lang="pt">Exploração da costa atlântica desde Foum El Bouir. Fauna marinha excecional.</span><span data-lang="it">Esplorazione della costa atlantica da Foum El Bouir. Fauna marina eccezionale.</span></p>
+          <button class="accordion-btn" onclick="toggleCard(this)">+ Découvrir</button>
+          <div class="card-body">
+  <p class="act-desc"><span data-lang="fr" class="lang-visible">Exploration de la côte atlantique depuis Foum El Bouir. Faune marine exceptionnelle.</span><span data-lang="en">Exploring the Atlantic coast from Foum El Bouir. Exceptional marine wildlife.</span><span data-lang="es">Exploración de la costa atlántica desde Foum El Bouir. Fauna marina excepcional.</span><span data-lang="pt">Exploração da costa atlântica desde Foum El Bouir. Fauna marinha excecional.</span><span data-lang="it">Esplorazione della costa atlantica da Foum El Bouir. Fauna marina eccezionale.</span></p>
           <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Couple · Nature</span><span data-lang="en">✓ Couple · Nature</span><span data-lang="es">✓ Pareja · Naturaleza</span><span data-lang="pt">✓ Casal · Natureza</span><span data-lang="it">✓ Coppia · Natura</span></p>
+          </div>
         </div>
       </div>
 
@@ -363,8 +375,11 @@ section{padding:6rem 3.5rem}
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Île du Dragon</span><span data-lang="en">Dragon Island</span><span data-lang="es">Isla del Dragón</span><span data-lang="pt">Ilha do Dragão</span><span data-lang="it">Isola del Drago</span></p>
-          <p class="act-desc"><span data-lang="fr" class="lang-visible">Spot iconique de la lagune, accessible en bateau. Eaux turquoise, flamants roses.</span><span data-lang="en">Iconic lagoon spot, accessible by boat. Turquoise waters, pink flamingos.</span><span data-lang="es">Spot icónico de la laguna, accesible en barco. Aguas turquesas, flamencos rosas.</span><span data-lang="pt">Spot icónico da lagoa, acessível de barco. Águas turquesa, flamingos cor-de-rosa.</span><span data-lang="it">Spot iconico della laguna, accessibile in barca. Acque turchesi, fenicotteri rosa.</span></p>
+          <button class="accordion-btn" onclick="toggleCard(this)">+ Découvrir</button>
+          <div class="card-body">
+  <p class="act-desc"><span data-lang="fr" class="lang-visible">Spot iconique de la lagune, accessible en bateau. Eaux turquoise, flamants roses.</span><span data-lang="en">Iconic lagoon spot, accessible by boat. Turquoise waters, pink flamingos.</span><span data-lang="es">Spot icónico de la laguna, accesible en barco. Aguas turquesas, flamencos rosas.</span><span data-lang="pt">Spot icónico da lagoa, acessível de barco. Águas turquesa, flamingos cor-de-rosa.</span><span data-lang="it">Spot iconico della laguna, accessibile in barca. Acque turchesi, fenicotteri rosa.</span></p>
           <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Tous profils</span><span data-lang="en">✓ All profiles</span><span data-lang="es">✓ Todos los perfiles</span><span data-lang="pt">✓ Todos os perfis</span><span data-lang="it">✓ Tutti i profili</span></p>
+          </div>
         </div>
       </div>
 
@@ -373,8 +388,11 @@ section{padding:6rem 3.5rem}
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Plage Porto Rico</span><span data-lang="en">Porto Rico Beach</span><span data-lang="es">Playa Porto Rico</span><span data-lang="pt">Praia Porto Rico</span><span data-lang="it">Spiaggia Porto Rico</span></p>
-          <p class="act-desc"><span data-lang="fr" class="lang-visible">Plage sauvage, préservée. Baignade, farniente, couchers de soleil spectaculaires.</span><span data-lang="en">Wild, untouched beach. Swimming, lazy days, spectacular sunsets.</span><span data-lang="es">Playa salvaje y preservada. Baño, dolce far niente, atardeceres espectaculares.</span><span data-lang="pt">Praia selvagem e preservada. Banho, dolce far niente, pôres do sol espetaculares.</span><span data-lang="it">Spiaggia selvaggia e preservata. Nuoto, dolce far niente, tramonti spettacolari.</span></p>
+          <button class="accordion-btn" onclick="toggleCard(this)">+ Découvrir</button>
+          <div class="card-body">
+  <p class="act-desc"><span data-lang="fr" class="lang-visible">Plage sauvage, préservée. Baignade, farniente, couchers de soleil spectaculaires.</span><span data-lang="en">Wild, untouched beach. Swimming, lazy days, spectacular sunsets.</span><span data-lang="es">Playa salvaje y preservada. Baño, dolce far niente, atardeceres espectaculares.</span><span data-lang="pt">Praia selvagem e preservada. Banho, dolce far niente, pôres do sol espetaculares.</span><span data-lang="it">Spiaggia selvaggia e preservata. Nuoto, dolce far niente, tramonti spettacolari.</span></p>
           <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Couple · Famille</span><span data-lang="en">✓ Couple · Family</span><span data-lang="es">✓ Pareja · Familia</span><span data-lang="pt">✓ Casal · Família</span><span data-lang="it">✓ Coppia · Famiglia</span></p>
+          </div>
         </div>
       </div>
 
@@ -383,8 +401,11 @@ section{padding:6rem 3.5rem}
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Pêche traditionnelle</span><span data-lang="en">Traditional fishing</span><span data-lang="es">Pesca tradicional</span><span data-lang="pt">Pesca tradicional</span><span data-lang="it">Pesca tradizionale</span></p>
-          <p class="act-desc"><span data-lang="fr" class="lang-visible">Sortie à l'aube avec les pêcheurs locaux. Expérience authentique, poisson du jour.</span><span data-lang="en">Dawn outing with local fishermen. Authentic experience, catch of the day.</span><span data-lang="es">Salida al amanecer con los pescadores locales. Experiencia auténtica, pescado del día.</span><span data-lang="pt">Saída ao amanhecer com os pescadores locais. Experiência autêntica, peixe do dia.</span><span data-lang="it">Uscita all'alba con i pescatori locali. Esperienza autentica, pesce del giorno.</span></p>
+          <button class="accordion-btn" onclick="toggleCard(this)">+ Découvrir</button>
+          <div class="card-body">
+  <p class="act-desc"><span data-lang="fr" class="lang-visible">Sortie à l'aube avec les pêcheurs locaux. Expérience authentique, poisson du jour.</span><span data-lang="en">Dawn outing with local fishermen. Authentic experience, catch of the day.</span><span data-lang="es">Salida al amanecer con los pescadores locales. Experiencia auténtica, pescado del día.</span><span data-lang="pt">Saída ao amanhecer com os pescadores locais. Experiência autêntica, peixe do dia.</span><span data-lang="it">Uscita all'alba con i pescatori locali. Esperienza autentica, pesce del giorno.</span></p>
           <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Aventurier · Culture</span><span data-lang="en">✓ Adventurer · Culture</span><span data-lang="es">✓ Aventurero · Cultura</span><span data-lang="pt">✓ Aventureiro · Cultura</span><span data-lang="it">✓ Avventuriero · Cultura</span></p>
+          </div>
         </div>
       </div>
 
@@ -393,8 +414,11 @@ section{padding:6rem 3.5rem}
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🏜 Désert</span><span data-lang="en">🏜 Desert</span><span data-lang="es">🏜 Desierto</span><span data-lang="pt">🏜 Deserto</span><span data-lang="it">🏜 Deserto</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Quad · Dunes</span><span data-lang="en">Quad · Dunes</span><span data-lang="es">Quad · Dunas</span><span data-lang="pt">Quad · Dunas</span><span data-lang="it">Quad · Dune</span></p>
-          <p class="act-desc"><span data-lang="fr" class="lang-visible">Adrénaline entre dunes et côte. Excursion guidée, coucher de soleil sur les crêtes.</span><span data-lang="en">Adrenaline between dunes and coast. Guided excursion, sunset over the ridgelines.</span><span data-lang="es">Adrenalina entre dunas y costa. Excursión guiada, atardecer sobre las crestas.</span><span data-lang="pt">Adrenalina entre dunas e costa. Excursão guiada, pôr do sol sobre as cristas.</span><span data-lang="it">Adrenalina tra dune e costa. Escursione guidata, tramonto sulle creste.</span></p>
+          <button class="accordion-btn" onclick="toggleCard(this)">+ Découvrir</button>
+          <div class="card-body">
+  <p class="act-desc"><span data-lang="fr" class="lang-visible">Adrénaline entre dunes et côte. Excursion guidée, coucher de soleil sur les crêtes.</span><span data-lang="en">Adrenaline between dunes and coast. Guided excursion, sunset over the ridgelines.</span><span data-lang="es">Adrenalina entre dunas y costa. Excursión guiada, atardecer sobre las crestas.</span><span data-lang="pt">Adrenalina entre dunas e costa. Excursão guiada, pôr do sol sobre as cristas.</span><span data-lang="it">Adrenalina tra dune e costa. Escursione guidata, tramonto sulle creste.</span></p>
           <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Aventurier · Couple</span><span data-lang="en">✓ Adventurer · Couple</span><span data-lang="es">✓ Aventurero · Pareja</span><span data-lang="pt">✓ Aventureiro · Casal</span><span data-lang="it">✓ Avventuriero · Coppia</span></p>
+          </div>
         </div>
       </div>
 
@@ -403,8 +427,11 @@ section{padding:6rem 3.5rem}
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🏜 Désert</span><span data-lang="en">🏜 Desert</span><span data-lang="es">🏜 Desierto</span><span data-lang="pt">🏜 Deserto</span><span data-lang="it">🏜 Deserto</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">La Dune Blanche</span><span data-lang="en">The White Dune</span><span data-lang="es">La Duna Blanca</span><span data-lang="pt">A Duna Branca</span><span data-lang="it">La Duna Bianca</span></p>
-          <p class="act-desc"><span data-lang="fr" class="lang-visible">Vue panoramique sur la lagune et l'Atlantique. Incontournable — à faire au lever du soleil.</span><span data-lang="en">Panoramic view over the lagoon and the Atlantic. A must — best at sunrise.</span><span data-lang="es">Vista panorámica sobre la laguna y el Atlántico. Imprescindible — a hacer al amanecer.</span><span data-lang="pt">Vista panorâmica sobre a lagoa e o Atlântico. Imperdível — melhor ao nascer do sol.</span><span data-lang="it">Vista panoramica sulla laguna e sull'Atlantico. Da non perdere — meglio all'alba.</span></p>
+          <button class="accordion-btn" onclick="toggleCard(this)">+ Découvrir</button>
+          <div class="card-body">
+  <p class="act-desc"><span data-lang="fr" class="lang-visible">Vue panoramique sur la lagune et l'Atlantique. Incontournable — à faire au lever du soleil.</span><span data-lang="en">Panoramic view over the lagoon and the Atlantic. A must — best at sunrise.</span><span data-lang="es">Vista panorámica sobre la laguna y el Atlántico. Imprescindible — a hacer al amanecer.</span><span data-lang="pt">Vista panorâmica sobre a lagoa e o Atlântico. Imperdível — melhor ao nascer do sol.</span><span data-lang="it">Vista panoramica sulla laguna e sull'Atlantico. Da non perdere — meglio all'alba.</span></p>
           <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Tous profils</span><span data-lang="en">✓ All profiles</span><span data-lang="es">✓ Todos los perfiles</span><span data-lang="pt">✓ Todos os perfis</span><span data-lang="it">✓ Tutti i profili</span></p>
+          </div>
         </div>
       </div>
 
@@ -413,8 +440,11 @@ section{padding:6rem 3.5rem}
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🏜 Désert</span><span data-lang="en">🏜 Desert</span><span data-lang="es">🏜 Desierto</span><span data-lang="pt">🏜 Deserto</span><span data-lang="it">🏜 Deserto</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Bivouac · Excursion désert</span><span data-lang="en">Bivouac · Desert excursion</span><span data-lang="es">Bivouac · Excursión desierto</span><span data-lang="pt">Bivaque · Excursão no deserto</span><span data-lang="it">Bivacco · Escursione nel deserto</span></p>
-          <p class="act-desc"><span data-lang="fr" class="lang-visible">4x4, nuit sous les étoiles, thé sahraoui au feu de camp. La vraie Mauritanie à portée.</span><span data-lang="en">4×4, night under the stars, Sahrawi tea by the campfire. The real Mauritania within reach.</span><span data-lang="es">4×4, noche bajo las estrellas, té saharaui junto al fuego. La verdadera Mauritania al alcance.</span><span data-lang="pt">4×4, noite sob as estrelas, chá saharawi à beira do fogo. A verdadeira Mauritânia ao alcance.</span><span data-lang="it">4×4, notte sotto le stelle, tè saharawi al fuoco. La vera Mauritania a portata di mano.</span></p>
+          <button class="accordion-btn" onclick="toggleCard(this)">+ Découvrir</button>
+          <div class="card-body">
+  <p class="act-desc"><span data-lang="fr" class="lang-visible">4x4, nuit sous les étoiles, thé sahraoui au feu de camp. La vraie Mauritanie à portée.</span><span data-lang="en">4×4, night under the stars, Sahrawi tea by the campfire. The real Mauritania within reach.</span><span data-lang="es">4×4, noche bajo las estrellas, té saharaui junto al fuego. La verdadera Mauritania al alcance.</span><span data-lang="pt">4×4, noite sob as estrelas, chá saharawi à beira do fogo. A verdadeira Mauritânia ao alcance.</span><span data-lang="it">4×4, notte sotto le stelle, tè saharawi al fuoco. La vera Mauritania a portata di mano.</span></p>
           <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Aventurier · Couple</span><span data-lang="en">✓ Adventurer · Couple</span><span data-lang="es">✓ Aventurero · Pareja</span><span data-lang="pt">✓ Aventureiro · Casal</span><span data-lang="it">✓ Avventuriero · Coppia</span></p>
+          </div>
         </div>
       </div>
 
@@ -423,8 +453,11 @@ section{padding:6rem 3.5rem}
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🌿 Nature</span><span data-lang="en">🌿 Nature</span><span data-lang="es">🌿 Nature</span><span data-lang="pt">🌿 Nature</span><span data-lang="it">🌿 Nature</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Équitation bord de mer</span><span data-lang="en">Horse riding by the sea</span><span data-lang="es">Equitación a orillas del mar</span><span data-lang="pt">Equitação à beira-mar</span><span data-lang="it">Equitazione in riva al mare</span></p>
-          <p class="act-desc"><span data-lang="fr" class="lang-visible">Galoper sur la plage de Foum El Bouir face aux vagues. Rare, photogénique, inoubliable.</span><span data-lang="en">Galloping along Foum El Bouir beach facing the waves. Rare, photogenic, unforgettable.</span><span data-lang="es">Galopar por la playa de Foum El Bouir frente a las olas. Raro, fotogénico, inolvidable.</span><span data-lang="pt">Galopar na praia de Foum El Bouir face às ondas. Raro, fotogénico, inesquecível.</span><span data-lang="it">Galoppare sulla spiaggia di Foum El Bouir di fronte alle onde. Raro, fotogenico, indimenticabile.</span></p>
+          <button class="accordion-btn" onclick="toggleCard(this)">+ Découvrir</button>
+          <div class="card-body">
+  <p class="act-desc"><span data-lang="fr" class="lang-visible">Galoper sur la plage de Foum El Bouir face aux vagues. Rare, photogénique, inoubliable.</span><span data-lang="en">Galloping along Foum El Bouir beach facing the waves. Rare, photogenic, unforgettable.</span><span data-lang="es">Galopar por la playa de Foum El Bouir frente a las olas. Raro, fotogénico, inolvidable.</span><span data-lang="pt">Galopar na praia de Foum El Bouir face às ondas. Raro, fotogénico, inesquecível.</span><span data-lang="it">Galoppare sulla spiaggia di Foum El Bouir di fronte alle onde. Raro, fotogenico, indimenticabile.</span></p>
           <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Couple · Famille</span><span data-lang="en">✓ Couple · Family</span><span data-lang="es">✓ Pareja · Familia</span><span data-lang="pt">✓ Casal · Família</span><span data-lang="it">✓ Coppia · Famiglia</span></p>
+          </div>
         </div>
       </div>
 
@@ -433,8 +466,11 @@ section{padding:6rem 3.5rem}
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🌿 Nature</span><span data-lang="en">🌿 Nature</span><span data-lang="es">🌿 Nature</span><span data-lang="pt">🌿 Nature</span><span data-lang="it">🌿 Nature</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Yoga · Lever du soleil</span><span data-lang="en">Yoga · Sunrise</span><span data-lang="es">Yoga · Amanecer</span><span data-lang="pt">Yoga · Nascer do sol</span><span data-lang="it">Yoga · Alba</span></p>
-          <p class="act-desc"><span data-lang="fr" class="lang-visible">Sur la plage de Foum El Bouir, face à l'Atlantique. Sessions sur réservation.</span><span data-lang="en">On Foum El Bouir beach, facing the Atlantic. Sessions on booking.</span><span data-lang="es">En la playa de Foum El Bouir, frente al Atlántico. Sesiones bajo reserva.</span><span data-lang="pt">Na praia de Foum El Bouir, face ao Atlântico. Sessões mediante reserva.</span><span data-lang="it">Sulla spiaggia di Foum El Bouir, di fronte all'Atlantico. Sessioni su prenotazione.</span></p>
+          <button class="accordion-btn" onclick="toggleCard(this)">+ Découvrir</button>
+          <div class="card-body">
+  <p class="act-desc"><span data-lang="fr" class="lang-visible">Sur la plage de Foum El Bouir, face à l'Atlantique. Sessions sur réservation.</span><span data-lang="en">On Foum El Bouir beach, facing the Atlantic. Sessions on booking.</span><span data-lang="es">En la playa de Foum El Bouir, frente al Atlántico. Sesiones bajo reserva.</span><span data-lang="pt">Na praia de Foum El Bouir, face ao Atlântico. Sessões mediante reserva.</span><span data-lang="it">Sulla spiaggia di Foum El Bouir, di fronte all'Atlantico. Sessioni su prenotazione.</span></p>
           <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Couple · Bien-être</span><span data-lang="en">✓ Couple · Wellness</span><span data-lang="es">✓ Pareja · Bienestar</span><span data-lang="pt">✓ Casal · Bem-estar</span><span data-lang="it">✓ Coppia · Benessere</span></p>
+          </div>
         </div>
       </div>
 
@@ -443,8 +479,11 @@ section{padding:6rem 3.5rem}
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🌿 Nature</span><span data-lang="en">🌿 Nature</span><span data-lang="es">🌿 Nature</span><span data-lang="pt">🌿 Nature</span><span data-lang="it">🌿 Nature</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Source Asma</span><span data-lang="en">Source Asma</span><span data-lang="es">Fuente Asma</span><span data-lang="pt">Nascente Asma</span><span data-lang="it">Sorgente Asma</span></p>
-          <p class="act-desc"><span data-lang="fr" class="lang-visible">Off the beaten track. Source naturelle cachée dans la péninsule, lieu de sérénité absolue.</span><span data-lang="en">Off the beaten track. A natural spring hidden in the peninsula, a place of absolute serenity.</span><span data-lang="es">Off the beaten track. Fuente natural escondida en la península, lugar de serenidad absoluta.</span><span data-lang="pt">Fora dos circuitos turísticos. Nascente natural escondida na península, lugar de serenidade absoluta.</span><span data-lang="it">Fuori dai sentieri battuti. Sorgente naturale nascosta nella penisola, luogo di serenità assoluta.</span></p>
+          <button class="accordion-btn" onclick="toggleCard(this)">+ Découvrir</button>
+          <div class="card-body">
+  <p class="act-desc"><span data-lang="fr" class="lang-visible">Off the beaten track. Source naturelle cachée dans la péninsule, lieu de sérénité absolue.</span><span data-lang="en">Off the beaten track. A natural spring hidden in the peninsula, a place of absolute serenity.</span><span data-lang="es">Off the beaten track. Fuente natural escondida en la península, lugar de serenidad absoluta.</span><span data-lang="pt">Fora dos circuitos turísticos. Nascente natural escondida na península, lugar de serenidade absoluta.</span><span data-lang="it">Fuori dai sentieri battuti. Sorgente naturale nascosta nella penisola, luogo di serenità assoluta.</span></p>
           <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Aventurier · Couple</span><span data-lang="en">✓ Adventurer · Couple</span><span data-lang="es">✓ Aventurero · Pareja</span><span data-lang="pt">✓ Aventureiro · Casal</span><span data-lang="it">✓ Avventuriero · Coppia</span></p>
+          </div>
         </div>
       </div>
 
@@ -453,8 +492,11 @@ section{padding:6rem 3.5rem}
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🌿 Nature</span><span data-lang="en">🌿 Nature</span><span data-lang="es">🌿 Nature</span><span data-lang="pt">🌿 Nature</span><span data-lang="it">🌿 Nature</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Flamants roses · Lagune</span><span data-lang="en">Pink flamingos · Lagoon</span><span data-lang="es">Flamencos rosas · Laguna</span><span data-lang="pt">Flamingos · Lagoa</span><span data-lang="it">Fenicotteri rosa · Laguna</span></p>
-          <p class="act-desc"><span data-lang="fr" class="lang-visible">Colonie permanente sur la lagune. Observation au lever du soleil depuis la rive.</span><span data-lang="en">Permanent colony on the lagoon. Sunrise watching from the bank.</span><span data-lang="es">Colonia permanente en la laguna. Observación al amanecer desde la orilla.</span><span data-lang="pt">Colónia permanente na lagoa. Observação ao nascer do sol desde a margem.</span><span data-lang="it">Colonia permanente sulla laguna. Osservazione all'alba dalla riva.</span></p>
+          <button class="accordion-btn" onclick="toggleCard(this)">+ Découvrir</button>
+          <div class="card-body">
+  <p class="act-desc"><span data-lang="fr" class="lang-visible">Colonie permanente sur la lagune. Observation au lever du soleil depuis la rive.</span><span data-lang="en">Permanent colony on the lagoon. Sunrise watching from the bank.</span><span data-lang="es">Colonia permanente en la laguna. Observación al amanecer desde la orilla.</span><span data-lang="pt">Colónia permanente na lagoa. Observação ao nascer do sol desde a margem.</span><span data-lang="it">Colonia permanente sulla laguna. Osservazione all'alba dalla riva.</span></p>
           <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Famille · Nature</span><span data-lang="en">✓ Family · Nature</span><span data-lang="es">✓ Familia · Naturaleza</span><span data-lang="pt">✓ Família · Natureza</span><span data-lang="it">✓ Famiglia · Natura</span></p>
+          </div>
         </div>
       </div>
 
@@ -463,8 +505,11 @@ section{padding:6rem 3.5rem}
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🌿 Nature</span><span data-lang="en">🌿 Nature</span><span data-lang="es">🌿 Nature</span><span data-lang="pt">🌿 Nature</span><span data-lang="it">🌿 Nature</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Parapente · Dunes</span><span data-lang="en">Paragliding · Dunes</span><span data-lang="es">Parapente · Dunas</span><span data-lang="pt">Parapente · Dunas</span><span data-lang="it">Parapendio · Dune</span></p>
-          <p class="act-desc"><span data-lang="fr" class="lang-visible">Décollage des dunes face à l'océan. Vue à 360° sur la péninsule — unique au monde.</span><span data-lang="en">Takeoff from the dunes facing the ocean. 360° view over the peninsula — unique in the world.</span><span data-lang="es">Despegue desde las dunas frente al océano. Vista 360° sobre la península — única en el mundo.</span><span data-lang="pt">Descolagem das dunas face ao oceano. Vista a 360° sobre a península — única no mundo.</span><span data-lang="it">Decollo dalle dune di fronte all'oceano. Vista a 360° sulla penisola — unica al mondo.</span></p>
+          <button class="accordion-btn" onclick="toggleCard(this)">+ Découvrir</button>
+          <div class="card-body">
+  <p class="act-desc"><span data-lang="fr" class="lang-visible">Décollage des dunes face à l'océan. Vue à 360° sur la péninsule — unique au monde.</span><span data-lang="en">Takeoff from the dunes facing the ocean. 360° view over the peninsula — unique in the world.</span><span data-lang="es">Despegue desde las dunas frente al océano. Vista 360° sobre la península — única en el mundo.</span><span data-lang="pt">Descolagem das dunas face ao oceano. Vista a 360° sobre a península — única no mundo.</span><span data-lang="it">Decollo dalle dune di fronte all'oceano. Vista a 360° sulla penisola — unica al mondo.</span></p>
           <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Aventurier · Sensations</span><span data-lang="en">✓ Adventurer · Thrills</span><span data-lang="es">✓ Aventurero · Sensaciones</span><span data-lang="pt">✓ Aventureiro · Sensações</span><span data-lang="it">✓ Avventuriero · Emozioni</span></p>
+          </div>
         </div>
       </div>
 
@@ -473,8 +518,11 @@ section{padding:6rem 3.5rem}
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🏺 Culture</span><span data-lang="en">🏺 Culture</span><span data-lang="es">🏺 Culture</span><span data-lang="pt">🏺 Culture</span><span data-lang="it">🏺 Culture</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Cérémonie du thé sahraoui</span><span data-lang="en">Sahrawi tea ceremony</span><span data-lang="es">Ceremonia del té saharaui</span><span data-lang="pt">Cerimónia do chá saharawi</span><span data-lang="it">Cerimonia del tè saharawi</span></p>
-          <p class="act-desc"><span data-lang="fr" class="lang-visible">Chez l'habitant, trois verres rituels. L'hospitalité saharienne dans toute son authenticité.</span><span data-lang="en">At a local home, three ritual glasses. Saharan hospitality in all its authenticity.</span><span data-lang="es">En casa de un habitante, tres vasos rituales. La hospitalidad sahariana en toda su autenticidad.</span><span data-lang="pt">Em casa de um habitante, três copos rituais. A hospitalidade sahariana em toda a sua autenticidade.</span><span data-lang="it">A casa di un locale, tre bicchieri rituali. L'ospitalità sahariana in tutta la sua autenticità.</span></p>
+          <button class="accordion-btn" onclick="toggleCard(this)">+ Découvrir</button>
+          <div class="card-body">
+  <p class="act-desc"><span data-lang="fr" class="lang-visible">Chez l'habitant, trois verres rituels. L'hospitalité saharienne dans toute son authenticité.</span><span data-lang="en">At a local home, three ritual glasses. Saharan hospitality in all its authenticity.</span><span data-lang="es">En casa de un habitante, tres vasos rituales. La hospitalidad sahariana en toda su autenticidad.</span><span data-lang="pt">Em casa de um habitante, três copos rituais. A hospitalidade sahariana em toda a sua autenticidade.</span><span data-lang="it">A casa di un locale, tre bicchieri rituali. L'ospitalità sahariana in tutta la sua autenticità.</span></p>
           <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Tous profils</span><span data-lang="en">✓ All profiles</span><span data-lang="es">✓ Todos los perfiles</span><span data-lang="pt">✓ Todos os perfis</span><span data-lang="it">✓ Tutti i profili</span></p>
+          </div>
         </div>
       </div>
 
@@ -483,8 +531,11 @@ section{padding:6rem 3.5rem}
         <div class="act-body">
           <p class="act-cat"><span data-lang="fr" class="lang-visible">🏺 Culture</span><span data-lang="en">🏺 Culture</span><span data-lang="es">🏺 Culture</span><span data-lang="pt">🏺 Culture</span><span data-lang="it">🏺 Culture</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Marché artisanal · Dakhla</span><span data-lang="en">Artisan market · Dakhla</span><span data-lang="es">Mercado artesanal · Dakhla</span><span data-lang="pt">Mercado artesanal · Dakhla</span><span data-lang="it">Mercato artigianale · Dakhla</span></p>
-          <p class="act-desc"><span data-lang="fr" class="lang-visible">Tissages, bijoux, épices sahraouies. Le cœur de la culture locale, à 15 min de la résidence.</span><span data-lang="en">Weavings, jewellery, Sahrawi spices. The heart of local culture, 15 min from the residence.</span><span data-lang="es">Tejidos, joyas, especias sahrauis. El corazón de la cultura local, a 15 min de la residencia.</span><span data-lang="pt">Tecidos, joias, especiarias sahrauis. O coração da cultura local, a 15 min da residência.</span><span data-lang="it">Tessuti, gioielli, spezie saharawi. Il cuore della cultura locale, a 15 min dalla residenza.</span></p>
+          <button class="accordion-btn" onclick="toggleCard(this)">+ Découvrir</button>
+          <div class="card-body">
+  <p class="act-desc"><span data-lang="fr" class="lang-visible">Tissages, bijoux, épices sahraouies. Le cœur de la culture locale, à 15 min de la résidence.</span><span data-lang="en">Weavings, jewellery, Sahrawi spices. The heart of local culture, 15 min from the residence.</span><span data-lang="es">Tejidos, joyas, especias sahrauis. El corazón de la cultura local, a 15 min de la residencia.</span><span data-lang="pt">Tecidos, joias, especiarias sahrauis. O coração da cultura local, a 15 min da residência.</span><span data-lang="it">Tessuti, gioielli, spezie saharawi. Il cuore della cultura locale, a 15 min dalla residenza.</span></p>
           <p class="act-profile-tag"><span data-lang="fr" class="lang-visible">✓ Famille · Culture</span><span data-lang="en">✓ Family · Culture</span><span data-lang="es">✓ Familia · Cultura</span><span data-lang="pt">✓ Família · Cultura</span><span data-lang="it">✓ Famiglia · Cultura</span></p>
+          </div>
         </div>
       </div>
 
@@ -710,6 +761,13 @@ document.querySelectorAll('a[href^="#"]').forEach(link=>{
   }),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 })();
+
+/* ── ACCORDION CARDS ── */
+function toggleCard(btn){
+  const body=btn.closest('.act-card').querySelector('.card-body');
+  body.classList.toggle('open');
+  btn.textContent=body.classList.contains('open')?'− Fermer':'+ Découvrir';
+}
 
 /* ── PROFILS ── */
 function setProfile(btn,profile){
