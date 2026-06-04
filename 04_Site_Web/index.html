@@ -576,10 +576,49 @@ details[open]>summary.guide-summary::after{transform:rotate(45deg)}
 <!-- WEATHER WIDGET -->
 <div id="weather-widget">
   <div class="weather-inner">
-    <p class="section-tag" style="text-align:center"><span data-lang="fr">Conditions à Dakhla</span><span data-lang="en">Conditions in Dakhla</span><span data-lang="es">Condiciones en Dakhla</span><span data-lang="pt">Condições em Dakhla</span><span data-lang="it">Condizioni a Dakhla</span></p>
-    <h3 style="font-family:var(--font-serif);font-size:1.6rem;font-weight:300;text-align:center;color:var(--ink);margin-bottom:.2rem"><span data-lang="fr">Météo & vent</span><span data-lang="en">Weather & wind</span><span data-lang="es">Clima y viento</span><span data-lang="pt">Meteorologia e vento</span><span data-lang="it">Meteo e vento</span></h3>
-    <p style="text-align:center;font-size:.78rem;color:var(--ink-light);letter-spacing:.1em;margin-bottom:1.5rem"><span data-lang="fr">Données moyennes · Mise à jour saisonnière</span><span data-lang="en">Average data · Seasonal update</span><span data-lang="es">Datos medios · Actualización estacional</span><span data-lang="pt">Dados médios · Atualização sazonal</span><span data-lang="it">Dati medi · Aggiornamento stagionale</span></p>
-    <div class="weather-grid" id="weatherGrid"></div>
+    <div class="section-tag" style="text-align:center">
+      <span data-lang="fr" class="lang-visible">Météo en direct · Dakhla</span>
+      <span data-lang="en">Live weather · Dakhla</span>
+      <span data-lang="es">Tiempo en directo · Dakhla</span>
+      <span data-lang="pt">Tempo ao vivo · Dakhla</span>
+      <span data-lang="it">Meteo in diretta · Dakhla</span>
+    </div>
+    <div class="weather-grid">
+      <div class="weather-card">
+        <div class="weather-icon" id="weather-icon">⏳</div>
+        <div class="weather-val" id="weather-temp">—</div>
+        <div class="weather-lbl">
+          <span data-lang="fr" class="lang-visible">Température</span>
+          <span data-lang="en">Temperature</span>
+          <span data-lang="es">Temperatura</span>
+          <span data-lang="pt">Temperatura</span>
+          <span data-lang="it">Temperatura</span>
+        </div>
+      </div>
+      <div class="weather-card">
+        <div class="weather-icon">💨</div>
+        <div class="weather-val" id="weather-wind">—</div>
+        <div class="weather-lbl">
+          <span data-lang="fr" class="lang-visible">Vent (nœuds)</span>
+          <span data-lang="en">Wind (knots)</span>
+          <span data-lang="es">Viento (nudos)</span>
+          <span data-lang="pt">Vento (nós)</span>
+          <span data-lang="it">Vento (nodi)</span>
+        </div>
+      </div>
+      <div class="weather-card">
+        <div class="weather-icon">💧</div>
+        <div class="weather-val" id="weather-humidity">—</div>
+        <div class="weather-lbl">
+          <span data-lang="fr" class="lang-visible">Humidité</span>
+          <span data-lang="en">Humidity</span>
+          <span data-lang="es">Humedad</span>
+          <span data-lang="pt">Humidade</span>
+          <span data-lang="it">Umidità</span>
+        </div>
+      </div>
+    </div>
+    <div id="weather-update" style="font-size:.65rem;color:var(--ink-light);text-align:center;margin-top:1rem;letter-spacing:.1em">Chargement…</div>
   </div>
 </div>
 
@@ -1343,7 +1382,6 @@ function setLang(lang){document.documentElement.classList.add('js-lang');
   document.documentElement.lang=lang;
   if(typeof calYear!=='undefined')renderCal();
   updateDateDisplay();
-  renderWeather();
   // Placeholders
   const _gn=document.getElementById('guestName');
   if(_gn)_gn.placeholder={fr:'Jean Dupont',en:'John Doe',es:'Juan García',pt:'João Silva',it:'Mario Rossi'}[lang]||'Jean Dupont';
@@ -1544,18 +1582,35 @@ function printQR(){
   setTimeout(()=>{w.print();w.close();},300);
 }
 
-// Weather widget (données statiques Dakhla)
-function renderWeather(){
-  const data=[
-    {icon:'💨',val:'28 kn',label:{fr:'Vent moy.',en:'Avg wind',es:'Viento',pt:'Vento',it:'Vento'}},
-    {icon:'☀️',val:'26°C',label:{fr:'Température',en:'Temperature',es:'Temperatura',pt:'Temperatura',it:'Temperatura'}},
-    {icon:'🌊',val:'22°C',label:{fr:'Eau',en:'Water',es:'Agua',pt:'Água',it:'Acqua'}},
-    {icon:'📅',val:'340j',label:{fr:'Soleil/an',en:'Sunny days',es:'Días sol',pt:'Dias sol',it:'Giorni sole'}},
-  ];
-  const grid=document.getElementById('weatherGrid');if(!grid)return;
-  grid.innerHTML=data.map(d=>`<div class="weather-card"><div class="weather-icon">${d.icon}</div><div class="weather-val">${d.val}</div><div class="weather-lbl">${d.label[currentLang]||d.label.fr}</div></div>`).join('');
+// Weather widget — données temps réel OpenMeteo
+async function fetchWeather() {
+  try {
+    const res = await fetch(
+      'https://api.open-meteo.com/v1/forecast?latitude=23.7136&longitude=-15.9355&current=temperature_2m,windspeed_10m,weathercode,relativehumidity_2m&wind_speed_unit=kn&timezone=Africa%2FCasablanca'
+    );
+    const data = await res.json();
+    const c = data.current;
+    const codes = {
+      0:'☀️',1:'⛅',2:'⛅',3:'⛅',
+      45:'🌫️',48:'🌫️',
+      51:'🌦️',53:'🌦️',55:'🌦️',
+      61:'🌧️',63:'🌧️',65:'🌧️',
+      80:'🌦️',81:'🌦️',82:'🌦️',
+      95:'⛈️',96:'⛈️',99:'⛈️'
+    };
+    const icon = codes[c.weathercode] || '🌤️';
+    document.getElementById('weather-temp').textContent = Math.round(c.temperature_2m) + '°C';
+    document.getElementById('weather-wind').textContent = Math.round(c.windspeed_10m) + ' kn';
+    document.getElementById('weather-humidity').textContent = c.relativehumidity_2m + '%';
+    document.getElementById('weather-icon').textContent = icon;
+    document.getElementById('weather-update').textContent =
+      'Mis à jour · ' + new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+  } catch(e) {
+    console.error('Météo indisponible:', e);
+  }
 }
-renderWeather();
+fetchWeather();
+setInterval(fetchWeather, 1800000);
 
 
 document.addEventListener('DOMContentLoaded',()=>setLang('fr'));
