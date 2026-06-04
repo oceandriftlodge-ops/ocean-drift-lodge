@@ -95,7 +95,7 @@ section{padding:6rem 3.5rem}
 .ecole-filter-btn{font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:.4rem 1rem;border-radius:20px;border:1px solid rgba(28,28,26,0.15);color:var(--ink-light);transition:all var(--trans)}
 .ecole-filter-btn.active,.ecole-filter-btn:hover{background:var(--teal);border-color:var(--teal);color:#fff}
 .ecoles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
-.ecole-card{background:var(--bg-sand);border:1px solid rgba(28,28,26,0.07);border-radius:6px;padding:1.8rem;transition:transform var(--trans),box-shadow var(--trans)}
+.ecole-card{background:var(--bg-sand);border:1px solid rgba(28,28,26,0.07);border-radius:6px;padding:0;overflow:hidden;transition:transform var(--trans),box-shadow var(--trans)}
 .ecole-card:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(28,28,26,0.09)}
 .ecole-card[data-type].hidden{display:none}
 .ecole-type{display:inline-block;padding:.25rem .7rem;font-size:.58rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;border:1px solid;border-radius:20px;margin-bottom:.8rem}
@@ -107,6 +107,18 @@ section{padding:6rem 3.5rem}
 .ecole-card p{font-size:.84rem;color:var(--ink-light);line-height:1.6}
 .ecole-tags{margin-top:.8rem;display:flex;flex-wrap:wrap;gap:.35rem}
 .tag{padding:.18rem .55rem;background:rgba(46,139,139,0.08);border:1px solid rgba(46,139,139,0.15);font-size:.6rem;color:var(--teal-dk);border-radius:20px;font-weight:500;letter-spacing:.05em}
+
+.ecole-card-photo{width:100%;height:160px;overflow:hidden}
+.ecole-card-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.ecole-card-body{padding:1.5rem}
+
+/* ── SECTION HEADER PHOTO ── */
+.section-header-photo{position:relative;width:100%;height:280px;overflow:hidden;border-radius:8px;margin-bottom:2rem}
+.section-header-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.section-header-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,46,74,0.85) 0%,rgba(26,46,74,0.2) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:2rem}
+.section-header-tag{font-size:.65rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--teal);margin-bottom:.6rem}
+.section-header-title{font-family:var(--font-serif);font-size:clamp(1.5rem,4vw,2.2rem);font-weight:300;color:#fff;margin-bottom:.5rem}
+.section-header-sub{font-size:.85rem;color:rgba(255,255,255,0.8);line-height:1.6}
 
 /* ── GASTRONOMIE ── */
 #gastro{background:var(--bg-sand)}
@@ -769,11 +781,35 @@ section{padding:6rem 3.5rem}
 <!-- ── ÉCOLES ── -->
 <section id="ecoles" aria-labelledby="ecoles-title">
   <div class="section-inner">
-    <p class="section-tag reveal"><span data-lang="fr" class="lang-visible">Partenaires recommandés</span><span data-lang="en">Recommended partners</span><span data-lang="es">Socios recomendados</span><span data-lang="pt">Parceiros recomendados</span><span data-lang="it">Partner consigliati</span></p>
-    <h2 class="section-title reveal" id="ecoles-title" style="transition-delay:.05s">
-      <span data-lang="fr" class="lang-visible">Écoles de surf<br>&amp; <em>kitesurf</em></span><span data-lang="en">Surf schools<br>&amp; <em>kitesurfing</em></span><span data-lang="es">Escuelas de surf<br>&amp; <em>kitesurf</em></span><span data-lang="pt">Escolas de surf<br>&amp; <em>kitesurf</em></span><span data-lang="it">Scuole di surf<br>&amp; <em>kitesurf</em></span>
-    </h2>
-    <p class="section-lead reveal" style="transition-delay:.1s"><span data-lang="fr" class="lang-visible">Sélection vérifiée — pour tous les niveaux, tous les profils.</span><span data-lang="en">Verified selection — for every level, every profile.</span><span data-lang="es">Selección verificada — para todos los niveles, todos los perfiles.</span><span data-lang="pt">Seleção verificada — para todos os níveis, todos os perfis.</span><span data-lang="it">Selezione verificata — per ogni livello, ogni profilo.</span></p>
+    <div class="section-header-photo reveal">
+      <picture>
+        <source srcset="images/spots/IMG_0116.webp" type="image/webp">
+        <img src="images/spots/IMG_0116.webp" alt="Écoles de surf et kitesurf Dakhla" loading="lazy">
+      </picture>
+      <div class="section-header-overlay">
+        <div class="section-header-tag">
+          <span data-lang="fr" class="lang-visible">Partenaires Recommandés · Écoles de surf &amp; kitesurf</span>
+          <span data-lang="en">Recommended Partners · Surf &amp; kitesurf schools</span>
+          <span data-lang="es">Socios Recomendados · Escuelas de surf &amp; kitesurf</span>
+          <span data-lang="pt">Parceiros Recomendados · Escolas de surf &amp; kitesurf</span>
+          <span data-lang="it">Partner Consigliati · Scuole di surf &amp; kitesurf</span>
+        </div>
+        <h2 class="section-header-title" id="ecoles-title">
+          <span data-lang="fr" class="lang-visible">Les meilleures écoles de Dakhla</span>
+          <span data-lang="en">The best schools in Dakhla</span>
+          <span data-lang="es">Las mejores escuelas de Dakhla</span>
+          <span data-lang="pt">As melhores escolas de Dakhla</span>
+          <span data-lang="it">Le migliori scuole di Dakhla</span>
+        </h2>
+        <p class="section-header-sub">
+          <span data-lang="fr" class="lang-visible">Sélectionnées par Ocean Drift Lodge pour leur sérieux et leur excellence.</span>
+          <span data-lang="en">Selected by Ocean Drift Lodge for their professionalism and excellence.</span>
+          <span data-lang="es">Seleccionadas por Ocean Drift Lodge por su seriedad y excelencia.</span>
+          <span data-lang="pt">Selecionadas pela Ocean Drift Lodge pelo seu profissionalismo e excelência.</span>
+          <span data-lang="it">Selezionate da Ocean Drift Lodge per la loro serietà ed eccellenza.</span>
+        </p>
+      </div>
+    </div>
 
     <div class="ecoles-filter reveal" style="transition-delay:.15s" role="group" aria-label="Filtrer les écoles">
       <button class="ecole-filter-btn active" onclick="filterEcoles('all',this)"><span data-lang="fr" class="lang-visible">Toutes</span><span data-lang="en">All</span><span data-lang="es">Todas</span><span data-lang="pt">Todas</span><span data-lang="it">Tutte</span></button>
@@ -784,46 +820,100 @@ section{padding:6rem 3.5rem}
 
     <ul class="ecoles-grid reveal" style="transition-delay:.2s" role="list">
       <li class="ecole-card" data-type="surf">
-        <span class="ecole-type surf">Surf</span>
-        <h3>Freestyle Academy Dakhla</h3>
-        <p class="ecole-loc"><span data-lang="fr" class="lang-visible">📍 Km 12, Plage Foum El Bouir</span><span data-lang="en">📍 Km 12, Foum El Bouir Beach</span><span data-lang="es">📍 Km 12, Playa Foum El Bouir</span><span data-lang="pt">📍 Km 12, Praia Foum El Bouir</span><span data-lang="it">📍 Km 12, Spiaggia Foum El Bouir</span></p>
-        <p><span data-lang="fr" class="lang-visible">L'école locale de référence, directement sur le spot. Surf, wing et kite face aux vagues de l'Atlantique.</span><span data-lang="en">The local benchmark school, right on the spot. Surf, wing and kite facing the Atlantic waves.</span><span data-lang="es">La escuela local de referencia, directamente en el spot. Surf, wing y kite frente a las olas del Atlántico.</span><span data-lang="pt">A escola local de referência, diretamente no spot. Surf, wing e kite face às ondas do Atlântico.</span><span data-lang="it">La scuola locale di riferimento, direttamente sullo spot. Surf, wing e kite di fronte alle onde atlantiche.</span></p>
-        <div class="ecole-tags"><span class="tag">Surf</span><span class="tag">Wing</span><span class="tag"><span data-lang="fr" class="lang-visible">Face au spot</span><span data-lang="en">On the spot</span><span data-lang="es">Frente al spot</span><span data-lang="pt">No spot</span><span data-lang="it">Sul posto</span></span></div>
+        <div class="ecole-card-photo">
+          <picture>
+            <source srcset="images/spots/pexels-mographe-30557506.webp" type="image/webp">
+            <img src="images/spots/pexels-mographe-30557506.webp" alt="Freestyle Academy Dakhla" loading="lazy">
+          </picture>
+        </div>
+        <div class="ecole-card-body">
+          <span class="ecole-type surf">Surf</span>
+          <h3>Freestyle Academy Dakhla</h3>
+          <p class="card-accroche"><span data-lang="fr" class="lang-visible">Des vagues atlantiques comme première leçon.</span><span data-lang="en">Atlantic waves as your first lesson.</span><span data-lang="es">Olas atlánticas como primera lección.</span><span data-lang="pt">Ondas atlânticas como primeira lição.</span><span data-lang="it">Le onde atlantiche come prima lezione.</span></p>
+          <p class="ecole-loc"><span data-lang="fr" class="lang-visible">📍 Km 12, Plage Foum El Bouir</span><span data-lang="en">📍 Km 12, Foum El Bouir Beach</span><span data-lang="es">📍 Km 12, Playa Foum El Bouir</span><span data-lang="pt">📍 Km 12, Praia Foum El Bouir</span><span data-lang="it">📍 Km 12, Spiaggia Foum El Bouir</span></p>
+          <p><span data-lang="fr" class="lang-visible">L'école locale de référence, directement sur le spot. Surf, wing et kite face aux vagues de l'Atlantique.</span><span data-lang="en">The local benchmark school, right on the spot. Surf, wing and kite facing the Atlantic waves.</span><span data-lang="es">La escuela local de referencia, directamente en el spot. Surf, wing y kite frente a las olas del Atlántico.</span><span data-lang="pt">A escola local de referência, diretamente no spot. Surf, wing e kite face às ondas do Atlântico.</span><span data-lang="it">La scuola locale di riferimento, direttamente sullo spot. Surf, wing e kite di fronte alle onde atlantiche.</span></p>
+          <div class="ecole-tags"><span class="tag">Surf</span><span class="tag">Wing</span><span class="tag"><span data-lang="fr" class="lang-visible">Face au spot</span><span data-lang="en">On the spot</span><span data-lang="es">Frente al spot</span><span data-lang="pt">No spot</span><span data-lang="it">Sul posto</span></span></div>
+        </div>
       </li>
       <li class="ecole-card" data-type="both">
-        <span class="ecole-type both">Multi</span>
-        <h3>Ocean Academy — La Tour d'Éole</h3>
-        <p class="ecole-loc"><span data-lang="fr" class="lang-visible">📍 PK 28, Lagune</span><span data-lang="en">📍 PK 28, Lagoon</span><span data-lang="es">📍 PK 28, Laguna</span><span data-lang="pt">📍 PK 28, Lagoa</span><span data-lang="it">📍 PK 28, Laguna</span></p>
-        <p><span data-lang="fr" class="lang-visible">Co-fondée avec Bruna Kajiya, triple championne du monde. Multispot, niveau pro, excursions Foum El Bouir.</span><span data-lang="en">Co-founded with Bruna Kajiya, three-time world champion. Multispot, pro level, Foum El Bouir excursions.</span><span data-lang="es">Co-fundada con Bruna Kajiya, tricampeona del mundo. Multispot, nivel pro, excursiones Foum El Bouir.</span><span data-lang="pt">Co-fundada com Bruna Kajiya, tricampeã mundial. Multispot, nível pro, excursões Foum El Bouir.</span><span data-lang="it">Co-fondata con Bruna Kajiya, tre volte campionessa del mondo. Multispot, livello pro, escursioni Foum El Bouir.</span></p>
-        <div class="ecole-tags"><span class="tag">Pro</span><span class="tag">Multispot</span><span class="tag">Foil</span></div>
+        <div class="ecole-card-photo">
+          <picture>
+            <source srcset="images/spots/pexels-mographe-30143183.webp" type="image/webp">
+            <img src="images/spots/pexels-mographe-30143183.webp" alt="Ocean Academy Dakhla" loading="lazy">
+          </picture>
+        </div>
+        <div class="ecole-card-body">
+          <span class="ecole-type both">Multi</span>
+          <h3>Ocean Academy — La Tour d'Éole</h3>
+          <p class="card-accroche"><span data-lang="fr" class="lang-visible">Le niveau pro, accessible dès le premier jour.</span><span data-lang="en">Pro level, accessible from day one.</span><span data-lang="es">Nivel pro, accesible desde el primer día.</span><span data-lang="pt">Nível pro, acessível desde o primeiro dia.</span><span data-lang="it">Livello pro, accessibile dal primo giorno.</span></p>
+          <p class="ecole-loc"><span data-lang="fr" class="lang-visible">📍 PK 28, Lagune</span><span data-lang="en">📍 PK 28, Lagoon</span><span data-lang="es">📍 PK 28, Laguna</span><span data-lang="pt">📍 PK 28, Lagoa</span><span data-lang="it">📍 PK 28, Laguna</span></p>
+          <p><span data-lang="fr" class="lang-visible">Co-fondée avec Bruna Kajiya, triple championne du monde. Multispot, niveau pro, excursions Foum El Bouir.</span><span data-lang="en">Co-founded with Bruna Kajiya, three-time world champion. Multispot, pro level, Foum El Bouir excursions.</span><span data-lang="es">Co-fundada con Bruna Kajiya, tricampeona del mundo. Multispot, nivel pro, excursiones Foum El Bouir.</span><span data-lang="pt">Co-fundada com Bruna Kajiya, tricampeã mundial. Multispot, nível pro, excursões Foum El Bouir.</span><span data-lang="it">Co-fondata con Bruna Kajiya, tre volte campionessa del mondo. Multispot, livello pro, escursioni Foum El Bouir.</span></p>
+          <div class="ecole-tags"><span class="tag">Pro</span><span class="tag">Multispot</span><span class="tag">Foil</span></div>
+        </div>
       </li>
       <li class="ecole-card" data-type="kite">
-        <span class="ecole-type kite">Kite</span>
-        <h3>Dakhla Attitude Kite School</h3>
-        <p class="ecole-loc"><span data-lang="fr" class="lang-visible">📍 Av. al Moukawama, Dakhla</span><span data-lang="en">📍 Av. al Moukawama, Dakhla</span><span data-lang="es">📍 Av. al Moukawama, Dakhla</span><span data-lang="pt">📍 Av. al Moukawama, Dakhla</span><span data-lang="it">📍 Av. al Moukawama, Dakhla</span></p>
-        <p><span data-lang="fr" class="lang-visible">Beach Bar, sessions DJ, accès direct lagune. Ambiance surf décontractée, idéal voyageurs solo.</span><span data-lang="en">Beach Bar, DJ sessions, direct lagoon access. Laid-back surf vibe, ideal for solo travellers.</span><span data-lang="es">Beach Bar, sesiones DJ, acceso directo laguna. Ambiente surf relajado, ideal para viajeros solos.</span><span data-lang="pt">Beach Bar, sessões DJ, acesso direto à lagoa. Ambiente surf descontraído, ideal para viajantes solo.</span><span data-lang="it">Beach Bar, sessioni DJ, accesso diretto alla laguna. Atmosfera surf rilassata, ideale per viaggiatori solo.</span></p>
-        <div class="ecole-tags"><span class="tag">Beach Bar</span><span class="tag"><span data-lang="fr" class="lang-visible">Ambiance</span><span data-lang="en">Vibe</span><span data-lang="es">Ambiente</span><span data-lang="pt">Ambiente</span><span data-lang="it">Atmosfera</span></span></div>
+        <div class="ecole-card-photo">
+          <picture>
+            <source srcset="images/spots/pexels-miami302-16995189.webp" type="image/webp">
+            <img src="images/spots/pexels-miami302-16995189.webp" alt="Dakhla Attitude Kite School" loading="lazy">
+          </picture>
+        </div>
+        <div class="ecole-card-body">
+          <span class="ecole-type kite">Kite</span>
+          <h3>Dakhla Attitude Kite School</h3>
+          <p class="card-accroche"><span data-lang="fr" class="lang-visible">Glisse le jour, fête le soir.</span><span data-lang="en">Ride by day, celebrate by night.</span><span data-lang="es">Deslízate de día, celebra de noche.</span><span data-lang="pt">Deslize de dia, celebre à noite.</span><span data-lang="it">Scivola di giorno, festeggia di sera.</span></p>
+          <p class="ecole-loc"><span data-lang="fr" class="lang-visible">📍 Av. al Moukawama, Dakhla</span><span data-lang="en">📍 Av. al Moukawama, Dakhla</span><span data-lang="es">📍 Av. al Moukawama, Dakhla</span><span data-lang="pt">📍 Av. al Moukawama, Dakhla</span><span data-lang="it">📍 Av. al Moukawama, Dakhla</span></p>
+          <p><span data-lang="fr" class="lang-visible">Beach Bar, sessions DJ, accès direct lagune. Ambiance surf décontractée, idéal voyageurs solo.</span><span data-lang="en">Beach Bar, DJ sessions, direct lagoon access. Laid-back surf vibe, ideal for solo travellers.</span><span data-lang="es">Beach Bar, sesiones DJ, acceso directo laguna. Ambiente surf relajado, ideal para viajeros solos.</span><span data-lang="pt">Beach Bar, sessões DJ, acesso direto à lagoa. Ambiente surf descontraído, ideal para viajantes solo.</span><span data-lang="it">Beach Bar, sessioni DJ, accesso diretto alla laguna. Atmosfera surf rilassata, ideale per viaggiatori solo.</span></p>
+          <div class="ecole-tags"><span class="tag">Beach Bar</span><span class="tag"><span data-lang="fr" class="lang-visible">Ambiance</span><span data-lang="en">Vibe</span><span data-lang="es">Ambiente</span><span data-lang="pt">Ambiente</span><span data-lang="it">Atmosfera</span></span></div>
+        </div>
       </li>
       <li class="ecole-card" data-type="kite">
-        <span class="ecole-type kite">Kite</span>
-        <h3>Fennekite Dakhla</h3>
-        <p class="ecole-loc"><span data-lang="fr" class="lang-visible">📍 Quartier Moulay Rachid</span><span data-lang="en">📍 Quartier Moulay Rachid</span><span data-lang="es">📍 Quartier Moulay Rachid</span><span data-lang="pt">📍 Quartier Moulay Rachid</span><span data-lang="it">📍 Quartier Moulay Rachid</span></p>
-        <p><span data-lang="fr" class="lang-visible">Petits groupes, moniteurs certifiés. Suivi personnalisé — idéal débutants absolus.</span><span data-lang="en">Small groups, certified instructors. Personalised follow-up — ideal for complete beginners.</span><span data-lang="es">Grupos pequeños, monitores certificados. Seguimiento personalizado — ideal para principiantes absolutos.</span><span data-lang="pt">Grupos pequenos, monitores certificados. Acompanhamento personalizado — ideal para iniciantes absolutos.</span><span data-lang="it">Piccoli gruppi, istruttori certificati. Seguimento personalizzato — ideale per principianti assoluti.</span></p>
-        <div class="ecole-tags"><span class="tag"><span data-lang="fr" class="lang-visible">Débutants</span><span data-lang="en">Beginners</span><span data-lang="es">Principiantes</span><span data-lang="pt">Iniciantes</span><span data-lang="it">Principianti</span></span><span class="tag"><span data-lang="fr" class="lang-visible">Certifiés</span><span data-lang="en">Certified</span><span data-lang="es">Certificados</span><span data-lang="pt">Certificados</span><span data-lang="it">Certificati</span></span></div>
+        <div class="ecole-card-photo">
+          <picture>
+            <source srcset="images/spots/pexels-fukajaz-12157816.webp" type="image/webp">
+            <img src="images/spots/pexels-fukajaz-12157816.webp" alt="Fennekite Dakhla" loading="lazy">
+          </picture>
+        </div>
+        <div class="ecole-card-body">
+          <span class="ecole-type kite">Kite</span>
+          <h3>Fennekite Dakhla</h3>
+          <p class="card-accroche"><span data-lang="fr" class="lang-visible">L'école qui transforme les débutants en riders.</span><span data-lang="en">The school that turns beginners into riders.</span><span data-lang="es">La escuela que transforma a los principiantes en riders.</span><span data-lang="pt">A escola que transforma iniciantes em riders.</span><span data-lang="it">La scuola che trasforma i principianti in rider.</span></p>
+          <p class="ecole-loc"><span data-lang="fr" class="lang-visible">📍 Quartier Moulay Rachid</span><span data-lang="en">📍 Quartier Moulay Rachid</span><span data-lang="es">📍 Quartier Moulay Rachid</span><span data-lang="pt">📍 Quartier Moulay Rachid</span><span data-lang="it">📍 Quartier Moulay Rachid</span></p>
+          <p><span data-lang="fr" class="lang-visible">Petits groupes, moniteurs certifiés. Suivi personnalisé — idéal débutants absolus.</span><span data-lang="en">Small groups, certified instructors. Personalised follow-up — ideal for complete beginners.</span><span data-lang="es">Grupos pequeños, monitores certificados. Seguimiento personalizado — ideal para principiantes absolutos.</span><span data-lang="pt">Grupos pequenos, monitores certificados. Acompanhamento personalizado — ideal para iniciantes absolutos.</span><span data-lang="it">Piccoli gruppi, istruttori certificati. Seguimento personalizzato — ideale per principianti assoluti.</span></p>
+          <div class="ecole-tags"><span class="tag"><span data-lang="fr" class="lang-visible">Débutants</span><span data-lang="en">Beginners</span><span data-lang="es">Principiantes</span><span data-lang="pt">Iniciantes</span><span data-lang="it">Principianti</span></span><span class="tag"><span data-lang="fr" class="lang-visible">Certifiés</span><span data-lang="en">Certified</span><span data-lang="es">Certificados</span><span data-lang="pt">Certificados</span><span data-lang="it">Certificati</span></span></div>
+        </div>
       </li>
       <li class="ecole-card" data-type="both">
-        <span class="ecole-type both">Multi</span>
-        <h3>Terres Nomades — Dakhla Surf</h3>
-        <p class="ecole-loc"><span data-lang="fr" class="lang-visible">📍 Péninsule de Dakhla</span><span data-lang="en">📍 Dakhla Peninsula</span><span data-lang="es">📍 Península de Dakhla</span><span data-lang="pt">📍 Península de Dakhla</span><span data-lang="it">📍 Penisola di Dakhla</span></p>
-        <p><span data-lang="fr" class="lang-visible">Séjours multisports. Surf, kite, SUP, kayak, yoga. Excursions Dune Blanche &amp; Île du Dragon.</span><span data-lang="en">Multi-sport stays. Surf, kite, SUP, kayak, yoga. White Dune &amp; Dragon Island excursions.</span><span data-lang="es">Estancias multideporte. Surf, kite, SUP, kayak, yoga. Excursiones Duna Blanca &amp; Isla del Dragón.</span><span data-lang="pt">Estâncias multisporto. Surf, kite, SUP, kayak, yoga. Excursões Duna Branca &amp; Ilha do Dragão.</span><span data-lang="it">Soggiorni multisport. Surf, kite, SUP, kayak, yoga. Escursioni Duna Bianca &amp; Isola del Drago.</span></p>
-        <div class="ecole-tags"><span class="tag">SUP</span><span class="tag">Yoga</span><span class="tag">Kayak</span></div>
+        <div class="ecole-card-photo">
+          <picture>
+            <source srcset="images/spots/pexels-anastasia-dvoryanova-386434505-14705343.webp" type="image/webp">
+            <img src="images/spots/pexels-anastasia-dvoryanova-386434505-14705343.webp" alt="Terres Nomades Dakhla" loading="lazy">
+          </picture>
+        </div>
+        <div class="ecole-card-body">
+          <span class="ecole-type both">Multi</span>
+          <h3>Terres Nomades — Dakhla Surf</h3>
+          <p class="card-accroche"><span data-lang="fr" class="lang-visible">Bien plus qu'une école — une aventure complète.</span><span data-lang="en">Far more than a school — a complete adventure.</span><span data-lang="es">Mucho más que una escuela — una aventura completa.</span><span data-lang="pt">Muito mais que uma escola — uma aventura completa.</span><span data-lang="it">Ben più di una scuola — un'avventura completa.</span></p>
+          <p class="ecole-loc"><span data-lang="fr" class="lang-visible">📍 Péninsule de Dakhla</span><span data-lang="en">📍 Dakhla Peninsula</span><span data-lang="es">📍 Península de Dakhla</span><span data-lang="pt">📍 Península de Dakhla</span><span data-lang="it">📍 Penisola di Dakhla</span></p>
+          <p><span data-lang="fr" class="lang-visible">Séjours multisports. Surf, kite, SUP, kayak, yoga. Excursions Dune Blanche &amp; Île du Dragon.</span><span data-lang="en">Multi-sport stays. Surf, kite, SUP, kayak, yoga. White Dune &amp; Dragon Island excursions.</span><span data-lang="es">Estancias multideporte. Surf, kite, SUP, kayak, yoga. Excursiones Duna Blanca &amp; Isla del Dragón.</span><span data-lang="pt">Estâncias multisporto. Surf, kite, SUP, kayak, yoga. Excursões Duna Branca &amp; Ilha do Dragão.</span><span data-lang="it">Soggiorni multisport. Surf, kite, SUP, kayak, yoga. Escursioni Duna Bianca &amp; Isola del Drago.</span></p>
+          <div class="ecole-tags"><span class="tag">SUP</span><span class="tag">Yoga</span><span class="tag">Kayak</span></div>
+        </div>
       </li>
       <li class="ecole-card" data-type="both">
-        <span class="ecole-type both">Multi</span>
-        <h3>Salty Joy Dakhla</h3>
-        <p class="ecole-loc"><span data-lang="fr" class="lang-visible">📍 Dakhla centre</span><span data-lang="en">📍 Dakhla centre</span><span data-lang="es">📍 Centro de Dakhla</span><span data-lang="pt">📍 Centro de Dakhla</span><span data-lang="it">📍 Centro di Dakhla</span></p>
-        <p><span data-lang="fr" class="lang-visible">Club mixte, ambiance inclusive. Idéal pour les voyageuses solos ou groupes d'amies.</span><span data-lang="en">Mixed club, inclusive vibe. Ideal for solo female travellers or groups of friends.</span><span data-lang="es">Club mixto, ambiente inclusivo. Ideal para viajeras solas o grupos de amigas.</span><span data-lang="pt">Clube misto, ambiente inclusivo. Ideal para viajantes solo femininas ou grupos de amigas.</span><span data-lang="it">Club misto, ambiente inclusivo. Ideale per viaggiatrici in solitaria o gruppi di amiche.</span></p>
-        <div class="ecole-tags"><span class="tag"><span data-lang="fr" class="lang-visible">Mixte</span><span data-lang="en">Mixed</span><span data-lang="es">Mixto</span><span data-lang="pt">Misto</span><span data-lang="it">Misto</span></span><span class="tag">Solo welcome</span></div>
+        <div class="ecole-card-photo">
+          <picture>
+            <source srcset="images/spots/pexels-matteo-roman-1151921619-21315979.webp" type="image/webp">
+            <img src="images/spots/pexels-matteo-roman-1151921619-21315979.webp" alt="Salty Joy Dakhla" loading="lazy">
+          </picture>
+        </div>
+        <div class="ecole-card-body">
+          <span class="ecole-type both">Multi</span>
+          <h3>Salty Joy Dakhla</h3>
+          <p class="card-accroche"><span data-lang="fr" class="lang-visible">La glisse sans pression, pour toutes et tous.</span><span data-lang="en">Riding without pressure, for everyone.</span><span data-lang="es">La deslizamiento sin presión, para todas y todos.</span><span data-lang="pt">Deslizar sem pressão, para todas e todos.</span><span data-lang="it">Scivolata senza pressione, per tutte e tutti.</span></p>
+          <p class="ecole-loc"><span data-lang="fr" class="lang-visible">📍 Dakhla centre</span><span data-lang="en">📍 Dakhla centre</span><span data-lang="es">📍 Centro de Dakhla</span><span data-lang="pt">📍 Centro de Dakhla</span><span data-lang="it">📍 Centro di Dakhla</span></p>
+          <p><span data-lang="fr" class="lang-visible">Club mixte, ambiance inclusive. Idéal pour les voyageuses solos ou groupes d'amies.</span><span data-lang="en">Mixed club, inclusive vibe. Ideal for solo female travellers or groups of friends.</span><span data-lang="es">Club mixto, ambiente inclusivo. Ideal para viajeras solas o grupos de amigas.</span><span data-lang="pt">Clube misto, ambiente inclusivo. Ideal para viajantes solo femininas ou grupos de amigas.</span><span data-lang="it">Club misto, ambiente inclusivo. Ideale per viaggiatrici in solitaria o gruppi di amiche.</span></p>
+          <div class="ecole-tags"><span class="tag"><span data-lang="fr" class="lang-visible">Mixte</span><span data-lang="en">Mixed</span><span data-lang="es">Mixto</span><span data-lang="pt">Misto</span><span data-lang="it">Misto</span></span><span class="tag">Solo welcome</span></div>
+        </div>
       </li>
     </ul>
   </div>
@@ -832,11 +922,35 @@ section{padding:6rem 3.5rem}
 <!-- ── GASTRONOMIE ── -->
 <section id="gastro" aria-labelledby="gastro-title">
   <div class="section-inner">
-    <p class="section-tag reveal"><span data-lang="fr" class="lang-visible">Gastronomie &amp; Vie locale</span><span data-lang="en">Gastronomy &amp; Local life</span><span data-lang="es">Gastronomía &amp; Vida local</span><span data-lang="pt">Gastronomia &amp; Vida local</span><span data-lang="it">Gastronomia &amp; Vita locale</span></p>
-    <h2 class="section-title reveal" id="gastro-title" style="transition-delay:.05s">
-      <span data-lang="fr" class="lang-visible">Poisson frais &amp;<br><em>couchers de soleil</em></span><span data-lang="en">Fresh fish &amp;<br><em>sunsets</em></span><span data-lang="es">Pescado fresco &amp;<br><em>atardeceres</em></span><span data-lang="pt">Peixe fresco &amp;<br><em>pôres do sol</em></span><span data-lang="it">Pesce fresco &amp;<br><em>tramonti</em></span>
-    </h2>
-    <p class="section-lead reveal" style="transition-delay:.1s"><span data-lang="fr" class="lang-visible">Les adresses que les locaux se passent de bouche à oreille.</span><span data-lang="en">The addresses locals whisper to each other.</span><span data-lang="es">Los restaurantes que los locales se pasan de boca en boca.</span><span data-lang="pt">Os endereços que os locais passam de boca em boca.</span><span data-lang="it">Gli indirizzi che i locali si passano sottovoce.</span></p>
+    <div class="section-header-photo reveal">
+      <picture>
+        <source srcset="images/spots/a8c7750e-a12d-4cb4-a84a-70b9153e6678.webp" type="image/webp">
+        <img src="images/spots/a8c7750e-a12d-4cb4-a84a-70b9153e6678.webp" alt="Gastronomie Dakhla" loading="lazy">
+      </picture>
+      <div class="section-header-overlay">
+        <div class="section-header-tag">
+          <span data-lang="fr" class="lang-visible">Gastronomie &amp; Vie locale</span>
+          <span data-lang="en">Gastronomy &amp; Local life</span>
+          <span data-lang="es">Gastronomía &amp; Vida local</span>
+          <span data-lang="pt">Gastronomia &amp; Vida local</span>
+          <span data-lang="it">Gastronomia &amp; Vita locale</span>
+        </div>
+        <h2 class="section-header-title" id="gastro-title">
+          <span data-lang="fr" class="lang-visible">Poisson frais &amp; couchers de soleil</span>
+          <span data-lang="en">Fresh fish &amp; sunsets</span>
+          <span data-lang="es">Pescado fresco &amp; atardeceres</span>
+          <span data-lang="pt">Peixe fresco &amp; pôres do sol</span>
+          <span data-lang="it">Pesce fresco &amp; tramonti</span>
+        </h2>
+        <p class="section-header-sub">
+          <span data-lang="fr" class="lang-visible">Les adresses que les locaux se passent de bouche à oreille.</span>
+          <span data-lang="en">The addresses locals whisper to each other.</span>
+          <span data-lang="es">Las direcciones que los locales se pasan de boca en boca.</span>
+          <span data-lang="pt">Os endereços que os locais passam de boca em boca.</span>
+          <span data-lang="it">Gli indirizzi che i locali si passano di bocca in bocca.</span>
+        </p>
+      </div>
+    </div>
 
     <div class="resto-grid reveal" style="transition-delay:.15s" role="list">
 
