@@ -503,3 +503,39 @@ span[data-lang].lang-visible { display: inline; }
   section  { padding: 3.5rem 1.5rem; }
   .section { padding: 2.5rem 1rem; }
 }
+
+
+/* ── RIPPLE ── */
+.ripple-host { position:relative; overflow:hidden }
+.ripple {
+  position:absolute;
+  border-radius:50%;
+  transform:scale(0);
+  animation:ripple-anim 0.5s linear;
+  background:rgba(255,255,255,0.2);
+  pointer-events:none;
+}
+@keyframes ripple-anim { to { transform:scale(4); opacity:0 } }
+
+/* ── TOAST ── */
+.toast-container {
+  position:fixed;
+  bottom:24px; right:24px;
+  z-index:2000;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.toast {
+  background:var(--navy);
+  color:#f5f0e8;
+  padding:12px 20px;
+  border-radius:8px;
+  font-size:.82rem;
+  letter-spacing:.04em;
+  transform:translateX(120%);
+  transition:transform 0.35s cubic-bezier(.23,1,.32,1);
+  white-space:nowrap;
+  font-family:var(--font-sans);
+}
+.toast.show { transform:translateX(0) }

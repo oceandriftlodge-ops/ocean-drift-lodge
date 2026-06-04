@@ -532,5 +532,47 @@ loadChecklist();
 document.addEventListener('DOMContentLoaded',()=>setLang('fr'));
 </script>
 
+<script>
+/* ── RIPPLE + TOAST ── */
+(function(){
+  /* RIPPLE */
+  document.querySelectorAll('.btn-primary, .btn-nav-cta').forEach(btn => {
+    btn.classList.add('ripple-host');
+    btn.addEventListener('click', e => {
+      const r = document.createElement('span');
+      const rect = btn.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      r.className = 'ripple';
+      r.style.cssText = 'width:'+size+'px;height:'+size+'px;left:'+(e.clientX-rect.left-size/2)+'px;top:'+(e.clientY-rect.top-size/2)+'px';
+      btn.appendChild(r);
+      setTimeout(() => r.remove(), 600);
+    });
+  });
+
+  /* TOAST */
+  const toastContainer = document.createElement('div');
+  toastContainer.className = 'toast-container';
+  document.body.appendChild(toastContainer);
+
+  window.showToast = function(msg, duration) {
+    duration = duration || 3000;
+    const t = document.createElement('div');
+    t.className = 'toast';
+    t.textContent = msg;
+    toastContainer.appendChild(t);
+    requestAnimationFrame(() => { requestAnimationFrame(() => t.classList.add('show')); });
+    setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 400); }, duration);
+  };
+
+  /* Toast sur boutons Réserver / Book */
+  document.querySelectorAll('.btn-primary, .btn-nav-cta').forEach(btn => {
+    if (btn.textContent.toLowerCase().includes('réserv') ||
+        btn.textContent.toLowerCase().includes('reserv') ||
+        btn.textContent.toLowerCase().includes('book')) {
+      btn.addEventListener('click', () => showToast('✅ Redirection vers la réservation…'));
+    }
+  });
+})();
+</script>
 </body>
 </html>
