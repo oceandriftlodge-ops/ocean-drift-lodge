@@ -135,14 +135,22 @@ section{padding:6rem 3.5rem}
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
-  
+
   section{padding:4.5rem 2rem}
   .spots-cards{grid-template-columns:1fr}
   .acts-grid{grid-template-columns:1fr 1fr}
   .expert-card{grid-template-columns:1fr}
 }
+@media(max-width:768px){
+  .spots-cards{grid-template-columns:1fr 1fr;gap:1rem}
+  .spot-card{width:100%}
+  .card-photo{height:160px}
+  .resto-card{grid-template-columns:1fr}
+  .resto-photo{width:100%;height:180px}
+  .resto-photo img{height:100%}
+}
 @media(max-width:620px){
-  
+
   section{padding:3.5rem 1.5rem}
   .acts-grid,.ecoles-grid{grid-template-columns:1fr}
   .profiles{gap:.4rem}
@@ -150,6 +158,12 @@ section{padding:6rem 3.5rem}
   .resto-grid{grid-template-columns:1fr}
   .resto-card{grid-template-columns:1fr}
   .resto-photo img{height:180px}
+}
+@media(max-width:480px){
+  .spots-cards{grid-template-columns:1fr}
+  .spot-card{width:100%;margin:0 auto}
+  .card-photo{height:200px}
+  .section-header-photo{height:200px}
 }
 
 /* ── LANG POP ── */
