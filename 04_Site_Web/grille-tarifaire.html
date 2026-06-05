@@ -7,38 +7,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="odl-styles.css">
 <style>
-:root {
-  --font-serif: 'Cormorant Garamond', 'Palatino Linotype', Palatino, Georgia, serif;
-  --font-sans: 'Jost', 'Gill Sans', 'Optima', Candara, 'Segoe UI', sans-serif;
-  --bg: #faf9f7;
-  --bg-sand: #f2ede6;
-  --navy: #1a2e4a;
-  --ink: #1c1c1a;
-  --ink-mid: #3d3d38;
-  --ink-light: #6b6b63;
-  --teal: #2e8b8b;
-  --peach: #c8603a;
-  --peach-light: rgba(200, 96, 58, 0.08);
-  --gold: #b8975a;
-  --radius: 6px;
-  --trans: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
+body { padding-top: 80px; }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--font-sans); background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6; }
-a { color: inherit; text-decoration: none; }
-
-/* ── HEADER NAVIGATION ── */
-.site-header { background: transparent; position: absolute; top: 0; left: 0; width: 100%; padding: 2.5rem 3rem; display: flex; align-items: center; justify-content: space-between; z-index: 10; }
-.header-logo { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 300; color: var(--navy); letter-spacing: .04em; }
-.header-logo em { font-style: italic; color: var(--teal); }
-.header-nav a { font-size: .7rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-mid); border: 1px solid rgba(28,28,26,0.15); padding: .6rem 1.2rem; border-radius: 30px; transition: all var(--trans); }
-.header-nav a:hover { color: var(--teal); border-color: var(--teal); background: #fff; }
-
-/* ── HERO BANNER VISUEL ── */
-.hero-section { background: linear-gradient(180deg, var(--bg-sand) 0%, var(--bg) 100%); padding: 11rem 3rem 6rem; text-align: center; position: relative; }
-.section-tag { display: inline-block; font-size: .65rem; font-weight: 600; letter-spacing: .35em; text-transform: uppercase; color: var(--peach); background: rgba(200, 96, 58, 0.1); padding: .3rem 1rem; border-radius: 20px; margin-bottom: 1.5rem; }
+/* ── HERO ── */
+.hero-section { background: linear-gradient(180deg, var(--bg-sand) 0%, var(--bg) 100%); padding: 8rem 3rem 5rem; text-align: center; position: relative; }
+.section-tag { display: inline-block; font-size: .65rem; font-weight: 600; letter-spacing: .35em; text-transform: uppercase; color: var(--peach); background: var(--peach-lt); padding: .3rem 1rem; border-radius: 20px; margin-bottom: 1.5rem; }
 .hero-title { font-family: var(--font-serif); font-size: clamp(2.8rem, 7vw, 4.8rem); font-weight: 300; color: var(--navy); letter-spacing: -.02em; line-height: 1.1; margin-bottom: 1.2rem; }
 .hero-title em { font-style: italic; font-weight: 300; color: var(--teal); }
 .hero-subtitle { font-size: .85rem; color: var(--ink-light); letter-spacing: .15em; text-transform: uppercase; max-width: 600px; margin: 0 auto; font-weight: 400; }
@@ -46,79 +21,61 @@ a { color: inherit; text-decoration: none; }
 .container { max-width: 1140px; margin: 0 auto; padding: 0 2rem; }
 .section-padding { padding: 2rem 0 6rem; }
 
-/* ── NOTICE BANNER ── */
+/* ── NOTICE ── */
 .notice-box { background: #fff; border-left: 3px solid var(--teal); padding: 1.5rem; font-size: .88rem; color: var(--ink-mid); margin-bottom: 4rem; border-radius: var(--radius); box-shadow: 0 10px 30px rgba(28,28,26,0.03); display: flex; gap: 1rem; align-items: center; }
 .notice-box strong { color: var(--navy); font-weight: 500; }
 
-/* ── TITRES DE SECTIONS ── */
+/* ── TITRES ── */
 .block-title { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 300; color: var(--navy); margin-bottom: 2.5rem; display: flex; align-items: center; gap: 1rem; }
 .block-title::after { content: ''; flex-grow: 1; height: 1px; background: linear-gradient(90deg, rgba(26,46,74,0.15) 0%, rgba(26,46,74,0) 100%); }
 
-/* ── TABLEAU HAUTE PERFORMANCE VISUELLE ── */
+/* ── TABLEAU ── */
 .table-responsive { width: 100%; overflow-x: auto; margin-bottom: 5rem; border-radius: var(--radius); background: #fff; box-shadow: 0 20px 50px rgba(26,46,74,0.05); border: 1px solid rgba(26,46,74,0.05); }
 .data-table { width: 100%; border-collapse: collapse; min-width: 900px; text-align: left; }
 .data-table thead { background: var(--navy); }
 .data-table th { font-size: .7rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: #fff; padding: 1.4rem 1.5rem; }
 .data-table td { padding: 1.6rem 1.5rem; border-bottom: 1px solid rgba(28,28,26,0.06); font-size: .95rem; color: var(--ink-mid); vertical-align: middle; }
-
-/* Traitement Asymétrique : Ligne Haute Saison Forte en couleur Peach */
-.data-table tbody tr.row-premium { background: var(--peach-light); }
+.data-table tbody tr.row-premium { background: var(--peach-lt); }
 .data-table tbody tr.row-premium td { border-bottom: 1px solid rgba(200, 96, 58, 0.15); }
 .data-table tbody tr.row-premium:hover { background: rgba(200, 96, 58, 0.12); }
-
 .data-table tbody tr:not(.row-premium):hover { background: rgba(242, 237, 230, 0.4); }
 .data-table tbody tr:last-child td { border-bottom: none; }
-
 .align-right { text-align: right; font-weight: 500; }
-.empty-placeholder { color: rgba(28, 28, 26, 0.3); font-style: italic; font-weight: 400; background: rgba(28,28,26,0.03); padding: .4rem .8rem; border-radius: var(--radius); display: inline-block; }
+.empty-placeholder { color: rgba(28,28,26,0.3); font-style: italic; font-weight: 400; background: rgba(28,28,26,0.03); padding: .4rem .8rem; border-radius: var(--radius); display: inline-block; }
 
-/* BADGES STYLISÉS */
+/* ── BADGES ── */
 .badge-season-tag { display: inline-flex; align-items: center; gap: .6rem; font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; padding: .5rem .9rem; border-radius: 4px; }
-.badge-season-tag.kite { background: var(--peach); color: #fff; box-shadow: 0 4px 12px rgba(200, 96, 58, 0.25); }
-.badge-season-tag.ete { background: rgba(184, 151, 90, 0.15); color: var(--gold); }
-.badge-season-tag.moyenne { background: rgba(46, 139, 139, 0.15); color: var(--teal); }
+.badge-season-tag.kite { background: var(--peach); color: #fff; box-shadow: 0 4px 12px rgba(200,96,58,0.25); }
+.badge-season-tag.ete { background: rgba(184,151,90,0.15); color: var(--gold); }
+.badge-season-tag.moyenne { background: var(--teal-lt); color: var(--teal); }
 
 .text-highlight-premium { color: var(--peach); font-weight: 600; }
 .text-meta { font-size: .8rem; color: var(--ink-light); margin-top: .3rem; font-weight: 400; }
 .text-muted { font-size: .85rem; color: var(--ink-light); line-height: 1.6; }
 
-/* ── CARDS CONFIGURATION IMPACT MAXIMAL ── */
+/* ── CARDS ── */
 .grid-config { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; margin-top: 1rem; }
 .config-card { padding: 3rem 2.5rem; border-radius: 8px; position: relative; overflow: hidden; box-shadow: 0 20px 40px rgba(28,28,26,0.04); transition: transform var(--trans), box-shadow var(--trans); }
 .config-card:hover { transform: translateY(-4px); box-shadow: 0 25px 50px rgba(28,28,26,0.08); }
-
-/* Card Direct (Bleu Marine Royal) */
 .config-card.card-navy { background: var(--navy); color: #fff; }
 .config-card.card-navy .config-label { color: var(--teal); font-weight: 600; }
 .config-card.card-navy .config-value { font-family: var(--font-serif); font-size: 2rem; color: #fff; margin-bottom: .8rem; font-weight: 300; }
 .config-card.card-navy .text-muted { color: rgba(250,249,247,0.7); }
-
-/* Card Distribution (Terracotta/Peach Vibrant) */
 .config-card.card-peach { background: var(--peach); color: #fff; }
 .config-card.card-peach .config-label { color: rgba(255,255,255,0.8); font-weight: 600; letter-spacing: .25em; }
 .config-card.card-peach .config-value { font-family: var(--font-serif); font-size: 2rem; color: #fff; margin-bottom: .8rem; font-weight: 300; }
 .config-card.card-peach .text-muted { color: rgba(255,255,255,0.85); }
-
 .config-label { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 1rem; display: block; }
 
-/* ── BUTTON CTA ACTION ── */
+/* ── CTA ── */
 .cta-wrap { text-align: center; margin-top: 5rem; }
 .btn-primary-capture { background: var(--navy); color: #fff; border: none; padding: 1.2rem 3rem; font-size: .75rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; border-radius: 50px; cursor: pointer; box-shadow: 0 10px 30px rgba(26,46,74,0.2); transition: all var(--trans); }
 .btn-primary-capture:hover { background: var(--peach); box-shadow: 0 10px 30px rgba(200,96,58,0.3); transform: translateY(-1px); }
 
-/* ── FOOTER CORPORATE ── */
-.site-footer { background: #132237; color: #fff; padding: 5rem 0 3.5rem; text-align: center; border-top: 4px solid var(--teal); }
-.footer-logo { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 300; color: #fff; letter-spacing: .04em; margin-bottom: 2rem; }
-.footer-logo em { font-style: italic; color: var(--teal); }
-.footer-links { display: flex; justify-content: center; gap: 3rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
-.footer-links a { font-size: .7rem; color: rgba(250,249,247,0.4); letter-spacing: .15em; text-transform: uppercase; font-weight: 500; transition: color var(--trans); }
-.footer-links a:hover { color: #fff; }
-.footer-credits { font-size: .65rem; color: rgba(255,255,255,0.2); letter-spacing: .05em; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 2rem; margin-top: 2rem; }
-
-/* ── PRINT MEDIA ── */
+/* ── PRINT ── */
 @media print {
   .no-print { display: none !important; }
-  body { background: #fff; color: #000; }
+  body { background: #fff; color: #000; padding-top: 0; }
   .container { max-width: 100%; padding: 0; }
   .table-responsive { border: none; box-shadow: none; }
   .data-table th { background: #000 !important; color: #fff !important; }
@@ -133,29 +90,71 @@ a { color: inherit; text-decoration: none; }
   .grid-config { grid-template-columns: 1fr; gap: 1.5rem; }
 }
 @media (max-width: 768px) {
-  .site-header { padding: 1.5rem 2rem; }
-  .hero-section { padding: 9rem 2rem 4rem; }
+  .hero-section { padding: 7rem 1.5rem 4rem; }
   .data-table th, .data-table td { padding: 1.1rem 1rem; }
+}
+@media (max-width: 620px) {
+  .hero-section { padding: 6rem 1rem 3rem; }
+  .container { padding: 0 1rem; }
 }
 </style>
 </head>
 <body>
 
-<header class="site-header no-print">
-  <span class="header-logo">Ocean Drift <em>Lodge</em></span>
-  <nav class="header-nav" aria-label="Navigation">
-    <a href="/dashboard.html">← Dashboard</a>
-  </nav>
+<div id="progress"></div>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <button class="mobile-close" onclick="closeMobile()" aria-label="Fermer">✕</button>
+  <a href="index.html" onclick="closeMobile()"><span data-lang="fr">Accueil</span><span data-lang="en">Home</span><span data-lang="es">Inicio</span><span data-lang="pt">Início</span><span data-lang="it">Home</span></a>
+  <a href="guide-du-voyageur.html" onclick="closeMobile()"><span data-lang="fr">Guide Local</span><span data-lang="en">Local Guide</span><span data-lang="es">Guía Local</span><span data-lang="pt">Guia Local</span><span data-lang="it">Guida Locale</span></a>
+  <a href="livret-accueil.html" onclick="closeMobile()"><span data-lang="fr">Livret d'Accueil</span><span data-lang="en">Welcome Guide</span><span data-lang="es">Guía de Bienvenida</span><span data-lang="pt">Guia de Boas-Vindas</span><span data-lang="it">Guida di Benvenuto</span></a>
+  <a href="dashboard.html" onclick="closeMobile()"><span data-lang="fr">Dashboard</span><span data-lang="en">Dashboard</span><span data-lang="es">Dashboard</span><span data-lang="pt">Dashboard</span><span data-lang="it">Dashboard</span></a>
+  <div class="mobile-lang">
+    <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
+    <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
+  </div>
+</div>
+
+<header>
+<nav id="nav" aria-label="Navigation principale">
+  <a href="index.html" class="nav-logo"><picture class="logo-stable"><source srcset="logo.webp" type="image/webp"><img class="no-translate nav-logo-img" src="logo.png" alt="" style="mix-blend-mode:multiply" onerror="this.style.display='none'"></picture>Ocean Drift <em>Lodge</em></a>
+  <div class="nav-center">
+    <a href="index.html#appartement"><span data-lang="fr">L'Appartement</span><span data-lang="en">The Apartment</span><span data-lang="es">El Apartamento</span><span data-lang="pt">O Apartamento</span><span data-lang="it">L'Appartamento</span></a>
+    <a href="guide-du-voyageur.html"><span data-lang="fr">Guide Local</span><span data-lang="en">Local Guide</span><span data-lang="es">Guía Local</span><span data-lang="pt">Guia Local</span><span data-lang="it">Guida Locale</span></a>
+    <a href="dashboard.html"><span data-lang="fr">Dashboard</span><span data-lang="en">Dashboard</span><span data-lang="es">Dashboard</span><span data-lang="pt">Dashboard</span><span data-lang="it">Dashboard</span></a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-sw" role="group" aria-label="Langue">
+      <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
+      <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
+    </div>
+    <a href="index.html#reservation" class="nav-cta"><span data-lang="fr">Réserver</span><span data-lang="en">Book</span><span data-lang="es">Reservar</span><span data-lang="pt">Reservar</span><span data-lang="it">Prenota</span></a>
+    <button class="burger" id="burger" onclick="toggleMobile()" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 </header>
 
 <section class="hero-section">
   <span class="section-tag">Yield Management</span>
-  <h1 class="hero-title">Grille <em>Tarifaire</em></h1>
+  <h1 class="hero-title">
+    <span data-lang="fr">Grille <em>Tarifaire</em></span>
+    <span data-lang="en">Rate <em>Card</em></span>
+    <span data-lang="es">Tabla de <em>Tarifas</em></span>
+    <span data-lang="pt">Tabela de <em>Tarifas</em></span>
+    <span data-lang="it">Griglia <em>Tariffe</em></span>
+  </h1>
   <p class="hero-subtitle">Stratégie d'exploitation · Rez-de-jardin · Dakhla, Maroc</p>
 </section>
 
 <main class="container section-padding">
-  
+
   <div class="notice-box no-print">
     <span><strong>Note d'exploitation :</strong> Les calculs de taxes de promotion touristique (TPT) et l'indexation automatique des nuitées se basent sur les tarifs bruts de nuitée saisis ci-dessous. Document modifiable uniquement par l'administrateur.</span>
   </div>
@@ -176,12 +175,9 @@ a { color: inherit; text-decoration: none; }
         </tr>
       </thead>
       <tbody>
-        <!-- Ligne Premium Visuelle avec fond Peach -->
         <tr class="row-premium">
           <td>
-            <span class="badge-season-tag kite">
-              Haute — Kite
-            </span>
+            <span class="badge-season-tag kite">Haute — Kite</span>
           </td>
           <td>
             <div class="text-highlight-premium">15 nov. — 31 mars</div>
@@ -191,13 +187,11 @@ a { color: inherit; text-decoration: none; }
           <td class="align-right"><span class="empty-placeholder">— DH</span></td>
           <td class="align-right"><span class="empty-placeholder">— DH</span></td>
           <td class="align-right"><span class="text-highlight-premium">Auto</span></td>
-          <td><p class="text-muted" style="color: var(--ink-mid);">Pression maximale de la demande européenne. Cible prioritaire : sportifs & séjours premium.</p></td>
+          <td><p class="text-muted">Pression maximale de la demande européenne. Cible prioritaire : sportifs & séjours premium.</p></td>
         </tr>
         <tr>
           <td>
-            <span class="badge-season-tag ete">
-              Haute — Été
-            </span>
+            <span class="badge-season-tag ete">Haute — Été</span>
           </td>
           <td>
             <div>01 juil. — 31 août</div>
@@ -211,9 +205,7 @@ a { color: inherit; text-decoration: none; }
         </tr>
         <tr>
           <td>
-            <span class="badge-season-tag moyenne">
-              Moyenne
-            </span>
+            <span class="badge-season-tag moyenne">Moyenne</span>
           </td>
           <td>
             <div>01 avr. — 30 juin</div>
@@ -230,17 +222,14 @@ a { color: inherit; text-decoration: none; }
   </div>
 
   <h2 class="block-title">Règles & Canaux de Vente</h2>
-  
+
   <div class="grid-config">
-    <!-- Card Bleu Marine Impérial -->
-    <div class="config-card card-navy">
+    <div class="config-card card-navy reveal">
       <span class="config-label">Réservation en direct</span>
       <div class="config-value">30% d'acompte</div>
       <p class="text-muted">Versement des arrhes obligatoire pour déclencher l'automatisation du blocage des calendriers synchronisés iCal / Channel Manager.</p>
     </div>
-    
-    <!-- Card Peach Vibrant Placé stratégiquement -->
-    <div class="config-card card-peach">
+    <div class="config-card card-peach reveal">
       <span class="config-label">Distribution OTAs</span>
       <div class="config-value">Airbnb +15% · Booking +18%</div>
       <p class="text-muted">Stratégie d'indexation nécessaire pour amortir les commissions prélevées par les plateformes de revente tiers et préserver votre marge nette.</p>
@@ -248,30 +237,50 @@ a { color: inherit; text-decoration: none; }
   </div>
 
   <div class="cta-wrap no-print">
-    <button class="btn-primary-capture" onclick="window.print()">Imprimer le rapport interne</button>
+    <button class="btn-primary-capture" onclick="window.print()">
+      <span data-lang="fr">Imprimer le rapport interne</span>
+      <span data-lang="en">Print internal report</span>
+      <span data-lang="es">Imprimir informe interno</span>
+      <span data-lang="pt">Imprimir relatório interno</span>
+      <span data-lang="it">Stampa report interno</span>
+    </button>
   </div>
 
 </main>
 
-<footer class="site-footer no-print">
-  <div class="container">
-    <div class="footer-logo">Ocean Drift <em>Lodge</em></div>
-    <nav class="footer-links" aria-label="Liens légaux">
-      <a href="/dashboard.html">Tableau de bord</a>
-      <a href="/cgv.html">Conditions Générales</a>
-      <a href="/mentions.html">Mentions Légales</a>
-    </nav>
-    <div class="footer-credits">
-      © 2026 Ocean Drift Lodge. Document confidentiel strict lié aux processus d'exploitation internes.
-    </div>
-  </div>
+<footer>
+  <picture class="logo-stable footer-logo-wrap"><source srcset="logo.webp" type="image/webp"><img class="no-translate footer-logo-img" src="logo.png" alt="Ocean Drift Lodge" onerror="this.style.display='none'"></picture>
+  <span class="footer-logo-txt">Ocean Drift <em>Lodge</em></span>
+  <nav class="footer-links">
+    <a href="index.html"><span data-lang="fr">L'appartement</span><span data-lang="en">The apartment</span><span data-lang="es">El apartamento</span><span data-lang="pt">O apartamento</span><span data-lang="it">L'appartamento</span></a>
+    <a href="livret-accueil.html"><span data-lang="fr">Livret d'accueil</span><span data-lang="en">Welcome guide</span><span data-lang="es">Guía de bienvenida</span><span data-lang="pt">Guia de boas-vindas</span><span data-lang="it">Guida di benvenuto</span></a>
+    <a href="guide-du-voyageur.html"><span data-lang="fr">Guide local</span><span data-lang="en">Local guide</span><span data-lang="es">Guía local</span><span data-lang="pt">Guia local</span><span data-lang="it">Guida locale</span></a>
+    <a href="dashboard.html"><span data-lang="fr">Dashboard</span><span data-lang="en">Dashboard</span><span data-lang="es">Dashboard</span><span data-lang="pt">Dashboard</span><span data-lang="it">Dashboard</span></a>
+  </nav>
+  <nav class="footer-links" aria-label="Liens légaux">
+    <a href="cgv.html"><span data-lang="fr">CGV</span><span data-lang="en">GTC</span><span data-lang="es">CGV</span><span data-lang="pt">CGV</span><span data-lang="it">CGV</span></a>
+    <a href="mentions-legales.html"><span data-lang="fr">Mentions légales</span><span data-lang="en">Legal notice</span><span data-lang="es">Aviso legal</span><span data-lang="pt">Aviso legal</span><span data-lang="it">Note legali</span></a>
+    <a href="confidentialite.html"><span data-lang="fr">Confidentialité</span><span data-lang="en">Privacy</span><span data-lang="es">Privacidad</span><span data-lang="pt">Privacidade</span><span data-lang="it">Privacy</span></a>
+  </nav>
+  <span>© 2026 Ocean Drift Lodge · Dakhla, Maroc</span>
 </footer>
 
 <script>
-/* ── RIPPLE + TOAST ── */
+const prog=document.getElementById('progress');
+window.addEventListener('scroll',()=>{const s=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;if(prog)prog.style.width=Math.min(s,100)+'%';document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);});
+function toggleMobile(){const m=document.getElementById('mobileMenu');const b=document.getElementById('burger');const o=m.classList.toggle('open');b.classList.toggle('open');b.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';}
+function closeMobile(){const m=document.getElementById('mobileMenu');if(m)m.classList.remove('open');const b=document.getElementById('burger');if(b){b.classList.remove('open');b.setAttribute('aria-expanded','false');}document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMobile();});
+let currentLang='fr';
+function setLang(lang){document.documentElement.classList.add('js-lang');currentLang=lang;document.querySelectorAll('.lang-btn').forEach(b=>{b.classList.remove('active');if(b.dataset.lang===lang)b.classList.add('active');});document.querySelectorAll('[data-lang]').forEach(el=>el.classList.remove('lang-visible'));document.querySelectorAll('[data-lang="'+lang+'"]').forEach(el=>el.classList.add('lang-visible'));document.documentElement.lang=lang;}
+document.addEventListener('DOMContentLoaded',()=>setLang('fr'));
 (function(){
-  /* RIPPLE */
-  document.querySelectorAll('.btn-primary, .btn-nav-cta').forEach(btn => {
+  if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));return;}
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+(function(){
+  document.querySelectorAll('.btn-primary, .btn-nav-cta, .nav-cta').forEach(btn => {
     btn.classList.add('ripple-host');
     btn.addEventListener('click', e => {
       const r = document.createElement('span');
@@ -283,12 +292,9 @@ a { color: inherit; text-decoration: none; }
       setTimeout(() => r.remove(), 600);
     });
   });
-
-  /* TOAST */
   const toastContainer = document.createElement('div');
   toastContainer.className = 'toast-container';
   document.body.appendChild(toastContainer);
-
   window.showToast = function(msg, duration) {
     duration = duration || 3000;
     const t = document.createElement('div');
@@ -298,15 +304,6 @@ a { color: inherit; text-decoration: none; }
     requestAnimationFrame(() => { requestAnimationFrame(() => t.classList.add('show')); });
     setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 400); }, duration);
   };
-
-  /* Toast sur boutons Réserver / Book */
-  document.querySelectorAll('.btn-primary, .btn-nav-cta').forEach(btn => {
-    if (btn.textContent.toLowerCase().includes('réserv') ||
-        btn.textContent.toLowerCase().includes('reserv') ||
-        btn.textContent.toLowerCase().includes('book')) {
-      btn.addEventListener('click', () => showToast('✅ Redirection vers la réservation…'));
-    }
-  });
 })();
 </script>
 </body>
