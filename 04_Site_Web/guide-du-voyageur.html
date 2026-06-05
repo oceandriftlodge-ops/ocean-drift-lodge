@@ -49,7 +49,7 @@ section{padding:6rem 3.5rem}
 .expert-name{font-size:.65rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:.3rem}
 .expert-text{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;font-style:italic;color:var(--ink-mid);line-height:1.65}
 
-.spots-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+.spots-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
 .spot-card{border-radius:6px;overflow:hidden;position:relative;border:1px solid rgba(28,28,26,0.07);transition:transform var(--trans),box-shadow var(--trans)}
 .spot-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(28,28,26,0.12)}
 .spot-card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(28,28,26,0.6) 0%,transparent 60%)}
@@ -135,9 +135,7 @@ section{padding:6rem 3.5rem}
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
-
   section{padding:4.5rem 2rem}
-  .spots-cards{grid-template-columns:1fr}
   .acts-grid{grid-template-columns:1fr 1fr}
   .expert-card{grid-template-columns:1fr}
 }
@@ -145,31 +143,27 @@ section{padding:6rem 3.5rem}
   .spots-cards{grid-template-columns:1fr 1fr;gap:1rem}
   .spot-card{width:100%}
   .card-photo{height:160px}
+  .resto-grid{grid-template-columns:1fr;gap:1rem}
   .resto-card{grid-template-columns:1fr}
-  .resto-photo{width:100%;height:180px}
+  .resto-photo{width:100%;height:200px}
   .resto-photo img{height:100%}
-  .weather-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-  .weather-card{min-width:unset;width:100%}
 }
 @media(max-width:620px){
-
   section{padding:3.5rem 1.5rem}
   .acts-grid,.ecoles-grid{grid-template-columns:1fr}
   .profiles{gap:.4rem}
   .profile-btn{padding:.5rem .8rem;font-size:.6rem}
-  .resto-grid{grid-template-columns:1fr}
-  .resto-card{grid-template-columns:1fr}
-  .resto-photo img{height:180px}
 }
 @media(max-width:480px){
   .spots-cards{grid-template-columns:1fr}
   .spot-card{width:100%;margin:0 auto}
   .card-photo{height:200px}
   .section-header-photo{height:200px}
-  .weather-grid{grid-template-columns:1fr 1fr 1fr;gap:.8rem}
-  .weather-val{font-size:1.2rem}
-  .weather-icon{font-size:1.5rem}
-  .weather-lbl{font-size:.55rem}
+  .weather-grid{gap:.5rem;padding:0 .5rem}
+  .weather-card{padding:.8rem .5rem;min-width:0}
+  .weather-val{font-size:1.1rem}
+  .weather-icon{font-size:1.4rem}
+  .weather-lbl{font-size:.52rem;letter-spacing:.08em}
 }
 
 /* ── LANG POP ── */
@@ -179,7 +173,7 @@ section{padding:6rem 3.5rem}
 /* ── MÉTÉO ── */
 #weather-widget{background:var(--navy);padding:2.5rem 3.5rem}
 .weather-inner{max-width:1100px;margin:0 auto}
-.weather-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
+.weather-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem;max-width:100%}
 .weather-card{background:rgba(255,255,255,0.06);border-radius:8px;padding:1.5rem;text-align:center}
 .weather-icon{font-size:2rem;margin-bottom:.5rem}
 .weather-val{font-family:var(--font-serif);font-size:1.8rem;font-weight:300;color:#f5f0e8;margin-bottom:.2rem}
