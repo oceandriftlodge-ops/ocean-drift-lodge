@@ -47,7 +47,7 @@
 .key-input-wrap { position: relative; margin-bottom: 1.2rem; }
 .key-input-wrap input {
   width: 100%; background: rgba(255,255,255,.06);
-  border: 1px solid rgba(13,181,166,.4);
+  border: 1px solid rgba(46,139,139,.4);
   border-radius: var(--radius);
   color: #faf9f7; font-family: var(--font-sans);
   font-size: .95rem; font-weight: 300;
@@ -155,7 +155,7 @@
 
 /* ── DROP ZONE ── */
 .drop-zone {
-  border: 2px dashed rgba(13,181,166,.35);
+  border: 2px dashed rgba(46,139,139,.35);
   border-radius: 8px;
   background: var(--bg-teal-lt);
   padding: 3.5rem 2rem;
@@ -168,11 +168,11 @@
 .drop-zone:hover,
 .drop-zone.dragover {
   border-color: var(--teal);
-  background: rgba(13,181,166,.1);
+  background: rgba(46,139,139,.1);
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(13,181,166,.15);
+  box-shadow: 0 8px 32px rgba(46,139,139,.15);
 }
-.drop-zone.dragover { background: rgba(13,181,166,.14); }
+.drop-zone.dragover { background: rgba(46,139,139,.14); }
 .drop-icon {
   font-size: 2.5rem; margin-bottom: 1rem;
   display: block; opacity: .6;
@@ -216,7 +216,7 @@
 .status-bar.visible { display: flex; }
 .status-spinner {
   width: 20px; height: 20px;
-  border: 2px solid rgba(13,181,166,.2);
+  border: 2px solid rgba(46,139,139,.2);
   border-top-color: var(--teal);
   border-radius: 50%;
   animation: spin .7s linear infinite;
@@ -230,7 +230,7 @@
   white-space: nowrap;
 }
 .progress-bar-wrap {
-  height: 3px; background: rgba(13,181,166,.15);
+  height: 3px; background: rgba(46,139,139,.15);
   border-radius: 2px; overflow: hidden;
   width: 120px; flex-shrink: 0;
 }
@@ -264,7 +264,7 @@
   border-radius: 10px; padding: 0 .4rem;
   font-size: .6rem; margin-left: .3rem;
 }
-.filter-tab:not(.active) .tab-count { background: rgba(13,181,166,.12); }
+.filter-tab:not(.active) .tab-count { background: rgba(46,139,139,.12); }
 
 .toolbar-right { display: flex; gap: .6rem; }
 .btn-export, .btn-clear {
@@ -348,8 +348,8 @@
   backdrop-filter: blur(8px);
 }
 .badge-hero    { background: rgba(184,151,90,.9);  color: #fff; }
-.badge-spots   { background: rgba(13,181,166,.9);  color: #fff; }
-.badge-ambiance { background: rgba(255,107,61,.85);  color: #fff; }
+.badge-spots   { background: rgba(46,139,139,.9);  color: #fff; }
+.badge-ambiance { background: rgba(200,96,58,.85);  color: #fff; }
 .badge-rejeter { background: rgba(28,28,26,.75);   color: rgba(255,255,255,.8); }
 
 .card-score {
@@ -361,9 +361,9 @@
   display: flex; align-items: center; justify-content: center;
   font-size: .72rem; font-weight: 500; color: #fff;
 }
-.score-high   { background: rgba(13,181,166,.9); }
+.score-high   { background: rgba(46,139,139,.9); }
 .score-medium { background: rgba(184,151,90,.9); }
-.score-low    { background: rgba(255,107,61,.85); }
+.score-low    { background: rgba(200,96,58,.85); }
 
 .card-body { padding: 1rem 1.1rem; flex: 1; display: flex; flex-direction: column; gap: .5rem; }
 .card-filename {
@@ -583,7 +583,7 @@
       <span class="topbar-title">Agent Photos IA</span>
     </div>
     <div class="topbar-right">
-      <span id="model-badge" style="font-size:.6rem;letter-spacing:.1em;color:var(--teal);padding:.3rem .7rem;border:1px solid rgba(13,181,166,.25);border-radius:12px;">claude-sonnet-4-6</span>
+      <span id="model-badge" style="font-size:.6rem;letter-spacing:.1em;color:var(--teal);padding:.3rem .7rem;border:1px solid rgba(46,139,139,.25);border-radius:12px;">claude-sonnet-4-6</span>
       <button class="btn-test-api" id="btn-test-api" title="Vérifie la connexion à l'API Anthropic">⚡ Tester API</button>
       <button class="btn-logout" id="btn-logout">Déconnexion</button>
     </div>
@@ -1062,7 +1062,7 @@ function updateCardHTML(card, item) {
     card.innerHTML = `
       <div class="card-thumb" style="background:var(--bg-sand-md);">
         ${thumbSrc ? `<img src="${thumbSrc}" alt="" loading="lazy" style="opacity:.4;">` : ''}
-        <div class="card-overlay" style="background:rgba(255,107,61,.18);">
+        <div class="card-overlay" style="background:rgba(200,96,58,.18);">
           <span style="font-size:1.8rem;">${errIcon}</span>
         </div>
       </div>
@@ -1155,9 +1155,9 @@ function buildReport() {
     : '—';
 
   const badgeStyle = {
-    hero: 'background:#e0a93f;color:#fff;',
-    spots: 'background:#0db5a6;color:#fff;',
-    ambiance: 'background:#ff6b3d;color:#fff;',
+    hero: 'background:#b8975a;color:#fff;',
+    spots: 'background:#2e8b8b;color:#fff;',
+    ambiance: 'background:#c8603a;color:#fff;',
     rejeter: 'background:#3d3d38;color:rgba(255,255,255,.8);'
   };
   const badgeLabel = {
@@ -1182,8 +1182,8 @@ function buildReport() {
     <div class="rapport-summary">
       <div class="rs-card"><div class="rs-num">${done.length}</div><div class="rs-label">Photos analysées</div></div>
       <div class="rs-card" style="background:rgba(184,151,90,.1)"><div class="rs-num" style="color:var(--gold);">${count('hero')}</div><div class="rs-label">Hero</div></div>
-      <div class="rs-card" style="background:rgba(13,181,166,.08)"><div class="rs-num" style="color:var(--teal);">${count('spots') + count('ambiance')}</div><div class="rs-label">Spots + Ambiance</div></div>
-      <div class="rs-card" style="background:rgba(255,107,61,.08)"><div class="rs-num" style="color:var(--peach);">${avgScore}</div><div class="rs-label">Score moyen</div></div>
+      <div class="rs-card" style="background:rgba(46,139,139,.08)"><div class="rs-num" style="color:var(--teal);">${count('spots') + count('ambiance')}</div><div class="rs-label">Spots + Ambiance</div></div>
+      <div class="rs-card" style="background:rgba(200,96,58,.08)"><div class="rs-num" style="color:var(--peach);">${avgScore}</div><div class="rs-label">Score moyen</div></div>
     </div>
     <table class="rapport-table">
       <thead>

@@ -25,13 +25,13 @@
   --ink:        #1c1c1a;   /* Texte principal */
   --ink-mid:    #3d3d38;   /* Texte secondaire */
   --ink-light:  #6b6b63;   /* Texte tertiaire / captions */
-  --teal:       #0db5a6;   /* Couleur signature — accent principal */
-  --teal-dk:    #0a8c80;   /* Teal hover / states */
-  --teal-lt:    rgba(13,181,166,0.12); /* Teal léger — fonds */
-  --bg-teal-lt: rgba(13,181,166,0.06); /* Teal très léger */
-  --peach:      #ff6b3d;   /* CTA, badges, accents chauds */
-  --peach-lt:   rgba(255,107,61,0.08);  /* Peach léger — fonds */
-  --gold:       #e0a93f;   /* Accent luxe — usage ponctuel */
+  --teal:       #2e8b8b;   /* Couleur signature — accent principal */
+  --teal-dk:    #236868;   /* Teal hover / states */
+  --teal-lt:    rgba(46,139,139,0.12); /* Teal léger — fonds */
+  --bg-teal-lt: rgba(46,139,139,0.06); /* Teal très léger */
+  --peach:      #c8603a;   /* CTA, badges, accents chauds */
+  --peach-lt:   rgba(200,96,58,0.08);  /* Peach léger — fonds */
+  --gold:       #b8975a;   /* Accent luxe — usage ponctuel */
   --radius:     4px;       /* Border-radius global */
   --trans:      0.3s ease; /* Transition globale */
 
@@ -50,9 +50,9 @@ code{font-family:'Courier New',monospace;font-size:.82em;background:rgba(28,28,2
 
 /* ── HEADER BRAND BOOK ── */
 .bb-header{background:var(--navy);padding:5rem 4rem;position:relative;overflow:hidden}
-.bb-header::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(13,181,166,0.08) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+.bb-header::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(46,139,139,0.08) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
 .bb-header-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto}
-.bb-badge{display:inline-block;font-size:.6rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(13,181,166,0.4);padding:.35rem 1rem;border-radius:20px;margin-bottom:2rem}
+.bb-badge{display:inline-block;font-size:.6rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(46,139,139,0.4);padding:.35rem 1rem;border-radius:20px;margin-bottom:2rem}
 .bb-header h1{font-family:var(--font-serif);font-size:clamp(3rem,8vw,6rem);font-weight:300;color:#fff;line-height:1;letter-spacing:-.02em}
 .bb-header h1 em{display:block;font-style:italic;color:var(--teal)}
 .bb-header-sub{font-size:.8rem;color:rgba(250,249,247,0.5);letter-spacing:.2em;text-transform:uppercase;margin-top:1.5rem}
@@ -122,7 +122,7 @@ code{font-family:'Courier New',monospace;font-size:.82em;background:rgba(28,28,2
 
 /* Boutons */
 .btn-primary{display:inline-block;font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;background:var(--peach);color:#fff;padding:.85rem 2.2rem;border-radius:var(--radius);border:none;cursor:pointer;transition:all var(--trans)}
-.btn-primary:hover{filter:brightness(.9);transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,107,61,0.3)}
+.btn-primary:hover{filter:brightness(.9);transform:translateY(-1px);box-shadow:0 6px 20px rgba(200,96,58,0.3)}
 .btn-outline{display:inline-block;font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;background:transparent;color:var(--ink);padding:.85rem 2.2rem;border-radius:var(--radius);border:2px solid var(--ink);cursor:pointer;transition:all var(--trans)}
 .btn-outline:hover{background:var(--ink);color:#fff;transform:translateY(-1px)}
 .btn-teal{display:inline-block;font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;background:var(--teal);color:#fff;padding:.85rem 2.2rem;border-radius:var(--radius);border:none;cursor:pointer;transition:all var(--trans)}
@@ -131,7 +131,7 @@ code{font-family:'Courier New',monospace;font-size:.82em;background:rgba(28,28,2
 .btn-row{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
 
 /* Badges */
-.badge-teal{display:inline-block;font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(13,181,166,0.3);color:var(--teal);padding:.3rem .85rem;border-radius:20px}
+.badge-teal{display:inline-block;font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(46,139,139,0.3);color:var(--teal);padding:.3rem .85rem;border-radius:20px}
 .badge-peach{display:inline-block;font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;background:var(--peach);color:#fff;padding:.3rem .85rem;border-radius:20px}
 .badge-gold{display:inline-block;font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;background:rgba(184,151,90,0.15);color:var(--gold);padding:.3rem .85rem;border-radius:20px}
 .badge-ink{display:inline-block;font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;background:rgba(28,28,26,0.08);color:var(--ink-mid);padding:.3rem .85rem;border-radius:20px}
@@ -141,10 +141,10 @@ code{font-family:'Courier New',monospace;font-size:.82em;background:rgba(28,28,2
 .card-white{background:#fff;border:1px solid rgba(28,28,26,0.07);border-radius:8px;padding:2rem 1.8rem;transition:all var(--trans)}
 .card-white:hover{box-shadow:0 10px 36px rgba(28,28,26,0.09);transform:translateY(-3px)}
 .card-sand{background:var(--bg-sand);border:1px solid rgba(28,28,26,0.07);border-radius:6px;padding:2rem 2.5rem}
-.card-teal-border{background:#fff;border:1px solid var(--teal);border-radius:10px;padding:2rem 1.8rem;box-shadow:0 4px 24px rgba(13,181,166,0.14)}
+.card-teal-border{background:#fff;border:1px solid var(--teal);border-radius:10px;padding:2rem 1.8rem;box-shadow:0 4px 24px rgba(46,139,139,0.14)}
 .card-navy{background:var(--navy);color:#fff;border-radius:8px;padding:2.5rem 2rem}
 .card-peach{background:var(--peach);color:#fff;border-radius:8px;padding:2.5rem 2rem}
-.card-highlight{background:linear-gradient(135deg,rgba(13,181,166,0.07),rgba(13,181,166,0.01));border:1px solid rgba(13,181,166,0.18);border-radius:10px;padding:2rem 2.5rem}
+.card-highlight{background:linear-gradient(135deg,rgba(46,139,139,0.07),rgba(46,139,139,0.01));border:1px solid rgba(46,139,139,0.18);border-radius:10px;padding:2rem 2.5rem}
 
 /* Cards section-tag + title pattern */
 .card-section-tag{font-size:.65rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--teal);margin-bottom:.8rem}
@@ -187,9 +187,9 @@ blockquote.odl{border-left:2px solid var(--peach);padding:1rem 1.5rem;font-famil
 .anatomy-layer{padding:1rem 1.5rem;border-radius:6px;font-size:.75rem;display:flex;align-items:center;justify-content:space-between}
 .anatomy-layer strong{font-weight:500}
 .anatomy-layer code{font-size:.7rem}
-.al-progress{background:linear-gradient(90deg,rgba(13,181,166,0.15),rgba(184,151,90,0.15),rgba(255,107,61,0.15));border:1px solid rgba(13,181,166,0.2)}
+.al-progress{background:linear-gradient(90deg,rgba(46,139,139,0.15),rgba(184,151,90,0.15),rgba(200,96,58,0.15));border:1px solid rgba(46,139,139,0.2)}
 .al-nav{background:var(--bg-sand);border:1px solid rgba(28,28,26,0.08)}
-.al-hero{background:linear-gradient(135deg,rgba(13,181,166,0.08),rgba(255,107,61,0.05));border:1px dashed rgba(13,181,166,0.3);min-height:60px}
+.al-hero{background:linear-gradient(135deg,rgba(46,139,139,0.08),rgba(200,96,58,0.05));border:1px dashed rgba(46,139,139,0.3);min-height:60px}
 .al-section-light{background:var(--bg);border:1px solid rgba(28,28,26,0.06)}
 .al-section-sand{background:var(--bg-sand);border:1px solid rgba(28,28,26,0.06)}
 .al-section-dark{background:var(--navy);border:none;color:#fff}
@@ -205,16 +205,16 @@ blockquote.odl{border-left:2px solid var(--peach);padding:1rem 1.5rem;font-famil
 .template-preview{background:var(--bg);border:2px solid rgba(28,28,26,0.08);border-radius:10px;overflow:hidden}
 .template-code{background:#1a1a18;color:#e8e4dc;padding:2.5rem;font-family:'Courier New',monospace;font-size:.72rem;line-height:1.8;overflow-x:auto;border-radius:8px}
 .tc-comment{color:#6b6b63}
-.tc-tag{color:#0db5a6}
-.tc-attr{color:#e0a93f}
-.tc-val{color:#ff6b3d}
+.tc-tag{color:#2e8b8b}
+.tc-attr{color:#b8975a}
+.tc-val{color:#c8603a}
 .tc-text{color:#e8e4dc}
 
 /* ── GRILLE RÈGLES ── */
 .rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem}
 .rule-card{padding:1.5rem;border-radius:8px;border:1px solid transparent}
-.rule-card.do{background:rgba(13,181,166,0.05);border-color:rgba(13,181,166,0.2)}
-.rule-card.dont{background:rgba(255,107,61,0.05);border-color:rgba(255,107,61,0.2)}
+.rule-card.do{background:rgba(46,139,139,0.05);border-color:rgba(46,139,139,0.2)}
+.rule-card.dont{background:rgba(200,96,58,0.05);border-color:rgba(200,96,58,0.2)}
 .rule-card-label{font-size:.6rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:.8rem}
 .rule-card.do .rule-card-label{color:var(--teal)}
 .rule-card.dont .rule-card-label{color:var(--peach)}
@@ -226,17 +226,17 @@ blockquote.odl{border-left:2px solid var(--peach);padding:1rem 1.5rem;font-famil
 
 /* ── HERO GRADIENT SPECIMEN ── */
 .hero-gradient-demo{border-radius:8px;padding:4rem 3rem;text-align:center;position:relative;overflow:hidden;
-  background:radial-gradient(ellipse 70% 55% at 25% 35%,rgba(13,181,166,0.13) 0%,transparent 70%),
-  radial-gradient(ellipse 55% 50% at 75% 70%,rgba(255,107,61,0.08) 0%,transparent 65%),
+  background:radial-gradient(ellipse 70% 55% at 25% 35%,rgba(46,139,139,0.13) 0%,transparent 70%),
+  radial-gradient(ellipse 55% 50% at 75% 70%,rgba(200,96,58,0.08) 0%,transparent 65%),
   linear-gradient(160deg,#ffffff 0%,#f4ede4 55%,#ede8df 100%)}
-.hero-gradient-demo::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(13,181,166,0.04) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+.hero-gradient-demo::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(46,139,139,0.04) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
 .hero-gradient-demo-inner{position:relative;z-index:1}
 
 /* ── CHECKLIST ── */
 .checklist{display:flex;flex-direction:column;gap:.8rem;margin-top:1.5rem}
 .check-item{display:flex;align-items:flex-start;gap:.8rem;font-size:.82rem;color:var(--ink-mid);line-height:1.6}
 .check-icon{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;flex-shrink:0;margin-top:.1rem}
-.check-icon.ok{background:rgba(13,181,166,0.12);color:var(--teal)}
+.check-icon.ok{background:rgba(46,139,139,0.12);color:var(--teal)}
 .check-icon.warn{background:rgba(184,151,90,0.15);color:var(--gold)}
 
 /* ── TABLE VARIABLES CSS ── */
@@ -323,29 +323,29 @@ blockquote.odl{border-left:2px solid var(--peach);padding:1rem 1.5rem;font-famil
         </div>
       </div>
       <div class="color-swatch">
-        <div class="swatch-block" style="background:#0db5a6"></div>
+        <div class="swatch-block" style="background:#2e8b8b"></div>
         <div class="swatch-info">
           <div class="swatch-name">Teal — Signature</div>
           <div class="swatch-var">--teal</div>
-          <div class="swatch-hex">#0db5a6</div>
+          <div class="swatch-hex">#2e8b8b</div>
           <div class="swatch-usage">Couleur principale de marque. Accents, liens actifs, italiques hero, section-tags</div>
         </div>
       </div>
       <div class="color-swatch">
-        <div class="swatch-block" style="background:#ff6b3d"></div>
+        <div class="swatch-block" style="background:#c8603a"></div>
         <div class="swatch-info">
           <div class="swatch-name">Peach — CTA</div>
           <div class="swatch-var">--peach</div>
-          <div class="swatch-hex">#ff6b3d</div>
+          <div class="swatch-hex">#c8603a</div>
           <div class="swatch-usage">Boutons primaires, badges haute saison, accents chauds, progress bar livret</div>
         </div>
       </div>
       <div class="color-swatch">
-        <div class="swatch-block" style="background:#e0a93f"></div>
+        <div class="swatch-block" style="background:#b8975a"></div>
         <div class="swatch-info">
           <div class="swatch-name">Gold — Luxe</div>
           <div class="swatch-var">--gold</div>
-          <div class="swatch-hex">#e0a93f</div>
+          <div class="swatch-hex">#b8975a</div>
           <div class="swatch-usage">Accent luxe ponctuel. Progress bar index.html. Ne pas surexploiter</div>
         </div>
       </div>
@@ -439,11 +439,11 @@ blockquote.odl{border-left:2px solid var(--peach);padding:1rem 1.5rem;font-famil
         </div>
       </div>
       <div class="color-swatch">
-        <div class="swatch-block" style="background:#0a8c80"></div>
+        <div class="swatch-block" style="background:#236868"></div>
         <div class="swatch-info">
           <div class="swatch-name">Teal Dark</div>
           <div class="swatch-var">--teal-dk</div>
-          <div class="swatch-hex">#0a8c80</div>
+          <div class="swatch-hex">#236868</div>
           <div class="swatch-usage">Hover état sur teal. Boutons teal au survol</div>
         </div>
       </div>
@@ -594,18 +594,18 @@ blockquote.odl{border-left:2px solid var(--peach);padding:1rem 1.5rem;font-famil
   <span class="tc-attr">--bg-ocean</span>:    <span class="tc-val">#1a3d4a</span>;   <span class="tc-comment">/* Fond section plateformes dark (annonces.html) */</span>
   <span class="tc-attr">--bg-night</span>:    <span class="tc-val">#132237</span>;   <span class="tc-comment">/* Fond footer, login dashboard */</span>
   <span class="tc-attr">--bg-dark</span>:     <span class="tc-val">#1c1c1a</span>;   <span class="tc-comment">/* Doublon de --ink. Non utilisée. Préférer --ink. */</span>
-  <span class="tc-attr">--bg-teal-lt</span>:  <span class="tc-val">rgba(13,181,166,0.06)</span>;
+  <span class="tc-attr">--bg-teal-lt</span>:  <span class="tc-val">rgba(46,139,139,0.06)</span>;
   <span class="tc-attr">--ink</span>:         <span class="tc-val">#1c1c1a</span>;   <span class="tc-comment">/* Texte principal */</span>
   <span class="tc-attr">--ink-mid</span>:     <span class="tc-val">#3d3d38</span>;   <span class="tc-comment">/* Texte secondaire */</span>
   <span class="tc-attr">--ink-light</span>:   <span class="tc-val">#6b6b63</span>;   <span class="tc-comment">/* Captions, meta */</span>
-  <span class="tc-attr">--teal</span>:        <span class="tc-val">#0db5a6</span>;   <span class="tc-comment">/* Couleur signature — accent principal */</span>
-  <span class="tc-attr">--teal-dk</span>:     <span class="tc-val">#0a8c80</span>;   <span class="tc-comment">/* Teal hover */</span>
-  <span class="tc-attr">--teal-lt</span>:     <span class="tc-val">rgba(13,181,166,0.12)</span>;
-  <span class="tc-attr">--peach</span>:       <span class="tc-val">#ff6b3d</span>;   <span class="tc-comment">/* CTA, badges, accents chauds */</span>
-  <span class="tc-attr">--peach-lt</span>:    <span class="tc-val">rgba(255,107,61,0.08)</span>;
-  <span class="tc-attr">--gold</span>:        <span class="tc-val">#e0a93f</span>;   <span class="tc-comment">/* Accent luxe — usage ponctuel */</span>
-  <span class="tc-attr">--terra</span>:       <span class="tc-val">#ff6b3d</span>;   <span class="tc-comment">/* Alias de --peach (livret) */</span>
-  <span class="tc-attr">--terra-lt</span>:    <span class="tc-val">rgba(255,107,61,0.10)</span>;
+  <span class="tc-attr">--teal</span>:        <span class="tc-val">#2e8b8b</span>;   <span class="tc-comment">/* Couleur signature — accent principal */</span>
+  <span class="tc-attr">--teal-dk</span>:     <span class="tc-val">#236868</span>;   <span class="tc-comment">/* Teal hover */</span>
+  <span class="tc-attr">--teal-lt</span>:     <span class="tc-val">rgba(46,139,139,0.12)</span>;
+  <span class="tc-attr">--peach</span>:       <span class="tc-val">#c8603a</span>;   <span class="tc-comment">/* CTA, badges, accents chauds */</span>
+  <span class="tc-attr">--peach-lt</span>:    <span class="tc-val">rgba(200,96,58,0.08)</span>;
+  <span class="tc-attr">--gold</span>:        <span class="tc-val">#b8975a</span>;   <span class="tc-comment">/* Accent luxe — usage ponctuel */</span>
+  <span class="tc-attr">--terra</span>:       <span class="tc-val">#c8603a</span>;   <span class="tc-comment">/* Alias de --peach (livret) */</span>
+  <span class="tc-attr">--terra-lt</span>:    <span class="tc-val">rgba(200,96,58,0.10)</span>;
 
   <span class="tc-comment">/* ── TYPOGRAPHIE ── */</span>
   <span class="tc-attr">--font-serif</span>:  <span class="tc-val">'Cormorant Garamond','Palatino Linotype','Book Antiqua',Palatino,Georgia,serif</span>;
@@ -628,9 +628,9 @@ blockquote.odl{border-left:2px solid var(--peach);padding:1rem 1.5rem;font-famil
       </thead>
       <tbody>
         <tr><td><code>--navy</code></td><td><code>#1a2e4a</code></td><td><span class="var-swatch-inline" style="background:#1a2e4a"></span></td><td>Navbar, cards dark, titres institutionnels</td></tr>
-        <tr><td><code>--teal</code></td><td><code>#0db5a6</code></td><td><span class="var-swatch-inline" style="background:#0db5a6"></span></td><td>Couleur signature principale</td></tr>
-        <tr><td><code>--peach</code></td><td><code>#ff6b3d</code></td><td><span class="var-swatch-inline" style="background:#ff6b3d"></span></td><td>CTA, badges, accents chauds</td></tr>
-        <tr><td><code>--gold</code></td><td><code>#e0a93f</code></td><td><span class="var-swatch-inline" style="background:#e0a93f"></span></td><td>Accent luxe ponctuel</td></tr>
+        <tr><td><code>--teal</code></td><td><code>#2e8b8b</code></td><td><span class="var-swatch-inline" style="background:#2e8b8b"></span></td><td>Couleur signature principale</td></tr>
+        <tr><td><code>--peach</code></td><td><code>#c8603a</code></td><td><span class="var-swatch-inline" style="background:#c8603a"></span></td><td>CTA, badges, accents chauds</td></tr>
+        <tr><td><code>--gold</code></td><td><code>#b8975a</code></td><td><span class="var-swatch-inline" style="background:#b8975a"></span></td><td>Accent luxe ponctuel</td></tr>
         <tr><td><code>--bg</code></td><td><code>#faf9f7</code></td><td><span class="var-swatch-inline" style="background:#faf9f7;border-color:#ccc"></span></td><td>Fond page principal</td></tr>
         <tr><td><code>--bg-sand</code></td><td><code>#f2ede6</code></td><td><span class="var-swatch-inline" style="background:#f2ede6"></span></td><td>Sections alternées, navbar</td></tr>
         <tr><td><code>--bg-ocean</code></td><td><code>#1a3d4a</code></td><td><span class="var-swatch-inline" style="background:#1a3d4a"></span></td><td>Fond section plateformes dark (annonces.html)</td></tr>
@@ -766,7 +766,7 @@ blockquote.odl{border-left:2px solid var(--peach);padding:1rem 1.5rem;font-famil
       </div>
       <div class="comp-specs">
         <code>font: Jost 500 .62-.65rem · letter-spacing .14em · uppercase · border-radius: 20px</code>
-        <code>Teal outline: border 1px rgba(13,181,166,0.3) · color --teal</code>
+        <code>Teal outline: border 1px rgba(46,139,139,0.3) · color --teal</code>
         <code>Peach solid: background --peach · color #fff</code>
         <code>Gold light: background rgba(184,151,90,0.15) · color --gold</code>
         <code>Ink light: background rgba(28,28,26,0.08) · color --ink-mid</code>
@@ -785,10 +785,10 @@ blockquote.odl{border-left:2px solid var(--peach);padding:1rem 1.5rem;font-famil
         </div>
       </div>
       <div class="comp-specs" style="margin-top:1.2rem">
-        <code>background: radial-gradient(ellipse 70% 55% at 25% 35%, rgba(13,181,166,0.13) 0%, transparent 70%),</code>
-        <code>            radial-gradient(ellipse 55% 50% at 75% 70%, rgba(255,107,61,0.08) 0%, transparent 65%),</code>
+        <code>background: radial-gradient(ellipse 70% 55% at 25% 35%, rgba(46,139,139,0.13) 0%, transparent 70%),</code>
+        <code>            radial-gradient(ellipse 55% 50% at 75% 70%, rgba(200,96,58,0.08) 0%, transparent 65%),</code>
         <code>            linear-gradient(160deg, #ffffff 0%, #f4ede4 55%, #ede8df 100%)</code>
-        <code>Texture optionnelle (index.html): ::before { background-image: radial-gradient(circle, rgba(13,181,166,0.04) 1px, transparent 1px); background-size: 32px 32px }</code>
+        <code>Texture optionnelle (index.html): ::before { background-image: radial-gradient(circle, rgba(46,139,139,0.04) 1px, transparent 1px); background-size: 32px 32px }</code>
       </div>
     </div>
 
@@ -913,7 +913,7 @@ blockquote.odl{border-left:2px solid var(--peach);padding:1rem 1.5rem;font-famil
         <div style="font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem">Type B · Guide / Livret</div>
         <div style="font-size:.75rem;color:var(--ink-light);margin-bottom:1rem">Modèle : guide-du-voyageur.html · livret-accueil.html</div>
         <div class="page-anatomy">
-          <div class="anatomy-layer al-progress" style="background:rgba(13,181,166,0.1)"><strong>Progress bar uni</strong> <code>2px teal ou peach</code></div>
+          <div class="anatomy-layer al-progress" style="background:rgba(46,139,139,0.1)"><strong>Progress bar uni</strong> <code>2px teal ou peach</code></div>
           <div class="anatomy-layer al-nav"><strong>Nav fixed</strong> <code>top:0 bg 95% blur</code></div>
           <div class="anatomy-layer al-hero" style="min-height:80px;display:flex;align-items:center;padding:1rem 1.5rem"><strong>Hero 100vh</strong> <code>gradient sans texture</code></div>
           <div class="anatomy-layer al-section-light"><strong>Section bg</strong></div>
@@ -1086,16 +1086,16 @@ blockquote.odl{border-left:2px solid var(--peach);padding:1rem 1.5rem;font-famil
   --bg-sand:    #f2ede6;
   --bg-sand-md: #ece4d8;
   --bg-ocean:   #1a3d4a;
-  --bg-teal-lt: rgba(13,181,166,0.06);
+  --bg-teal-lt: rgba(46,139,139,0.06);
   --ink:        #1c1c1a;
   --ink-mid:    #3d3d38;
   --ink-light:  #6b6b63;
-  --teal:       #0db5a6;
-  --teal-dk:    #0a8c80;
-  --teal-lt:    rgba(13,181,166,0.12);
-  --peach:      #ff6b3d;
-  --peach-lt:   rgba(255,107,61,0.08);
-  --gold:       #e0a93f;
+  --teal:       #2e8b8b;
+  --teal-dk:    #236868;
+  --teal-lt:    rgba(46,139,139,0.12);
+  --peach:      #c8603a;
+  --peach-lt:   rgba(200,96,58,0.08);
+  --gold:       #b8975a;
   --radius:     4px;
   --trans:      0.3s ease;
   --font-serif: 'Cormorant Garamond','Palatino Linotype',Palatino,Georgia,serif;
@@ -1124,8 +1124,8 @@ button{cursor:pointer;font-family:var(--font-sans);border:none;background:none}
 
 <span class="tc-comment">/* ⑥ HERO */</span>
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;position:relative;overflow:hidden;
-  background:radial-gradient(ellipse 70% 55% at 25% 35%,rgba(13,181,166,0.13) 0%,transparent 70%),
-  radial-gradient(ellipse 55% 50% at 75% 70%,rgba(255,107,61,0.08) 0%,transparent 65%),
+  background:radial-gradient(ellipse 70% 55% at 25% 35%,rgba(46,139,139,0.13) 0%,transparent 70%),
+  radial-gradient(ellipse 55% 50% at 75% 70%,rgba(200,96,58,0.08) 0%,transparent 65%),
   linear-gradient(160deg,#ffffff 0%,#f4ede4 55%,#ede8df 100%)}
 .hero-inner{position:relative;z-index:1;max-width:780px;width:100%;display:flex;flex-direction:column;align-items:center}
 .hero-eyebrow{font-size:.72rem;font-weight:400;letter-spacing:.38em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:2rem}
