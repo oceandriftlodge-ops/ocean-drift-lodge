@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ocean-drift-lodge",
+  "compatibility_date": "2026-06-06",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "04_Site_Web"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
