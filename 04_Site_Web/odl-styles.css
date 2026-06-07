@@ -21,6 +21,7 @@
   --ink-light:   #6b6b63;
   --teal:        #2e8b8b;
   --teal-dk:     #236868;
+  --teal-text:   #236868;
   --teal-lt:     rgba(46,139,139,0.12);
   --peach:       #c8603a;
   --peach-lt:    rgba(200,96,58,0.08);
@@ -290,7 +291,7 @@ section       { padding: 6rem 3.5rem; }
   font-weight: 500;
   letter-spacing: .28em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--teal-text);
   margin-bottom: 1rem;
 }
 .section-title {
