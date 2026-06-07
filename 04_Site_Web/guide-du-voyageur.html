@@ -149,6 +149,7 @@ section{padding:6rem 3.5rem}
   .resto-photo img{height:100%}
   .profiles,.profile-btns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem}
   .weather-val{white-space:nowrap;display:inline-flex;align-items:baseline;gap:.2rem}
+  .weather-card{display:flex;flex-direction:column;align-items:center}
 }
 @media(max-width:620px){
   section{padding:3.5rem 1.5rem}
@@ -161,11 +162,12 @@ section{padding:6rem 3.5rem}
   .spot-card{width:100%;margin:0 auto}
   .card-photo{height:200px}
   .section-header-photo{height:200px}
-  .weather-grid{gap:.5rem;padding:0 .5rem}
-  .weather-card{padding:.8rem .5rem;min-width:0}
+  #weather-widget{padding:2rem 1rem}
+  .weather-grid{gap:.5rem}
+  .weather-card{padding:.8rem .6rem;min-width:0;width:100%;box-sizing:border-box}
+  .weather-icon{font-size:1.4rem;height:2rem;display:flex;align-items:center;justify-content:center}
   .weather-val{font-size:1.1rem}
-  .weather-icon{font-size:1.4rem}
-  .weather-lbl{font-size:.52rem;letter-spacing:.08em}
+  .weather-lbl{font-size:.52rem;letter-spacing:.08em;text-align:center}
 }
 
 /* ── LANG POP ── */
@@ -352,7 +354,7 @@ section{padding:6rem 3.5rem}
       <div class="spot-card">
         <div class="spot-card-img" style="background-image:url('https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=800&q=80')">
           <div class="spot-card-overlay">
-            <p class="spot-card-tag"><span data-lang="fr" class="lang-visible">🌊 Côté Océan</span><span data-lang="en">🌊 Ocean Side</span><span data-lang="es">🌊 Lado Océano</span><span data-lang="pt">🌊 Lado Oceano</span><span data-lang="it">🌊 Lato Oceano</span></p>
+            <p class="spot-card-tag"><span data-lang="fr" class="lang-visible">Côté Océan</span><span data-lang="en">Ocean Side</span><span data-lang="es">Lado Océano</span><span data-lang="pt">Lado Oceano</span><span data-lang="it">Lato Oceano</span></p>
             <p class="spot-card-name">Foum El Bouir</p>
           </div>
         </div>
@@ -414,7 +416,7 @@ section{padding:6rem 3.5rem}
           </picture>
         </div>
         <div class="act-body">
-          <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">Mer</span><span data-lang="en">Sea</span><span data-lang="es">Mar</span><span data-lang="pt">Mar</span><span data-lang="it">Mare</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Surf · Foum El Bouir</span><span data-lang="en">Surf · Foum El Bouir</span><span data-lang="es">Surf · Foum El Bouir</span><span data-lang="pt">Surf · Foum El Bouir</span><span data-lang="it">Surf · Foum El Bouir</span></p>
           <p class="card-accroche">
             <span data-lang="fr" class="lang-visible">La droite qui a mis Dakhla sur la carte du monde.</span>
@@ -439,7 +441,7 @@ section{padding:6rem 3.5rem}
           </picture>
         </div>
         <div class="act-body">
-          <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">Mer</span><span data-lang="en">Sea</span><span data-lang="es">Mar</span><span data-lang="pt">Mar</span><span data-lang="it">Mare</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Kitesurf · La Lagune</span><span data-lang="en">Kitesurf · The Lagoon</span><span data-lang="es">Kitesurf · La Laguna</span><span data-lang="pt">Kitesurf · A Lagoa</span><span data-lang="it">Kitesurf · La Laguna</span></p>
           <p class="card-accroche">
             <span data-lang="fr" class="lang-visible">300 jours de vent. Zéro excuse pour ne pas voler.</span>
@@ -464,7 +466,7 @@ section{padding:6rem 3.5rem}
           </picture>
         </div>
         <div class="act-body">
-          <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">Mer</span><span data-lang="en">Sea</span><span data-lang="es">Mar</span><span data-lang="pt">Mar</span><span data-lang="it">Mare</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Kayak de mer</span><span data-lang="en">Sea kayak</span><span data-lang="es">Kayak de mar</span><span data-lang="pt">Kayak de mar</span><span data-lang="it">Kayak di mare</span></p>
           <p class="card-accroche">
             <span data-lang="fr" class="lang-visible">La côte atlantique vue de l'eau — autrement.</span>
@@ -489,7 +491,7 @@ section{padding:6rem 3.5rem}
           </picture>
         </div>
         <div class="act-body">
-          <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">Mer</span><span data-lang="en">Sea</span><span data-lang="es">Mar</span><span data-lang="pt">Mar</span><span data-lang="it">Mare</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Île du Dragon</span><span data-lang="en">Dragon Island</span><span data-lang="es">Isla del Dragón</span><span data-lang="pt">Ilha do Dragão</span><span data-lang="it">Isola del Drago</span></p>
           <p class="card-accroche">
             <span data-lang="fr" class="lang-visible">Là où la lagune rencontre le rose des flamants.</span>
@@ -514,7 +516,7 @@ section{padding:6rem 3.5rem}
           </picture>
         </div>
         <div class="act-body">
-          <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">Mer</span><span data-lang="en">Sea</span><span data-lang="es">Mar</span><span data-lang="pt">Mar</span><span data-lang="it">Mare</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Plage Porto Rico</span><span data-lang="en">Porto Rico Beach</span><span data-lang="es">Playa Porto Rico</span><span data-lang="pt">Praia Porto Rico</span><span data-lang="it">Spiaggia Porto Rico</span></p>
           <p class="card-accroche">
             <span data-lang="fr" class="lang-visible">La plage sauvage que peu de voyageurs connaissent.</span>
@@ -539,7 +541,7 @@ section{padding:6rem 3.5rem}
           </picture>
         </div>
         <div class="act-body">
-          <p class="act-cat"><span data-lang="fr" class="lang-visible">🌊 Mer</span><span data-lang="en">🌊 Sea</span><span data-lang="es">🌊 Mar</span><span data-lang="pt">🌊 Mar</span><span data-lang="it">🌊 Mare</span></p>
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">Mer</span><span data-lang="en">Sea</span><span data-lang="es">Mar</span><span data-lang="pt">Mar</span><span data-lang="it">Mare</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Pêche traditionnelle</span><span data-lang="en">Traditional fishing</span><span data-lang="es">Pesca tradicional</span><span data-lang="pt">Pesca tradicional</span><span data-lang="it">Pesca tradizionale</span></p>
           <p class="card-accroche">
             <span data-lang="fr" class="lang-visible">À l'aube avec les pêcheurs — le Dakhla authentique.</span>
@@ -564,7 +566,7 @@ section{padding:6rem 3.5rem}
           </picture>
         </div>
         <div class="act-body">
-          <p class="act-cat"><span data-lang="fr" class="lang-visible">🏜 Désert</span><span data-lang="en">🏜 Desert</span><span data-lang="es">🏜 Desierto</span><span data-lang="pt">🏜 Deserto</span><span data-lang="it">🏜 Deserto</span></p>
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">Désert</span><span data-lang="en">Desert</span><span data-lang="es">Desierto</span><span data-lang="pt">Deserto</span><span data-lang="it">Deserto</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Quad · Dunes</span><span data-lang="en">Quad · Dunes</span><span data-lang="es">Quad · Dunas</span><span data-lang="pt">Quad · Dunas</span><span data-lang="it">Quad · Dune</span></p>
           <p class="card-accroche">
             <span data-lang="fr" class="lang-visible">Adrénaline entre sable et océan au coucher du soleil.</span>
@@ -589,7 +591,7 @@ section{padding:6rem 3.5rem}
           </picture>
         </div>
         <div class="act-body">
-          <p class="act-cat"><span data-lang="fr" class="lang-visible">🏜 Désert</span><span data-lang="en">🏜 Desert</span><span data-lang="es">🏜 Desierto</span><span data-lang="pt">🏜 Deserto</span><span data-lang="it">🏜 Deserto</span></p>
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">Désert</span><span data-lang="en">Desert</span><span data-lang="es">Desierto</span><span data-lang="pt">Deserto</span><span data-lang="it">Deserto</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">La Dune Blanche</span><span data-lang="en">The White Dune</span><span data-lang="es">La Duna Blanca</span><span data-lang="pt">A Duna Branca</span><span data-lang="it">La Duna Bianca</span></p>
           <p class="card-accroche">
             <span data-lang="fr" class="lang-visible">Le point de vue le plus spectaculaire de la péninsule.</span>
@@ -614,7 +616,7 @@ section{padding:6rem 3.5rem}
           </picture>
         </div>
         <div class="act-body">
-          <p class="act-cat"><span data-lang="fr" class="lang-visible">🏜 Désert</span><span data-lang="en">🏜 Desert</span><span data-lang="es">🏜 Desierto</span><span data-lang="pt">🏜 Deserto</span><span data-lang="it">🏜 Deserto</span></p>
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">Désert</span><span data-lang="en">Desert</span><span data-lang="es">Desierto</span><span data-lang="pt">Deserto</span><span data-lang="it">Deserto</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Bivouac · Excursion désert</span><span data-lang="en">Bivouac · Desert excursion</span><span data-lang="es">Bivouac · Excursión desierto</span><span data-lang="pt">Bivaque · Excursão no deserto</span><span data-lang="it">Bivacco · Escursione nel deserto</span></p>
           <p class="card-accroche">
             <span data-lang="fr" class="lang-visible">Une nuit sous les étoiles sahariennes — inoubliable.</span>
@@ -639,7 +641,7 @@ section{padding:6rem 3.5rem}
           </picture>
         </div>
         <div class="act-body">
-          <p class="act-cat"><span data-lang="fr" class="lang-visible">🌿 Nature</span><span data-lang="en">🌿 Nature</span><span data-lang="es">🌿 Nature</span><span data-lang="pt">🌿 Nature</span><span data-lang="it">🌿 Nature</span></p>
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">Nature</span><span data-lang="en">Nature</span><span data-lang="es">Nature</span><span data-lang="pt">Nature</span><span data-lang="it">Nature</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Équitation bord de mer</span><span data-lang="en">Horse riding by the sea</span><span data-lang="es">Equitación a orillas del mar</span><span data-lang="pt">Equitação à beira-mar</span><span data-lang="it">Equitazione in riva al mare</span></p>
           <p class="card-accroche">
             <span data-lang="fr" class="lang-visible">Galoper face aux vagues — une image pour la vie.</span>
@@ -664,7 +666,7 @@ section{padding:6rem 3.5rem}
           </picture>
         </div>
         <div class="act-body">
-          <p class="act-cat"><span data-lang="fr" class="lang-visible">🌿 Nature</span><span data-lang="en">🌿 Nature</span><span data-lang="es">🌿 Nature</span><span data-lang="pt">🌿 Nature</span><span data-lang="it">🌿 Nature</span></p>
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">Nature</span><span data-lang="en">Nature</span><span data-lang="es">Nature</span><span data-lang="pt">Nature</span><span data-lang="it">Nature</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Yoga · Lever du soleil</span><span data-lang="en">Yoga · Sunrise</span><span data-lang="es">Yoga · Amanecer</span><span data-lang="pt">Yoga · Nascer do sol</span><span data-lang="it">Yoga · Alba</span></p>
           <p class="card-accroche">
             <span data-lang="fr" class="lang-visible">L'Atlantique comme tapis de yoga.</span>
@@ -690,7 +692,7 @@ section{padding:6rem 3.5rem}
           </picture>
         </div>
         <div class="act-body">
-          <p class="act-cat"><span data-lang="fr" class="lang-visible">🌿 Nature</span><span data-lang="en">🌿 Nature</span><span data-lang="es">🌿 Nature</span><span data-lang="pt">🌿 Nature</span><span data-lang="it">🌿 Nature</span></p>
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">Nature</span><span data-lang="en">Nature</span><span data-lang="es">Nature</span><span data-lang="pt">Nature</span><span data-lang="it">Nature</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Flamants roses · Lagune</span><span data-lang="en">Pink flamingos · Lagoon</span><span data-lang="es">Flamencos rosas · Laguna</span><span data-lang="pt">Flamingos · Lagoa</span><span data-lang="it">Fenicotteri rosa · Laguna</span></p>
           <p class="card-accroche">
             <span data-lang="fr" class="lang-visible">Le rose des flamants sur le bleu de la lagune.</span>
@@ -715,7 +717,7 @@ section{padding:6rem 3.5rem}
           </picture>
         </div>
         <div class="act-body">
-          <p class="act-cat"><span data-lang="fr" class="lang-visible">🌿 Nature</span><span data-lang="en">🌿 Nature</span><span data-lang="es">🌿 Nature</span><span data-lang="pt">🌿 Nature</span><span data-lang="it">🌿 Nature</span></p>
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">Nature</span><span data-lang="en">Nature</span><span data-lang="es">Nature</span><span data-lang="pt">Nature</span><span data-lang="it">Nature</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Parapente · Dunes</span><span data-lang="en">Paragliding · Dunes</span><span data-lang="es">Parapente · Dunas</span><span data-lang="pt">Parapente · Dunas</span><span data-lang="it">Parapendio · Dune</span></p>
           <p class="card-accroche">
             <span data-lang="fr" class="lang-visible">Dakhla vue du ciel — 360° de pur vertige.</span>
@@ -740,7 +742,7 @@ section{padding:6rem 3.5rem}
           </picture>
         </div>
         <div class="act-body">
-          <p class="act-cat"><span data-lang="fr" class="lang-visible">🌿 Nature</span><span data-lang="en">🌿 Nature</span><span data-lang="es">🌿 Naturaleza</span><span data-lang="pt">🌿 Natureza</span><span data-lang="it">🌿 Natura</span></p>
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">Nature</span><span data-lang="en">Nature</span><span data-lang="es">Naturaleza</span><span data-lang="pt">Natureza</span><span data-lang="it">Natura</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Observation des étoiles</span><span data-lang="en">Stargazing</span><span data-lang="es">Observación de estrellas</span><span data-lang="pt">Observação de estrelas</span><span data-lang="it">Osservazione delle stelle</span></p>
           <p class="card-accroche">
             <span data-lang="fr" class="lang-visible">Le ciel saharien, votre planétarium privé.</span>
@@ -765,7 +767,7 @@ section{padding:6rem 3.5rem}
           </picture>
         </div>
         <div class="act-body">
-          <p class="act-cat"><span data-lang="fr" class="lang-visible">🏺 Culture</span><span data-lang="en">🏺 Culture</span><span data-lang="es">🏺 Culture</span><span data-lang="pt">🏺 Culture</span><span data-lang="it">🏺 Culture</span></p>
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">Culture</span><span data-lang="en">Culture</span><span data-lang="es">Culture</span><span data-lang="pt">Culture</span><span data-lang="it">Culture</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Cérémonie du thé sahraoui</span><span data-lang="en">Sahrawi tea ceremony</span><span data-lang="es">Ceremonia del té saharaui</span><span data-lang="pt">Cerimónia do chá saharawi</span><span data-lang="it">Cerimonia del tè saharawi</span></p>
           <p class="card-accroche">
             <span data-lang="fr" class="lang-visible">Trois verres, une tradition millénaire, une rencontre vraie.</span>
@@ -790,7 +792,7 @@ section{padding:6rem 3.5rem}
           </picture>
         </div>
         <div class="act-body">
-          <p class="act-cat"><span data-lang="fr" class="lang-visible">🏺 Culture</span><span data-lang="en">🏺 Culture</span><span data-lang="es">🏺 Culture</span><span data-lang="pt">🏺 Culture</span><span data-lang="it">🏺 Culture</span></p>
+          <p class="act-cat"><span data-lang="fr" class="lang-visible">Culture</span><span data-lang="en">Culture</span><span data-lang="es">Culture</span><span data-lang="pt">Culture</span><span data-lang="it">Culture</span></p>
           <p class="act-name"><span data-lang="fr" class="lang-visible">Marché artisanal · Dakhla</span><span data-lang="en">Artisan market · Dakhla</span><span data-lang="es">Mercado artesanal · Dakhla</span><span data-lang="pt">Mercado artesanal · Dakhla</span><span data-lang="it">Mercato artigianale · Dakhla</span></p>
           <p class="card-accroche">
             <span data-lang="fr" class="lang-visible">L'âme de Dakhla en une heure de visite.</span>
@@ -1002,7 +1004,7 @@ section{padding:6rem 3.5rem}
           <div class="card-body">
             <p class="gastro-desc"><span data-lang="fr" class="lang-visible">La meilleure table de Foum El Bouir. Fruits de mer ultra-frais, coucher de soleil face au point break.</span><span data-lang="en">The finest table in Foum El Bouir. Ultra-fresh seafood, sunset facing the point break.</span><span data-lang="es">La mejor mesa de Foum El Bouir. Mariscos ultrafrescos, atardecer frente al point break.</span><span data-lang="pt">A melhor mesa de Foum El Bouir. Marisco ultrafesco, pôr do sol face ao point break.</span><span data-lang="it">La tavola più raffinata di Foum El Bouir. Frutti di mare freschissimi, tramonto sul point break.</span></p>
             <div class="gastro-icons">
-              <span class="g-pill"><span data-lang="fr" class="lang-visible">🐚 Fruits de mer</span><span data-lang="en">🐚 Seafood</span><span data-lang="es">🐚 Mariscos</span><span data-lang="pt">🐚 Marisco</span><span data-lang="it">🐚 Frutti di mare</span></span><span class="g-pill"><span data-lang="fr" class="lang-visible">🌊 Vue océan</span><span data-lang="en">🌊 Ocean view</span><span data-lang="es">🌊 Vista océano</span><span data-lang="pt">🌊 Vista oceano</span><span data-lang="it">🌊 Vista oceano</span></span><span class="g-pill">🌅 Sunset</span>
+              <span class="g-pill"><span data-lang="fr" class="lang-visible">🐚 Fruits de mer</span><span data-lang="en">🐚 Seafood</span><span data-lang="es">🐚 Mariscos</span><span data-lang="pt">🐚 Marisco</span><span data-lang="it">🐚 Frutti di mare</span></span><span class="g-pill"><span data-lang="fr" class="lang-visible">Vue océan</span><span data-lang="en">Ocean view</span><span data-lang="es">Vista océano</span><span data-lang="pt">Vista oceano</span><span data-lang="it">Vista oceano</span></span><span class="g-pill">🌅 Sunset</span>
             </div>
           </div>
         </div>
