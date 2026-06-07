@@ -1089,21 +1089,21 @@ details[open]>summary.guide-summary::after{transform:rotate(45deg)}
     </div>
     <div class="pay-card-form visible" id="payCardForm">
       <div class="form-group">
-        <label class="form-label"><span data-lang="fr">Numéro de carte</span><span data-lang="en">Card number</span><span data-lang="es">Número de tarjeta</span><span data-lang="pt">Número do cartão</span><span data-lang="it">Numero carta</span></label>
-        <input class="form-input" type="text" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCard(this)">
+        <label class="form-label" for="payCardNumber"><span data-lang="fr">Numéro de carte</span><span data-lang="en">Card number</span><span data-lang="es">Número de tarjeta</span><span data-lang="pt">Número do cartão</span><span data-lang="it">Numero carta</span></label>
+        <input class="form-input" id="payCardNumber" type="text" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCard(this)">
       </div>
       <div class="card-row">
         <div class="form-group">
-          <label class="form-label"><span data-lang="fr">Titulaire</span><span data-lang="en">Cardholder</span><span data-lang="es">Titular</span><span data-lang="pt">Titular</span><span data-lang="it">Intestatario</span></label>
-          <input class="form-input" type="text" placeholder="Jean Dupont" autocomplete="cc-name">
+          <label class="form-label" for="payCardName"><span data-lang="fr">Titulaire</span><span data-lang="en">Cardholder</span><span data-lang="es">Titular</span><span data-lang="pt">Titular</span><span data-lang="it">Intestatario</span></label>
+          <input class="form-input" id="payCardName" type="text" placeholder="Jean Dupont" autocomplete="cc-name">
         </div>
         <div class="form-group">
-          <label class="form-label"><span data-lang="fr">Expiration</span><span data-lang="en">Expiry</span><span data-lang="es">Vencimiento</span><span data-lang="pt">Validade</span><span data-lang="it">Scadenza</span></label>
-          <input class="form-input" type="text" placeholder="MM/AA" maxlength="5">
+          <label class="form-label" for="payCardExpiry"><span data-lang="fr">Expiration</span><span data-lang="en">Expiry</span><span data-lang="es">Vencimiento</span><span data-lang="pt">Validade</span><span data-lang="it">Scadenza</span></label>
+          <input class="form-input" id="payCardExpiry" type="text" placeholder="MM/AA" maxlength="5">
         </div>
         <div class="form-group">
-          <label class="form-label">CVV</label>
-          <input class="form-input" type="text" placeholder="123" maxlength="3">
+          <label class="form-label" for="payCardCvv">CVV</label>
+          <input class="form-input" id="payCardCvv" type="text" placeholder="123" maxlength="3">
         </div>
       </div>
       <div class="stripe-badge">🔒 <span data-lang="fr">Sécurisé par Stripe · Chiffrement SSL 256 bits</span><span data-lang="en">Secured by Stripe · 256-bit SSL encryption</span><span data-lang="es">Protegido por Stripe · Cifrado SSL 256 bits</span><span data-lang="pt">Protegido por Stripe · Encriptação SSL 256 bits</span><span data-lang="it">Protetto da Stripe · Crittografia SSL 256 bit</span></div>
