@@ -72,14 +72,14 @@
 .hero-inner{position:relative;z-index:1;max-width:820px;width:100%;display:flex;flex-direction:column;align-items:center}
 .hero-eyebrow{font-size:.72rem;font-weight:400;letter-spacing:.38em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:1.4rem}
 .hero-title{font-family:var(--font-serif);font-size:clamp(3.8rem,10vw,7.5rem);font-weight:300;line-height:1.0;color:var(--ink);letter-spacing:-.01em}
-.hero-title em{font-style:italic;color:var(--teal)}
+.hero-title em{font-style:italic;color:var(--teal-text)}
 .hero-sub{font-size:.88rem;color:var(--ink-mid)!important;letter-spacing:.18em;text-transform:uppercase;margin-top:1.4rem;text-shadow:none}
 .profile-label{font-size:.62rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-light);margin-top:2.8rem;margin-bottom:.9rem}
 .profiles{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center}
 .profile-btn{display:flex;flex-direction:column;align-items:center;gap:.35rem;padding:.8rem 1.5rem;border-radius:10px;border:1px solid rgba(28,28,26,0.12);background:rgba(255,255,255,0.85);color:var(--ink-mid);transition:all var(--trans);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;backdrop-filter:blur(8px);cursor:pointer}
 .profile-btn .p-icon{font-size:1.6rem;line-height:1}
-.profile-btn:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-3px);box-shadow:0 6px 20px rgba(46,139,139,0.14)}
-.profile-btn.active{border-color:var(--teal);background:var(--teal);color:#fff;transform:translateY(-3px);box-shadow:0 8px 24px rgba(46,139,139,0.32)}
+.profile-btn:hover{border-color:var(--teal-text);color:var(--teal-text);transform:translateY(-3px);box-shadow:0 6px 20px rgba(46,139,139,0.14)}
+.profile-btn.active{border-color:var(--teal-dk);background:var(--teal-dk);color:#fff;transform:translateY(-3px);box-shadow:0 8px 24px rgba(46,139,139,0.32)}
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:2rem}
 .btn-primary{font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;background:var(--peach);color:#fff;padding:.85rem 2.2rem;border-radius:var(--radius);border:none;cursor:pointer;transition:all var(--trans);display:inline-block}
 .btn-primary:hover{background:var(--peach);filter:brightness(.9);transform:translateY(-1px);box-shadow:0 6px 20px rgba(200,96,58,0.3)}
@@ -90,7 +90,7 @@
 .ob-txt{font-size:.7rem;color:var(--teal-dk);letter-spacing:.1em}
 .countdown{display:flex;gap:1.5rem;justify-content:center;margin-top:1.8rem;align-items:flex-end}
 .cd-item{display:flex;flex-direction:column;align-items:center;gap:.15rem}
-.cd-num{font-family:var(--font-serif);font-size:2.4rem;font-weight:300;color:var(--teal);line-height:1;min-width:2.5ch;text-align:center}
+.cd-num{font-family:var(--font-serif);font-size:2.4rem;font-weight:300;color:var(--teal-text);line-height:1;min-width:2.5ch;text-align:center}
 .cd-lbl{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-light)}
 .cd-sep{font-family:var(--font-serif);font-size:2rem;color:rgba(46,139,139,0.4);padding-bottom:.3rem}
 .coming-soon-booking{text-align:center;padding:5rem 3rem;max-width:600px;margin:0 auto}
@@ -101,7 +101,7 @@
 .panel-header{display:flex;align-items:center;gap:1.5rem;margin-bottom:3rem}
 .panel-icon-big{font-size:3.5rem;line-height:1}
 .panel-title{font-family:var(--font-serif);font-size:clamp(2rem,4vw,2.8rem);font-weight:300;color:var(--ink)}
-.panel-title em{font-style:italic;color:var(--teal)}
+.panel-title em{font-style:italic;color:var(--teal-text)}
 .panel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem}
 .panel-card{background:#fff;border:1px solid rgba(28,28,26,0.07);border-radius:8px;padding:1.8rem 1.6rem;transition:all var(--trans)}
 .panel-card:hover{box-shadow:0 10px 36px rgba(28,28,26,0.09);transform:translateY(-3px)}
@@ -114,7 +114,7 @@
 section{padding:6rem 3rem}
 .section-tag{font-size:.65rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--teal-text);margin-bottom:1rem}
 .section-title{font-family:var(--font-serif);font-size:clamp(2rem,4.5vw,3rem);font-weight:300;line-height:1.2;color:var(--ink);margin-bottom:1rem}
-.section-title em{font-style:italic;color:var(--teal)}
+.section-title em{font-style:italic;color:var(--teal-text)}
 .section-lead{font-size:.95rem;color:var(--ink-light);max-width:540px;line-height:1.75}
 #appartement{background:var(--bg)}
 .appt-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;max-width:1100px;margin:0 auto}
@@ -124,7 +124,7 @@ section{padding:6rem 3rem}
 .spec-val{font-size:.9rem;color:var(--ink-mid)}
 .appt-gallery{display:grid;grid-template-rows:240px 120px;grid-template-columns:1fr 1fr;gap:.75rem}
 .gal-item{border-radius:6px;background:var(--bg-sand);display:flex;align-items:center;justify-content:center;font-size:.72rem;color:var(--ink-light);letter-spacing:.1em;overflow:hidden;cursor:pointer;transition:all var(--trans);position:relative}
-.gal-item::after{content:'⊕';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--teal);opacity:0;transition:opacity var(--trans);background:rgba(255,255,255,0.15)}
+.gal-item::after{content:'⊕';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--teal-text);opacity:0;transition:opacity var(--trans);background:rgba(255,255,255,0.15)}
 .gal-item:hover{transform:scale(1.02);box-shadow:0 10px 32px rgba(28,28,26,0.12)}
 .gal-item:hover::after{opacity:1}
 .gal-item:first-child{grid-column:1/-1;border-radius:8px}
@@ -142,7 +142,7 @@ section{padding:6rem 3rem}
 .svc-card-new picture,.svc-card-new img{width:100%;height:180px;object-fit:cover;display:block}
 .svc-overlay{position:static;background:#fff;padding:1.2rem 1.5rem 1.5rem;display:flex;flex-direction:column;gap:.4rem}
 .svc-icon-new{font-size:1.6rem;margin-bottom:.2rem}
-.svc-name-new{font-family:var(--font-serif);font-size:1.1rem;font-weight:300;color:var(--teal);margin-bottom:.3rem}
+.svc-name-new{font-family:var(--font-serif);font-size:1.1rem;font-weight:300;color:var(--teal-text);margin-bottom:.3rem}
 .svc-desc-new{font-size:.8rem;color:var(--ink-light);line-height:1.6;max-height:none;opacity:1}
 .svc-link{font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-text);max-height:none;opacity:1;margin-top:.4rem}
 @media(max-width:620px){.svc-grid-new{grid-template-columns:1fr 1fr;gap:1rem}}
@@ -167,7 +167,7 @@ section{padding:6rem 3rem}
 .t-divider{height:1px;background:rgba(28,28,26,0.08);margin:1.2rem 0}
 .t-includes{display:flex;flex-direction:column;gap:.5rem}
 .t-inc-item{font-size:.82rem;color:var(--ink-mid);display:flex;gap:.5rem;align-items:center}
-.t-inc-item::before{content:'✓';color:var(--teal);font-size:.75rem;flex-shrink:0}
+.t-inc-item::before{content:'✓';color:var(--teal-text);font-size:.75rem;flex-shrink:0}
 .tarifs-note{text-align:center;font-size:.8rem;color:var(--ink-light);max-width:500px;margin:2rem auto 0;line-height:1.75}
 #reservation{background:var(--bg)}
 .resa-inner{max-width:1060px;margin:0 auto}
@@ -175,15 +175,15 @@ section{padding:6rem 3rem}
 .cal-wrap{background:#fff;border:1px solid rgba(28,28,26,0.08);border-radius:12px;padding:1.8rem;box-shadow:0 6px 32px rgba(28,28,26,0.07)}
 .cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
 .cal-nav-btn{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink-mid);font-size:1.1rem;transition:all var(--trans);cursor:pointer;border:1px solid rgba(28,28,26,0.1);background:none}
-.cal-nav-btn:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
+.cal-nav-btn:hover{background:var(--teal-dk);color:#fff;border-color:var(--teal-dk)}
 .cal-month-label{font-family:var(--font-serif);font-size:1.3rem;font-weight:400;color:var(--ink)}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
 .cal-day-label{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);text-align:center;padding:.5rem 0}
 .cal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:.78rem;border-radius:50%;cursor:pointer;transition:all var(--trans);color:var(--ink-mid);user-select:none}
-.cal-day:not(.empty):not(.past):hover{background:rgba(46,139,139,0.12);color:var(--teal)}
-.cal-day.today{font-weight:500;color:var(--teal)}
+.cal-day:not(.empty):not(.past):hover{background:rgba(46,139,139,0.12);color:var(--teal-text)}
+.cal-day.today{font-weight:500;color:var(--teal-text)}
 .cal-day.selected{background:var(--teal);color:#fff;font-weight:500}
-.cal-day.in-range{background:rgba(46,139,139,0.12);color:var(--teal);border-radius:0}
+.cal-day.in-range{background:rgba(46,139,139,0.12);color:var(--teal-text);border-radius:0}
 .cal-day.range-start{background:var(--teal);color:#fff;border-radius:50% 0 0 50%}
 .cal-day.range-end{background:var(--teal);color:#fff;border-radius:0 50% 50% 0}
 .cal-day.past{opacity:.3;cursor:not-allowed}
@@ -198,7 +198,7 @@ section{padding:6rem 3rem}
 .form-input:focus,.form-select:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(46,139,139,0.1)}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .date-display{background:var(--bg-sand);border-radius:8px;padding:1rem 1.2rem;font-size:.85rem;color:var(--ink-mid);border:1px solid rgba(28,28,26,0.08);min-height:3.2rem;display:flex;align-items:center}
-.date-display strong{color:var(--teal);font-family:var(--font-serif);font-size:1.05rem}
+.date-display strong{color:var(--teal-text);font-family:var(--font-serif);font-size:1.05rem}
 .price-summary{background:linear-gradient(135deg,rgba(46,139,139,0.07),rgba(46,139,139,0.01));border:1px solid rgba(46,139,139,0.2);border-radius:10px;padding:1.4rem 1.6rem;animation:fadeIn .3s ease}
 @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 .price-row{display:flex;justify-content:space-between;font-size:.84rem;color:var(--ink-mid);margin-bottom:.55rem}
@@ -207,7 +207,7 @@ section{padding:6rem 3rem}
 .pay-inner{max-width:620px;margin:0 auto}
 .pay-methods{display:flex;gap:1rem;margin:2rem 0;flex-wrap:wrap}
 .pay-method{flex:1;min-width:90px;padding:1.1rem .8rem;background:#fff;border:2px solid rgba(28,28,26,0.08);border-radius:10px;display:flex;flex-direction:column;align-items:center;gap:.5rem;cursor:pointer;transition:all var(--trans);font-size:.72rem;color:var(--ink-mid);letter-spacing:.05em;text-align:center}
-.pay-method:hover,.pay-method.active{border-color:var(--teal);color:var(--teal);background:rgba(46,139,139,0.04)}
+.pay-method:hover,.pay-method.active{border-color:var(--teal);color:var(--teal-text);background:rgba(46,139,139,0.04)}
 .pay-method-icon{font-size:1.6rem}
 .pay-card-form{display:none;flex-direction:column;gap:1rem;margin-top:1.5rem;padding:1.8rem;background:#fff;border-radius:10px;border:1px solid rgba(28,28,26,0.08)}
 .pay-card-form.visible{display:flex;animation:fadeIn .3s ease}
@@ -225,7 +225,7 @@ section{padding:6rem 3rem}
 .weather-card{background:#fff;border-radius:10px;padding:1.4rem 1.8rem;text-align:center;border:1px solid rgba(28,28,26,0.07);min-width:120px;transition:all var(--trans)}
 .weather-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(28,28,26,0.08)}
 .weather-icon{font-size:2rem;margin-bottom:.5rem}
-.weather-val{font-family:var(--font-serif);font-size:1.6rem;font-weight:300;color:var(--teal)}
+.weather-val{font-family:var(--font-serif);font-size:1.6rem;font-weight:300;color:var(--teal-text)}
 .weather-lbl{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-light);margin-top:.25rem}
 #testimonials{background:var(--bg-sand)}
 .testi-inner{max-width:1100px;margin:0 auto}
@@ -238,18 +238,18 @@ section{padding:6rem 3rem}
 .testi-avatar{width:38px;height:38px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
 .testi-name{font-size:.8rem;font-weight:500;color:var(--ink)}
 .testi-origin{font-size:.72rem;color:var(--ink-light)}
-.testi-profile-badge{position:absolute;top:1rem;right:1rem;font-size:.6rem;padding:.2rem .6rem;border-radius:20px;background:rgba(46,139,139,0.1);color:var(--teal);letter-spacing:.08em;text-transform:uppercase}
+.testi-profile-badge{position:absolute;top:1rem;right:1rem;font-size:.6rem;padding:.2rem .6rem;border-radius:20px;background:rgba(46,139,139,0.1);color:var(--teal-text);letter-spacing:.08em;text-transform:uppercase}
 #contact{background:var(--bg)}
 .contact-inner{max-width:640px;margin:0 auto;text-align:center}
 .contact-inner .section-lead{margin:0 auto 2.5rem}
 .contact-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
 .contact-info{display:flex;flex-direction:column;gap:1.2rem}
 .ci-item{display:flex;flex-direction:column;gap:.2rem}
-.ci-lbl{font-size:.65rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--teal)}
+.ci-lbl{font-size:.65rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-text)}
 .ci-val{font-size:.9rem;color:var(--ink-mid);transition:color var(--trans)}
-.ci-val:hover{color:var(--teal)}
+.ci-val:hover{color:var(--teal-text)}
 footer{background:var(--bg-night);color:rgba(255,255,255,0.85);text-align:center;padding:3rem;display:flex;flex-direction:column;gap:1.2rem;align-items:center}
-#back-top{position:fixed;bottom:2rem;right:2rem;z-index:90;width:44px;height:44px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.1rem;opacity:0;transform:translateY(10px);transition:all var(--trans);pointer-events:none;cursor:pointer;box-shadow:0 4px 20px rgba(46,139,139,0.35)}
+#back-top{position:fixed;bottom:2rem;right:2rem;z-index:90;width:44px;height:44px;border-radius:50%;background:var(--teal-dk);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.1rem;opacity:0;transform:translateY(10px);transition:all var(--trans);pointer-events:none;cursor:pointer;box-shadow:0 4px 20px rgba(46,139,139,0.35)}
 #back-top.visible{opacity:1;transform:none;pointer-events:auto}
 #back-top:hover{background:var(--teal-dk);transform:translateY(-2px)}
 .modal-overlay{position:fixed;inset:0;background:rgba(28,28,26,0.72);z-index:500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px);padding:1rem}
@@ -258,7 +258,7 @@ footer{background:var(--bg-night);color:rgba(255,255,255,0.85);text-align:center
 .modal-overlay.open .modal-box{transform:none}
 .modal-close{float:right;font-size:1.2rem;cursor:pointer;color:var(--ink-light);background:none;border:none;line-height:1;padding:.2rem}
 .modal-title{font-family:var(--font-serif);font-size:1.7rem;font-weight:300;color:var(--ink);margin-bottom:1rem;clear:both}
-.modal-title em{font-style:italic;color:var(--teal)}
+.modal-title em{font-style:italic;color:var(--teal-text)}
 .modal-body{font-size:.88rem;color:var(--ink-light);line-height:1.8;white-space:pre-line}
 .modal-confirm{margin-top:1.6rem;background:var(--teal);color:#fff;padding:.85rem 2rem;border-radius:var(--radius);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;border:none;font-family:var(--font-sans);transition:background var(--trans);display:block;width:100%}
 .modal-confirm:hover{background:var(--teal-dk)}
@@ -311,11 +311,11 @@ details.guide-item{border-bottom:1px solid rgba(28,28,26,.08)}
 details.guide-item:first-child{border-top:1px solid rgba(28,28,26,.08)}
 summary.guide-summary{font-family:var(--font-sans);font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);cursor:pointer;padding:1.2rem 0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;user-select:none}
 summary.guide-summary::-webkit-details-marker{display:none}
-summary.guide-summary::after{content:'+';color:var(--teal);font-size:1.1rem;font-weight:400;transition:transform var(--trans);flex-shrink:0}
+summary.guide-summary::after{content:'+';color:var(--teal-text);font-size:1.1rem;font-weight:400;transition:transform var(--trans);flex-shrink:0}
 details[open]>summary.guide-summary::after{transform:rotate(45deg)}
 .guide-content{font-size:.88rem;color:var(--ink-light);line-height:1.85;padding:.6rem 0 1.4rem}
 .guide-content p{margin:.3rem 0;padding-left:1.1rem;position:relative}
-.guide-content p::before{content:'—';color:var(--teal);position:absolute;left:0}
+.guide-content p::before{content:'—';color:var(--teal-text);position:absolute;left:0}
 .guide-cta{text-align:center;margin-top:2.5rem}
 /* ── EXPERIENCES QR BANDEAU ─────────────────────────────────────── */
 #experiences-qr{background:var(--ink);padding:4rem 3rem;text-align:center}
@@ -327,28 +327,28 @@ details[open]>summary.guide-summary::after{transform:rotate(45deg)}
 /* ── GUIDE SECTION (modals) ─────────────────────────────────────── */
 #guide{background:var(--bg);text-align:center}
 .guide-modal-btns{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem}
-.btn-guide{display:inline-flex;align-items:center;gap:.6rem;font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;padding:.9rem 2rem;border-radius:var(--radius);cursor:pointer;transition:all var(--trans);border:1.5px solid var(--teal);color:var(--teal);background:rgba(46,139,139,0.06);font-family:var(--font-sans)}
+.btn-guide{display:inline-flex;align-items:center;gap:.6rem;font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;padding:.9rem 2rem;border-radius:var(--radius);cursor:pointer;transition:all var(--trans);border:1.5px solid var(--teal);color:var(--teal-text);background:rgba(46,139,139,0.06);font-family:var(--font-sans)}
 .btn-guide:hover{background:var(--teal);color:#fff;transform:translateY(-2px);box-shadow:0 6px 20px rgba(46,139,139,0.22)}
 
 /* ── PRE-BOOKING FORM ───────────────────────────────────────────── */
 .prebook-divider{height:1px;background:rgba(28,28,26,0.1);margin:3rem auto;max-width:200px}
 .prebook-section{text-align:left;margin-top:2.5rem}
-.prebook-tag{font-size:.65rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--teal);margin-bottom:.8rem}
+.prebook-tag{font-size:.65rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--teal-text);margin-bottom:.8rem}
 .prebook-title{font-family:var(--font-serif);font-size:1.8rem;font-weight:300;color:var(--ink);margin-bottom:1.5rem;line-height:1.2}
-.prebook-title em{font-style:italic;color:var(--teal)}
+.prebook-title em{font-style:italic;color:var(--teal-text)}
 #prebook-form{display:flex;flex-direction:column;gap:1rem}
 #prebook-form textarea.form-input{resize:vertical}
-.prebook-success{display:none;text-align:center;padding:2rem;font-family:var(--font-serif);font-size:1.05rem;font-style:italic;color:var(--teal);line-height:1.8;border:1px solid rgba(46,139,139,0.25);border-radius:10px;background:rgba(46,139,139,0.05);animation:fadeIn .4s ease}
+.prebook-success{display:none;text-align:center;padding:2rem;font-family:var(--font-serif);font-size:1.05rem;font-style:italic;color:var(--teal-text);line-height:1.8;border:1px solid rgba(46,139,139,0.25);border-radius:10px;background:rgba(46,139,139,0.05);animation:fadeIn .4s ease}
 .btn-loading{opacity:.65;pointer-events:none}
 
 /* ── MODALS LIVRET & GUIDE ──────────────────────────────────────── */
 .modal-box-lg{max-width:600px}
 .modal-body ul{list-style:none;padding:0;margin:.8rem 0;display:flex;flex-direction:column;gap:.5rem}
 .modal-body ul li{display:flex;gap:.7rem;align-items:baseline;font-size:.86rem;color:var(--ink-light);line-height:1.7}
-.modal-body ul li::before{content:'—';color:var(--teal);flex-shrink:0}
-.modal-section-title{font-size:.62rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-top:1.2rem;margin-bottom:.4rem}
+.modal-body ul li::before{content:'—';color:var(--teal-text);flex-shrink:0}
+.modal-section-title{font-size:.62rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--teal-text);margin-top:1.2rem;margin-bottom:.4rem}
 .modal-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.4rem;align-items:center}
-.modal-confirm-alt{background:none;color:var(--teal);padding:.7rem 1.6rem;border-radius:var(--radius);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border:1.5px solid var(--teal);font-family:var(--font-sans);transition:all var(--trans)}
+.modal-confirm-alt{background:none;color:var(--teal-text);padding:.7rem 1.6rem;border-radius:var(--radius);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border:1.5px solid var(--teal);font-family:var(--font-sans);transition:all var(--trans)}
 .modal-confirm-alt:hover{background:var(--teal);color:#fff}
 
 .photo-card{width:100%;height:220px;object-fit:cover;border-radius:8px;display:block;margin-bottom:1rem}
@@ -371,7 +371,7 @@ details[open]>summary.guide-summary::after{transform:rotate(45deg)}
   <a href="guide-du-voyageur.html" onclick="closeMobile()"><span data-lang="fr">Guide du Voyageur</span><span data-lang="en">Local Guide</span><span data-lang="es">Guía Local</span><span data-lang="pt">Guia Local</span><span data-lang="it">Guida Locale</span></a>
   <a href="livret-accueil.html" onclick="closeMobile()"><span data-lang="fr">Livret d'Accueil</span><span data-lang="en">Welcome Guide</span><span data-lang="es">Guía de Bienvenida</span><span data-lang="pt">Guia de Boas-Vindas</span><span data-lang="it">Guida di Benvenuto</span></a>
   <a href="#tarifs" onclick="closeMobile()"><span data-lang="fr">Tarifs</span><span data-lang="en">Rates</span><span data-lang="es">Tarifas</span><span data-lang="pt">Preços</span><span data-lang="it">Tariffe</span></a>
-  <a href="#" onclick="closeMobile();openModalPrebook();return false;" style="color:var(--teal)"><span data-lang="fr">Réserver</span><span data-lang="en">Book</span><span data-lang="es">Reservar</span><span data-lang="pt">Reservar</span><span data-lang="it">Prenota</span></a>
+  <a href="#" onclick="closeMobile();openModalPrebook();return false;" style="color:var(--teal-text)"><span data-lang="fr">Réserver</span><span data-lang="en">Book</span><span data-lang="es">Reservar</span><span data-lang="pt">Reservar</span><span data-lang="it">Prenota</span></a>
   <div class="mobile-lang">
     <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
     <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
@@ -413,7 +413,7 @@ details[open]>summary.guide-summary::after{transform:rotate(45deg)}
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero-inner">
 <p class="hero-eyebrow reveal" style="transition-delay:.1s"><span data-lang="fr">Résidence West Point · Dakhla, Maroc</span><span data-lang="en">West Point Residence · Dakhla, Morocco</span><span data-lang="es">Residencia West Point · Dakhla, Marruecos</span><span data-lang="pt">Residência West Point · Dakhla, Marrocos</span><span data-lang="it">Residenza West Point · Dakhla, Marocco</span></p>
-    <p class="hero-appt reveal" style="transition-delay:.14s;font-family:var(--font-serif);font-size:1.05rem;font-weight:300;font-style:italic;color:var(--teal);margin-top:-.4rem;margin-bottom:.4rem"><span data-lang="fr">Un refuge face à l'Atlantique, entre jardin et horizon.</span><span data-lang="en">A sanctuary facing the Atlantic, between garden and horizon.</span><span data-lang="es">Un refugio frente al Atlántico, entre jardín y horizonte.</span><span data-lang="pt">Um refúgio frente ao Atlântico, entre jardim e horizonte.</span><span data-lang="it">Un rifugio di fronte all'Atlantico, tra giardino e orizzonte.</span></p>
+    <p class="hero-appt reveal" style="transition-delay:.14s;font-family:var(--font-serif);font-size:1.05rem;font-weight:300;font-style:italic;color:var(--teal-text);margin-top:-.4rem;margin-bottom:.4rem"><span data-lang="fr">Un refuge face à l'Atlantique, entre jardin et horizon.</span><span data-lang="en">A sanctuary facing the Atlantic, between garden and horizon.</span><span data-lang="es">Un refugio frente al Atlántico, entre jardín y horizonte.</span><span data-lang="pt">Um refúgio frente ao Atlântico, entre jardim e horizonte.</span><span data-lang="it">Un rifugio di fronte all'Atlantico, tra giardino e orizzonte.</span></p>
     <h1 class="hero-title reveal" id="hero-title" style="transition-delay:.18s">Ocean Drift<em>Lodge</em></h1>
     <p class="hero-sub reveal" style="transition-delay:.26s"><span data-lang="fr">Là où le vent sculpte l'Atlantique et le temps suspend son souffle.</span><span data-lang="en">Where the wind sculpts the Atlantic and time holds its breath.</span><span data-lang="es">Donde el viento esculpe el Atlántico y el tiempo detiene su aliento.</span><span data-lang="pt">Onde o vento esculpe o Atlântico e o tempo suspende o seu sopro.</span><span data-lang="it">Dove il vento scolpisce l'Atlantico e il tempo trattiene il respiro.</span></p>
     <p class="profile-label reveal" style="transition-delay:.34s">
@@ -436,7 +436,7 @@ details[open]>summary.guide-summary::after{transform:rotate(45deg)}
     </div>
     <div class="ob-badge reveal" style="transition-delay:.52s">
       <span class="ob-dot"></span>
-      <span class="ob-txt" style="font-family:var(--font-sans);font-weight:500;text-transform:uppercase;letter-spacing:.25em;color:var(--teal)"><span data-lang="fr">Bientôt</span><span data-lang="en">Coming soon</span><span data-lang="es">Próximamente</span><span data-lang="pt">Em breve</span><span data-lang="it">Prossimamente</span></span>
+      <span class="ob-txt" style="font-family:var(--font-sans);font-weight:500;text-transform:uppercase;letter-spacing:.25em"><span data-lang="fr">Bientôt</span><span data-lang="en">Coming soon</span><span data-lang="es">Próximamente</span><span data-lang="pt">Em breve</span><span data-lang="it">Prossimamente</span></span>
     </div>
     <p class="hero-wind-text reveal" style="transition-delay:.58s;font-family:var(--font-serif);font-style:italic;font-weight:300;color:var(--ink-light);font-size:clamp(1.2rem,2.5vw,1.8rem);text-align:center;margin-top:1.8rem">
       <span data-lang="fr">Le vent de Dakhla souffle déjà… votre refuge.</span>
@@ -806,7 +806,7 @@ details[open]>summary.guide-summary::after{transform:rotate(45deg)}
       </details>
     </div>
     <div class="guide-cta reveal" style="transition-delay:.2s">
-      <a href="guide-du-voyageur.html" target="_blank" class="btn-outline" style="color:var(--teal);border-color:var(--teal)"><span data-lang="fr">Télécharger le guide complet</span><span data-lang="en">Download the full guide</span><span data-lang="es">Descargar la guía completa</span><span data-lang="pt">Descarregar o guia completo</span><span data-lang="it">Scarica la guida completa</span></a>
+      <a href="guide-du-voyageur.html" target="_blank" class="btn-outline" style="color:var(--teal-text);border-color:var(--teal-text)"><span data-lang="fr">Télécharger le guide complet</span><span data-lang="en">Download the full guide</span><span data-lang="es">Descargar la guía completa</span><span data-lang="pt">Descarregar o guia completo</span><span data-lang="it">Scarica la guida completa</span></a>
     </div>
   </div>
 </section>
@@ -910,11 +910,11 @@ details[open]>summary.guide-summary::after{transform:rotate(45deg)}
         <!-- Texte -->
         <text x="215" y="162" font-family="Georgia,serif" font-size="11" fill="#1c1c1a" font-weight="500">Foum El Bouir</text>
         <text x="215" y="175" font-family="Georgia,serif" font-size="9" fill="#6b6b63">Ocean Drift Lodge</text>
-        <text x="260" y="228" font-family="Georgia,serif" font-size="10" fill="#2e8b8b" font-style="italic">Lagon</text>
+        <text x="260" y="228" font-family="Georgia,serif" font-size="10" fill="#236868" font-style="italic">Lagon</text>
         <text x="20" y="290" font-family="Georgia,serif" font-size="8" fill="#6b6b63" opacity="0.7">© OpenStreetMap · Dakhla, Maroc</text>
       </svg>
       <a href="https://www.google.com/maps?q=23.72,-15.95" target="_blank" rel="noopener" 
-         style="position:absolute;bottom:1rem;right:1rem;font-size:.65rem;font-family:sans-serif;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,0.9);color:#2e8b8b;padding:.4rem .8rem;border-radius:4px;text-decoration:none;font-weight:500;border:1px solid rgba(46,139,139,0.3)">
+         style="position:absolute;bottom:1rem;right:1rem;font-size:.65rem;font-family:sans-serif;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,0.9);color:#236868;padding:.4rem .8rem;border-radius:4px;text-decoration:none;font-weight:500;border:1px solid rgba(46,139,139,0.3)">
         Google Maps ↗
       </a>
     </div>
@@ -925,7 +925,7 @@ details[open]>summary.guide-summary::after{transform:rotate(45deg)}
 <section id="tarifs" aria-labelledby="tarifs-title">
   <div class="tarifs-header">
     <p class="section-tag reveal"><span data-lang="fr">Tarifs</span><span data-lang="en">Rates</span><span data-lang="es">Tarifas</span><span data-lang="pt">Preços</span><span data-lang="it">Tariffe</span></p>
-    <h2 class="section-title reveal" id="tarifs-title" style="transition-delay:.05s;font-family:var(--font-sans);font-weight:500;text-transform:uppercase;letter-spacing:.25em;color:var(--teal)"><span data-lang="fr">Bientôt</span><span data-lang="en">Coming soon</span><span data-lang="es">Próximamente</span><span data-lang="pt">Em breve</span><span data-lang="it">Prossimamente</span></h2>
+    <h2 class="section-title reveal" id="tarifs-title" style="transition-delay:.05s;font-family:var(--font-sans);font-weight:500;text-transform:uppercase;letter-spacing:.25em;color:var(--teal-text)"><span data-lang="fr">Bientôt</span><span data-lang="en">Coming soon</span><span data-lang="es">Próximamente</span><span data-lang="pt">Em breve</span><span data-lang="it">Prossimamente</span></h2>
     <p class="section-lead reveal" style="margin:0 auto;transition-delay:.1s"><span data-lang="fr">Offre de lancement pour les premières réservations confirmées.</span><span data-lang="en">An exclusive welcome offer for our very first confirmed guests.</span><span data-lang="es">Oferta de lanzamiento para las primeras reservas confirmadas.</span><span data-lang="pt">Oferta de lançamento para as primeiras reservas confirmadas.</span><span data-lang="it">Offerta di lancio per le prime prenotazioni confermate.</span></p>
   </div>
   <ul class="tarifs-grid" role="list">
@@ -1547,7 +1547,7 @@ function downloadQR(){
 function printQR(){
   const canvas=document.getElementById('qr-canvas');
   const w=window.open('');
-  w.document.write(`<html><body style="text-align:center;font-family:sans-serif;padding:2rem"><img src="${canvas.toDataURL()}" style="width:280px;display:block;margin:0 auto"><p style="margin-top:1rem;color:#2e8b8b;font-size:1.1rem">Ocean Drift Lodge · oceandriftlodge.com</p><p style="color:#666;font-size:.85rem">Résidence West Point · Foum El Bouir · Dakhla</p></body></html>`);
+  w.document.write(`<html><body style="text-align:center;font-family:sans-serif;padding:2rem"><img src="${canvas.toDataURL()}" style="width:280px;display:block;margin:0 auto"><p style="margin-top:1rem;color:#236868;font-size:1.1rem">Ocean Drift Lodge · oceandriftlodge.com</p><p style="color:#666;font-size:.85rem">Résidence West Point · Foum El Bouir · Dakhla</p></body></html>`);
   setTimeout(()=>{w.print();w.close();},300);
 }
 

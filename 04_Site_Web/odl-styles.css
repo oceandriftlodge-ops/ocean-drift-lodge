@@ -19,12 +19,16 @@
   --ink:         #1c1c1a;
   --ink-mid:     #3d3d38;
   --ink-light:   #6b6b63;
+  --ink-text-soft: #595951;   /* Texte tertiaire foncé, contraste AA sur fond sable */
   --teal:        #2e8b8b;
   --teal-dk:     #236868;
-  --teal-text:   #236868;
+  --teal-text:      #236868;
+  --teal-text-dark: #6cdcdc;
+  --footer-muted:   rgba(255,255,255,0.55);
   --teal-lt:     rgba(46,139,139,0.12);
   --peach:       #c8603a;
   --peach-lt:    rgba(200,96,58,0.08);
+  --peach-text:     #a84a28;   /* Peach foncé pour texte en petite taille, contraste AA */
   --gold:        #b8975a;
   --terra:       #c8603a;      /* alias utilisé dans livret-accueil */
   --terra-lt:    rgba(200,96,58,0.10);
@@ -117,7 +121,7 @@ button { cursor: pointer; font-family: var(--font-sans); border: none; backgroun
   color: var(--navy);
   letter-spacing: .03em;
 }
-.nav-logo em  { font-style: italic; color: var(--teal); }
+.nav-logo em  { font-style: italic; color: var(--teal-text); }
 a.nav-logo    { display: flex; align-items: center; gap: .5rem; }
 
 /* Liens centraux — utilisés dans la majorité des pages */
@@ -133,8 +137,8 @@ a.nav-logo    { display: flex; align-items: center; gap: .5rem; }
   border-bottom: 1px solid transparent;
 }
 .nav-center a:hover {
-  color: var(--teal);
-  border-bottom-color: var(--teal);
+  color: var(--teal-text);
+  border-bottom-color: var(--teal-text);
 }
 
 /* Liens nav — variante guide-du-voyageur & livret-accueil (.nav-links) */
@@ -150,7 +154,7 @@ a.nav-logo    { display: flex; align-items: center; gap: .5rem; }
   border-bottom: 1px solid transparent;
 }
 .nav-links a:hover,
-.nav-links a.active { color: var(--teal); border-bottom-color: var(--teal); }
+.nav-links a.active { color: var(--teal-text); border-bottom-color: var(--teal-text); }
 
 /* Droite de la nav */
 .nav-right { display: flex; align-items: center; gap: .8rem; }
@@ -169,8 +173,8 @@ a.nav-logo    { display: flex; align-items: center; gap: .5rem; }
   border: 1px solid transparent;
   background: none;
 }
-.lang-btn.active { background: var(--teal); color: #fff; border-color: var(--teal); }
-.lang-btn:hover:not(.active) { color: var(--teal); border-color: rgba(46,139,139,0.3); }
+.lang-btn.active { background: var(--teal-dk); color: #fff; border-color: var(--teal-dk); }
+.lang-btn:hover:not(.active) { color: var(--teal-text); border-color: rgba(35,104,104,0.4); }
 
 /* Bouton CTA nav */
 .nav-cta {
@@ -228,7 +232,7 @@ a.nav-logo    { display: flex; align-items: center; gap: .5rem; }
 }
 .mobile-menu.open  { opacity: 1; pointer-events: auto; }
 .mobile-menu a     { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 300; color: var(--ink); }
-.mobile-menu a:hover { color: var(--teal); }
+.mobile-menu a:hover { color: var(--teal-text); }
 .mobile-close {
   position: absolute;
   top: 1.5rem;
@@ -302,7 +306,7 @@ section       { padding: 6rem 3.5rem; }
   color: var(--ink);
   margin-bottom: 1rem;
 }
-.section-title em { font-style: italic; color: var(--teal); }
+.section-title em { font-style: italic; color: var(--teal-text); }
 .section-lead {
   font-size: .9rem;
   color: var(--ink-light);
@@ -314,7 +318,7 @@ section       { padding: 6rem 3.5rem; }
 /* ── 7. BOUTONS COMMUNS ── */
 .btn-primary {
   display: inline-block;
-  background: var(--teal);
+  background: var(--teal-dk);
   color: #fff;
   font-family: var(--font-sans);
   font-size: .78rem;
@@ -327,12 +331,12 @@ section       { padding: 6rem 3.5rem; }
   cursor: pointer;
   transition: background var(--trans), transform var(--trans);
 }
-.btn-primary:hover { background: var(--teal-dk); transform: translateY(-1px); }
+.btn-primary:hover { background: var(--teal-dk); filter: brightness(.85); transform: translateY(-1px); }
 
 .btn-outline {
   display: inline-block;
   background: transparent;
-  color: var(--teal);
+  color: var(--teal-text);
   font-family: var(--font-sans);
   font-size: .78rem;
   font-weight: 500;
@@ -340,14 +344,14 @@ section       { padding: 6rem 3.5rem; }
   text-transform: uppercase;
   padding: .8rem 2rem;
   border-radius: var(--radius);
-  border: 1px solid rgba(46,139,139,0.4);
+  border: 1px solid rgba(35,104,104,0.4);
   cursor: pointer;
   transition: all var(--trans);
 }
-.btn-outline:hover { background: var(--teal); color: #fff; border-color: var(--teal); }
+.btn-outline:hover { background: var(--teal-dk); color: #fff; border-color: var(--teal-dk); }
 
 .btn-teal {
-  background: var(--teal);
+  background: var(--teal-dk);
   color: #fff;
   border: none;
   padding: .85rem 2rem;
@@ -381,7 +385,7 @@ footer {
   color: #fff;
   letter-spacing: .03em;
 }
-.footer-logo-txt em { font-style: italic; color: rgba(46,139,139,0.8); }
+.footer-logo-txt em { font-style: italic; color: var(--teal-text-dark); }
 
 .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; }
 .footer-links a {
@@ -395,7 +399,7 @@ footer {
 
 footer > span:last-child {
   font-size: .72rem;
-  color: rgba(255,255,255,0.38);
+  color: var(--footer-muted);
   letter-spacing: .05em;
 }
 
