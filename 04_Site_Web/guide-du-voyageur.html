@@ -52,10 +52,11 @@ section{padding:6rem 3.5rem}
 .spots-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
 .spot-card{border-radius:6px;overflow:hidden;position:relative;border:1px solid rgba(28,28,26,0.07);transition:transform var(--trans),box-shadow var(--trans)}
 .spot-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(28,28,26,0.12)}
-.spot-card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(28,28,26,0.95) 0%,rgba(28,28,26,0.6) 45%,transparent 70%)}
-.spot-card-overlay{position:absolute;bottom:1rem;left:1rem;right:1rem}
-.spot-card-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:#fff;line-height:1.1}
-.spot-card-tag{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:.3rem}
+.spot-card-img{background-image:none!important}
+.spot-card-img::after{display:none}
+.spot-card-overlay{position:static;background:var(--bg-sand);padding:1rem 1rem .75rem}
+.spot-card-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--teal-text);line-height:1.1}
+.spot-card-tag{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-text);margin-bottom:.3rem}
 .spot-card-body{background:#fff;padding:1.5rem}
 .spot-card-desc{font-size:.85rem;color:var(--ink-text-soft);line-height:1.65;margin-bottom:1rem}
 .spot-pills{display:flex;flex-wrap:wrap;gap:.4rem}
